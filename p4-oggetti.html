@@ -1,0 +1,971 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oggetti e grafica</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/oop/modules.png"><img src="images/oop/pygame-logo.png"></figure>
+  <hgroup>
+    <h2>Introduzione alla programmazione</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Oggetto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/basic-object.svg">
+        
+      </figure><ul>
+<li>Rappresenta un <em>oggetto fisico</em> o un <em>concetto</em> del dominio</li>
+<li>Memorizza il suo <strong>stato</strong> interno in <em>campi privati</em><ul>
+<li><em>Incapsulamento (black box)</em></li>
+</ul>
+</li>
+<li>Offre un insieme di <strong>servizi</strong>, come <em>metodi pubblici</em><ul>
+<li>Realizza un <em>tipo di dato astratto (ADT)</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classi ed oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/cookie-cutter.png">
+        
+      </figure><ul>
+<li>Ogni <em>oggetto</em> ha una <strong>classe</strong> di origine<ul>
+<li>La classe dà la stessa forma iniziale (campi e metodi) a tutti i suoi oggetti</li>
+</ul>
+</li>
+<li>Ma ogni <em>oggetto</em> ha la sua <strong>identità</strong> <ul>
+<li>Stato e locazione in memoria distinti da quelli di altri oggetti</li>
+<li>Sia instanze di classi diverse che della stessa classe</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Definizione della classe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/ball-object.svg"><img src="images/oop/ball-uml.svg">
+        <figcaption>Class diagram UML</figcaption>
+      </figure><ul>
+<li><strong>Incapsulamento</strong> dei dati: <em>convenzione</em> sui nomi<ul>
+<li>Prefisso <code>_</code> per i nomi dei <em>campi privati</em></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Siamo tutti adulti consenzienti. <em>(GvR)</em></p>
+</blockquote>
+<pre class="prettyprint" data-lang="python"><code>class Ball:
+    W, H = 20, 20
+    ARENA_W, ARENA_H = 320, 240
+
+    def __init__(self, x: int, y: int):
+        self._x = x
+        self._y = y
+        self._dx = 5
+        self._dy = 5
+    # ...
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Costruzione oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong><code>__init__</code></strong>: metodo <em>inizializzatore</em><ul>
+<li>Eseguito automaticamente alla creazione di un oggetto</li>
+<li><em>Instantiation is initialization</em></li>
+</ul>
+</li>
+<li><strong><code>self</code></strong>: primo parametro di tutti i metodi<ul>
+<li>Non bisogna passare un valore esplicito</li>
+<li>Assegnato l'oggetto di cui si chiama il metodo</li>
+<li>Permette ai metodi di accedere ai campi</li>
+</ul>
+</li>
+<li>Costanti definite direttamente nella <em>classe</em><ul>
+<li>Per usarle, precedute dal nome della classe e “<code>.</code>”</li>
+<li>Caratteristiche della classe, non di una singola istanza</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>ball = Ball(40, 80)  # Allocation and initialization
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Metodi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Espongono <em>servizi</em> ad altri oggetti</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>class Ball:
+    # ...
+    def move(self):
+        if not (0 &lt;= self._x + self._dx &lt;= Ball.ARENA_W - Ball.W):
+            self._dx = -self._dx
+        if not (0 &lt;= self._y + self._dy &lt;= Ball.ARENA_H - Ball.H):
+            self._dy = -self._dy
+        self._x += self._dx
+        self._y += self._dy
+
+    def rect(self) -&gt; (int, int, int, int):
+        return self._x, self._y, Ball.W, Ball.H
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Applicazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>from ball import Ball  # Ball is defined in ball.py
+
+# Create two objects, instances of the Ball class
+b1 = Ball(40, 80)
+b2 = Ball(80, 40)
+print('Ball 1 @', b1.rect())
+print('Ball 2 @', b2.rect())
+
+while input() != 'x':
+    b1.move()
+    b2.move()
+    print('Ball 1 @', b1.rect())
+    print('Ball 2 @', b2.rect())
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Il primo parametro, self</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il primo parametro di ogni metodo si chiama <code>self</code> (per convenzione)</li>
+<li>L'oggetto, di cui viene invocato il metodo, viene assegnato come valore di <code>self</code></li>
+<li>In Python, una chiamata a metodo è interpretata così:</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>b1 = Ball(40, 80)
+b1.move()
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>b1 = Ball(40, 80)  # also, automatically call
+                   # Ball.__init__(b1, 40, 80)
+Ball.move(b1)
+</code></pre>
+<p><strong>Nota.</strong> Meglio usare la prima notazione, che evidenzia l'<em>oggetto</em> anzichè la classe!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Proprietà</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Permettono un accesso controllato allo stato</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>class Ball:
+
+    @property  # a getter for the pos property
+    def pos(self) -&gt; (int, int):
+        return self._x, self._y
+
+    # @pos.setter  # if you also really need a setter
+    # def pos(self, val: (int, int)):
+    #     self._x, self._y = val
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>ball = Ball(40, 80)
+print('ball @', ball.pos)
+# ball.pos = (60, 20)   # with the setter, you could change the pos
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark backdrop" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Livelli di astrazione</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Composizione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/ball-arena.svg">
+        
+      </figure><ul>
+<li>Associazione di tipo <strong>has-a</strong>, <strong>part-of</strong> tra oggetti<ul>
+<li>Una <em>arena</em> può <em>contenere</em> diverse <em>palline</em></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>class BallArena:  # ...
+    def __init__(self):
+        self._balls = []
+    def add(self, b: Ball):
+        self._balls.append(b)
+    def move_all(self):
+        for b in self._balls:
+            b.move()
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>arena = BallArena()
+arena.add(Ball(40, 80)); arena.add(Ball(80, 40)) # ...
+arena.move_all()
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ciclo di vita di un oggetto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/garbage-truck.jpg">
+        
+      </figure><ul>
+<li>Creazione di un oggetto: allocata memoria per tenere lo stato dell’oggetto</li>
+<li>In Python: variabile = riferimento ad un oggetto<ul>
+<li><em>Oggetti</em>: <em>allocazione dinamica</em>, in memoria <em>heap</em></li>
+<li><em>Variabili</em>: <em>allocazione automatica</em>, in memoria <em>stack</em></li>
+</ul>
+</li>
+<li>Oggetto non più associato a nessuna variabile: necessario liberare memoria</li>
+<li><strong>Garbage collection</strong>: gestione automatica della restituzione di memoria</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Garbage collection</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Vantaggi<ul>
+<li>Non è possibile dimenticare di liberare la memoria (<em>memory leak</em>)</li>
+<li>Non è possibile liberare della memoria che dovrà essere utilizzata in seguito (<em>dangling pointer</em>)</li>
+</ul>
+</li>
+<li>Svantaggi<ul>
+<li>Il garbage collector decide autonomamente quando liberare la memoria</li>
+<li>Liberare e compattare la memoria richiede del calcolo</li>
+</ul>
+</li>
+<li>Diversi algoritmi<ul>
+<li><em>Reference counting</em>: idea di base, ma cicli…</li>
+<li><em>Mark &amp; sweep</em>: parte da riferimenti locali/globali, marca oggetti raggiungibili</li>
+<li><em>Generational garbage collection</em>: controlla spesso oggetti recenti</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Livelli di astrazione</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Livelli di astrazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/inheritance.png">
+        
+      </figure><ul>
+<li>Relazione <strong>is-a</strong> tra classi<ul>
+<li>Specializzazione, sotto-insieme</li>
+</ul>
+</li>
+<li>Es. classificazioni in biologia<ul>
+<li>I <em>vertebrati</em> sono una sottoclasse degli <em>animali</em></li>
+<li>I <em>mammiferi</em> sono una sottoclasse dei <em>vertebrati</em></li>
+<li>I <em>felini</em> sono una sottoclasse dei <em>mammiferi</em></li>
+<li>I <em>gatti</em> sono una sottoclasse dei <em>felini</em></li>
+</ul>
+</li>
+<li>Ogni sottoclasse...<ul>
+<li>Eredita le caratteristiche della classe base</li>
+<li>Ma introduce delle specializzazioni</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Livelli di astrazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/actors.svg">
+        
+      </figure><ul>
+<li><code>Actor</code>: <em>classe base</em><ul>
+<li>Dichiara un metodo <code>move</code> ecc.</li>
+</ul>
+</li>
+<li>Vari attori: <em>classi derivate</em><ul>
+<li>Ereditano caratteristiche di <code>Actor</code></li>
+<li>Definiscono comportamenti specifici</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>class Actor:
+    def move(self):
+        raise NotImplementedError("Abstract method")
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Generalizzazione e riuso</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>class Arena:  # ...
+    def __init__(self):
+        self._actors = []
+    def add(self, a: Actor):
+        self._actors.append(a)
+    def move_all(self):
+        for a in self._actors:
+            a.move()
+</code></pre>
+<ul>
+<li>Codice dipendente dalle classi più astratte, più in alto nella gerarchia<ul>
+<li><code>Arena</code> riutilizzabile creando nuove classi derivate di <code>Actor</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sostituzione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/actor.svg">
+        
+      </figure><pre class="prettyprint" data-lang="python"><code>arena.add(Ball(40, 80))
+arena.add(Ghost(120, 40)) # ...
+arena.move_all()
+</code></pre>
+<ul>
+<li>Principio di <strong>sostituzione</strong> di Liskov<ul>
+<li>Si può sempre usare un oggetto di una <em>classe derivata</em>, al posto di uno della <em>classe base</em></li>
+</ul>
+</li>
+<li>Relazione <em>has-a</em> tra un oggetto <code>Arena</code> e gli oggetti <code>Actor</code> che contiene</li>
+<li>Relazione <em>is-a</em> tra classi derivate (<code>Ball</code> e <code>Ghost</code>) e classe base (<code>Actor</code>)</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ereditarietà e polimorfismo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Classe derivata</strong><ul>
+<li>Eredita le caratteristiche della classe base</li>
+<li>Può definire nuove caratteristiche specifiche</li>
+</ul>
+</li>
+<li><strong>Metodo polimorfo</strong><ul>
+<li>Ridefinito nelle classi derivate</li>
+<li>Attori diversi possono muoversi in modo diverso</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>class Ghost(Actor):  # ...
+    def move(self):
+        dx = random.choice([-5, 0, 5])
+        dy = random.choice([-5, 0, 5])
+        arena_w, arena_h = self._arena.size()
+        self._x = (self._x + dx) % arena_w
+        self._y = (self._y + dy) % arena_h
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Grafica con Pygame</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Grafica con pygame</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/pygame-logo.png"><img src="images/oop/pygame-loop.png">
+        
+      </figure><ul>
+<li>Libreria per giochi 2D</li>
+<li>Grafica e suoni</li>
+<li>Su <em>SDL</em> - Simple DirectMedia Layer</li>
+<li>Semplice e veloce</li>
+<li>Open-source</li>
+<li>Multi-piattaforma</li>
+</ul>
+<blockquote></blockquote>
+<p><a href="http://www.pygame.org/">pygame.org</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ciclo di animazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>import pygame
+pygame.init()                     # Prepare pygame
+screen = pygame.display.set_mode((320, 240))
+clock = pygame.time.Clock()       # To set game speed
+image = pygame.image.load('ball.png')
+
+x = 50; playing = True
+while playing:
+    for e in pygame.event.get():  # Handle events: mouse, keyb etc.
+        if e.type == pygame.QUIT: playing = False
+    screen.fill((255, 255, 255))  # Draw background        
+    screen.blit(image, (x, 50))   # Draw foreground
+    x = (x + 5) % 320             # Update ball's position
+    pygame.display.flip()         # Surface ready, show it!
+    clock.tick(30)                # Wait 1/30 seconds
+pygame.quit()                     # Close the window
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Rimbalzi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/bounce.png">
+        
+      </figure><pre class="prettyprint" data-lang="python"><code>arena = Arena(320, 240)
+Ball(arena, 40, 80); Ball(arena, 80, 40); 
+Ghost(arena, 120, 80) # ...
+# a map from an actor type to an image
+images = {Ball: pygame.image.load('ball.png'),
+          Ghost: pygame.image.load('ghost.png')}
+screen = pygame.display.set_mode(arena.size())
+playing = True
+while playing:
+    # Handle events here!
+
+    arena.move_all()             # Game logic
+    screen.fill((255, 255, 255)) # Background
+    for a in arena.actors():
+        x, y, w, h = a.rect()
+        img = images[type(a)]
+        screen.blit(img, (x, y)) # Foreground [...]
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Tastiera e mouse</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>from pygame.locals import (KEYDOWN, KEYUP, K_RIGHT, K_d,
+    MOUSEBUTTONDOWN, MOUSEBUTTONUP, MOUSEMOTION)
+# ...
+for e in pygame.event.get():
+    # print(e)
+    if e.type == KEYDOWN and e.key in (K_RIGHT, K_d):
+        print('Right arrow (or D) pressed')
+    elif e.type == KEYUP and e.key in (K_RIGHT, K_d):
+        print('Right arrow (or D) released')
+    elif e.type == MOUSEBUTTONDOWN and e.button == 1:
+        print('Left mouse button pressed')
+    elif e.type == MOUSEBUTTONUP and e.button == 1:
+        print('Left mouse button released')
+    elif e.type == MOUSEMOTION:
+        print 'Mouse at (%d, %d)' % e.pos
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Testo e suoni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code># Red (anti-aliased) text, centered, rotated 30° ccw
+font = pygame.font.SysFont('arial', 48)
+surface = font.render('Game over!', True, (255, 0, 0))
+surface = pygame.transform.rotate(surface, 30)
+x = (screen.get_width() - surface.get_width()) // 2
+y = (screen.get_height() - surface.get_height()) // 2
+screen.blit(surface, (x, y))  # surface ~ image
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code># Some sound
+pick_up_sound = pygame.mixer.Sound('pickup.wav')
+pick_up_sound.play()  # play(-1) to loop, then stop()
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collisioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/collision.svg"><img src="images/oop/reflection.png">
+        
+      </figure><ul>
+<li>Molti algoritmi di <em>collision detection</em><ul>
+<li>Casi semplici: intersezione di rettangoli</li>
+</ul>
+</li>
+<li>In caso di collisione, <code>Arena</code>...<ul>
+<li>Invoca il metodo <code>collide</code> di entrambi gli oggetti</li>
+<li>Collisione tra personaggio <code>self</code> e personaggio <code>other</code> (secondo parametro)</li>
+</ul>
+</li>
+<li>Possibili errori nel calcolo del rimbalzo<ul>
+<li>Di solito accettabili</li>
+<li>Altrimenti, applicare correzioni</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Collaudo in Python</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Come collaudare il codice?</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Usare un <em>debugger</em> per valutare espressioni in fase di esecuzione<ul>
+<li>Si può decidere cosa valutare a seconda del flusso di esecuzione e dei valori generati, senza ricompilare</li>
+</ul>
+</li>
+<li>Istruzioni di <em>stampa</em> all'interno del programma<ul>
+<li>Valore di espressioni scritto a console o su file di log</li>
+</ul>
+</li>
+<li>Entrambi gli stili, scarsamente <em>automatizzati</em><ul>
+<li>Necessità di intervento attivo durante l'esecuzione dei test</li>
+<li>Giudizio dei risultati da parte dell'utente</li>
+<li>Quali valori analizzare? Sono coerenti?</li>
+</ul>
+</li>
+<li>Scarsamente <em>componibili</em><ul>
+<li>Difficile controllare molte espressioni nel debugger</li>
+<li>"<em>Scroll blindness</em>": troppe istruzioni di stampa ⇒ codice poco leggibile</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Libreria unittest</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>I test <code>unittest</code> non richiedono continuo intervento o giudizio da parte dell'utente</li>
+<li>Facile eseguire molti test assieme, su un certo progetto</li>
+<li>Come definire un test?<ul>
+<li>Creare una sottoclasse di <code>unittest.TestCase</code></li>
+<li>Scrivere metodi di test, denominati con prefisso <code>test</code></li>
+<li>Per controllare la validità di una espressione, usare <code>assertTrue(bool)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di test</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Controllare che una pallina rimbalzi correttamente contro il bordo inferiore</li>
+</ul>
+<pre class="prettyprint" data-lang="Python"><code>import unittest
+
+class SimpleBallTest(unittest.TestCase):
+
+    def test_bounce_down(self):
+        b = Ball(300, 220)  # dx = 5, dy = 5
+        b.move()
+        self.assertTrue(b.rect() == (295, 215, 20, 20))
+
+if __name__ == '__main__':
+    unittest.main(exit=False)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esecuzione dei test</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Meccanismi per definire i test da eseguire e organizzare i risultati</li>
+<li>Esecuzione di test dalla linea di comando<ul>
+<li>Inclusione dei test di un modulo, di una classe, o metodi di test specifici</li>
+<li>Implementata anche una semplice forma di <em>test discovery</em></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="cmd"><code>python -m unittest test_module1 test_module2
+python -m unittest test_module.TestClass
+python -m unittest test_module.TestClass.test_method
+python -m unittest discover
+</code></pre>
+<ul>
+<li>Annotazione <code>@unittest.skip("reason for skipping")</code><ul>
+<li>Indica al framework di ignorare un certo metodo di test</li>
+<li>Messaggio per documentare la decisione</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Controllare le eccezioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Mestiere del programmatore<ul>
+<li>Codice che completa correttamente l'esecuzione nei casi normali...</li>
+<li>Ma che anche in situazioni eccezionali mostra il comportamento atteso</li>
+</ul>
+</li>
+<li>Come verificare che una eccezione attesa sia effettivamente sollevata?<ul>
+<li>Usare il metodo <code>assertRaises</code> direttamente, passando una funzione ed i parametri</li>
+<li>Oppure creare un <em>contesto</em> con <code>with</code></li>
+</ul>
+</li>
+<li>Esempio: <code>Ball</code> solleva effettivamente una eccezione attesa?</li>
+</ul>
+<pre class="prettyprint" data-lang="Python"><code>def test_out_of_arena(self): 
+    with self.assertRaises(ValueError):
+        b = Ball(-1, -1)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Test parametrizzati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Ripetere un test con diversi parametri<ul>
+<li>Un test case per ogni gruppo di parametri?</li>
+<li>In alcune applicazioni, enorme quantità di test!</li>
+</ul>
+</li>
+<li>Soluzione semplicistica: test contente un ciclo<ul>
+<li>Ad ogni iterazione, preparato un gruppo di parametri diversi</li>
+<li>Eseguite le istruzioni da testare sui nuovi parametri</li>
+<li>Problema: il test si blocca al primo errore</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Test parametrizzato, semplicistico</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Python"><code>class ParamBallTest(unittest.TestCase):
+    TEST_VALUES = ( (40, 80, 45, 85),
+                    (40, 215, 45, 220),
+                    (40, 220, 45, 215),
+                    (295, 80, 300, 85),
+                    (300, 80, 290, 85) )
+
+    def test_move(self):
+        for param in ParamBallTest.TEST_VALUES:
+            x0, y0, x1, y1 = param
+            b = Ball(x0, y0)
+            b.move()
+            self.assertTrue(b.rect() == (x1, y1, 20, 20))
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sotto-test, Python 3.4</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Eseguiti tutti i sottotest, anche se uno fallisce</li>
+</ul>
+<pre class="prettyprint" data-lang="Python"><code>class ParamBallTest(unittest.TestCase):
+    TEST_VALUES = ()  # same values...
+
+    def test_move(self):
+        for param in ParamBallTest.TEST_VALUES:
+            with self.subTest(param=param):
+                x0, y0, x1, y1 = param
+                b = Ball(x0, y0)
+                b.move()
+                self.assertTrue(b.rect() == (x1, y1, 20, 20))
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fixture</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Due o più test operano su insiemi di oggetti uguali o simili<ul>
+<li>Questa configurazione iniziale comune si definisce <em>fixture</em></li>
+</ul>
+</li>
+<li>Se ci sono diversi test con una fixture comune...<ul>
+<li>Aggiungere dei campi per le varie parti della fixture</li>
+<li>Inizializzare questi campi, nel metodo <code>setUp</code></li>
+<li>Liberare evenutali risorse allocate, nel metodo <code>tearDown</code></li>
+</ul>
+</li>
+<li>Una volta creata la fixture, può essere usata da tutti i test case<ul>
+<li>Aggiungere metodi di test alla classe</li>
+<li><code>setUp</code> e <code>tearDown</code> eseguiti prima e dopo ogni test</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di fixture</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Numerosi metodi di test che operano su stessi dati iniziali<ul>
+<li>Esempio, una combinazione di palline in posizioni predefinite</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Python"><code>class SimpleBallTest(unittest.TestCase):
+
+    def setUp(self): 
+        self.b1 = Ball(80, 40)
+        self.b2 = Ball(40, 80)
+        self.b3 = Ball(120, 20)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Test suite</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Meccanismo per <em>raggruppare</em> logicamente dei test ed <em>eseguirli assieme</em></li>
+<li>La classe <code>TestSuite</code> rappresenta una test suite<ul>
+<li>Lista di classi di test aggiunte con il metodo <code>addTest</code></li>
+</ul>
+</li>
+<li>La classe <code>TestRunner</code> rappresenta un esecutore di test<ul>
+<li>Per la console, si usa <code>TextTestRunner</code>, già inclusa nel framework</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Python"><code>suite = unittest.TestSuite()
+suite.addTest(unittest.makeSuite(SimpleBallTest))
+runner = unittest.TextTestRunner()
+runner.run(suit)
+</code></pre></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

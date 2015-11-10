@@ -1,0 +1,1004 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Automi e calcolo</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/comp/hugo.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione all'informatica</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Automi e calcolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/executor.svg">
+        
+      </figure><ul>
+<li><strong>Automa</strong>: <em>macchina astratta</em></li>
+<li>Riceve dall'esterno i dati ed una descrizione dell'algoritmo richiesto</li>
+<li>Interpreta un linguaggio, detto linguaggio macchina dell'automa</li>
+<li>Vincolo su numero di componenti, finito</li>
+<li>Vincolo su alfabeti di ingresso e di uscita, composti da un numero finito di simboli</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Riconoscimento di linguaggi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Data una stringa <code>x</code>, stabilire se essa appartiene ad <code>L</code> (problema dell'<em>appartenenza</em>, o <em>membership</em>)</li>
+<li>L. tipo 3: riconosciuti da <em>macchine a stati finiti (FSM)</em><ul>
+<li>Es.: <code>{a<sup>n</sup>b : n≥0}</code>, gen. da <code>S → aS | b</code></li>
+</ul>
+</li>
+<li>L. tipo 2: <em>automi a pila non deterministici (NPDA)</em><ul>
+<li>Es.: <code>{a<sup>n</sup>b<sup>n</sup> : n≥1}</code> gen. da <code>S → aSb | ab</code></li>
+</ul>
+</li>
+<li>L. tipo 1: <em>automi limitati linearmente (LBA)</em><ul>
+<li>Es.: <code>{a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> : n≥1}</code></li>
+</ul>
+</li>
+<li>L. tipo 0:  riconosciuti da <em>macchine di Turing (TM)</em><ul>
+<li>Però semi-decidibili: se <code>x ∉ L</code>, il processo può non terminare!</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Macchina a stati finiti (FSM)</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Macchina a stati finiti (FSM)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>M = &lt;Σ, Q, δ, q<sub>0</sub>, F&gt;</code></li>
+<li><code>Σ = {σ<sub>1</sub>,...,σ<sub>n</sub>}</code>: alfabeto di input</li>
+<li><code>Q = {q<sub>0</sub>,...,q<sub>n</sub>}</code>: insieme finito non vuoto di stati</li>
+<li><code>F ⊆ Q</code>: insieme di stati finali</li>
+<li><code>q<sub>0</sub> ∈ Q</code>: stato iniziale</li>
+<li><code>δ: Q x Σ → Q</code>: funzione di transizione<ul>
+<li>In base allo stato e al simbolo di input attuali … <br> determina lo stato successivo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggio riconosciuto da FSM</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Funzione di transiz. estesa a stringhe: <code>δ: Q x Σ* → Q</code><ul>
+<li><code>δ(q, ε) = q</code></li>
+<li><code>δ(q, ax) = δ(δ(q, a), x)</code>,  con <code>a ∈ Σ, x ∈ Σ*</code></li>
+</ul>
+</li>
+<li>Linguaggio riconosciuto da una macchina <code>M</code>:<ul>
+<li><code>L(M) = {x ∈ Σ* : δ(q0, x) ∈ F}</code></li>
+</ul>
+</li>
+<li>FSM riconoscono tutti e soli i <em>linguaggi regolari</em></li>
+<li>Rappresentazione della funzione di transizione<ul>
+<li><em>Tabella di transizione</em></li>
+<li><em>Diagramma degli stati</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di FSM</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/fsm4.svg">
+        <figcaption>Stringhe con a in numero pari e b in numero pari</figcaption>
+      </figure><ul>
+<li><code>M = &lt;{a, b}, {q<sub>S</sub>, q<sub>A</sub>, q<sub>B</sub>, q<sub>C</sub>}, δ, q<sub>S</sub>, {q<sub>S</sub>}&gt;</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>δ</th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>q<sub>S</sub></td>
+<td>q<sub>A</sub></td>
+<td>q<sub>B</sub></td>
+</tr>
+<tr>
+<td>q<sub>A</sub></td>
+<td>q<sub>S</sub></td>
+<td>q<sub>C</sub></td>
+</tr>
+<tr>
+<td>q<sub>B</sub></td>
+<td>q<sub>C</sub></td>
+<td>q<sub>S</sub></td>
+</tr>
+<tr>
+<td>q<sub>C</sub></td>
+<td>q<sub>B</sub></td>
+<td>q<sub>A</sub></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Grammatica equivalente:<ul>
+<li><code>S → aA | bB | ε</code> <br> <code>A → aS | bC</code> <br> <code>B → bS | aC</code> <br> <code>C → aB | bA</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>FSM non deterministica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>M = &lt;Σ, Q, δ<sub>N</sub>, q<sub>0</sub>, F&gt;</code></li>
+<li><code>Σ = {σ<sub>1</sub>, ..., σ<sub>n</sub>}</code>: alfabeto di input</li>
+<li><code>Q = {q<sub>0</sub>, ..., q<sub>m</sub>}</code>: insieme finito non vuoto di stati</li>
+<li><code>F ⊆ Q</code>: insieme di stati finali</li>
+<li><code>q<sub>0</sub> ∈ Q</code>: stato iniziale</li>
+<li><code>δ<sub>N</sub>: Q x Σ → P(Q)</code>: funzione di transizione, determina insieme di stati successivi<ul>
+<li><code>P(Q)</code> è l'insieme delle parti di <code>Q</code>, ossia l'insieme di tutti i possibili sottoinsiemi di <code>Q</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di NFSM</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/nfsm.svg">
+        <figcaption>Accetta qualsiasi stringa terminante con b</figcaption>
+      </figure><ul>
+<li><code>M = &lt;{a, b}, {q<sub>0</sub>, q<sub>1</sub>}, δ, q<sub>0</sub>, {q<sub>1</sub>}&gt;</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>δ</th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>q<sub>0</sub></td>
+<td>{q<sub>0</sub>}</td>
+<td>{q<sub>0</sub>, q<sub>1</sub>}</td>
+</tr>
+<tr>
+<td>q<sub>1</sub></td>
+<td>{}</td>
+<td>{}</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>{q<sub>0</sub>} ↔ q'<sub>0</sub></code>, <code>{q<sub>0</sub>, q<sub>1</sub>} ↔ q'<sub>1</sub></code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>δ'</th>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{q<sub>0</sub>}</td>
+<td>{q<sub>0</sub>}</td>
+<td>{q<sub>0</sub>, q<sub>1</sub>}</td>
+</tr>
+<tr>
+<td>{q<sub>0</sub>, q<sub>1</sub>}</td>
+<td>{q<sub>0</sub>}</td>
+<td>{q<sub>0</sub>, q<sub>1</sub>}</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>M' = &lt;{a, b}, {q'<sub>0</sub>, q'<sub>1</sub>}, δ', q'<sub>0</sub>, {q'<sub>1</sub>}&gt;</code></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Equivalenza FSM / NFSM</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Per ogni stato / ingresso, definiti più stati successivi</li>
+<li>Non-determinismo: calcolo = albero di computazioni autonome, anziché traiettoria in uno spazio di stati</li>
+<li>Nel casi di FSM, non-determinismo non aggiunge potere computazionale<ul>
+<li>FSM / NFSM: formalismi equivalenti</li>
+<li>FSM è un caso particolare di NFSM</li>
+<li>Viceversa, ogni elemento di <code>P(Q)</code> di NFSM diventa uno stato di FSM</li>
+<li><code>P(Q)</code> contiene <code>2<sup>|Q|</sup></code> elementi</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Automa a pila (PDA)</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Automa a pila (PDA)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/pda.svg">
+        
+      </figure><ul>
+<li>Simile a FSM, ma dotato di memoria infinita, organizzata a pila<ul>
+<li>Si può accedere solo alla cima della pila</li>
+<li>Lettura del simbolo in cima</li>
+<li>Sostituzione simbolo in cima con nuova stringa (anche ε)</li>
+</ul>
+</li>
+<li>In forma non-deterministica, permette di riconoscere i linguaggi non contestuali</li>
+<li>In forma deterministica, riconosce solo i linguaggi non contestuali deterministici (sottoclasse)<ul>
+<li>Base dei comuni linguaggi di programmazione</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Definizione di PDA</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>M = &lt;Σ, Γ, z<sub>0</sub>, Q, q<sub>0</sub>, F, δ&gt;</code></li>
+<li><code>Σ = {σ<sub>1</sub>, ..., σ<sub>n</sub>}</code>: alfabeto di input</li>
+<li><code>Γ = {z<sub>0</sub>, ..., z<sub>m</sub>}</code>: simboli della pila</li>
+<li><code>z<sub>0</sub> ∈ Γ</code>: simbolo di pila iniziale</li>
+<li><code>Q = {q<sub>0</sub>, ..., q<sub>k</sub>}</code>: insieme finito non vuoto di stati</li>
+<li><code>q<sub>0</sub> ∈ Q</code>: stato iniziale; <code>F ⊆ Q</code>: insieme di stati finali</li>
+<li><code>δ: Q x Σ x Γ → Q x Γ*</code>: funzione di transizione<ul>
+<li>In base a stato, simbolo di input, simbolo in cima a pila …</li>
+<li>Determina stato successivo e simboli inseriti nella pila</li>
+<li>Per rimuovere il simbolo in cima alla pila, si scrive ε</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di PDA</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Automa a pila M che riconosce <code>L = {a<sup>n</sup>b<sup>n</sup>, n ≥ 1}</code></li>
+<li><code>M = &lt;{a, b}, {Z<sub>0</sub>, A<sub>0</sub>, A}, Z<sub>0</sub>, {q<sub>0</sub>, q<sub>1</sub>, q<sub>2</sub>}, q<sub>0</sub>, {q<sub>2</sub>}, δ&gt;</code><ul>
+<li><code>A</code> serve a ricordare la presenza delle <code>a</code></li>
+<li><code>q<sub>0</sub></code>: si memorizzano le <code>a</code></li>
+<li><code>q<sub>1</sub></code>: si confrontano le <code>b</code> con quanto memorizzato</li>
+<li><code>q<sub>2</sub></code>:  stato finale</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>δ</th>
+<th>Z<sub>0</sub>, a</th>
+<th>Z<sub>0</sub>, b</th>
+<th>A<sub>0</sub>, a</th>
+<th>A<sub>0</sub>, b</th>
+<th>A, a</th>
+<th>A, b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>q<sub>0</sub></td>
+<td>A<sub>0</sub>, q<sub>0</sub></td>
+<td></td>
+<td>AA<sub>0</sub>, q<sub>0</sub></td>
+<td>ε, q<sub>2</sub></td>
+<td>AA, q<sub>0</sub></td>
+<td>ε, q<sub>1</sub></td>
+</tr>
+<tr>
+<td>q<sub>1</sub></td>
+<td></td>
+<td></td>
+<td></td>
+<td>ε, q<sub>2</sub></td>
+<td></td>
+<td>ε, q<sub>1</sub></td>
+</tr>
+<tr>
+<td>q<sub>2</sub></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>PDA non deterministico (NPDA)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>A = &lt;Σ, Γ, z<sub>0</sub>, Q, q<sub>0</sub>, F, δ<sub>N</sub>&gt;</code></li>
+<li><code>δ<sub>N</sub>: Q x Σ<sub>ε</sub> x Γ → P(Q x Γ*)</code>: funzione di transizione, determina gli stati e i simboli di pila successivi<ul>
+<li>Es. <code>δ(p, a, A) = {(q, BA), (r, ε)}</code>   (due transizioni)</li>
+<li>Simbolo <code>A</code> in cima alla pila sostituito dalla stringa di caratteri <code>BA</code>, nuovo stato interno <code>q</code></li>
+<li>Simbolo <code>A</code> in cima alla rimosso (sostituito da <code>ε</code>), nuovo stato interno <code>r</code></li>
+</ul>
+</li>
+<li>NPDA: maggiore potere computazionale di PDA<ul>
+<li><code>L = {a<sup>n</sup>b<sup>n</sup>} ∪ {a<sup>n</sup>b<sup>2n</sup>},  n ≥ 0</code></li>
+<li><code>S → A|B, A → aAb|ε, B → aBbb|ε</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Macchina di Turing (TM)</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Macchina di Turing (TM)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/tm.png">
+        
+      </figure><ul>
+<li>Automa con testina di scrittura/lettura su nastro bidirezionale “illimitato”</li>
+<li>Ad ogni passo:<ul>
+<li>Si trova in un certo stato</li>
+<li>Legge un simbolo dal nastro</li>
+</ul>
+</li>
+<li>In base alla funzione di transizione (deterministica):<ul>
+<li>Scrive un simbolo sul nastro</li>
+<li>Sposta la testina di una posizione</li>
+<li>Cambia lo stato</li>
+</ul>
+</li>
+<li>Può simulare ogni altro modello di calcolo noto!</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>TM deterministica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>M = &lt;Σ, Q, q<sub>0</sub>, F, δ&gt;</code></li>
+<li><code>Σ = {σ<sub>1</sub>, ..., σ<sub>n</sub>, ␢}</code>: alfabeto di input (+ <em>blank</em>)</li>
+<li><code>Q = {q<sub>0</sub>, ..., q<sub>m</sub>}</code>: insieme finito non vuoto di stati</li>
+<li><code>q0 ∈ Q</code>: stato iniziale</li>
+<li><code>F ⊆ Q</code>: insieme di stati finali</li>
+<li><code>δ: Q x Σ → Q x Σ x {d, s, i}</code>: funzione di transizione<ul>
+<li>Determina lo stato successivo, il simbolo successivo, lo spostamento della testina</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>TM non deterministica (NTM)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>M = &lt;Σ, Q, q<sub>0</sub>, F, δN&gt;</code></li>
+<li><code>δ<sub>N</sub>: Q x Σ → P(Q x Σ x {d, s, i})</code>: funzione di transizione<ul>
+<li>Determina le configurazioni successive (nuovo stato, simbolo scritto, spostamento della testina)</li>
+</ul>
+</li>
+<li>Grado di non-determinismo: massimo numero di figli di un nodo dell'albero di computazione</li>
+<li>NTM: <strong>stessa potenza computazionale di TM</strong><ul>
+<li>Data NTM, <code>M</code>, con grado di non-determinismo <code>n</code>...</li>
+<li><code>∃ M'</code>, una equivalente MT, in grado di simulare <code>M</code></li>
+</ul>
+</li>
+<li>Ma (finora…) NTM <strong>più efficiente</strong><ul>
+<li><code>k</code> passi di <code>M</code> richiedono <code>k'</code> (<code>∝ kn<sup>k</sup></code> , asintot.) passi di <code>M'</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Macchina di Turing universale (UTM)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>UTM realizza la computazione:<ul>
+<li><code>(q<sub>0U</sub>, D<sub>M</sub>#x) →* (α, q<sub>fU</sub>, β)</code> …</li>
+<li><code>q<sub>0U</sub></code>, stato iniziale; <code>q<sub>fU</sub></code>, stato finale</li>
+<li><code>D<sub>M</sub>#x</code>: input; <code>D<sub>M</sub></code>: descrizione di <code>M</code> (funz. di transizione)</li>
+</ul>
+</li>
+<li>⇔ <code>M</code> realizza la computazione: <code>(q<sub>0</sub>, x) →* (α, q<sub>f</sub>, β)</code><ul>
+<li><code>q<sub>0</sub></code>, stato iniziale; <code>q<sub>f</sub></code>, stato finale; <code>x</code>, input</li>
+</ul>
+</li>
+<li>Regole di transizione di <code>M</code> → Sequenza di quintuple<ul>
+<li><code>D<sub>M</sub> = d<sub>1</sub>##d<sub>2</sub>## ... ##d<sub>n</sub></code> </li>
+<li><code>q<sub>i</sub>#σ<sub>j</sub>#q<sub>h</sub>#σ<sub>k</sub>#t<sub>l</sub> ⇔ δ(q<sub>i</sub>, σ<sub>j</sub>) = (q<sub>h</sub>, σ<sub>k</sub>, t<sub>l</sub>)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Funzionamento della UTM</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>UTM <strong>interpreta</strong> un arbitrario programma su nastro<ul>
+<li>Dato lo stesso input, UTM produce lo stesso output di <code>M</code></li>
+<li>Per ogni simbolo letto in <code>x</code> (input di <code>M</code>), scorre la lista di regole, per scegliere la giusta transizione</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="images/comp/utm.svg" /></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Calcolabilità</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Calcolabilità</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Tesi di Church-Turing</strong>: problema intuitivamente calcolabile → esiste TM in grado di calcolarlo<ul>
+<li>TM: formalismo non meno potente di ogni altro modello di calcolo proposto finora</li>
+<li>Funzioni ricorsive, lambda-calcolo, macchine a registri…</li>
+</ul>
+</li>
+<li>Ma esistono <strong>problemi irrisolvibili</strong> (nel caso generale)<ul>
+<li>Attenzione: non si dice niente sulla singola istanza!</li>
+</ul>
+</li>
+<li><em>Teorema di incompletezza di Gödel</em><ul>
+<li>∀ formalizzazione della matematica che assiomatizza ℕ</li>
+<li>→ ∃ proposizione né dimostrabile né confutabile</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Paradossi classici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Paradosso del mentitore<ul>
+<li>Questa frase è falsa</li>
+<li>Epimenide di Creta afferma: <em>“I cretesi sono bugiardi”</em></li>
+</ul>
+</li>
+<li>Paradosso del barbiere<ul>
+<li>Se un barbiere fa la barba a tutti e soli coloro che non si fanno la barba da soli, chi sbarba il barbiere?</li>
+</ul>
+</li>
+<li>Paradosso di Russell<ul>
+<li>Consideriamo insiemi di insiemi e supponiamo che un insieme possa contenere se stesso</li>
+<li>Sia T l'insieme di tutti gli insiemi che non contengono se stessi; possiamo stabilire se T contiene T?</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Problema della terminazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Predicato della terminazione, <strong>non calcolabile</strong><ul>
+<li><code>h(D<sub>M</sub>, x) = 1</code>, se <code>M</code> con input <code>x</code> termina</li>
+<li><code>h(D<sub>M</sub>, x) = 0</code>, se <code>M</code> con input <code>x</code> non termina</li>
+</ul>
+</li>
+<li>Costruiamo per assurdo <code>H</code>, TM che calcola <code>h</code></li>
+<li>Costruiamo quindi <code>G</code><ul>
+<li><code>g(D<sub>M</sub>) = 0</code>, se <code>h(D<sub>M</sub>, D<sub>M</sub>) = 0</code></li>
+<li>Indefinito, altrimenti (ossia <code>G</code> cicla all'infinito, se <code>h = 1</code>)</li>
+</ul>
+</li>
+<li>Ma è assurdo:<ul>
+<li><code>g(D<sub>G</sub>)</code> è indefinita, se <code>g(D<sub>G</sub>) = 0</code> (definita)</li>
+<li><code>g(D<sub>G</sub>) = 0</code> (definita) se <code>g(D<sub>G</sub>)</code> è indefinita</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p><code>M</code>: macchina di Turing; <code>D<sub>M</sub></code>: rappresentazione di <code>M</code> come stringa</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Più informalmente...</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Funz. <code>g</code> definita in <code>paradox.py</code> (Python è <em>Turing completo</em>)</li>
+</ul>
+<pre class="prettyprint" data-lang="Python"><code>from absurd import h
+def g(file):
+    if h(file, file):
+        while True: pass
+    else:
+        return False
+g('paradox.py')
+</code></pre>
+<ul>
+<li>Altri problemi indecidibili (corollari)<ul>
+<li>Correttezza: il programma calcola la funzione desiderata?</li>
+<li>Chiamata: una procedura (o istruzione) sarà eseguita?</li>
+<li>Equivalenza, ambiguità di grammatiche CF …</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Macchine a registri</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Calcolatore</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/sys/hal-9000.jpg">
+        
+      </figure><ul>
+<li>Macchina programmabile<ul>
+<li>Memorizza ed elabora automaticamente...</li>
+<li>Attraverso istruzioni di un programma...</li>
+<li>Informazioni in formato digitale (I/O)</li>
+</ul>
+</li>
+<li>Diversi modello di calcolo<ul>
+<li>Definizione di operazioni elementari e concetto stesso di algoritmo</li>
+<li>Definizione di problema risolvibile / irrisolvibile (calcolabilità): dipende dal modello di calcolo</li>
+</ul>
+</li>
+<li>Macchina di Turing<ul>
+<li>Modello teorico (A. Turing, 1936)</li>
+<li>Tesi di Church-Turing: problema intuitivamente calcolabile → esiste TM in grado di calcolarlo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Macchina di von Neumann</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/sys/bus.svg"><img src="images/hist/eniac.jpg">
+        
+      </figure><ul>
+<li>1941, Z3 (Berlino)<ul>
+<li>A relais, programma su nastro esterno</li>
+</ul>
+</li>
+<li>1946, ENIAC (Philadelphia)<ul>
+<li>Balistica, meteorologia, reazioni nucleari</li>
+<li>Programmazione con cavi</li>
+</ul>
+</li>
+<li>1948, Manchester "baby"<ul>
+<li>Programma in memoria</li>
+</ul>
+</li>
+<li>1951, sistema IAS (Princeton)<ul>
+<li>Dati e programmi in memoria centrale</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Northbridge e southbridge</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/north-south-bridge.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Central Processing Unit</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>CPU: “cervello” del calcolatore<ul>
+<li>Esegue i programmi</li>
+<li>Comanda le altre parti del calcolatore</li>
+</ul>
+</li>
+<li>Composta da due parti:<ul>
+<li><strong>Control Unit (CU)</strong>: interpreta le istruzioni, comanda le altre parti della CPU, controlla il flusso tra CPU e memoria</li>
+<li><strong>Arithmetic Logical Unit (ALU)</strong>: esegue le operazioni aritmetiche e logiche, esegue i confronti tra dati</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Architettura CPU</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/cpu-architecture.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ciclo principale della CPU</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Caricamento</strong>: CU preleva l’istruzione dalla locazione di memoria indicata dal registro PC (Program Counter) e la memorizza in IR (Instruction Register)</li>
+<li><strong>Decodifica</strong>: CU interpreta l’istruzione, legge eventualmente dalla memoria i dati necessari</li>
+<li><strong>Esecuzione</strong>: CU comanda le parti</li>
+<li><strong>Memorizzazione</strong>: risultati memorizzati nella memoria centrale o in registri della CPU</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Lettura dalla memoria</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/cpu-memory.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Sequenza di lettura</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/cpu-read-1.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Sequenza di lettura</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/cpu-read-2.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Sequenza di scrittura</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/cpu-write-1.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Sequenza di scrittura</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/cpu-write-2.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Fetch istruzioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/cpu-fetch.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interpretazione istruzioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Al termine della fase di <em>fetch</em>, IR contiene l'istruzione da eseguire<ul>
+<li><strong>Codice operativo + operandi</strong></li>
+<li><em>Linguaggio macchina</em>: il significato dipende dalla CPU</li>
+</ul>
+</li>
+<li>Nell'esempio: <strong><code>4</code></strong> <code>010 <sub>(16)</sub> =</code> <strong><code>0100</code></strong> <code>0000 0001 0000 <sub>(2)</sub></code><ul>
+<li>Codice operativo = <strong><code>0100</code></strong></li>
+<li>Es. Leggi una parola dal registro delle periferiche...</li>
+<li>E memorizzala in un indirizzo di memoria (operando)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Esecuzione istruzioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/sys/cpu-exec.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Classificazione di Flynn</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/sys/flynn.svg">
+        
+      </figure><ul>
+<li><strong>Parallelismo</strong>: migliori prestazioni, a parità di velocità sulla singola istruzione</li>
+<li><em>SISD</em>: una operazione alla volta; macchine tradizionali a singolo processore e core</li>
+<li><em>MISD</em>: insolite, per tolleranza ai guasti; sistemi eterogenei, sugli stessi dati, devono dare gli stessi risultati</li>
+<li><em>SIMD</em>: operazioni naturalmente parallelizzabili; unità di calcolo vettoriale e GPU</li>
+<li><em>MIMD</em>: istruzioni diverse su dati diversi; architetture con più core o processori autonomi, sistemi distribuiti</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Assembler</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Linguaggio macchina</strong>: definisce il set di istruzioni comprensibile dalla CPU<ul>
+<li><em>CISC</em>: Complex Instruction Set Computing</li>
+<li><em>RISC</em>: Reduced instruction set Computing</li>
+</ul>
+</li>
+<li>Assembler: traduce da <strong>linguaggio assembly</strong> (mnemonico) a linguaggio macchina (mapping 1~1)</li>
+<li>Es. <em>Assembly x86</em> → macchina (istruzioni di varia lunghezza)</li>
+</ul>
+<pre class="prettyprint" data-lang="Assembly"><code>MOV AH, 11 → 1011 0 100 00001011
+</code></pre>
+<ul>
+<li>4 bit di op-code (<code>1011</code>), tipo di istruzione</li>
+<li>Bit <code>w</code> (<code>0</code>): operazione a 8 o 16 bit, (0 o 1 risp.)</li>
+<li>3 bit per registro destinazione (<code>100</code>)</li>
+<li>8 bit di dato per operando: <code>11<sub>(10)</sub> = 00001011<sub>(2)</sub></code></li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

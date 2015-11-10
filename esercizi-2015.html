@@ -1,0 +1,1139 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Esercizi 2015</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/misc/geek-girl.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione alla programmazione</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.1 Hello, user!</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/handshake.png">
+        
+      </figure><ul>
+<li>Compilare ed eseguire il programma “<code>Hello world</code>”</li>
+<li>In una versione successiva del programma...</li>
+<li>Chiedere il nome all'utente e aggiungere tale nome al messaggio di saluto</li>
+<li>Se il nome dell'utente è “<code>admin</code>”, mostrare inoltre il messaggio speciale “<code>At your command</code>”</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.2 Anni bisestili</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente di inserire un anno</li>
+<li>Dire se è bisestile oppure no</li>
+<li>Ripetere tutto ciclicamente, finchè l'utente non inserisce il valore <code>0</code></li>
+</ul>
+<blockquote></blockquote>
+<p>Un anno è bisestile se il suo numero è divisibile per 4, con l'eccezione degli anni secolari (quelli divisibili per 100) che non sono divisibili per 400</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.3 Divisori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente un numero <code>n</code></li>
+<li>Trovare tutti i divisori di <code>n</code></li>
+</ul>
+<blockquote></blockquote>
+<p><code>n</code> è divisibile per <code>x</code> se <code>n % x == 0</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.4 Carattere Unicode</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/characters.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente un numero</li>
+<li>Visualizzare il carattere Unicode corrispondente</li>
+<li>Ripetere le operazioni in un ciclo, finchè l'utente non inserisce il valore <code>0</code></li>
+</ul>
+<blockquote></blockquote>
+<p>Usare la funzione <code>chr</code> per convertire un codice nel char corrispondente</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.5 Tabella ASCII</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Visualizzare la tabella dei codici ASCII</li>
+<li>Un carattere per ogni riga<ul>
+<li>All'inizio della riga: il carattere</li>
+<li>Di fianco: il codice ASCII</li>
+</ul>
+</li>
+<li>Limitare l'intervallo tra 32 a 126 (due costanti)</li>
+</ul>
+<blockquote></blockquote>
+<p>Non c'è input dell'utente</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.6 Media quadratica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente, attraverso un ciclo, una sequenza di numeri interi</li>
+<li>La sequenza termina quando la somma dei quadrati dei numeri supera 100</li>
+<li>Visualizzare il numero di valori inseriti e la loro media quadratica</li>
+</ul>
+<blockquote></blockquote>
+<p>Media quadratica: <code>√(∑(x<sub>i</sub><sup>2</sup>)/n)</code> <br>
+Per la radice, usare la funzione <code>sqrt</code> oppure elevare ad esponente <code>0.5</code> <br>
+All'inizio del programma: <code>from math import sqrt</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.7 Multipli di 3 o 5</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente un numero <code>n</code></li>
+<li>Calcolare la somma di tutti i multipli di 3 o 5 strettamente minori di <code>n</code></li>
+</ul>
+<blockquote></blockquote>
+<p>Es. <code>n = 10</code>. Se elenchiamo tutti numeri minori di 10 che sono multipli di 3 o 5, otteniamo 3, 5, 6 e 9. La somma di questi multipli è 23 <br>
+Un numero <code>x</code> è multiplo di 3 se <code>x % 3 == 0</code></p>
+<blockquote></blockquote>
+<p>Ispirato da: <a href="https://projecteuler.net/problem=1">https://projecteuler.net/problem=1</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.8 Fibonacci</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/fib-rabbits.png">
+        
+      </figure><ul>
+<li>Successione di Fibonacci<ul>
+<li>Ogni nuovo elemento nella successione di Fibonacci è ottenuto sommando i due precedenti</li>
+<li>Partendo con 1 e 1, i primi elementi saranno:</li>
+<li>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...</li>
+</ul>
+</li>
+<li>Chiedere all'utente due numeri: <code>n</code> ed <code>x</code></li>
+<li>Mostrare tutti i numeri di Fibonacci minori di <code>n</code></li>
+<li>Inoltre, calcolare la somma di tutti quelli divisibili per <code>x</code></li>
+</ul>
+<blockquote></blockquote>
+<p>Ispirato da: <a href="https://projecteuler.net/problem=2">https://projecteuler.net/problem=2</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.9 La stanza del mostro</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/monster.png">
+        
+      </figure><ul>
+<li>Il giocatore si muove su una scacchiera di 5x5 celle, partendo da un angolo<ul>
+<li>Le righe e le colonne sono numerate da 0 a 4</li>
+</ul>
+</li>
+<li>Un tesoro ed un mostro sono nascosti in posizione casuale, all'inizio del gioco</li>
+<li>Ad ogni turno, il giocatore:<ul>
+<li>Sceglie una direzione verso cui spostarsi (alto, basso, sinistra, destra)</li>
+<li>Se capita sulla cella del tesoro, ha vinto</li>
+<li>Se capita sulla cella del mostro, ha perso</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>from random import randrange
+# ...
+monster_x = randrange(5)  # something between 0 and 4
+monster_y = randrange(5)  # something between 0 and 4
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.1 Conteggio di cifre</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/numbers.jpg">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare il numero complessivo di cifre presenti</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare un ciclo <code>for</code> sulla stringa</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.2 Conteggio di singole cifre</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/numbers.jpg">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare separatamente le occorrenze di ciascuna cifra (da <code>'0'</code> a <code>'9'</code>)</li>
+</ul>
+<blockquote></blockquote>
+<p>Creare una lista (array) di 10 elementi, inizialmente tutti posti a <code>0</code></p>
+<p>Ciascun elemento è il contatore per una certa cifra</p>
+<p>Attenzione alla distinzione tra il tipo <code>str</code> ed il tipo <code>int</code>!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.3 Funzione, ipotenusa</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/pythagorean-theorem.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione per il calcolo dell'ipotenusa di un triangolo rettangolo<ul>
+<li>Parametri: due cateti come <code>float</code></li>
+<li>Risultato: ipotenusa come <code>float</code></li>
+</ul>
+</li>
+<li>Nella parte principale del programma:<ul>
+<li>Chiedere all'utente due valori</li>
+<li>Poi invocare la funzione con questi parametri</li>
+<li>Infine mostrare all'utente il risultato</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p><code>sqrt</code> in modulo <code>math</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.4 Cerchi concentrici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/red-circles.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente il numero di cerchi da disegnare</li>
+<li>Disegnare i cerchi con raggio decrescente, ma tutti con lo stesso centro</li>
+<li>Far variare il colore dei cerchi<ul>
+<li>Dal rosso del livello più esterno</li>
+<li>Fino al nero del livello più interno</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Cominciare a disegnare un grosso cerchio rosso</p>
+<p>Poi, inserire l'operazione di disegno un ciclo, togliendo ad ogni passo <code>10</code> (p.es.) al raggio e al livello di rosso</p>
+<p>Infine, determinare automaticamente, prima del ciclo, le variazioni migliori per raggio e colore</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.5 Griglia di colori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/color-grid.png"><img src="images/oop/raster-tile.png">
+        
+      </figure><ul>
+<li>Chidere all'utente dei valori per <code>rows</code> e <code>cols</code></li>
+<li>Mostrare una griglia di rettangoli di dimensione <code>rows×cols</code></li>
+<li>Partire da un rettangolo nero in alto a sinistra</li>
+<li>In orizzontale, aumentare gradatamente la componente di blu</li>
+<li>In verticale, aumentare gradatamente la componente di verde</li>
+</ul>
+<blockquote></blockquote>
+<p>Cominciare a creare una griglia di riquadri tutti neri, con due cicli <code>for</code> annidati</p>
+<p>Lasciare tra i riquadri un piccolo margine</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.6 Istogramma</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/histogram.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente una lista di valori positivi<ul>
+<li>La lista termina quando l'utente inserisce il valore <code>0</code></li>
+</ul>
+</li>
+<li>Mostrare un istogramma corrispondente<ul>
+<li>Regolare l'altezza e la larghezza dei rettangoli in base alle dimensioni della finestra</li>
+<li>Lasciare un margine tra i rettangoli</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.7 Istogramma in grigio</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/histogram.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente una lista di valori positivi<ul>
+<li>La lista termina quando l'utente inserisce il valore <code>0</code></li>
+</ul>
+</li>
+<li>Per ciascun valore, chiedere anche un livello di grigio (0-255)</li>
+<li>Mostrare un istogramma<ul>
+<li>Barre di diversi colori (grigi) e diverse altezze</li>
+<li>A seconda dei valori e livelli di grigio scelti dall'utente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>2.8 ASCII su più colonne</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/ascii.png">
+        
+      </figure><ul>
+<li>Visualizzare la tabella dei codici ASCII</li>
+<li>Codici da 32 a 126</li>
+<li>Sistemare 10 coppie codice/carattere per ogni riga</li>
+<li><em>Opzionalmente</em>: disporre i codici in progressione verticale, prima che orizzontale<ul>
+<li>Coppie disposte sempre su 10 colonne</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Si procede sempre come macchina da scrivere (una riga sotto l'altra) <br>
+Ma <code>∀ (x, y)</code> si calcola il codice desiderato: <code>code=32+y·w+x</code><br>
+<code>w</code> è il numero di colonne, in questo caso 10<br>
+Bastano due cicli for annidati, senza liste</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.9 Crivello di Eratostene</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/hist/eratostenes.jpg">
+        
+      </figure><ul>
+<li>Trovare tutti i numeri primi fino ad <code>n</code>, scelto dall'utente</li>
+<li>Algoritmo<ul>
+<li>Creare una lista di <code>bool</code>, tutti inizialmente a <code>True</code></li>
+<li>Per ciascun numero <code>x</code> tra <code>2</code> ed <code>n</code> (ancora a <code>True</code> nella lista)...</li>
+<li>Mettere a <code>False</code> i multipli di <code>x</code> (escluso <code>x</code> stesso)</li>
+<li>Gli elementi rimasti a <code>True</code> sono i numeri primi cercati</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare una lista di <code>int</code> è problematico ed inefficiente</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 3</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.1 Classe dei calciatori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/holly-benji.jpg">
+        
+      </figure><ul>
+<li>Scrivere una classe <code>SoccerPlayer</code> per rappresentare dei calciatori</li>
+<li>Dati: nome completo, numero di maglia, giorno mese e anno di nascita</li>
+<li>Il costruttore riceve tutti i dati necessari</li>
+<li>Fornire un metodo pubblico <code>age</code> per calcolare l'età<ul>
+<li>Parametri: giorno, mese e anno correnti</li>
+</ul>
+</li>
+<li>Nella parte principale del programma:<ul>
+<li>Creare un oggetto calciatore, con dati forniti all'utente</li>
+<li>Chiedere all'utente la data attuale</li>
+<li>Invocare il metodo <code>age</code> per conoscere l'età del calciatore</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Distinguere bene campi dell'oggetto, parametri dei metodi, variabili esterne</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.2 Squadra di calcio</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/holly-benji.jpg">
+        
+      </figure><ul>
+<li>Creare una lista di calciatori (oggetti es. 3.1)</li>
+<li>Ciclicamente, chiedere i dati di ciascun calciatore all'utente<ul>
+<li>Inserire il nuovo oggetto calciatore nella lista (<code>append</code>)</li>
+<li>Ma prima controllare che il numero di maglia non sia già stato assegnato</li>
+</ul>
+</li>
+<li>Al termine, mostrare all'utente la lista dei calciatori (con nome e num. maglia) e poi la loro età media</li>
+</ul>
+<blockquote></blockquote>
+<p>Aggiungere un metodo <code>number</code>, per ottenere il numero di maglia</p>
+<p>Aggiungere un metodo <code>name</code>, per ottenere il nome completo</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.3 Movimento ciclico</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/frogger.png">
+        
+      </figure><ul>
+<li>Partire dal classico ciclo di una applicazione <em>PyGame</em></li>
+<li>Fare in modo che un rettangolo si muova orizzontalmente sullo schermo, avanzando di <code>10</code> pixel alla volta<ul>
+<li>Gestire sia il movimento verso destra che verso sinistra, a seconda del segno di una costante <code>dx</code></li>
+</ul>
+</li>
+<li>Partire dalla posizione <code>x = 100, y = 10</code></li>
+<li>Seguire un percorso ciclico<ul>
+<li>Quando il rettangolo esce dallo schermo, rientra dalla parte opposta</li>
+</ul>
+</li>
+<li><em>Opzionalmente</em>, fare in modo che lo spostamento sia calcolato in una funzione, con gli opportuni parametri<ul>
+<li>Non usare alcuna variabile globale</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.4 Classe delle macchine</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/frogger.png">
+        
+      </figure><ul>
+<li>Creare una classe <code>Car</code>, che contenga la posizione e la direzione di una macchina<ul>
+<li>Campi privati: <code>x</code>, <code>y</code>, <code>dx</code></li>
+<li>Metodo <code>move</code>, per avanzare (movimento ciclico in orizzontale, come es. 3.3)</li>
+<li>Metodo <code>rect</code>, per ottenere la posizione attuale</li>
+</ul>
+</li>
+<li>Istanziare un oggetto <code>Car</code> e farlo muovere sullo schermo<ul>
+<li>Chiamare il metodo <code>move</code> ad ogni ciclo</li>
+<li>Visualizzare un rettangolo nella posizione corrispondente</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Definire nella classe delle opportune costanti</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.5 Lista di macchine</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/frogger.png">
+        
+      </figure><ul>
+<li>Riusare la classe <code>Car</code> (es. 3.4)</li>
+<li>Creare inizialmente una lista di macchine, con posizioni di partenza e direzioni diverse</li>
+<li>Farle avanzare tutte ad ogni ciclo, chiamando il metodo <code>move</code> di ciascuna di esse</li>
+<li>Visualizzare sullo schermo un rettangolo per ciascuna macchina</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.6 Valori in file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/data-sequence.png">
+        
+      </figure><ul>
+<li>Leggere tutti i valori contenuti in un file<ul>
+<li>Ogni riga riporta un valore reale</li>
+</ul>
+</li>
+<li>Visualizzare massimo, minimo e media dei valori letti</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.7 Istogramma da file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/histogram.png">
+        
+      </figure><ul>
+<li>Mostrare in un istogramma tutti i valori riportati in un file</li>
+<li>Ogni riga contiene quattro numeri<ul>
+<li>il valore da rappresentare (per l'altezza della barra)</li>
+<li>le componenti R, G, B (per il colore della barra)</li>
+</ul>
+</li>
+<li>Ciascuna barra verticale potrà essere infatti di colore diverso</li>
+</ul>
+<blockquote></blockquote>
+<p>Leggere prima tutti i valori e memorizzarli in una lista (di tuple)</p>
+<p>In questo modo, sarà noto il numero di barre verticali e lo spazio disponibile a ciascuna (considerando le dimensioni della finestra)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.8 Classe delle squadre</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/holly-benji.jpg">
+        
+      </figure><ul>
+<li>Creare una classe per rappresentare una squadra di calcio</li>
+<li>La squadra deve avere un nome</li>
+<li>La squadra contiene una lista di calciatori (es. 3.1)</li>
+<li>Metodo per aggiungere un calciatore, controllando che il numero di maglia non sia già stato assegnato</li>
+<li>Metodo per rimuovere un calciatore, dato il suo numero di maglia</li>
+<li>Metodo per il calcolo dell'età media</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.9 Tavolozza di colori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/palette-circles.png">
+        
+      </figure><ul>
+<li>Leggere da un file una sequenza di colori<ul>
+<li>In ogni riga ci sono tre valori, per le componenti R, G, B</li>
+<li>I colori vengono memorizzati in una lista (di tuple)</li>
+</ul>
+</li>
+<li>Chiedere all'ultente il numero di cerchi da disegnare</li>
+<li>Disegnare i cerchi in maniera concentrica<ul>
+<li>I colori dei cerchi sono presi in sequenza dalla lista inserita dall'utente</li>
+<li>Se si esaurisce la sequenza, si ricomincia dal primo colore</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 4</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.1 Stringhe rovesciate, con ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/matryoshka.png">
+        
+      </figure><ul>
+<li>Rovesciare una stringa, sfruttando la ricorsione</li>
+<li>Qualsiasi stringa di lunghezza <code>0</code> o <code>1</code> rimane uguale quando rovesciata</li>
+<li>Alrimenti, la stringa rovesciata è la concatenazione di:<ul>
+<li>Ultimo carattere della stringa originale</li>
+<li>Risultato del rovesciamento della stringa originale, con l'esclusione dell'ultimo carattere</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.2 Classe degli sciatori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Creare una classe <code>Skier</code>, similmente all'es. 3.4<ul>
+<li>Campi privati: <code>x</code>, <code>y</code>, <code>dx</code>, <code>xmin</code>, <code>xmax</code></li>
+<li>Metodo <code>move</code>, per avanzare</li>
+<li>Metodo <code>rect</code>, per ottenere la posizione attuale</li>
+</ul>
+</li>
+<li>Movimento dall'alto verso il basso, a <em>zig zag</em> o <em>slalom</em> tra <code>xmin</code> ed <code>xmax</code></li>
+<li>Istanziare un oggetto <code>Skier</code> e farlo muovere sullo schermo<ul>
+<li>Chiamare il metodo <code>move</code> ad ogni ciclo</li>
+<li>Visualizzare un rettangolo nella posizione corrispondente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.3 Attori astratti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/frogger.png">
+        
+      </figure><ul>
+<li>Definire una classe base <code>Actor</code><ul>
+<li>Metodo astratto <code>move</code></li>
+<li>Metodo astratto <code>rect</code></li>
+</ul>
+</li>
+<li>Ridefinire <code>Car</code> (es. 3.4) e <code>Skier</code> (es. 4.2) come sottoclassi di <code>Actor</code></li>
+<li>Nel programma principale, creare una lista di personaggi misti (macchine e sciatori)<ul>
+<li>Chiamare il metodo <code>move</code> di ciascuno ad ogni ciclo</li>
+<li>Visualizzare un rettangolo nella posizione corrispondente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.4 Albero di H</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/htree.png">
+        
+      </figure><ul>
+<li>Disegnare ricorsivamente un <em>H-Tree</em><ul>
+<li>Dividere l'area iniziale in due parti uguali</li>
+<li>Connettere con una linea i centri delle due aree</li>
+<li>Ripetere il procedimento per ciascuna delle due aree</li>
+<li>Alternare però la divisione delle aree in orizzontale e verticale</li>
+</ul>
+</li>
+<li>Chiedere all'utente il livello di ricorsione desiderato</li>
+</ul>
+<blockquote></blockquote>
+<p><code>pygame.draw.line(screen, (r, g, b), (x1, y1), (x2, y2))</code></p>
+<p><a href="https://www.pygame.org/docs/ref/draw.html#pygame.draw.line">https://www.pygame.org/docs/ref/draw.html#pygame.draw.line</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.5 Lettura matrice</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere una matrice di interi da un file testuale CSV<ul>
+<li><em>Comma Separated Values</em>: valori riportati riga per riga e separati da una virgola</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="File"><code>5,7,2,11
+1,3,12,9
+4,6,10,8
+</code></pre>
+<ul>
+<li>Memorizzare i dati in una lista semplice (pseudo-matrice)</li>
+<li>Inferire le dimensioni della matrice (<code>rows×cols</code>) in base a:<ul>
+<li>Numero di righe del file</li>
+<li>Numero di valori nella prima riga</li>
+</ul>
+</li>
+<li>A partire dall'angolo in basso a destra, sommare i valori sulla diagonale (<code>cols - x == rows - y</code>)</li>
+</ul>
+<blockquote></blockquote>
+<p>Nell'esempio, sommare: <code>8 + 12 + 7</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.6 Lettura in lista di liste</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Come esercizio precedente (4.5)</li>
+<li>Ma memorizzare gli interi in una lista di liste</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.7 Documenti e cartelle</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sample-file-system.png">
+        
+      </figure><ul>
+<li>Un sistema gerarchico di gestione documenti è composto di due tipi di <em>nodi</em> (classe base)<ul>
+<li>I <em>documenti</em>, caratterizzati da un nome e da un contenuto testuale (classe derivata)</li>
+<li>Le <em>cartelle</em>, caratterizzate da un nome e da una lista di nodi contenuti (classe derivata)</li>
+</ul>
+</li>
+<li>Creare una gerarchia delle tre classi: <code>Node</code>, <code>Document</code>, <code>Folder</code><ul>
+<li>Le cartelle dovrebbero avere un metodo <code>add_node(n: Node)</code></li>
+</ul>
+</li>
+<li>Nel corpo principale del programma, istanziare ed organizzare vari nodi (senza input dell'utente)<ul>
+<li>Ricreare con gli oggetti la struttura raffigurata a fianco</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.8 Ultimo aggiornamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sample-file-system.png">
+        
+      </figure><ul>
+<li>Aggiungere a tutti i <em>nodi</em> (es. 4.7) un metodo <code>updated</code>, che riporta la data dell'ultima modifica</li>
+<li>Astratto nella classe base</li>
+<li>Per un <em>documento</em>:<ul>
+<li>Restituisce il valore di un apposito campo privato (da aggiungere)</li>
+</ul>
+</li>
+<li>Per una <em>cartella</em>:<ul>
+<li>Restituisce la data di aggiornamento più recente, tra quelle dei nodi contenuti</li>
+</ul>
+</li>
+<li>Rispetto alla struttura raffigurata a fianco, visualizzare l'ultimo aggiornamento della cartella radice<ul>
+<li>Ottenuto tramite il suo metodo <code>updated</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.9 Puzzle di Cindy</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/cindy1.png"><img src="images/misc/cindy2.png">
+        
+      </figure><ul>
+<li>Piano di gioco: <code>2n+1</code> celle allineate<ul>
+<li>Si parte con <code>n</code> pedine rosse tutte a sinistra, <code>n</code> pedine verdi tutte a destra, ed una cella libera in mezzo</li>
+<li>Le pedine rosse si possono spostare solo a destra, quelle verdi solo a sinistra (senza poter tornare indietro)</li>
+</ul>
+</li>
+<li>Ad ogni mossa, una qualsiasi pedina può:<ul>
+<li>Avanzare di una posizione, se davanti ha una cella libera</li>
+<li>Oppure scavalcare esattamente una pedina dell'altro colore, se c'è una cella libera subito dopo</li>
+</ul>
+</li>
+<li>L'applicazione deve trovare <em>automaticamente</em> le mosse per invertire la posizione di tutte le pedine</li>
+</ul>
+<blockquote></blockquote>
+<p><a href="http://www.cis.upenn.edu/~matuszek/cit594-2012/Pages/backtracking.html">http://www.cis.upenn.edu/~matuszek/cit594-2012/Pages/backtracking.html</a></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 5</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Gioco con diversi personaggi<ul>
+<li>Fornita classe <code>Arena</code> per campo di gioco</li>
+<li>Fornita classe base astratta <code>Actor</code> per personaggi</li>
+</ul>
+</li>
+<li>Creare sottoclassi di <code>Actor</code> per personaggi specifici<ul>
+<li><em>Polimorfismo</em> per movimento</li>
+<li><em>Polimorfismo</em> per interazione reciproca</li>
+</ul>
+</li>
+<li>Ma ciclo principale, interazione con l'utente e grafica <em>fuori da queste classi</em><ul>
+<li>Funzionamento con grafica oppure con console testuale</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pac-Man - Personaggi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/pac-man.png">
+        
+      </figure><ul>
+<li><em>Pac-Man</em><ul>
+<li>Guidato dal giocatore, con la tastiera</li>
+<li>Applica i comandi solo solo agli incroci</li>
+</ul>
+</li>
+<li><em>Fantasmi</em><ul>
+<li>Uccidono Pac-Man se lo toccano</li>
+<li>Agli incroci svoltano casualmente</li>
+<li>Ma non tornano mai indietro!</li>
+</ul>
+</li>
+<li><em>Biscotti</em><ul>
+<li>Pac-Man deve mangiarli tutti, per terminare il gioco</li>
+</ul>
+</li>
+<li><em>SuperBiscotti</em><ul>
+<li>Danno per breve tempo a Pac-Man il potere di mangiare i fantasmi</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pac-Man - Controllo dei muri</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>Muri</em><ul>
+<li>Possono essere <em>personaggi</em>, immobili</li>
+<li>Non possono essere attraversati da nessuno</li>
+<li>Sono già disegnati nell'immagine di sfondo (altrimenti, tracciare dei rettangoli pieni)</li>
+<li>Disposti come blocchetti virtuali di <code>8x8</code> pixel, o multipli</li>
+<li>Metà dimensione di Pac-Man e fantasmi (<code>16x16</code> pixel)</li>
+</ul>
+</li>
+<li>I personaggi possono svoltare solo su coordinate multiple di <code>8x8</code> pixel!<ul>
+<li>Se un personaggio urta un muro, si riposiziona fuori dal muro; annulla l'ultimo movimento (<code>dx, dy</code>)</li>
+<li>È fornita una funzione per controllare <em>a priori</em> la presenza di un muro in una certa direzione</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 6</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esercizi C++</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/cpp-logo.jpg">
+        
+      </figure><ul>
+<li>1.1 Hello, user!</li>
+<li>1.5 Tabella ASCII</li>
+<li>1.9 La stanza del mostro</li>
+<li>2.2 Conteggio caratteri</li>
+<li>2.3 Funzione, ipotenusa</li>
+<li>2.9 Crivello di Eratostene</li>
+<li>3.6 Valori in file</li>
+</ul>
+<blockquote></blockquote>
+<p>Es. 1.5 Stampare codice <code>i</code> come carattere: <code>cout &lt;&lt; char(i);</code></p>
+<p>Es. 1.9 Valore casuale tra <code>0</code> e <code>4</code>: <code>r = rand() % 5;</code></p>
+<p>Es. 2.2 Indice contatore per una cifra <code>val</code> (di tipo <code>char</code>): <code>val - '0'</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pac-Man</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/pacman-scatter.png">
+        
+      </figure><ul>
+<li>Distinguere tre comportamenti dei fantasmi (i primi due, alternati)<ul>
+<li><em>Chase</em>: un fantasma sceglie un punto nei pressi di Pac-Man e cerca di avvicinarsi a quel punto</li>
+<li><em>Scatter</em>: ogni fantasma pattuglia un angolo diverso (ognuno ha un suo obiettivo diverso a cui cerca continuamente di avvicinarsi)</li>
+<li><em>Frightened</em>: i fantasmi si muovono in maniera casuale, quando Pac-Man ha i superpoteri</li>
+</ul>
+</li>
+<li>I fantasmi non tornano comunque indietro</li>
+</ul>
+<blockquote></blockquote>
+<p><a href="http://gameinternals.com/post/2072558330/understanding-pac-man-ghost-behavior">http://gameinternals.com/post/2072558330/understanding-pac-man-ghost-behavior</a></p>
+<p><a href="http://www.gamasutra.com/view/feature/3938/the_pacman_dossier.php?print=1">http://www.gamasutra.com/view/feature/3938/the_pacman_dossier.php?print=1</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pac-Man</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Controllare la <em>vittoria</em><ul>
+<li>Tutti i biscotti sono stati mangiati</li>
+</ul>
+</li>
+<li>Controllare la <em>sconfitta</em><ul>
+<li>Pac-Man non è più in gioco, dopo essersi scontrato con un fantasma</li>
+</ul>
+</li>
+<li>Creare una <em>sottoclasse di Arena</em>, specifica per il gioco di Pac-Man (es. <code>PacManArena</code>)<ul>
+<li>Creare tutti i personaggi nel costruttore (<code>__init__</code>)</li>
+<li>Includere nella classe i metodi per controllare lo stato del gioco</li>
+<li>Includere nella classe i metodi per controllare preventivamente la presenza di muri attorno ai personaggi (<code>going_to_wall</code>...)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

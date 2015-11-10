@@ -1,0 +1,1245 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Esercizi 2012</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/misc/geek-girl.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione alla programmazione</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.1 Hello, user!</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/handshake.png">
+        
+      </figure><ul>
+<li>Compilare ed eseguire il programma “<code>Hello world</code>”</li>
+<li>In una versione successiva del programma...</li>
+<li>Chiedere il nome all'utente e aggiungere tale nome al messaggio di saluto</li>
+<li>Se il nome dell'utente è “<code>admin</code>”, mostrare inoltre il messaggio speciale “<code>At your command</code>”</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.2 Sfera</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/snow-ball.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente il raggio di una sfera e la sua densità (in Kg/m<sup>3</sup>)</li>
+<li>Calcolare e visualizzare la superficie, il volume e il peso della sfera</li>
+</ul>
+<blockquote></blockquote>
+<p>Definire le variabili necessarie (nomi in minuscolo)</p>
+<p>Definire una costante PI = 3.14159</p>
+<p>Formule utili: V = (4/3)πR<sup>3</sup> ; S = 4πR<sup>2</sup></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.3 Caratteri ASCII</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/characters.png">
+        
+      </figure><ul>
+<li>Leggere un carattere</li>
+<li>Se è una lettera minuscola, visualizzare la corrispondente lettera maiuscola</li>
+<li>Altrimenti visualizzare il carattere immutato</li>
+</ul>
+<blockquote></blockquote>
+<p>Nel codice non usare esplicitamente i codici ASCII, ma simboli tra apici singoli (<code>'a'</code>, <code>'z'</code> ecc.)</p>
+<p>La distanza di una lettera minuscola dalla corrispondente maiuscola è una costante che vale <code>'a' - 'A'</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.4 Resistenze, ciclo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/resistors.png">
+        
+      </figure><ul>
+<li>Leggere, attraverso un ciclo, una sequenza di valori di resistenze elettriche</li>
+<li>La sequenza termina quando l'utente immette il valore 0</li>
+<li>Alla fine, visualizzare la resistenza equivalente, sia nel caso di resistenze disposte in serie, che in parallelo</li>
+</ul>
+<blockquote></blockquote>
+<p>Formule utili:</p>
+<p>R<sub>s</sub> = ∑ R<sub>i</sub></p>
+<p>1/R<sub>p</sub> = ∑ (1/R<sub>i</sub>)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.5 Minore e maggiore</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/three-brothers.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente tre numeri interi: <code>a</code>, <code>b</code>, <code>c</code></li>
+<li>Determinare qual è il minore dei tre</li>
+<li>Determinare qual è il maggiore dei tre</li>
+</ul>
+<blockquote></blockquote>
+<p>Controllare prima di tutto se <code>a</code> è minore degli altri due <br>
+Altrimenti controllare se <code>b</code> è minore di <code>c</code> <br>
+Altrimenti ...</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.6 Massimo e minimo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/data-sequence.png">
+        
+      </figure><ul>
+<li>Leggere, attraverso un ciclo, una sequenza di numeri interi</li>
+<li>La sequenza termina quando l'utente inserisce il valore 0</li>
+<li>Visualizzare il valore massimo e quello minimo tra i numeri inseriti</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.7 Chiusura stream</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/data-sequence.png">
+        
+      </figure><ul>
+<li>Leggere, attraverso un ciclo, una sequenza di numeri interi</li>
+<li>La sequenza termina quando l'utente chiude lo stream della console</li>
+<li>Visualizzare il valore massimo e quello minimo tra i numeri inseriti</li>
+</ul>
+<blockquote></blockquote>
+<p>L'utente chiude lo stream della console premendo: <br>
+<code>CTRL-Z</code> (Windows) <br>
+<code>CTRL-D</code> (Unix ecc.)</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.1 Lunghezza parole</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/measure-tape.png">
+        
+      </figure><ul>
+<li>Leggere una sequenza di parole, attraverso un ciclo</li>
+<li>La sequenza termina quando l'utente chiude lo stream</li>
+<li>Visualizzare la lunghezza della parola più lunga e di quella più corta</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.2 Conteggio a ritroso</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/countdown.png">
+        
+      </figure><ul>
+<li>Leggere un numero positivo <code>n</code></li>
+<li>Per ciascun valore <code>y</code> tra <code>n</code> ed 1...</li>
+<li>Stampare una riga con <code>y</code> ripetizioni di <code>y</code></li>
+</ul>
+<pre class="prettyprint" data-lang="output"><code>4444
+333
+22
+1
+</code></pre>
+<blockquote></blockquote>
+<p>Usare due cicli for annidati</p>
+<p>All'inizio fissare <code>y</code> pari ad un certo valore e scrivere una sola riga; es.: <code>y = 4 → “4444”</code> <br>
+Poi racchiudere tutto in un ciclo for esterno, per variare <code>y</code>: <br>
+<code>y</code> parte da <code>n</code>, arriva ad 1, ad ogni passo decresce di 1</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.3 Conteggio spazi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/finger-counting.png">
+        
+      </figure><ul>
+<li>Leggere una riga di testo</li>
+<li>Contare il numero di spazi presenti</li>
+<li>Se si incontra un carattere di tabulazione, contarlo come 4 spazi</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.4 Parentesi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/search.png">
+        
+      </figure><ul>
+<li>Leggere una riga di testo</li>
+<li>Scrivere in output solo le porzioni di testo comprese tra parentesi graffe</li>
+<li>Scrivere ciascuna porzione di testo su una riga</li>
+<li>Es. <code>“Bla bla {Hei!} bla {How boring!}” → Hey! How boring!</code></li>
+</ul>
+<blockquote></blockquote>
+<p>Segnare in una variabile booleana se si è all'interno delle parentesi</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.5 Tre carte</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/three-cards.png">
+        
+      </figure><ul>
+<li>All'inizio l'utente ha 10 monete</li>
+<li>Ad ogni turno:<ul>
+<li>Viene estratto a sorte un numero segreto tra 1 e 3</li>
+<li>L'utente sceglie quante monete puntare e su quale numero</li>
+<li>Se indovina, gli viene sommato l'importo puntato</li>
+<li>Altrimenti gli viene sottratto lo stesso importo</li>
+</ul>
+</li>
+<li>Il gioco termina quando l'utente perde tutto o si ritira</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.6 Calendario a muro</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/wall-calendar.png">
+        
+      </figure><ul>
+<li>L'utente inserisce:<ul>
+<li>La lunghezza del mese (28-31)</li>
+<li>Il primo giorno del mese <br> (lunedì=0 ... domenica=6)</li>
+</ul>
+</li>
+<li>Visualizzare il calendario del mese<ul>
+<li>In prima colonna la data</li>
+<li>In seconda colonna il giorno della settimana (0-6)</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Scrivere una intera riga alla volta (numero progressivo e giorno della settimana) <br>
+Si può sfruttare l'operatore <code>%</code> (resto della divisione)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.7 Calendario da tavolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/calendar-rows.jpg">
+        
+      </figure><ul>
+<li>L'utente inserisce:<ul>
+<li>La lunghezza del mese (28-31)</li>
+<li>Il primo giorno del mese <br> (lunedì=0 ... domenica=6)</li>
+</ul>
+</li>
+<li>Visualizzare il calendario del mese<ul>
+<li>Disporre i giorni in una griglia, una riga alla volta</li>
+<li>7 colonne, la prima per i lunedì, l'ultima per le domeniche</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Procedere sempre una riga alla volta (come macchina da scrivere)</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 3</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.1 Righe su file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/delete-key.png">
+        
+      </figure><ul>
+<li>Leggere testo da console, una riga alla volta</li>
+<li>Riscrivere il testo in un file, ma...</li>
+<li>Escludere le righe che contengono dei numeri</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.2 Valori da file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente di definire un range di valori interessanti (fornendo max e min)</li>
+<li>Leggere da un file di testo una sequenza di valori interi (fino alla fine del file)</li>
+<li>Scartare i valori esterni al range definito dall'utente</li>
+<li>Scrivere a console i valori utili, ma in ordine inverso rispetto al file</li>
+</ul>
+<blockquote></blockquote>
+<p>Memorizzare tutti i valori utili in una lista</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.3 Agenda</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/agenda.png">
+        
+      </figure><ul>
+<li>Gestire una agenda per la giornata corrente (per ogni ora ci può essere una sola attività)</li>
+<li>Ciclicamente, l'utente può:<ul>
+<li>Inserire una nuova attività (indicandone l'ora e la descrizione)</li>
+<li>Oppure rimuovere una attività dalla lista (indicandone l'ora)</li>
+</ul>
+</li>
+<li>Al termine, visualizzare la lista delle attività, con ora e descrizione (omettendo le ore libere)</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare una lista di 24 stringhe</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.4 Agenda su file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/agenda.png">
+        
+      </figure><ul>
+<li>In aggiunta all'esercizio precedente...</li>
+<li>Prima della chiusura del programma, scrivere la lista di attività in un file
+(come a console, omettendo le ore libere)</li>
+<li>Ricaricare automaticamente la lista da file, se esistente, all'avvio del programma</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.5 Mescolamento valori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere due valori, <code>w</code> e <code>h</code>; calcolare <code>n = w * h</code></li>
+<li>Creare una lista di lunghezza <code>n</code></li>
+<li>Riempirla con valori crescenti, a partire da 0</li>
+<li>Visualizzare le celle a console, su <code>h</code> righe</li>
+<li>Mescolare la lista</li>
+<li>Visualizzare nuovamente le celle su <code>h</code> righe</li>
+<li>Salvare la lista in un file, sempre su <code>h</code> righe</li>
+</ul>
+<blockquote></blockquote>
+<p>Mescolamento: per ogni cella, scegliere casualmente una nuova posizione; scambiare quindi il valore nella cella di origine con quello nella cella di destinazione</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.6 Compleanni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/birthday.png">
+        
+      </figure><ul>
+<li>Un file elenca i compleanni degli amici. Ogni riga contiene:<ul>
+<li>Il giorno del compleanno (testo con possibili spazi)</li>
+<li>Dopo TAB, il nome dell'amico (testo con possibili spazi)</li>
+<li>Dopo TAB, un commento (testo arbitrario, da scartare)</li>
+</ul>
+</li>
+<li>Caricare tutti i dati utili in una map</li>
+<li>Ciclicamente, chiedere all'utente il nome di un amico e mostrare il giorno del compleanno</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.7 Calendario trasposto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/calendar-cols.jpg">
+        
+      </figure><ul>
+<li>L'utente inserisce:<ul>
+<li>La lunghezza del mese (28-31)</li>
+<li>Il primo giorno del mese <br> (lunedì=0 ... domenica=6)</li>
+</ul>
+</li>
+<li>Visualizzare il calendario del mese<ul>
+<li>Disporre i giorni in una griglia, una colonna alla volta</li>
+<li>7 righe, la prima per i lunedì, l'ultima per le domeniche</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Si scrive sempre una riga alla volta (come macchina da scrivere: →, ↓) <br>
+Ma ∀ (x, y) si calcola il numero da visualizzare <br>
+Bastano due cicli for annidati, senza liste</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 4</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.1 Funzione, potenza dissipata</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/heater.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione per calcolare la potenza dissipata da un resistore<ul>
+<li>Parametri: <em>resistenza</em> e <em>differenza di potenziale</em> applicata, entrambi come <code>float</code></li>
+<li>Risultato: potenza dissipata come float</li>
+</ul>
+</li>
+<li>Nel <code>main</code>:<ul>
+<li>Chiedere all'utente due valori</li>
+<li>Poi invocare la funzione con questi parametri</li>
+<li>Visualizzare infine (sempre nel <code>main</code>) il risultato restituito dalla funzione (<code>P = V<sup>2</sup>/R</code>)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.2 Classe degli esami</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Scrivere una classe <code>Exam</code> per rappresentare gli esami sostenuti in un corso di studio<ul>
+<li>Parametri del costruttore: <em>nome esame</em>; <em>numero crediti</em>; <em>data</em> (es. “<code>2012-10-14</code>”); <em>voto</em> (da 18 a 30)</li>
+</ul>
+</li>
+<li>Fornire un metodo pubblico <code>estimateWork</code> per stimare le ore di studio, supponendo che...<ul>
+<li>Ad ogni credito corrispondano ~ 25h di studio</li>
+<li>Il voto sia direttamente proporzionale allo studio</li>
+</ul>
+</li>
+<li>Nel <code>main</code>, istanziare un esame con valori forniti all'utente, invocare il metodo e mostrare il valore stimato</li>
+</ul>
+<blockquote></blockquote>
+<p>Tenere l'uso della console per I/O fuori dalla classe!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.3 Battaglia navale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/battleship-2.png">
+        
+      </figure><ul>
+<li>Allocare una matrice <code>rows×cols</code> (dimensioni scelte dall'utente)</li>
+<li>Ripetutamente...<ul>
+<li>Chiedere all'utente un numero size</li>
+<li>Riempire con '<code>+</code>' un numero size di celle adiacenti (direzione e posizione di partenza casuali)</li>
+<li>Accettabili inserimenti sovrapposti o parziali, fino a bordo</li>
+<li>Mostrare la matrice risultante</li>
+</ul>
+</li>
+<li>Al termine salvare la matrice in un file di testo</li>
+</ul>
+<blockquote></blockquote>
+<p>Si può usare una lista come pseudo-matrice, oppure una lista di liste</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.4 Lettura matrice da file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Supponendo che il programma precedente salvi nel file solo il contenuto della matrice, riga per riga...</li>
+<li>Leggere i caratteri dal medesimo file e memorizzarli in una matrice</li>
+<li>Inferire le dimensioni della matrice (<code>rows×cols</code>) in base a:<ul>
+<li>Numero di righe del file</li>
+<li>Lunghezza di ciascuna riga</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.5 Spirale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/spiral.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione per riempire di numeri crescenti una matrice quadrata (o rettangolare)</li>
+<li>Seguire il percorso a spirale suggerito nella figura a fianco</li>
+<li>Dimensioni della matrice indicate dall'utente a runtime</li>
+</ul>
+<blockquote></blockquote>
+<p>Tenere traccia della direzione attuale (<em>∆y</em>, <em>∆x</em>) <br>
+Avanzare fino al bordo o ad una cella già visitata, <br>
+poi cambiare la direzione in senso orario</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.6 Elenco di esami</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Gestire una lista di esami</li>
+<li>Ripetutamente chiedere all'utente di scegliere tra:<ul>
+<li>Aggiunta di un nuovo esame</li>
+<li>Eliminazione di un esame esistente</li>
+<li>Calcolo delle ore complessive di studio</li>
+</ul>
+</li>
+<li>Al termine di ogni operazione dell'utente, visualizzare l'elenco aggiornato di tutti gli esami</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.7 Esami in ordine</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>In aggiunta all'esercizio 4.6, ordinare (e visualizzare) gli esami in base al tempo di studio stimato</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare il metodo <code>sort</code> delle liste, sfruttando il parametro <code>key</code> <br></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 5</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.1 Battaglia in classe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/battleship-2.png">
+        
+      </figure><ul>
+<li>Classe per incapsulare le funzionalità dell'es. 4.3</li>
+<li>Il costruttore riceve <code>rows</code>, <code>cols</code> e alloca la matrice</li>
+<li>Metodo per l'inserimento casuale di una nave di dimensione <code>size</code> (<code>size</code> parametro del metodo)</li>
+<li>Metodo per la rappresentazione testuale dello stato su generico stream</li>
+<li>In <code>main</code>: creare un oggetto, inserire diverse navi a scelta dell'utente, infine scrivere la matrice su file</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.2 Bisezione, iterazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/cubic-function.png">
+        
+      </figure><ul>
+<li>Trovare lo zero di una funzione<ul>
+<li><em>f(x) = x 3 – x – 1, per 1 ≤ x ≤ 2</em></li>
+<li>Trovare <em>x</em> t.c. <em>|f(x)| &lt; 0.001</em></li>
+</ul>
+</li>
+<li>Dimezzare ripetutamente l'intervallo considerato:<ul>
+<li>Variabili per inizio e fine intervallo di ricerca</li>
+<li>All'inizio: <code>min = 1; max = 2;</code></li>
+<li>Si pone la stima <code>x</code> a metà intervallo e si calcola <code>f(x)</code></li>
+<li>Se l'errore è accettabile, <code>x</code> è il risultato</li>
+<li>Altrimenti se <code>f</code> cambia segno tra <code>min</code> ed <code>x</code>, si ripete il ciclo considerando solo la prima metà dell'intervallo</li>
+<li>Altrimenti solo la seconda metà (da <code>x</code> ad <code>max</code>)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.3 Bisezione, ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/cubic-function.png">
+        
+      </figure><ul>
+<li>Trovare lo zero della seguente funzione matematica<ul>
+<li><em>f(x) = x<sup>3</sup> – x – 1, per 1 ≤ x ≤ 2</em></li>
+<li>Trovare <em>x</em> t.c. <em>|f(x)| &lt; 0.001</em></li>
+</ul>
+</li>
+<li>Definire una funzione ricorsiva di bisezione<ul>
+<li>Parametri necessari: <em>inizio intervallo</em> di ricerca, <em>fine intervallo</em> di ricerca</li>
+<li>Invocare ad ogni livello la funzione su un intervallo dimezzato</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.4 Contenimento, studenti ed esami</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Scrivere una classe <code>Student</code><ul>
+<li><code>name, surname, code</code>: stringhe</li>
+<li><code>exams</code>: lista di oggetti <code>Exam</code></li>
+</ul>
+</li>
+<li>Costruttore: dati anagrafici come parametri</li>
+<li>Metodi per aggiunta e rimozione esami</li>
+<li>Creare nel <code>main</code> un oggetto studente</li>
+<li>Permettere all'utente di gestire gli esami dello studente<ul>
+<li>Aggiunta</li>
+<li>Rimozione</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.5 Composizione, studenti ed esami</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>Exam</code>, metodi di lettura/scrittura stato su stream testuale</li>
+<li>Aggiungere alla classe <code>Student</code>:<ul>
+<li>Metodo per lettura e metodo per scrittura su stream: leggere/scrivere tutti i dati anagrafici e tutti gli esami</li>
+<li>Metodo per stimare il tempo totale di studio</li>
+</ul>
+</li>
+<li>Istanziare uno studente, caricando i dati da file</li>
+<li>Permettere all'utente di aggiungere/rimuovere esami</li>
+<li>Infine salvare dati anagrafici ed esami su file</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.6 Navi ben poste</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/battleship-2.png">
+        
+      </figure><ul>
+<li>Aggiungere all'es. 5.1...</li>
+<li>Un metodo intelligente per il posizionamento casuale di navi</li>
+<li>La nave è posizionata solo se ci sono sufficienti celle libere, senza sovrapposizioni</li>
+</ul>
+<blockquote></blockquote>
+<p>Provare a realizzare il metodo sfruttando la ricorsione (ciascuna cella è riempita solo se è possibile riempire quella successiva) <br>
+Altrimenti basta contare le celle libere prima di riempirle</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.7 Labirinto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/labyrinth.png">
+        
+      </figure><ul>
+<li>Leggere da file un labirinto, con muri, punto di partenza e punto di arrivo</li>
+<li>Incapsulare la matrice (di caratteri?) in una classe</li>
+<li>Fornire un metodo per la rappresentazione testuale dello stato</li>
+<li>Fornire un metodo <code>move</code> (senza parametri) per avanzare di un passo, alla ricerca dell'uscita</li>
+<li>In <code>main</code>: chiamare ciclicamente <code>move</code> e poi visualizzare lo stato</li>
+</ul>
+<blockquote></blockquote>
+<p>Es. Avanzare seguendo il muro alla propria sinistra</p>
+<p><a href="http://blockly-demo.appspot.com/blockly/demos/maze/index.html">http://blockly-demo.appspot.com/blockly/demos/maze/index.html</a></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Classe</strong> per incapsulare dati e regole di un gioco<ul>
+<li><strong>Campi privati</strong> + <strong>metodi pubblici</strong> (e <em>privati</em>)</li>
+</ul>
+</li>
+<li>Inizialmente, I/O tramite console...<ul>
+<li>Ma ciclo principale e interazione con l'utente vanno tenuti <em>al di fuori della classe</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Othello</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/othello.png">
+        
+      </figure><ul>
+<li>Due giocatori, bianco e nero<ul>
+<li>All'inizio: 2 pedine bianche e 2 nere nelle celle centrali, incrociate</li>
+</ul>
+</li>
+<li>A turno, ciascun giocatore aggiunge una pedina<ul>
+<li>Se, tra la nuova pedina ed un'altra pedina dello stesso giocatore, c'è una <strong>fila continua</strong> di pedine avversarie, queste cambiano tutte colore (vale nelle 8 direzioni)</li>
+<li>Si può mettere una pedina solo in una cella vuota, solo se si <strong>catturano</strong> pedine avversarie</li>
+</ul>
+</li>
+<li>Se non ci sono mosse, si passa il turno<ul>
+<li>Ma, se ci sono mosse, non si può passare</li>
+</ul>
+</li>
+<li>Vince chi alla fine ha più pedine</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Othello - Metodi base per...</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Giocare</strong>: inserire una nuova pedina in una cella<ul>
+<li>Verificare se la mossa è possibile</li>
+<li>Cambiare colore a tutte le pedine catturate</li>
+<li>(Sfruttare, se possibile, la ricorsione)</li>
+</ul>
+</li>
+<li><strong>Scrivere</strong> lo stato del gioco su uno stream generico</li>
+<li><em>Aggiungere inoltre le seguenti funzionalità...</em><ul>
+<li>Poter passare il turno, se non ci sono mosse</li>
+<li>Giocare su tavole di diverse dimensioni</li>
+<li>Leggere lo stato del gioco da uno stream generico</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Partita tra due utenti, non contro il computer!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Othello - Bozza della classe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>class Othello {
+public:
+    Othello(int rows, int cols); // custom board
+    bool play(int y, int x);
+    // place disc and capture
+    void write(ostream &amp; out);
+    bool pass();
+    bool isFinished();
+    void read(istream &amp; in);
+    // consider: char get(int y, int x)
+    // getCurrentPlayer, getRows, getColumns ...
+private:
+    // consider: void set(int y, int x, char value) ...
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Othello - GUI</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/recycle.png">
+        
+      </figure><ul>
+<li>Aggiungere una <strong>interfaccia grafica</strong> al progetto<ul>
+<li>Creare una sottoclasse di <code>QWidget</code> o <code>QMainWindow</code></li>
+<li>Evidenziare il giocatore di turno e le mosse possibili</li>
+<li>Permettere di salvare/caricare una partita in un file</li>
+<li>Interfaccia adattabile a dimensioni diverse del gioco</li>
+</ul>
+</li>
+<li><strong>Riuso</strong> - Classe di modello definita in modo generico<ul>
+<li>Usabile sia da interfaccia grafica che da console</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Othello - Bozza della GUI</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>class OthelloGui : public QWidget
+{
+    Q_OBJECT
+public:
+    OthelloGui(Othello* game);
+private slots:
+    void controlButtons(int i);
+private:
+    void updateAllButtons();
+    void checkFinished();
+    // ...
+    QButtonGroup* buttons;
+    Othello* game;
+};
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>“Bella copia”</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/fair-copy.png">
+        
+      </figure><ul>
+<li>Codice leggibile e ben organizzato</li>
+<li>Usare <strong>costanti</strong>, anziché valori numerici “<em>magici</em>” sparsi nel codice</li>
+<li>Nomi semplici ed <strong>esplicativi</strong> + regole di <strong>stile</strong>:<ul>
+<li><code>nomeVariabile</code>, <code>nomeFunzione</code>, <code>NomeClasse</code>, <code>NOME_COSTANTE</code></li>
+</ul>
+</li>
+<li><strong>Indentazione</strong>, parentesi ecc.</li>
+<li><strong>No copia&amp;incolla</strong> del codice<ul>
+<li>Funzioni parametrizzate e/o cicli</li>
+</ul>
+</li>
+<li>Programmazione strutturata<ul>
+<li>Un solo <code>return</code>, a fine funzione; niente <code>break</code> nei cicli</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Estensioni opzionali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/artificial-intelligence.png">
+        
+      </figure><ul>
+<li>Suggerire / giocare mossa migliore<ul>
+<li>Valutare numero di pedine</li>
+<li>Pedine + sicure: in angolo e collegate, sui bordi</li>
+<li>Ricorsione minimax per analisi albero delle mosse</li>
+</ul>
+</li>
+<li>Migliorare l'interfaccia utente<ul>
+<li>Menù e/o barra degli strumenti (<code>QMainWindow</code>)</li>
+<li>Comandi per suggerimenti (di diverso livello)</li>
+</ul>
+</li>
+<li>5 pedine rosse “Stop!” per ogni giocatore<ul>
+<li>Sostituiscono la nuova pedina al termine della mossa</li>
+<li>Bloccano catture successive (muro neutro)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Mossa migliore: minimax</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>int Othello::minimax(int depth) {
+    int bestScore = -999; // bestY = -1; bestX = -1;
+    if (!isFull() &amp;&amp; depth &gt; 0) {
+        for (int y...) for (int x...) if canPlay(y, x) {
+            Othello copy = *this; // copy the whole game
+            copy.play(y, x); // play and change player
+            // recursion, change the sign of the result
+            int score = -copy.minimax(depth – 1);
+            if (score &gt; bestScore) {
+                bestScore = score; // bestY = y; bestX = x;
+            }
+        } // if no moves: bestScore is very low!
+    } else {
+        bestScore = heuristic(); // how strong is current plr?
+    }
+    return bestScore;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Progetto 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 2</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Realizzare un gioco con diversi personaggi<ul>
+<li>Classe per partita</li>
+<li>Classe base astratta (e sottoclassi) per personaggi</li>
+</ul>
+</li>
+<li><strong>Polimorfismo</strong> nei vari personaggi, per:<ul>
+<li>Il movimento</li>
+<li>L'interazione reciproca</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Space invaders</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/invaders.png">
+        
+      </figure><ul>
+<li><strong>Cannone</strong>: guidato dall'utente<ul>
+<li>Si sposta in orizzontale ← / →</li>
+<li>Può sparare verso l'alto, contro gli alieni</li>
+</ul>
+</li>
+<li><strong>Alieni</strong>: si muovono tutti nella stessa direzione ← / →<ul>
+<li>Se uno di loro arriva al bordo, <em>al turno successivo</em> scendono tutti di un passo e invertono la direzione</li>
+<li>Possono sparare verso il basso, contro il cannone</li>
+</ul>
+</li>
+<li><strong>Muri</strong>: si ditruggono lentamente dove colpiti</li>
+</ul>
+<blockquote></blockquote>
+<p>È fornito un semplice framework di esempio</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Space invaders - Opzionale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Movimento dei personaggi libero e fluido (non su una griglia rigida, ma su qualsiasi pixel)</li>
+<li>Il cannone rimane sempre ancorato a terra...</li>
+<li><code>QGraphicsScene + Item + View</code>, oppure...</li>
+<li><code>QPainter + QWidget::paintEvent</code></li>
+</ul>
+<blockquote></blockquote>
+<p>Mantenere un ciclo simile a <code>Game::moveAll</code> e il polimorfismo di <code>Actor::move</code> e <code>Actor::touchedBy</code></p>
+<p>Non mischiare nelle stesse classi la logica e la rappresentazione del gioco</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Space invaders - Estensioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Due cannoni</strong> contemporaneamente in gioco</li>
+<li>I personaggi possono occupare <strong>più celle</strong><ul>
+<li>Es. 2 celle per gli alieni e 3 per i cannoni</li>
+</ul>
+</li>
+<li><strong>Icone</strong> al posto del testo nelle label (<code>QPixmap</code>, o stile)</li>
+<li>Altri <strong>personaggi</strong> <em>a fantasia</em>, per esempio:<ul>
+<li>Base madre aliena, se colpita dà vita e/o bonus</li>
+<li>Alieni speciali, distrutti solo dopo alcuni colpi</li>
+</ul>
+</li>
+<li>Completamento di varie <strong>missioni</strong><ul>
+<li>Conteggio del tempo e assegnazione bonus finale</li>
+<li>Vari bonus <em>a fantasia</em>, per punti, tempo, vite ecc.</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

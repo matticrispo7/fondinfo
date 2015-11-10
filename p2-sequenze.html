@@ -1,0 +1,770 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sequenze di dati</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/fun/cd-stack.png"></figure>
+  <hgroup>
+    <h2>Introduzione alla programmazione</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lista</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/shopping-list.jpg"><img src="images/fun/month-list.svg">
+        
+      </figure><ul>
+<li>Sequenza di elementi, <em>di solito</em> dello stesso <strong>tipo</strong><ul>
+<li>L'intera lista può essere assegnata ad una variabile, così diamo un <strong>nome</strong> alla lista</li>
+</ul>
+</li>
+<li>I singoli elementi sono <strong>numerati</strong><ul>
+<li>Gli indici partono da 0!</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>to_buy = ['spam', 'eggs', 'beans']
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>rainfall_data = [13, 24, 18, 15]
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>months = ['Jan', 'Feb', 'Mar',
+          'Apr', 'May', 'Jun', 
+          'Jul', 'Aug', 'Sep', 
+          'Oct', 'Nov', 'Dec']
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Accesso agli elementi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/wile-coyote.png">
+        
+      </figure><ul>
+<li><strong>Attenzione ad usare indici validi!</strong><ul>
+<li><em>Lunghezza</em> attuale di una lista <code>x</code>: <code>len(x)</code></li>
+<li>Elementi <em>numerati</em> da <code>0</code> a <code>len(x)-1</code></li>
+<li>Indici <em>negativi</em> contano dalla fine</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>n = len(months)            # 12
+months[3]                  # 'Apr'
+months[-2]                 # 'Nov', same as n - 2
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>to_buy = ['spam', 'eggs', 'beans']
+
+to_buy[1] = 'ketchup'      # replace an element
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Appartenenza, inserimento, rimozione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>to_buy = ['spam', 'eggs', 'beans']
+
+'eggs' in to_buy           # True, to_buy contains 'eggs'
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>to_buy.append('bacon')     # add an element to the end
+to_buy.pop()               # remove (and return) last element
+
+to_buy.insert(1, 'bacon')  # other elements shift
+removed = to_buy.pop(1)    # remove (and return) element at index
+
+to_buy.remove('eggs')      # remove an element by value
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Slice: porzioni di lista</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>spring = months[2:5]       # ['Mar', 'Apr', 'May']
+quart1 = months[:3]        # ['Jan', 'Feb', 'Mar']
+quart4 = months[-3:]       # ['Oct', 'Nov', 'Dec']
+whole_year = months[:]     # Copy the whole list
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>list1 = ['spam', 'eggs', 'beans']
+list2 = ['sausage', 'mushrooms']
+to_buy = list1 + list2     # List concatenation
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>so_boring = [1, 2] * 3     # List repetition:
+                           # [1, 2, 1, 2, 1, 2]
+results_by_month = [0] * 12
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Uguaglianza e identità</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>a = [3, 4, 5]
+b = a[:]       # b = [3, 4, 5] -- a new list!
+b == a         # True, they contain the same values
+b is a         # False, they are two objects in memory
+               # (try and modify one of them...) 
+c = a
+c is a         # True, same object in memory 
+               # (try and modify one of them...)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Stringhe e liste</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Stringa</strong>: sequenza <em>immutabile</em> di caratteri</li>
+<li><strong><code>join</code></strong> e <strong><code>split</code></strong>: da lista a stringa e viceversa</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>txt = "Monty Python's Flying Circus"
+txt[0]    # 'M'
+txt[1]    # 'o'
+txt[-1]   # 's'
+txt[6:12] # 'Python'
+txt[-6:]  # 'Circus'
+
+days = ['tue', 'thu', 'sat']
+txt = '|'.join(days)  # 'tue|thu|sat'
+
+days = 'mon|wed|fri'.split('|')
+# ['mon', 'wed', 'fri']
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cicli su liste: for</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>shopping_list = ['spam', 'eggs', 'bacon', 'ketchup']
+
+print('Your shopping list contains:')
+
+for product in shopping_list:
+    print(product)
+</code></pre>
+<ul>
+<li>Ad ogni iterazione, a <code>product</code> è assegnato un diverso elemento della lista <code>shopping_list</code></li>
+<li>Si può usare un ciclo <code>for</code> su qualsiasi sequenza, anche su una <em>stringa</em></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Intervalli di valori: range</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/algo/sum10.svg">
+        
+      </figure><ul>
+<li><strong><code>range</code></strong>: intervallo di valori aperto a destra<ul>
+<li>Estremo inferiore <em>incluso</em></li>
+<li>Estremo superiore <em>escluso</em></li>
+<li>Iterabile con un ciclo <code>for</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code># Add up numbers from 1 to 10
+
+total = 0
+for i in range(1, 11):
+    total += i
+
+# total = 0;  i = 1
+# while i &lt; 11:
+#     total += i;  i += 1
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cicli e annidamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/tables.png">
+        
+      </figure><pre class="prettyprint" data-lang="python"><code>MAX = 12
+y = int(input("Insert a value: "))
+for x in range(1, MAX + 1):
+    print(x * y, end = ' ')
+    # inserts a space, instead of a newline
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>MAX = 12
+for y in range(1, MAX + 1):
+    for x in range(1, MAX + 1):
+        val = x * y
+        print(val, end = ' ')
+    print()
+</code></pre>
+<p>Per fare in modo che ciascun valore richieda almeno 3 caratteri:
+<br>
+<code>val = '{:3}'.format(x * y)</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>List comprehension</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Modo conciso per creare una lista</li>
+<li>Ogni elemento: risultato di una operazione su un membro di altro iterabile</li>
+<li>Condizione sugli elementi, opzionale</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>squares = [x ** 2 for x in range(12)]
+# squares = []
+# for x in range(12):
+#    squares.append(x ** 2)
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>even_nums = [str(x) for x in range(12) if (x % 2) == 0]
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Tupla</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Sequenza <strong>immutabile</strong> di valori, anche di <em>tipo diverso</em></li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code># Tuple packing
+pt = 5, 6, 'red'
+pt[0]  # 5
+pt[1]  # 6
+pt[2]  # 'red'
+
+# multiple assignments, from a tuple
+x, y, colour = pt  # sequence unpacking
+a, b = 3, 4
+a, b = b, a
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Rettangoli e cerchi con Pygame</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/pygame-logo.png"><img src="images/oop/raster-coord.png">
+        <figcaption>→ pygame.info</figcaption>
+      </figure><pre class="prettyprint" data-lang="python"><code>import pygame
+pygame.init()                     # Prepare pygame
+screen = pygame.display.set_mode((640, 480)) # (w, h)
+screen.fill((255, 255, 255))      # BG (Red, Green Blue)
+
+# Yellow rectangle, left=50, top=75, w=90, h=50
+pygame.draw.rect(screen, (255, 255, 0), (50, 75, 90, 50))
+
+# Blue circle, center=(300, 50), radius=20
+pygame.draw.circle(screen, (0, 0, 255), (300, 50), 20)
+
+pygame.display.flip()             # Update the screen
+while pygame.event.wait().type != pygame.QUIT:
+    pass
+pygame.quit()
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Dizionari, matrici, file</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Dizionario</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/dictionary.png">
+        
+      </figure><ul>
+<li>A volte chiamato <em>mappa</em> o <em>array associativo</em></li>
+<li>Insieme non ordinato di coppie chiave / valore<ul>
+<li>Le chiavi sono <em>uniche</em>: come nelle liste fanno da <em>indice</em> per accedere al valore corrispondente</li>
+<li>Ma possono essere <code>int</code> o <strong><code>str</code></strong> (o altro tipo immutabile)</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>tel = {'john': 4098, 'terry': 4139}
+
+tel['graham'] = 4127
+tel  # {'graham': 4127, 'terry': 4139, 'john': 4098}
+
+list(tel.keys())  # ['graham', 'terry', 'john']
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Liste multidimensionali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>a = [['A', 'B', 'C', 'D'],
+     ['E', 'F', 'G', 'H'],
+     ['I', 'L', 'M', 'N']]          # 2D
+
+b = ['A', 'B', 'C', 'D',
+     'E', 'F', 'G', 'H',
+     'I', 'L', 'M', 'N']            # 1D
+
+i = y * cols + x                    # 2D -&gt; 1D
+
+y = i // cols
+x = i % cols                        # 1D -&gt; 2D
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Somma colonne: matrice</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>matrix = [[2, 4, 3, 8],
+          [9, 3, 2, 7],
+          [5, 6, 9, 1]]
+rows = len(matrix)
+cols = len(matrix[0])
+
+for x in range(cols):
+    total = 0
+    for y in range(rows):
+        val = matrix[y][x]
+        total += val
+    print('Col #', x, 'sums to', total)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lista come pseudo-matrice</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>matrix = [2, 4, 3, 8,
+          9, 3, 2, 7,
+          5, 6, 9, 1]
+rows = 3  # Cannot be guessed from matrix alone
+cols = len(matrix) // rows
+
+for x in range(cols):
+    total = 0
+    for y in range(rows):
+        val = matrix[y * cols + x]   # 2D -&gt; 1D
+        total += val
+    print('Col #', x, 'sums to', total)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Matrici di dimensioni note</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>blank_matrix = [
+    [' ' for x in range(cols)] for y in range(rows) ]
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>blank_matrix = [
+    [' '] * cols for y in range(rows) ]
+
+# blank_matrix = []
+# for y in range(rows):
+#    blank_matrix.append([' '] * cols)
+</code></pre>
+<p><strong>Nota.</strong> Se si usasse la <code>repetition</code> per replicare le righe, si otterrebbero più riferimenti alla stessa unica riga.</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Flussi di dati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/magnetic-tape.png">
+        
+      </figure><ul>
+<li><strong>Stream</strong>: astrazione per flussi di informazione<ul>
+<li>Lettura o scrittura di informazioni su <em>qualunque</em> dispositivo I/O (<em>file, ma non solo</em>)</li>
+</ul>
+</li>
+<li><strong>File di testo</strong><ul>
+<li>Varie codifiche (<em>UTF-8</em> o altro)</li>
+<li>Conversioni automatiche, es. <code>"\n"</code> → <code>"\r\n"</code></li>
+</ul>
+</li>
+<li><strong>File binari</strong><ul>
+<li>I/O preciso byte a byte, senza nessuna conversione</li>
+<li>Qualsiasi file... anche di testo!</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Scrittura su file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Funzione <code>open</code> per accedere ad un file (di testo)<ul>
+<li>Modalità scrittura o lettura: <code>'w'</code>, o <code>'r'</code></li>
+</ul>
+</li>
+<li>Scrittura su file: funzione <code>print</code>, o metodo <code>write</code></li>
+<li>Blocco <code>with</code>: chiude il file al termine delle operazioni (anche in caso di errore)</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>with open('some_file.txt', 'w') as f:
+    f.write('First line\n')  # explicit newline
+    print('Second line', file=f)
+    # continue writing here...
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lettura da file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>with open('some_file.txt', 'r') as f1:
+    first_line = f1.readline()
+    second_line = f1.readline()
+    # both strings contain '\n' at the end
+    # at end of file, an empty string is read
+
+with open('other_file.txt', 'r') as f2:
+    whole_text = f2.read()
+    # do stg with whole_text
+
+with open('last_file.txt', 'r') as f3:
+    for line in f3:
+        # line contains '\n' at the end
+        # strip() removes withespaces at both ends
+        print(line.strip(), ':', len(line))
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>I/O su stringhe e console</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Stringhe come stream: <code>io.StringIO</code></li>
+<li>Console come stream: <code>sys.stdin</code>, <code>sys.stdout</code>, <code>sys.stderr</code></li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>import io, sys
+
+with io.StringIO() as output:
+    output.write('First line.\n')
+    print('Second line.', file=output)
+    # Retrieve stream contents, i.e. 'First line.\nSecond line.\n'
+    contents = output.getvalue()        
+    sys.stdout.write(contents)
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>for line in sys.stdin:  # CTRL-D (Lin) or CTRL-Z (Win) to end the input
+    print(len(line))    # notice '\n' at the end
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Errori da file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/garbled-tape.png">
+        
+      </figure><ul>
+<li><strong>Eccezioni</strong>: per gestire separatamente i casi inattesi<ul>
+<li>Errore all'interno di <code>try</code>: esecuzione interrotta subito</li>
+<li>Eseguito il blocco <code>except</code> che gestisce il tipo di errore verificatosi (possibile avere diversi blocchi <code>except</code>)</li>
+<li>Il blocco <code>with</code> assicura la chiusura del file</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>try:
+    with open('other_file.txt', 'r') as f:
+        whole_text = f.read()
+        # do stg with whole_text
+except IOError as err:
+    print('Oh, my!')
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercizi</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Conteggio spazi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/finger-counting.png">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare il numero di spazi presenti</li>
+<li>Se si incontra un carattere di tabulazione, contarlo come 4 spazi</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare un ciclo <code>for</code> sulla stringa (sequenza di caratteri)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Array, precalcolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sin-cos.png">
+        
+      </figure><ul>
+<li>Riempire una lista con i valori di <code>sin(x)</code><ul>
+<li>360 elementi, indice <code>x</code> tra 0 e 359</li>
+</ul>
+</li>
+<li>Chiedere ripetutamente un angolo all'utente, visualizzare il corrispondente valore precalcolato</li>
+</ul>
+<blockquote></blockquote>
+<p><code>sin</code>, <code>pi</code> in modulo <code>math</code>
+<br>
+<code>sin</code> opera su radianti: <code>rad = x * pi / 180</code></p>
+<p>Estensione opzionale: salvare la lista di valori in un file e ricaricarla all'avvio, se già disponibile</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cerchi concentrici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/red-circles.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente il numero di cerchi da disegnare</li>
+<li>Disegnare i cerchi con raggio decrescente, ma tutti con lo stesso centro</li>
+<li>Far variare il colore dei cerchi<ul>
+<li>Dal rosso del livello più esterno</li>
+<li>Fino al nero del livello più interno</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Cominciare a disegnare un grosso cerchio rosso</p>
+<p>Poi, inserire l'operazione di disegno un ciclo, togliendo ad ogni passo <code>10</code> (p.es.) al raggio e al livello di rosso</p>
+<p>Infine, determinare automaticamente, prima del ciclo, le variazioni migliori per raggio e colore</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Memory</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/memory.png">
+        
+      </figure><ul>
+<li>Allocare una lista, di dimensione <code>rows×cols</code><ul>
+<li>L'utente sceglie <code>rows</code> e <code>cols</code>, però celle in numero pari</li>
+</ul>
+</li>
+<li>Inserire in ordine le prime lettere dell'alfabeto, ciascuna ripetuta due volte</li>
+<li>Mescolare le celle<ul>
+<li>Per ciascuna cella, scegliere una posizione a caso e scambiare il contenuto delle celle</li>
+</ul>
+</li>
+<li>Mostrare all'utente la lista risultante, andando a capo per ogni riga</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare una lista semplice, ma nella visualizzazione introdurre dei ritorni a capo</p>
+<p>Cella a inizio riga: il suo indice <code>i</code> è multiplo di <code>cols</code>, ossia <code>i % cols == 0</code>
+<br>
+Cella a fine riga: <code>i % cols == cols - 1</code></p>
+<p>Per cominciare, inserire nella lista valori numerici crescenti, anzichè lettere</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Scitala spartana</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/hist/scytale.png">
+        
+      </figure><ul>
+<li>Leggere un intero file di testo</li>
+<li>Inserire in una matrice i primi W×H caratteri<ul>
+<li>W colonne × H righe, valori prefissati</li>
+<li>Riempire una riga della matrice dopo l'altra</li>
+<li>Da destra a sinistra, una riga alla volta (→, ↓)</li>
+</ul>
+</li>
+<li>Scrivere il contenuto della matrice su console<ul>
+<li>Scrivere una colonna della matrice dopo l'altra</li>
+<li>Prima riga su console = prima colonna della matrice...</li>
+<li>Dall'alto verso il basso, una colonna alla volta (↓, →)</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare una lista di liste (con dimensioni predefinite)</p></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

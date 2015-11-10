@@ -1,0 +1,1429 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Esercizi 2014</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/misc/geek-girl.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione alla programmazione</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.1 Hello, user!</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/handshake.png">
+        
+      </figure><ul>
+<li>Compilare ed eseguire il programma “<code>Hello world</code>”</li>
+<li>In una versione successiva del programma...</li>
+<li>Chiedere il nome all'utente e aggiungere tale nome al messaggio di saluto</li>
+<li>Se il nome dell'utente è “<code>admin</code>”, mostrare inoltre il messaggio speciale “<code>At your command</code>”</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.2 Equazione di secondo grado</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/quadratic-eq.svg"><img src="images/misc/quadratic-formula.svg">
+        
+      </figure><ul>
+<li>Chiedere all'utente i tre coefficienti di una equazione di secondo grado<ul>
+<li><code>ax<sup>2</sup> + bx + c = 0</code></li>
+</ul>
+</li>
+<li>Comunicare all'utente che tipo di soluzioni presenta l'equazione<ul>
+<li>Due soluzioni reali</li>
+<li>Un'unica soluzione reale</li>
+<li>Nessuna soluzione reale</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.3 Conversioni di scala</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/thermometer.png">
+        
+      </figure><ul>
+<li>In un ciclo, ripetere le seguenti operazioni<ul>
+<li>Chiedere all'utente una temperatura in gradi Celsius °C</li>
+<li>Mostrare il valore corrispondente in gradi Fahrenheit °F</li>
+<li>Chiedere all'utente se intende convertire altri valori</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Partire dalla formula <code>fahr = 32 + cels * 9 / 5</code></p>
+<p>Nella prima implementazione, effettuare una sola conversione; poi racchiudere tutto in un ciclo</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.4 Massimo, minimo, media</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/data-sequence.png">
+        
+      </figure><ul>
+<li>Leggere, attraverso un ciclo, una sequenza di valori<ul>
+<li>Ciascun valore deve essere compreso tra 0.0 e 100.0</li>
+<li>La sequenza termina quando l'utente inserisce un valore non ammesso</li>
+</ul>
+</li>
+<li>Visualizzare massimo, minimo e media dei valori inseriti</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.5 Triangolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/impossible-triangle.jpg">
+        
+      </figure><ul>
+<li>Chiedere all'utente le lunghezze dei tre lati</li>
+<li>Controllare se il triangolo è:<ul>
+<li>Equilatero</li>
+<li>Isoscele</li>
+<li>Scaleno</li>
+<li>Oppure se i tre lati non formano affatto un triangolo (uno dei lati è maggiore della somma degli altri due)</li>
+</ul>
+</li>
+<li>Visualizzare il responso</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.6 Lunghezza righe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/measure-tape.png">
+        
+      </figure><ul>
+<li>Leggere una sequenza di righe di testo, in un ciclo</li>
+<li>La sequenza termina con una riga vuota</li>
+<li>Visualizzare la percentuale di righe di lunghezza pari, rispetto al numero totale di righe</li>
+</ul>
+<blockquote></blockquote>
+<p>Lunghezza di una variabile <code>line</code> di tipo stringa: <code>len(line)</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.7 Fattoriale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente un numero naturale <code>n</code></li>
+<li>Calcolare il fattoriale di <code>n</code><ul>
+<li>Ossia, moltiplicare tra loro i primi <code>n</code> numeri naturali</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Memorizzare in una variabile <code>fact</code> il risultato parziale <br>
+Ad ogni ciclo, moltiplicare <code>fact</code> per il nuovo numero</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.8 Calendario a muro</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/wall-calendar.png">
+        
+      </figure><ul>
+<li>L'utente inserisce:<ul>
+<li>La lunghezza del mese (28-31)</li>
+<li>Il primo giorno del mese <br> (lunedì=0 ... domenica=6)</li>
+</ul>
+</li>
+<li>Visualizzare il calendario del mese<ul>
+<li>In prima colonna la data</li>
+<li>In seconda colonna il giorno della settimana (0-6)</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Scrivere una intera riga alla volta (numero progressivo e giorno della settimana) <br>
+Si può sfruttare l'operatore <code>%</code> (resto della divisione)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.9 Tre carte</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/three-cards.png">
+        
+      </figure><ul>
+<li>All'inizio l'utente ha 10 monete</li>
+<li>Ad ogni turno:<ul>
+<li>Viene estratto a sorte un numero segreto tra 1 e 3</li>
+<li>L'utente sceglie quante monete puntare e su quale numero</li>
+<li>Se indovina, gli viene sommato l'importo puntato</li>
+<li>Altrimenti gli viene sottratto lo stesso importo</li>
+</ul>
+</li>
+<li>Il gioco termina quando l'utente perde tutto o si ritira</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>from random import randint
+# ...
+secret = randint(1, 3)
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.1 Conteggio di 0 e 1</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/binary-tunnel.jpg">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare separatamente il numero di cifre <code>0</code> ed <code>1</code> presenti</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare un ciclo <code>for</code> sulla stringa</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.2 Conteggio caratteri</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/characters.png">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare separatamente le occorrenze di ciascuna lettera maiuscola (da <code>'A'</code> a <code>'Z'</code>)</li>
+</ul>
+<blockquote></blockquote>
+<p>Creare una lista (array) di 26 elementi, inizialmente tutti posti a <code>0</code></p>
+<p>Ciascun elemento è il contatore per una certa lettera</p>
+<p>L'indice del contatore corrispondente ad una lettera <code>val</code> può essere ottenuto come <code>ord(val) - ord('A')</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.3 Area di un triangolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/triangle-notations.svg">
+        
+      </figure><ul>
+<li>Scrivere una <code>funzione</code> per il calcolo dell'area di un triangolo, dati i tre lati<ul>
+<li>Parametri: le lunghezze dei tre lati, come <code>float</code></li>
+<li>Risultato: area, come <code>float</code></li>
+</ul>
+</li>
+<li>Nella parte principale del programma<ul>
+<li>Chiedere all'utente tre valori</li>
+<li>Invocare la funzione con questi parametri</li>
+<li>Visualizzare il risultato della funzione</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Formula di Erone: <code>area = sqrt(s * (s - a) * (s - b) * (s - c))</code> <br>
+Con <code>s = (a + b + c) / 2</code>, semiperimetro</p>
+<p><a href="http://en.wikipedia.org/wiki/Heron%27s_formula">http://en.wikipedia.org/wiki/Heron%27s_formula</a></p>
+<p><code>sqrt</code> in modulo <code>math</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.4 Sequenza di quadrati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/green-squares.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente il numero di quadrati da disegnare</li>
+<li>Disegnare i quadrati con lato decrescente, tutti allineati in alto e a sinistra</li>
+<li>Far variare il colore dei quadrati<ul>
+<li>Dal nero del quadrato più grande</li>
+<li>Fino al verde del quadrato più piccolo</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Cominciare a disegnare un grosso quadrato nero</p>
+<p>Poi, inserire l'operazione di disegno un ciclo, aggiungendo ad ogni passo <code>10</code> (p.es.) al livello di verde, e togliendo lo stesso valore al lato</p>
+<p>Infine, determinare automaticamente le variazioni migliori per lato e colore, prima di iniziare il ciclo</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.5 Griglia di colori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/color-grid.png"><img src="images/oop/raster-tile.png">
+        
+      </figure><ul>
+<li>Chidere all'utente dei valori per <code>rows</code> e <code>cols</code></li>
+<li>Mostrare una griglia di rettangoli di dimensione <code>rows×cols</code></li>
+<li>Partire da un rettangolo nero in alto a sinistra</li>
+<li>In orizzontale, aumentare gradatamente la componente di blu</li>
+<li>In verticale, aumentare gradatamente la componente di verde</li>
+</ul>
+<blockquote></blockquote>
+<p>Cominciare a creare una griglia di riquadri tutti neri, con due cicli <code>for</code> annidati</p>
+<p>Lasciare tra i riquadri un piccolo margine</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.6 Serpentina</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/winding-path.png">
+        
+      </figure><ul>
+<li>Chidere all'utente dei valori per <code>rows</code> e <code>cols</code></li>
+<li>Mostrare una griglia di rettangoli di dimensione <code>rows×cols</code></li>
+<li>Partire da un rettangolo nero in alto a sinistra</li>
+<li>Aumentare gradatamente la componente di blu, lungo un percorso a serpentina</li>
+</ul>
+<blockquote></blockquote>
+<p>Per iniziare, seguire un più semplice percorso "a macchina da scrivere"</p>
+<p>Poi invertire il verso delle righe con indice dispari</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.7 Spirale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/spiral-circles.png">
+        
+      </figure><ul>
+<li>Disegnare una sequenza di cerchi (<code>n</code> scelto dall'utente) lungo una spirale</li>
+<li>Alla prima implementazione, procedere su un percorso circolare di raggio <code>r</code>, attorno al punto <code>(xc, yc)</code></li>
+<li>Poi, su una spirale, aumentando passo a passo anche <code>r</code></li>
+<li>Infine, disegnare lungo il percorso dei cerchi sempre più grandi e di colore diverso</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>xc, yc, r, angle = 320, 240, 40, 0.0
+for i in range(8):
+    y = yc + int(r * math.sin(angle))
+    x = xc + int(r * math.cos(angle))
+    pygame.draw.circle(screen, (0, 0, 0), (x, y), 10)
+    angle += math.pi / 4
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.8 Potenza di vari valori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente una sequenza di valori, terminata da <code>0</code><ul>
+<li>Memorizzare la sequenza in una lista</li>
+</ul>
+</li>
+<li>Successivamente, chiedere all'utente un intero <code>y</code></li>
+<li>Per ogni <code>x</code> nella lista...<ul>
+<li>Calcolare e visualizzare la potenza <code>x ** y</code></li>
+</ul>
+</li>
+<li>Definire una funzione per eseguire i calcoli e la stampa<ul>
+<li>Parametri: lista di valori; esponente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.9 Potenze in tabella</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente una sequenza di valori, terminata da <code>0</code><ul>
+<li>Memorizzare la sequenza in una lista</li>
+</ul>
+</li>
+<li>Per ogni intero <code>y</code> compreso tra <code>1</code> e <code>4</code>, e per ogni <code>x</code> nella lista...<ul>
+<li>Calcolare la potenza <code>x ** y</code></li>
+</ul>
+</li>
+<li>Visualizzare i risultati in forma di tabella (una riga per ogni valore di <code>y</code>)</li>
+</ul>
+<pre class="prettyprint" data-lang="Output"><code>    2  3   5   4 
+    4  9  25  16
+    8 27 125  64
+   16 81 625 256
+</code></pre>
+<p>In questo caso, l'utente ha immesso i valori <code>2</code>, <code>3</code>, <code>5</code>, <code>4</code>, <code>0</code></p>
+<p>Richiamare in un ciclo la funzione dell'es. 2.8</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 3</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.1 Classe dei triangoli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/triangle-notations.svg">
+        
+      </figure><ul>
+<li>Scrivere una classe <code>Triangle</code> per rappresentare dei triangoli</li>
+<li>Parametri del costruttore: lunghezze dei tre lati</li>
+<li>Fornire un metodo pubblico <code>perimeter</code> per calcolare il perimetro</li>
+<li>Fornire un metodo pubblico <code>area</code> per calcolare l'area<ul>
+<li>Usare la formula di Erone (es. 2.3)</li>
+</ul>
+</li>
+<li>Nella parte principale del programma:<ul>
+<li>Creare un oggetto triangolo, con lati forniti all'utente</li>
+<li>Invocare i metodi <code>area</code> e <code>perimeter</code> sull'oggetto</li>
+<li>Infine mostrare l'area ed il perimetro del triangolo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.2 Movimento a serpentina</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/invaders-path.jpg">
+        
+      </figure><ul>
+<li>Partire dal classico ciclo di una applicazione <em>PyGame</em></li>
+<li>Fare in modo che un rettangolo si muova sullo schermo, avanzando di <code>10</code> pixel alla volta</li>
+<li>Partire dalla posizione <code>x = 100, y = 10</code></li>
+<li>Seguire un percorso a serpentina<ul>
+<li>La <code>x</code> è confinata nell'intervallo <code>100-250</code></li>
+<li>La <code>y</code> aumenta ogni volta che si raggiunge il margine orizzontale impostato</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.3 Classe degli invasori spaziali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/invaders-path.jpg">
+        
+      </figure><ul>
+<li>Creare una classe <code>Invader</code>, che contenga i dati ed il comportamento dell'alieno<ul>
+<li>Campi privati: <code>x</code>, <code>y</code>, <code>dx</code></li>
+<li>Metodo <code>move</code>, per avanzare</li>
+<li>Metodo <code>rect</code>, per ottenere la posizione attuale</li>
+</ul>
+</li>
+<li>Istanziare un oggetto <code>Invader</code> e farlo muovere sullo schermo<ul>
+<li>Chiamare il metodo <code>move</code> ad ogni ciclo</li>
+<li>Visualizzare un rettangolo nella posizione corrispondente</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Definire nella classe delle opportune costanti</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.4 Lista di invasori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/invaders-path.jpg">
+        
+      </figure><ul>
+<li>Riusare la classe <code>Invader</code> (es. 3.3)</li>
+<li>Creare inizialmente una lista di alieni, con posizioni di partenza diverse<ul>
+<li>Memorizzare la posizione di partenza di ciascun alieno in opportuni campi privati</li>
+<li>Lasciare a ciascun alieno uno spazio orizzontale di movimento di 150 pixel, a destra della posizione di partenza</li>
+</ul>
+</li>
+<li>Farli avanzare tutti ad ogni ciclo, chiamando il metodo <code>move</code> di ciascuno di essi</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.5 Gestione triangoli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/triangle-notations.svg">
+        
+      </figure><ul>
+<li>Riusare la classe <code>Triangle</code> dell'esercizio 3.1</li>
+<li>Gestire una lista di triangoli</li>
+<li>Ciclicamente, permettere all'utente di effettuare una delle seguenti operazioni:<ul>
+<li>Aggiungere un nuovo triangolo</li>
+<li>Rimuovere un triangolo esistente, dato il suo indice</li>
+<li>Calcolare la somma delle aree di tutti i triangoli</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.6 Valori in file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/data-sequence.png">
+        
+      </figure><ul>
+<li>Leggere tutti i valori contenuti in un file<ul>
+<li>Ogni riga riporta un valore reale</li>
+</ul>
+</li>
+<li>Visualizzare massimo, minimo e media dei valori letti</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.7 Maiuscole tra asterischi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/troll-key.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione che:<ul>
+<li>Riceve in input una stringa di testo</li>
+<li>Produce in output la stesso testo, ma...</li>
+<li>Trasforma in maiuscolo tutto il testo compreso tra asterischi</li>
+</ul>
+</li>
+<li>Es. “<code>I want *this text* to be uppercase</code>” <br>
+  → “<code>I want THIS TEXT to be uppercase</code>”</li>
+<li>Applicare la funzione ad ogni riga di un file di testo</li>
+<li>Generare un file di output con il testo modificato</li>
+</ul>
+<blockquote></blockquote>
+<p>Inizialmente, provare la funzione su una stringa inserita dall'utente</p>
+<p>Scorrere la riga, carattere per carattere <br>
+Segnare in un <code>bool</code> se si è incontrato un asterisco iniziale, ma non ancora un asterisco finale</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.8 Ripetizioni di grigi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/gray-squares.png">
+        <figcaption>Quattro grigi, ripetuti 3 volte</figcaption>
+      </figure><ul>
+<li>Chiedere all'utente una sequenza di valori e memorizzarli in una lista<ul>
+<li>La sequenza termina quando l'utente inserisce un valore non compreso tra 0 e 255</li>
+</ul>
+</li>
+<li>Chiedere all'utente un numero <code>m</code> di ripetizioni</li>
+<li>Disegnare una sequenza di quadrati (come nell'es. 2.5), ma:<ul>
+<li>Disegnare <code>m * n</code> quadrati, dove <code>n</code> è la lunghezza della lista</li>
+<li>Assegnare a ciascun quadrato un livello di grigio, usando in sequenza i valori della lista</li>
+<li>Ossia, ripetere <code>m</code> volte l'intera sequenza di <code>n</code> colori</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.9 Tavolozza di colori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/palette-circles.png">
+        
+      </figure><ul>
+<li>Leggere da un file una sequenza di colori<ul>
+<li>In ogni riga ci sono tre valori, per le componenti R, G, B</li>
+<li>I colori vengono memorizzati in una lista (di tuple)</li>
+</ul>
+</li>
+<li>Chiedere all'ultente il numero di cerchi da disegnare</li>
+<li>Disegnare i cerchi in maniera concentrica<ul>
+<li>I colori dei cerchi sono presi in sequenza dalla lista inserita dall'utente</li>
+<li>Se si esaurisce la sequenza, si ricomincia dal primo colore</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 4</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.1 Potenze con ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/matryoshka.png">
+        
+      </figure><ul>
+<li>Calcolare la potenza intera di un numero, sfruttando la ricorsione</li>
+<li>Qualsiasi numero <code>x</code>, elevato a potenza <code>0</code>, dà come risultato <code>1</code></li>
+<li>La potenza <code>n</code>-esima di un numero <code>x</code> si può calcolare come:<ul>
+<li><code>pow(x, n) = x * pow(x, n - 1)</code>, per <code>n &gt; 0</code></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>IEEE definisce <code>pow(0, 0) = 1</code>, anzichè indeterminato</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.2 Classe dei rettangoli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Definire una classe <code>Rectangle</code><ul>
+<li>Campi <code>_height</code> e <code>_width</code>, per le dimensioni</li>
+<li>Costruttore con parametri corrispondenti</li>
+<li>Metodo <code>area</code> per calcolare l'area</li>
+<li>Metodo <code>__str__</code> per ottenere una rappresentazione testuale</li>
+</ul>
+</li>
+<li>Nel <code>main</code> del programma, istanziare un rettangolo e calcolarne l'area</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.3 Cerchi e figure</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Definire una classe base <code>Shape</code><ul>
+<li>Metodo astratto <code>area</code></li>
+</ul>
+</li>
+<li>Ridefinire <code>Rectangle</code> (es. 4.2) come sottoclasse di <code>Shape</code></li>
+<li>Definire <code>Circle</code> come sottoclasse di <code>Shape</code><ul>
+<li>Campo <code>_radius</code>, per il raggio</li>
+<li>Costruttore appropriato, metodi <code>area</code> e <code>__str__</code></li>
+</ul>
+</li>
+<li>Nel <code>main</code> del programma, gestire una lista di figure, permettendo ciclicamente all'utente di:<ul>
+<li>Inserire una nuova figura (rettangolo o cerchio)</li>
+<li>Rimuovere una figura, dato il suo indice</li>
+</ul>
+</li>
+<li>Ad ogni ciclo, mostrare la lista delle figure e calcolarne l'area totale</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.4 File e cartelle</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sample-file-system.png">
+        
+      </figure><ul>
+<li>Un ipotetico file system è composto di due tipi di <em>nodi</em> (classe base)<ul>
+<li>I <em>file</em>, caratterizzati da un nome e da un contenuto testuale (classe derivata)</li>
+<li>Le <em>cartelle</em>, caratterizzate da un nome e da una lista di nodi contenuti (classe derivata)</li>
+</ul>
+</li>
+<li>Creare una gerarchia delle tre classi: <code>Node</code>, <code>File</code>, <code>Folder</code><ul>
+<li>Le cartelle dovrebbero avere un metodo <code>add_node(n: Node)</code></li>
+</ul>
+</li>
+<li>Nel corpo principale del programma, istanziare ed organizzare vari nodi (senza input dell'utente)<ul>
+<li>Riprodurre la struttura raffigurata a fianco</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.5 Dimensione delle cartelle</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Aggiungere a tutti i nodi (es. 4.4) un metodo <code>size</code><ul>
+<li>Astratto nella classe base</li>
+<li>Per un file, restituisce la lunghezza del contenuto testuale</li>
+<li>Per una cartella, restituisce la somma delle dimensioni dei nodi contenuti</li>
+</ul>
+</li>
+<li>Calcolare la dimensione della struttura precedente (es. 4.4), inventando dei contenuti per i file presenti</li>
+<li>Aggiungere inoltre a tutti i nodi un metodo <code>print(indent: int)</code>, per mostrare a terminale la struttura ad albero<ul>
+<li>Astratto nella classe base</li>
+<li>Mostra il nome di file e cartelle</li>
+<li>Indenta opportunamente i nodi, rispetto alla cartella che li contiene</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.6 Sierpinski carpet</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sierpinski-carpet.png">
+        
+      </figure><ul>
+<li>Disegnare un <em>frattale di Sierpinski</em>, di ordine <code>n</code> (scelto dall'utente)<ul>
+<li>Dato un quadrato, dividerlo in 9 parti uguali</li>
+<li>Colorare la parte centrale</li>
+<li>Riapplicare l'algoritmo alle restanti 8 parti</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.7 Lettura matrice</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>In un file è riprodotto il contenuto di una matrice di interi, riga per riga, con le celle separate da uno spazio...</li>
+</ul>
+<pre class="prettyprint" data-lang="File"><code>5 7 2 11
+1 3 12 9
+4 6 10 8
+</code></pre>
+<ul>
+<li>Leggere i numeri dal file e memorizzarli in una lista semplice (pseudo-matrice)</li>
+<li>Inferire le dimensioni della matrice (rows×cols) in base a:<ul>
+<li>Numero di righe del file</li>
+<li>Numero di valori nella prima riga</li>
+</ul>
+</li>
+<li>Visualizzare la matrice</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.8 Lettura in lista di liste</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Come esercizio precedente (4.7)</li>
+<li>Ma memorizzare gli interi in una lista di liste</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.9 Giro del cavallo (*)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/knight-moves.png">
+        
+      </figure><ul>
+<li>Su una scacchiera <code>NxN</code>, un cavallo parte da una casella d'angolo<ul>
+<li><code>N</code> scelto dall'utente</li>
+</ul>
+</li>
+<li>Ad ogni mossa, il cavallo si muove ad <em>L</em><ul>
+<li>Due caselle in avanti ed una di lato</li>
+</ul>
+</li>
+<li>Trovare un percorso che visiti tutte le caselle, senza ripetizioni<ul>
+<li>Usare il <em>backtracking</em></li>
+</ul>
+</li>
+<li>Mostrare la scacchiera (in forma testuale), con l'ordine di visita di ogni casella</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 5</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esercizi C++</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/cpp-logo.jpg">
+        
+      </figure><ul>
+<li>1.1 Hello, user!</li>
+<li>1.4 Massimo, minimo, media</li>
+<li>2.2 Conteggio caratteri</li>
+<li>2.3 Area di un triangolo</li>
+<li>2.8 Potenza di vari valori</li>
+<li>3.6 Valori in file</li>
+<li>3.7 Maiuscole tra asterischi</li>
+<li>4.7 Lettura matrice</li>
+<li>4.8 Lettura in lista di liste</li>
+</ul>
+<blockquote></blockquote>
+<p>Es. 2.2. Indice contatore per una lettera <code>val</code> (di tipo <code>char</code>): <code>val - 'A'</code></p>
+<p>Es. 4.7. Per ogni riga letta, creare un <code>istringstream</code> e scorrerlo con un <code>while</code>:<br>
+<code>istringstream scanner{line}; while (scanner &gt;&gt; val) {/*...*/}</code></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Gioco con diversi personaggi<ul>
+<li>Fornita classe <code>Arena</code> per campo di gioco</li>
+<li>Fornita classe base astratta <code>Character</code> per personaggi</li>
+</ul>
+</li>
+<li>Creare sottoclassi di <code>Character</code> per personaggi specifici<ul>
+<li><em>Polimorfismo</em> per movimento</li>
+<li><em>Polimorfismo</em> per interazione reciproca</li>
+</ul>
+</li>
+<li>Ma ciclo principale, interazione con l'utente e grafica <em>fuori da queste classi</em><ul>
+<li>Funzionamento con grafica oppure con console testuale</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Bubble Bobble</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/bubble-bobble.png">
+        
+      </figure><ul>
+<li><em>Draghetto</em>: guidato dal giocatore<ul>
+<li>Si muove e salta sulle piattaforme</li>
+<li>Cade, fuori dalle piattaforme</li>
+<li>Muore se cade in fondo allo schermo</li>
+</ul>
+</li>
+<li><em>Piattaforme</em><ul>
+<li>Il draghetto ci atterra dall'alto</li>
+<li>Si possono attraversare dal basso verso l'alto</li>
+<li>Non si possono attraversare lateralmente</li>
+</ul>
+</li>
+<li><em>Avversari</em><ul>
+<li>Si muovono come il draghetto</li>
+<li>Ma scelgono casualmente la direzione</li>
+<li>Uccidono il draghetto se lo urtano</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Urto con piattaforma</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Se il draghetto entra nello spazio di una piattaforma, deve essere respinto</li>
+<li>Bisogna distinguere se l'urto avviene dall'alto, da sinistra, o da destra</li>
+</ul>
+<pre class="prettyprint" data-lang="pseudo-code"><code>if y2_dragon &lt;= y1_platform + DY:
+    y2_dragon = y1_platform
+    # the dragon is on *this one* platform, now
+elif x2_dragon &lt;= x1_platform + DX:
+    x2_dragon = x1_platform
+    # the dragon is at the left of the platform
+elif x1_dragon &gt;= x2_platform - DX:
+    x1_dragon = x2_platform
+    # the dragon is at the right of the platform
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esercizi C++</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/cpp-logo.jpg">
+        
+      </figure><ul>
+<li>3.1 Classe dei triangoli</li>
+<li>3.5 Gestione triangoli</li>
+<li>4.2 Classe dei rettangoli</li>
+<li>4.3 Cerchi e figure</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Bubble Bobble</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/bubble-bobble.png">
+        
+      </figure><ul>
+<li><em>Bolle</em><ul>
+<li>Lanciate in orizzontale dal draghetto</li>
+<li>Dopo un po' deviano verso l'alto</li>
+<li>Uccidono gli avversari che urtano</li>
+</ul>
+</li>
+<li><em>Secondo draghetto</em><ul>
+<li>Due giocatori, con l'uso di tasti diversi</li>
+</ul>
+</li>
+<li><em>Opzionalmente...</em><ul>
+<li>Le bolle catturano gli avversari e li portano in alto</li>
+<li>Le bolle scoppiano se toccate dal draghetto</li>
+<li>Punteggio, livelli, bonus ed estensioni <em>a fantasia</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>“Bella copia”</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/fair-copy.png">
+        
+      </figure><ul>
+<li><strong>Codice leggibile</strong><ul>
+<li><em>Costanti</em>, anzichè numeri “<em>magici</em>” sparsi nel codice</li>
+<li><em>Nomi esplicativi</em> e semplici</li>
+<li><em>Regole di stile</em>: <code>variable_name</code>, <code>function_name</code>, <code>ClassName</code>, <code>CONSTANT_NAME</code></li>
+<li><em>Commenti</em>, quando utili: <em>function annotation</em>, <em>docstring</em></li>
+</ul>
+</li>
+<li><strong>Codice ben organizzato</strong><ul>
+<li><em>No copia&amp;incolla</em> del codice: funzioni parametrizzate e/o cicli</li>
+<li><em>Programmazione strutturata</em>: preferibilmente <code>return</code> a fine funzione, cicli senza <code>break</code></li>
+<li><em>OOP</em>: <em>incapsulamento</em>, <em>ereditarietà</em>, <em>polimorfismo</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esercizi C++</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/cpp-logo.jpg">
+        
+      </figure><ul>
+<li>4.9 Giro del cavallo, in una classe C++</li>
+<li>4.3/2013 e 4.4/2013 Convertire il gioco del tris in C++</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Progetto 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 2</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Classe <em>C++</em> per incapsulare dati e regole di un gioco<ul>
+<li>Campi <em>privati</em> + metodi <em>pubblici</em> (e privati)</li>
+</ul>
+</li>
+<li>Inizialmente, I/O tramite console...<ul>
+<li>Ma ciclo principale e interazione con l'utente <em>fuori dalla classe</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Hitori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/hitori.svg"><img src="images/misc/hitori-completed.svg">
+        
+      </figure><ul>
+<li>Regole<ul>
+<li>Color cells so no number appears more than once in a row or column</li>
+<li>The sides of black cells never touch</li>
+<li>White cells form a continuous network</li>
+</ul>
+</li>
+<li>Ad ogni mossa, permettere all'utente di annerire un numero, oppure cerchiarlo<ul>
+<li>A console, mostrare un <code>#</code> dopo i numeri anneriti, un <code>!</code> dopo i numeri cerchiati</li>
+<li>Controllare la violazione delle regole</li>
+<li>Controllare il completamento del gioco (ogni numero: correttamente annerito o cerchiato) </li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p><a href="http://www.nikoli.com/en/puzzles/hitori">http://www.nikoli.com/en/puzzles/hitori</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Bozza della classe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>class HitoriPuzzle {
+public:
+    HitoriPuzzle();                  // default board
+    void mark_black(int x, int y);
+    void mark_circled(int x, int y);
+    bool is_black(int x, int y);
+    bool is_circled(int x, int y);
+    int get_number(int x, int y);
+    bool wrong();                    // is some rule violated?
+    bool solved();                   // is puzzle completed?
+    string str();                    // string representation
+    // ...
+private:
+    // ...
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di campi privati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>class HitoriPuzzle {
+public:
+    // ...
+private:
+    // ...
+    int cols_ = 5;
+    int rows_ = 5;
+    vector&lt;int&gt; numbers_ = {1, 5, 3, 1, 2, 
+                            5, 4, 1, 3, 4,
+                            3, 4, 3, 1, 5,
+                            4, 4, 2, 3, 3,
+                            2, 1, 5, 4, 4};
+    vector&lt;int&gt; annotations_ = { /* ... */ };  // NONE, BLACK, or CIRCLE
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfaccia grafica, opzionale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/recycle.png">
+        
+      </figure><ul>
+<li>Aggiungere una <em>interfaccia grafica</em> al progetto<ul>
+<li>Creare una sottoclasse di <code>QWidget</code> o <code>QMainWindow</code></li>
+<li>Interfaccia adattabile a dimensioni diverse del gioco</li>
+<li>Ad ogni click, cambiare l'annotazione della cella (nero / cerchio / niente)</li>
+<li>Mostrare i numeri confermati su sfondo verde, anzichè cerchiati</li>
+</ul>
+</li>
+<li><strong>Riuso</strong> - Classe del puzzle (<em>modello</em>) definita in modo generico<ul>
+<li>Usabile sia da interfaccia grafica che da console</li>
+</ul>
+</li>
+<li>Inoltre, permettere di salvare o caricare una partita<ul>
+<li>Lettura e scrittura su stream nella classe del puzzle</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Bozza della GUI</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>class HitoriGui : public QMainWindow {
+    Q_OBJECT
+public:
+    HitoriGui(HitoriPuzzle* puzzle);
+private:
+    void handle_click(int x, int y);
+    void update_button(int x, int y);
+    void update_all_buttons();
+
+    vector&lt;QPushButton*&gt; buttons_;
+    HitoriPuzzle* puzzle_;
+};
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Suggerimenti</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Mosse suggerite, opzionali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/artificial-intelligence.png">
+        
+      </figure><ul>
+<li>Comando per cerchiare automaticamente i numeri attorno alle celle nere</li>
+<li>Comando per annerire automaticamente le celle con numeri già cerchiati nella stessa riga o colonna</li>
+<li>Opzione per nascondere i numeri non ripetuti nè sulla stessa riga nè sulla stessa colonna (inutili)</li>
+<li>Su richiesta, suggerire all'utente la prossima mossa, considerando:<ul>
+<li>Adiacenza vietata tra celle nere</li>
+<li>Necessaria connessione tra celle bianche</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Es. Se si trovano due celle adiacenti con lo stesso valore, altre celle sulla stessa riga o colonna con lo stesso valore possono essere annerite</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Soluzione ricorsiva, opzionale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>bool HitoriPuzzle::solve_recursive(int i) {
+    // mark_auto();  // mark all obvious black and circled cells
+    // is there an undecided cell after i?
+    while (i &lt; annotations_.size() &amp;&amp; annotations_[i] != NONE) ++i;
+    if (i &lt; annotations_.size() &amp;&amp; !wrong()) {
+        auto copy = *this;  // save current status
+        for (auto annotation : {BLACK, CIRCLE}) {
+            annotations_[i] = annotation;
+            if (solve_recursive(i + 1)) return true;
+            *this = copy;  // backtracking
+        }
+    }
+    return solved();
+}
+</code></pre>
+<p>È richiesta l'implementazione dei metodi <code>wrong()</code> e <code>solved()</code></p></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

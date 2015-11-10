@@ -1,0 +1,1245 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Esercizi 2011</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/misc/geek-girl.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione alla programmazione</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.1 Cerchio</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/greek-pi.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente il valore del raggio <code>r</code> di un cerchio</li>
+<li>Mostrare il valore dell'area e della circonferenza</li>
+</ul>
+<blockquote></blockquote>
+<p>Definire una costante <code>PI = 3.14159</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.2 Condizioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/three-brothers.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente tre numeri interi: <code>a</code>, <code>b</code>, <code>c</code></li>
+<li>Determinare qual è il minore dei tre</li>
+</ul>
+<blockquote></blockquote>
+<p>Controllare prima di tutto se <code>a</code> è minore degli altri due, altrimenti controllare qual è il minore tra <code>b</code> e <code>c</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.3 Cubi, ciclo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/rock-cubes.png">
+        
+      </figure><ul>
+<li>Leggere, attraverso un ciclo, una sequenza di numeri</li>
+<li>Per ciascun numero immesso, mostrare il suo valore al cubo</li>
+<li>La sequenza termina quando l'utente immette il valore 0</li>
+</ul>
+<blockquote></blockquote>
+<p>Provare ad usare sia il ciclo while che il ciclo do-while</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.4 Caratteri ASCII</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/characters.png">
+        
+      </figure><ul>
+<li>Leggere un carattere</li>
+<li>Determinare se è una cifra, una lettera minuscola, oppure una lettera maiuscola<blockquote></blockquote>
+</li>
+</ul>
+<p>Nei confronti non usare esplicitamente i codici ASCII,
+ma simboli tra apici singoli (<code>'a'</code>, <code>'z'</code> ecc.)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.5 Aritmetica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/calculator.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente due valori interi <code>a</code>, <code>b</code></li>
+<li>Mostrare il risultato delle seguenti operazioni:<ul>
+<li><code>a + b</code></li>
+<li><code>a – b</code></li>
+<li><code>a * b</code></li>
+<li><code>a / b</code></li>
+<li><code>a % b</code></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Ripetere le prime 4 operazioni usando dei <code>float</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.6 Lunghezza parole</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/measure-tape.png">
+        
+      </figure><ul>
+<li>Leggere una sequenza di parole, attraverso un ciclo,</li>
+<li>La sequenza termina quando l'utente immette la parola <code>"end"</code></li>
+<li>Visualizzare la lunghezza media delle parole</li>
+</ul>
+<blockquote></blockquote>
+<p>Lunghezza di una variabile <code>word</code> di tipo stringa: <code>word.size()</code></p>
+<p>Provare ad usare sia il ciclo <code>while</code> che il ciclo <code>do-while</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.7 Fattoriale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere un numero intero positivo <code>n</code></li>
+<li>Calcolare il fattoriale del numero</li>
+</ul>
+<blockquote></blockquote>
+<p>Moltiplicare tra loro i primi <code>n</code> numeri</p>
+<p>Memorizzare in una variabile il risultato parziale, ad ogni ciclo, moltiplicarla per il nuovo numero</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.1 Conversione gradi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/thermometer.png">
+        
+      </figure><ul>
+<li>Visualizzare la tabella di conversione tra gradi centigradi e Fahrenheit</li>
+<li>Intervallo tra 0 e 100°C, a passi di un grado</li>
+<li>Scrivere una coppia di valori su ogni riga</li>
+</ul>
+<blockquote></blockquote>
+<p>Conversione: F = 32 + (9/5)·C</p>
+<p><code>cout &lt;&lt; setw(6) &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; x</code> <br>
+<code>x</code>: almeno 6 posti, 2 decimali</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.2 Triangolo di cifre</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere un numero intero positivo <code>n</code></li>
+<li>Per ciascun valore <code>x</code> tra <code>1</code> ed <code>n</code>...</li>
+<li>Stampare una riga con <code>x</code> ripetizioni di <code>x</code></li>
+</ul>
+<pre class="prettyprint" data-lang="output"><code>1
+22
+333
+4444
+</code></pre>
+<blockquote></blockquote>
+<p>Usare due cicli <code>for</code> annidati</p>
+<p>All'inizio non considerare <code>n</code>, ma fissare <code>x</code> e scrivere una sola riga: <code>x = 3</code> → “<code>333</code>”</p>
+<p>Poi racchiudere tutto in un ciclo <code>for</code> esterno</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.3 Testo, lettere</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere una riga di testo<ul>
+<li><code>string line; getline(cin, line);</code></li>
+</ul>
+</li>
+<li>Contare il numero di lettere maiuscole ed il numero di lettere minuscole presenti</li>
+</ul>
+<blockquote></blockquote>
+<p><code>line.size()</code> è la lunghezza di <code>line</code></p>
+<p><code>line[i]</code> è il <code>char</code> in posizione <code>i</code></p>
+<p>Attenzione: indice da 0 a <code>size-1</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.4 Lancio dadi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/dice.png">
+        
+      </figure><ul>
+<li>Due giocatori lanciano un dado a testa</li>
+<li>L'attaccante vince solo se ottiene un numero strettamente maggiore del difensore</li>
+<li>Simulare 100 tentativi di attacco e stimare la probabilità di successo dell'attaccante</li>
+</ul>
+<blockquote></blockquote>
+<p>Dado (pseudo-casuale): <code>1+rand()%6</code></p>
+<p>Per valori diversi, eseguire all'inizio: <code>srand(time(NULL))</code></p>
+<p>Librerie: <code>&lt;cstdlib&gt;</code>, <code>&lt;ctime&gt;</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.5 Interesse composto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/uncle-scrooge.png">
+        
+      </figure><ul>
+<li>Calcolare l'interesse composto di un certo capitale ad un certo tasso d'interesse, per un certo numero di anni (dati dall'utente)</li>
+<li>Es. per 100€ di capitale, l'interesse (4,5%) del primo anno sarà di 4,5€, da aggiungere al capitale</li>
+</ul>
+<p>code: output
+    Anni  Capitale
+    0     100.00
+    1     104.50
+    2     109.20
+    3     114.12
+    4     119.25
+    ...   ...</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.6 Maiuscolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/typewriter-caps-lock.jpg">
+        
+      </figure><ul>
+<li>Leggere un testo da tastiera</li>
+<li>Riscriverlo a console, ma convertito in maiuscolo</li>
+<li>Trasformare le sequenze di punteggiatura e spazi in un singolo trattino<ul>
+<li>Es. “<code>It's 2011... yet</code>” → “<code>IT-S-2011-YET</code>”</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Lettere minuscole vengono dopo le maiuscole: sottrarre la costante <code>'a'-'A'</code></p>
+<p>Segnare in un bool se l'ultimo char scritto è un trattino</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.7 Filtro caratteri</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/censorship.jpg">
+        
+      </figure><ul>
+<li>Leggere da tastiera una riga di testo</li>
+<li>Leggere da tastiera una stringa di caratteri da filtrare</li>
+<li>Visualizzare in output la riga di testo, ma con i caratteri da filtrare sostituiti da una '<code>X</code>'</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare due cicli <code>for</code> annidati</p>
+<p>Per ogni carattere della riga di testo, controllare se è diverso da tutti i caratteri della stringa di filtro</p>
+<p>Stampare quindi il carattere stesso, oppure una '<code>X</code>'</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 3</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.1 File, parentesi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/delete-key.png">
+        
+      </figure><ul>
+<li>Leggere da file un carattere alla volta</li>
+<li>Riscrivere il testo a console, ma...</li>
+<li>Escludere il testo tra parentesi quadre '[', ']'</li>
+</ul>
+<blockquote></blockquote>
+<p>Aegnare in un bool se si è letta una quadra aperta, ma non ancora una quadra chiusa</p>
+<p>Se necessario, provare prima a leggere i caratteri da console</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.2 Array, precalcolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sin-cos.png">
+        
+      </figure><ul>
+<li>Riempire un array con i valori di <code>sin(x)</code><ul>
+<li>360 elementi, indice intero tra 0 e 359</li>
+<li><code>sin</code> in libreria <code>&lt;cmath&gt;</code>, opera su radianti</li>
+<li>Ottimizzazione opz.: basta calcolare <code>sin(x)</code> per ogni <code>x</code> intero tra 0° e 90° e poi sfruttare le simmetrie di <code>sin</code></li>
+</ul>
+</li>
+<li>Chiedere ripetutamente un angolo all'utente, visualizzare il corrispondente valore precalcolato</li>
+<li>Scrivere in un file tutti i valori dell'array</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.3 Vettore</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere da file una sequenza di numeri, di lunghezza arbitraria, fino alla fine del file<ul>
+<li>Tutti i numeri in un vettore <code>v</code> → <code>n = v.size()</code></li>
+</ul>
+</li>
+<li>Ripetutamente, chiedere all'utente una coppia di numeri, <code>a</code> e <code>b</code>, compresi tra <code>1</code> ed <code>n</code></li>
+<li>Visualizzare la somma dei valori della sequenza iniziale con indice compreso tra <code>a-1</code> e <code>b-1</code></li>
+</ul>
+<blockquote></blockquote>
+<p>L'utente preferisce indici tra <code>1</code> ed <code>n</code> <br>
+Invece il vettore richiede indici tra <code>0</code> e <code>n-1</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.4 Matrice, coppie</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/memory.png">
+        
+      </figure><ul>
+<li>Allocare una matrice, dimensione <code>rows×cols</code><ul>
+<li><code>rows</code> e <code>cols</code> scelti dall'utente, ma celle in numero pari</li>
+<li><code>vector&lt; vector&lt;char&gt; &gt; matrix(rows, vector&lt;char&gt;(cols));</code></li>
+<li><code>vector&lt;char&gt; matrix(rows*cols); // pseudo...</code></li>
+</ul>
+</li>
+<li>Inserire in ordine le prime lettere dell'alfabeto, ciascuna ripetuta due volte</li>
+<li>Ripetutamente...<ul>
+<li>scegliere due celle a caso</li>
+<li>e scambiarne il contenuto</li>
+</ul>
+</li>
+<li>Mostrare la matrice risultante</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.5 Interpolazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/interpolation.png">
+        
+      </figure><p>-Leggere da un file una serie di numeri reali e memorizzarli in un vettore
+    - Es. dati dall'esercizio 3.2
+- Suppore che i numeri rappresentino il valore di una certa funzione <code>f(x)</code>, per valori interi di <code>x</code>
+- Supporre <code>f</code> periodica, periodo = lunghezza del vettore
+- Usare l'interpolazione (e la periodicità) per calcolare f(x) per qualsiasi x reale</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.6 Map, record personali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/video-game-score.jpg">
+        
+      </figure><ul>
+<li>Leggere da un file la lista di record personali di un gioco, memorizzati in ordine arbitrario</li>
+<li>Su ogni riga:<ul>
+<li>Nome giocatore (testo, anche con spazi)</li>
+<li>Poi simbolo separatore '<code>:</code>'</li>
+<li>Infine punteggio (intero)</li>
+</ul>
+</li>
+<li>Ciclicamente, chiedere all'utente un nome e mostrargli il punteggio</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare una map</p>
+<p><code>getline(file, line, ':')</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.7 Dati su più colonne</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/data-table.png">
+        
+      </figure><ul>
+<li>Visualizzare la tabella di conversione °C/°F<ul>
+<li>Temperature tra -15 e 44°C</li>
+<li>5 coppie °C/°F per ogni riga</li>
+</ul>
+</li>
+<li>Riempire la prima colonna con tutte le temp. più basse, poi continuare nella seconda colonna...</li>
+</ul>
+<blockquote></blockquote>
+<p>Console usata sempre come macchina da scrivere (→, ↓) <br>
+Ma ∀ (x, y) si calcola la temperatura °C: <code>t=y+x·h-15</code> <br>
+Bastano due cicli for annidati, senza array</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 4</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.1 Funzione, ipotenusa</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/pythagorean-theorem.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione per il calcolo dell'ipotenusa di un triangolo rettangolo<ul>
+<li>Parametri: due cateti come <code>float</code></li>
+<li>Risultato: ipotenusa come <code>float</code></li>
+</ul>
+</li>
+<li>Nel main: chiedere all'utente due valori, poi invocare la funzione con questi parametri</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.2 Classe, punto cartesiano</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Scrivere una classe Point per rappresentare dei punti sul piano cartesiano<ul>
+<li>Coordinate cartesiane (x, y) in campi privati</li>
+<li>Metodi per ottenere e impostare la posizione</li>
+<li>Metodo per calcolare la distanza da un altro punto</li>
+</ul>
+</li>
+<li>Nel main, permettere ripetutamente all'utente di spostare uno dei due punti</li>
+<li>Mostrare sempre la posizione aggiornata dei punti e la loro distanza</li>
+</ul>
+<blockquote></blockquote>
+<p><code>cin</code> e <code>cout</code> fuori dalla classe!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.3 Coordinate polari</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/trigonometry.svg">
+        
+      </figure><ul>
+<li>Aggiungere alla classe dell'esercizio precedente...</li>
+<li>Metodi per ottenere le coordinate polari del punto</li>
+<li>Un metodo per impostare la posizione, fornendo le coordinate polari<blockquote></blockquote>
+</li>
+</ul>
+<p>Memorizzare internamente solo le coordinate cartesiane</p>
+<p><code>ρ = √(x 2 +y 2 ), θ = atan2(y, x)</code></p>
+<p><code>x = ρ*cos θ , y = ρ *sinθ</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.4 Vettore di punti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Gestire un vettore di puntatori a punti<ul>
+<li>vector<Point*> points;</li>
+</ul>
+</li>
+<li>Ripetutamente chiedere all'utente di scegliere tra:<ul>
+<li>Aggiunta di un nuovo punto <br>
+Point* pt = new Point(x, y); // ...</li>
+<li>Eliminazione di un punto esistente (deallocazione memoria + rimozione puntatore)</li>
+<li>delete points[i]; // ...</li>
+<li>Calcolo della distanza tra due punti scelti dall'utente</li>
+</ul>
+</li>
+<li>Al termine di ogni operazione dell'utente, visualizzare la posizione attuale di tutti i punti</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.5 Lancio dadi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/risk-board-game.png">
+        
+      </figure><ul>
+<li>Come es. 2.4, ma ad ogni giocata l'attaccante (A) lancia 3 dadi, il difensore (D) 2 dadi</li>
+<li>Una funzione (due vector come parametri) confronta a coppie i dadi: il dado migliore di A con quello migliore di D, poi il dado medio di A con quello peggiore di D</li>
+<li>I dadi di ciascun giocatore vanno ordinati:<ul>
+<li><code>sort(v.begin(), v.end())</code></li>
+</ul>
+</li>
+<li>Stimare la probabilità dei diversi risultati<ul>
+<li>0, 1 o 2 punti dell'attaccante</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Ripetere l'esperimento con diversi numeri di dadi</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.6 Classe, coppie</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/memory.png">
+        
+      </figure><ul>
+<li>Classe per incapsulare le funzionalità dell'es. 3.4</li>
+<li>Il costruttore riceve rows, cols (dimensioni) e alloca la matrice<ul>
+<li>Es. vettore pseudo-multidimensionale tra i campi privati: <code>vector&lt;char&gt; matrix;</code></li>
+<li>In sezione di inizializzazione: <code>matrix(rows*cols)</code></li>
+</ul>
+</li>
+<li>Metodo per il riempimento ordinato</li>
+<li>Metodo per il mescolamento</li>
+<li>Metodo per la stampa dello stato su generico stream<ul>
+<li>Parametro <code>ostream&amp; out</code>, passato per riferimento</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.7 Zig zag</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/zigzag.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione per riempire di numeri crescenti una matrice</li>
+<li>Seguire il percorso a zig-zag suggerito nella figura a fianco</li>
+<li>Dimensioni indicate dall'utente a runtime</li>
+</ul>
+<blockquote></blockquote>
+<p>Tenere traccia della direzione attuale (<em>∆y</em>, <em>∆x</em>)</p>
+<p>Avanzare fino al bordo, poi invertire la direzione</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 5</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.1 Classe, trova le coppie</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/memory.png">
+        
+      </figure><ul>
+<li>Aggiungere alla classe dell'es. 4.6...</li>
+<li>Metodo per la mossa: due celle come parametri</li>
+<li>Obiettivo: trovare le coppie</li>
+<li>Metodo per mostrare lo stato<ul>
+<li>Coppie già indovinate: visibili</li>
+<li>Ultime celle scelte: visibili</li>
+<li>Per tutte le altre celle: '?'</li>
+</ul>
+</li>
+<li>Metodo per controllare la conclusione (<code>bool</code>)</li>
+</ul>
+<blockquote></blockquote>
+<p>Matrice di <code>bool</code> per segnare le posizioni indovinate</p>
+<p>Oppure distinguere maiuscole e minuscole...</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.2 Bisezione, sqrt</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sqrt-bisection.png">
+        
+      </figure><p>Scrivere una nuova funzione sqrt
+Parametro x e risultato di tipo float
+Restituire risultato con errore minore di 0.0001
+In un ciclo, trovare approssimazioni successive:
+Due variabili low, high: inizio e fine intervallo di stima
+(intervallo iniziale: da 0 ad x, oppure da 0 ad 1, se x&lt;1)
+Si pone la stima y a metà intervallo
+Se y*y - x &gt; 0, nel seguito si considera solo la prima
+metà dell'intervallo (da low ad y)
+Altrimenti solo la seconda metà (da y ad high)
+Ad ogni iterazione si dimezza l'intervallo residuo</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.3 Ricorsione, sqrt</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sqrt-bisection.png">
+        
+      </figure><p>Implementazione ricorsiva della funzione sqrt, con il
+metodo della bisezione (come esercizio 5.2)
+Parametro x: float
+Parametro inizio intervallo di stima: float
+Parametro fine intervallo di stima: float
+Bisezione: invocare ad ogni livello la funzione su un
+intervallo dimezzato</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.4 Aggregazione, cerchi concentrici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p>Scrivere una classe per rappresentare cerchi
+center: puntatore a Point (es. 4.2)
+radius: float
+Costruttore con parametri: centro (ptr) e raggio
+Metodi per calcolo area e perimetro
+Gestire un vettore di puntatori a punti ed un vettore di
+puntatori a cerchi
+Centro dei cerchi: uno dei punti del primo vettore
+Diversi cerchi possono condividere lo stesso centro
+Cambiando le coordinate di un singolo punto...
+tutti i cerchi che lo hanno come centro risultano spostati</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.5 Composizione, poligono</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p>Point, metodi di lettura/scrittura stato su stream
+void read(istream&amp; in);
+void write(ostream&amp; out);
+Scrivere una classe per rappresentare poligoni
+Vertici (punti) non condivisi con altri oggetti
+Metodi per lettura/scrittura di tutti i vertici su stream
+Metodo per calcolare il perimetro
+Distruttore per deallocare eventualmente i vertici
+Istanziare un poligono
+Leggere i vertici inseriti da console, mostrare il perimetro,
+infine salvare i vertici su file</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.6 Ordinamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p>Chiedere all'utente il nome di uno o più file
+Leggere le parole presenti in questi file, memorizzarle
+tutte in un vettore v (possibilmente senza ripetizioni)
+Mostrare a schermo le N parole più lunghe in
+assoluto, in ordine decrescente di lunghezza
+Chiedere all'utente N
+Scrivere una funzione booleana order che, dati due parametri
+di tipo stringa, stabilisca se sono ordinati (per lunghezza)
+count(v.begin(), v.end(), x); // is x in v?
+sort(v.begin(), v.end(), order); // sort v</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.7 Notazione polacca</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p>Leggere una riga di testo in una stringa
+Scrivere una funzione che valuti la stringa come una
+espressione, nella forma: "+ 2 7" (=9)
+Gli operandi possono essere a loro volta espressioni:
+"+ * 3 4 15" (=27)
+Scrivere una seconda funzione che trasformi
+l'espressione nell'abituale notazione infissa:
+"((3 * 4) + 15)"
+Usare la ricorsione
+Supporre che i “token” siano tutti separati da spazio
+e che gli operatori abbiano tutti cardinalità fissa</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Classe</strong> per incapsulare dati e regole di un gioco<ul>
+<li><strong>Campi privati</strong> + <strong>metodi pubblici</strong> (e <em>privati</em>)</li>
+</ul>
+</li>
+<li>Inizialmente, I/O tramite console...<ul>
+<li>Ma ciclo principale e interazione con l'utente vanno tenuti <em>al di fuori della classe</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>“Akari” - Light up</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/akari.svg">
+        
+      </figure><p>Scopo: disporre delle
+lampade (cerchi), fino ad
+illuminare tutte le celle
+Una lampada illumina le celle sulla sua riga e la sua
+colonna, fino ad una cella nera o al bordo esterno
+Ogni cella bianca può ospitare una lampada, ma:
+Un numero indica quante lampade devono trovarsi
+nelle celle adiacenti (in orizzontale e verticale)
+Due lampade non possono illuminarsi a vicenda</p>
+<p><a href="http://www.nikoli.com/en/puzzles/bijutsukan/rule.html">http://www.nikoli.com/en/puzzles/bijutsukan/rule.html</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Akari - Metodi base per...</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p>Inserire una lampada in una cella (bulb)
+Controllare se le regole sono violate
+Controllare se il gioco è stato risolto
+Scrivere lo stato del gioco su uno stream generico
+Per ciascuna cella, indicare anche se è illuminata
+Aggiungere inoltre metodi per...
+Leggere lo stato del gioco da uno stream generico
+Marcare una cella con un punto (dot)
+L'utente intende che lì non può trovarsi una lampada</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Akari - Bozza della classe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p>class AkariPuzzle
+{
+public:
+AkariPuzzle();
+int getRows();
+int getColumns();
+bool isSolved();
+bool isWrong();
+char get(int y, int x);
+void putBulb(int y, int x);
+void putDot(int y, int x);
+void read(istream&amp; in);
+void write(ostream&amp; out);
+private:
+// ...
+}</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Akari - Gui</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/recycle.png">
+        
+      </figure><ul>
+<li>Aggiungere una <strong>interfaccia grafica</strong> al progetto<ul>
+<li>Creare una sottoclasse di <code>QWidget</code> o <code>QMainWindow</code></li>
+<li>Evidenziare il giocatore di turno e le mosse possibili</li>
+<li>Permettere di salvare/caricare una partita in un file</li>
+<li>Interfaccia adattabile a dimensioni diverse del gioco</li>
+</ul>
+</li>
+<li><strong>Riuso</strong> - Classe di modello definita in modo generico<ul>
+<li>Usabile sia da interfaccia grafica che da console</li>
+</ul>
+</li>
+</ul>
+<p>Aggiungere una interfaccia grafica al progetto
+Creare una sottoclasse di QWidget o QMainWindow
+Interfaccia adattabile a dimensioni diverse del gioco
+Riuso - Definire la classe di modello per le partite in
+modo generico
+Usabile sia da interfaccia grafica che da console
+Permettere di aggiungere/rimuovere lampade e punti
+Sono fornite due classi per gestire anche
+i click con il tasto destro del mouse
+(RightButtonGroup, sulla pagina del corso)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>“Bella copia”</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/fair-copy.png">
+        
+      </figure><ul>
+<li>Codice leggibile e ben organizzato</li>
+<li>Usare <strong>costanti</strong>, anziché valori numerici “<em>magici</em>” sparsi nel codice</li>
+<li>Nomi semplici ed <strong>esplicativi</strong> + regole di <strong>stile</strong>:<ul>
+<li><code>nomeVariabile</code>, <code>nomeFunzione</code>, <code>NomeClasse</code>, <code>NOME_COSTANTE</code></li>
+</ul>
+</li>
+<li><strong>Indentazione</strong>, parentesi ecc.</li>
+<li><strong>No copia&amp;incolla</strong> del codice<ul>
+<li>Funzioni parametrizzate e/o cicli</li>
+</ul>
+</li>
+<li>Programmazione strutturata<ul>
+<li>Un solo <code>return</code>, a fine funzione; niente <code>break</code> nei cicli</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Mosse suggerite</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/artificial-intelligence.png">
+        
+      </figure><p>Metodo che calcola e
+suggerisce una mossa
+1. Controllare i vincoli numerici
+Vincolo N già circondato da N lampade:
+marcare con punti tutte le celle libere
+Vincolo N circondato da M lampade ed esattamente N-M
+celle libere: posizionare lampade in tutte le celle libere
+2. Cercare una cella libera (vuota e non illuminata),
+senza altre celle libere visibili (possibili fonti di luce)
+3. Cercare una cella marcata con punto non illuminata,
+con una sola cella libera visibile</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Estensioni opzionali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/artificial-intelligence.png">
+        
+      </figure><p>Suggerire mosse più difficili
+Celle d'angolo nei vincoli
+Vincoli incrociati (in celle vicine, in diagonale)
+Verificare se una possibile mossa porta in un vicolo cieco
+Verificare se entrambe le mosse (lampada / punto) in
+cella X producono un risultato invariante in cella Y
+Migliorare l'interfaccia utente
+Inserire un menù e/o una barra degli strumenti
+Comandi per apertura e salvataggio di una partita
+Comandi per suggerimenti di diversa difficoltà
+Ereditare da QMainWindow</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Vicolo cieco</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p>void AkariPuzzle::solveCuldesac(int y, int x) {
+AkariPuzzle copyBulb = <em>this; // copy the whole game
+copyBulb.putBulb(y, x);
+copyBulb.solveSimple(); // take all obvious moves (1+2+3)
+AkariPuzzle copyDot = </em>this; // copy the whole game
+copyDot.putDot(y, x);
+copyDot.solveSimple(); // take all obvious moves (1+2+3)
+if (copyBulb.isWrong()) {
+putDot(y, x); // bulb in x, y is a culdesac, put dot
+} else if (copyDot.isWrong()) {
+putBulb(y, x); // dot in x, y is a culdesac, put bulb
+} else {
+// find invariant cells elsewhere in the table
+// (set with the same value, in both cases)
+}
+}</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Enumerare tutte le soluzioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/artificial-intelligence.png">
+        
+      </figure><p>// Adapt the following code to find <em>all</em> solutions
+// (e.g. a random game should have one single solution)
+void AkariPuzzle::solveRecursive(int i) {
+solveSimple(); // take all obvious moves (1+2+3)
+// is there an empty cell after i?
+while (i &lt; table.size() &amp;&amp; table[i] != EMPTY) ++i;
+if (i &lt; table.size() &amp;&amp; !isWrong()) {
+AkariPuzzle copy = <em>this; // save current status
+for (int m = 0; m &lt;= 1 &amp;&amp; !isSolved(); ++m) {
+if (m == 0) putBulb(i/columns, i%columns);
+else putDot(i/columns, i%columns);
+solveRecursive(i + 1);
+if (!isSolved()) </em>this = copy; // backtracking
+}
+}
+}</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Progetto 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 2</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/invaders.png">
+        
+      </figure><p>Realizzare un gioco con diversi personaggi
+Classe per partita
+Classe base astratta (e sottoclassi) per personaggi
+Polimorfismo nei vari personaggi, per:
+Il movimento
+L'interazione
+reciproca</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Frogger - Strada</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      </article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Frogger - Fiume</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      </article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Frogger - Estensioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      </article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Frogger - Opzionale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      </article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

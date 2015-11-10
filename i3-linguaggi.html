@@ -1,0 +1,979 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linguaggi formali</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/comp/attack.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione all'informatica</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi formali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Presenti in tutte le applicazioni<ul>
+<li>Linguaggi di programmazione</li>
+<li>Linguaggi di marcatura (es. HTML, Latex)</li>
+<li>Interazione uomo macchina (es. Google, Zork)</li>
+</ul>
+</li>
+<li>Fondamentali nel software di sistema<ul>
+<li>Compilatori</li>
+<li>Interpreti …</li>
+</ul>
+</li>
+<li>Paradigmatici nella teoria<ul>
+<li>Molti problemi riconducibili a quello dell'<em>appartenenza</em>: una stringa appartiene ad un linguaggio?</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Alfabeti e stringhe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Alfabeto <code>Σ</code>: insieme di simboli</li>
+<li>Stringa <code>s</code>: sequenza di simboli di <code>Σ</code><ul>
+<li><code>s ∈ Σ*</code>, insieme di tutte le stringhe</li>
+<li><code>ε</code>: stringa vuota</li>
+<li><code>|s|</code>: lunghezza della stringa <code>s</code></li>
+</ul>
+</li>
+<li>Linguaggio <code>L ⊆ Σ*</code><ul>
+<li>Sottoinsieme di tutte le stringhe possibili</li>
+<li>Grammatica: regole formali per definire le “<em>stringhe ben formate</em>” di L</li>
+</ul>
+</li>
+<li>Esempio: numeri romani da 1 a 1000<ul>
+<li>Alfabeto <code>{I, V, X, L, C, D, M}</code> + regole...</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Concatenazione di stringhe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Operazione di concatenazione <code>•</code><ul>
+<li>Propr. associativa: <code>(x • y) • z = x • (y • z)</code></li>
+<li>Non commutativa: <code>x • y ≠ y • x</code></li>
+<li><code>Σ*</code> chiuso rispetto a <code>•: Σ* x Σ* → Σ*</code></li>
+</ul>
+</li>
+<li>Potenza<ul>
+<li><code>x<sup>n</sup> = x • x • x • x … (n volte)</code></li>
+</ul>
+</li>
+<li>Elemento neutro <code>ε</code><ul>
+<li>Stringa vuota, <code>∀ x ∈ Σ*, ε • x = x • ε = x</code></li>
+</ul>
+</li>
+<li><code>&lt;Σ*, •, ε&gt;</code>: monoide</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Definizione di linguaggi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Approccio <strong>algebrico</strong>: linguaggio costruito a partire da linguaggi più elementari, con operazioni su linguaggi</li>
+<li>Approccio <strong>generativo</strong>: grammatica, regole per la generazione di stringhe appartenenti al linguaggio</li>
+<li>Approccio <strong>riconoscitivo</strong>: macchina astratta o algoritmo di riconoscimento, per decidere se una stringa appartiene o no al linguaggio</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Espressioni regolari</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Operazioni su linguaggi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>L<sub>1</sub></code> ed <code>L<sub>2</sub></code> linguaggi su <code>Σ*</code> (due insiemi di stringhe)</li>
+<li>Unione: <code>L<sub>1</sub> ∪ L<sub>2</sub> = {x ∈ Σ* : x ∈ L<sub>1</sub> ∨ x ∈ L<sub>2</sub>}</code></li>
+<li>Intersezione: <code>L<sub>1</sub> ∩ L<sub>2</sub> = {x ∈ Σ* : x ∈ L<sub>1</sub> ∧ x ∈ L<sub>2</sub>}</code></li>
+<li>Complementazione: <code>̅L<sub>1</sub> = {x ∈ Σ* : x ∉ L<sub>1</sub>}</code></li>
+<li>Concatenazione o prodotto: <code>L<sub>1</sub> • L<sub>2</sub> = {x ∈ Σ* : x = x<sub>1</sub> • x<sub>2</sub>, x<sub>1</sub> ∈ L<sub>1</sub>, x<sub>2</sub> ∈ L<sub>2</sub>}</code></li>
+<li>Potenza: <code>L<sup>n</sup> = L • L<sup>n-1</sup>, n≥1; L<sup>0</sup> = {ε}</code> per convenzione<ul>
+<li>Concatenazione di‌ <code>n</code> stringhe qualsiasi di <code>L</code></li>
+</ul>
+</li>
+<li>Stella di Kleene: <code>L* = ∪ L<sup>n</sup>, n = 0..∞</code><ul>
+<li>Chiusura riflessiva e transitiva di <code>L</code> rispetto a <code>•</code></li>
+<li>Concatenazione arbitraria di‌ stringhe di <code>L</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Espressioni regolari</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Dato un alfabeto <code>Σ</code>, chiamiamo <em>espressione regolare</em> una stringa <code>r</code> sull'alfabeto <code>Σ ∪ {+, *, (, ), •, Ø}</code> t.c.:<ul>
+<li><code>r = Ø</code>: linguaggio vuoto; oppure</li>
+<li><code>r ∈ Σ</code>: linguaggio con un solo simbolo; oppure</li>
+<li><code>r = s + t</code>: unione dei linguaggi <code>L(s)</code>, <code>L(t)</code>; oppure</li>
+<li><code>r = s • t</code>: concatenazione dei linguaggi <code>L(s)</code>, <code>L(t)</code>; oppure</li>
+<li><code>r = s*</code>: chiusura del linguaggio <code>L(s)</code></li>
+<li>(con <code>s</code> e <code>t</code> espressioni regolari; simbolo <code>•</code> spesso implicito)</li>
+</ul>
+</li>
+<li><em>Linguaggi regolari</em>: rappresentabili con espressioni regolari (<em>“regex”</em>)</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Regex nelle applicazioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Concatenazione di caratteri: <code>goal</code></li>
+<li>Unione tra espressioni (opzione): <code>one|two|three</code></li>
+<li>Un car. da un insieme (o no): <code>[a-z]</code>, <code>[^a-z0-9]</code></li>
+<li>Un carattere qualsiasi: <code>defin.tely</code></li>
+<li>Ripetizioni (0+, 1+, 0-1): <code>goo*al</code>, <code>go+al</code>, <code>goo?al</code></li>
+<li>Sottoespressione: <code>(left right )*halt</code></li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; text = 'Though not quickly, he run the 5th lap steadily.'
+&gt;&gt;&gt; re.findall(r'[a-z]+ly', text)
+['quickly', 'steadily']
+&gt;&gt;&gt; re.sub(r'([0-9])([a-z]+)', r'\1&lt;sup&gt;\2&lt;/sup&gt;', text)
+Though not quickly, he run the 5&lt;sup&gt;th&lt;/sup&gt; lap steadily.
+</code></pre>
+<p><a href="http://docs.python.org/3/library/re.html">http://docs.python.org/3/library/re.html</a> - <a href="http://www.zytrax.com/tech/web/regex.htm">http://www.zytrax.com/tech/web/regex.htm</a></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Grammatiche di Chomsky</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Grammatiche di Chomsky</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Grammatica <code>G = &lt; V<sub>T</sub>, V<sub>N</sub>, P, S &gt;</code><ul>
+<li><code>V<sub>T</sub></code>: alfabeto finito di simboli <strong>terminali</strong></li>
+<li><code>V<sub>N</sub></code>: ... <strong>non terminali</strong> (variabili, categorie sintattiche)</li>
+<li><code>V = V<sub>T</sub> ∪ V<sub>N</sub></code></li>
+<li><code>P</code>: insieme di <strong>produzioni</strong>, relaz. binarie <code>V* • V<sub>N</sub> • V* x V*</code> <br> <code>&lt;α, β&gt; ∈ P</code> si indica con <code>α → β</code></li>
+<li><code>S ∈ V<sub>N</sub></code>: <strong>assioma</strong></li>
+</ul>
+</li>
+<li><code>L(G)</code>: insieme delle stringhe di terminali ottenibili con finite operazioni di riscrittura<ul>
+<li>Applicazione delle regole di produzione, in vario modo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggio generato da G</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>Derivazione diretta</em> <code>⇒</code>: riscrittura di una stringa tramite applicazione di una regola di produzione</li>
+<li><em>Derivazione</em> <code>⇒*</code>: chiusura riflessiva e transitiva della derivazione diretta</li>
+<li><em>Forma di frase</em>: stringa <code>x t.c. x ∈ V*, S ⇒* x</code></li>
+<li><em>Linguaggio generato</em> da <code>G</code>: forme di frase con soli simboli terminali<ul>
+<li><code>L(G) = {x : x ∈ V<sub>T</sub>*, S ⇒* x}</code></li>
+</ul>
+</li>
+<li><em>Equivalenza</em> tra <code>G<sub>1</sub></code> e <code>G<sub>2</sub></code>: <code>L(G<sub>1</sub>) = L(G<sub>2</sub>)</code></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Grammatiche equivalenti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>G<sub>1</sub> = &lt;{a,b}, {S, A}, P, S&gt;</code>, con produzioni:<ul>
+<li><code>S → b</code> <br> <code>S → aA</code> <br> <code>A → aS</code></li>
+<li>… genera il linguaggio <code>{a<sup>n</sup>b : n pari}</code></li>
+</ul>
+</li>
+<li>Anche <code>G<sub>2</sub></code>, con produzioni:<ul>
+<li><code>S → Ab | b</code> <br> <code>A → aAa | aa</code></li>
+</ul>
+</li>
+<li>Ed anche <code>G3</code>:<ul>
+<li><code>S → Ab</code> <br> <code>A → Aaa | ε</code></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p><code>|</code> per raggruppare diverse produzioni di uno stesso non-terminale</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di generazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>G = &lt;{a, b, c}, {S, B, C}, P, S&gt;</code><ul>
+<li>(1) <code>S → aSBC</code></li>
+<li>(2) <code>S → aBC</code></li>
+<li>(3) <code>CB → BC</code></li>
+<li>(4) <code>aB → ab</code></li>
+<li>(5) <code>bB → bb</code></li>
+<li>(6) <code>bC → bc</code></li>
+<li>(7) <code>cC → cc</code></li>
+<li>… genera il linguaggio <code>{a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> : n≥1}</code></li>
+</ul>
+</li>
+<li>Esercizio: provare a generare <code>aaabbbccc</code><ul>
+<li>Soluzione: applicare 1-1-2-3-3-3-4-5-5-6-7-7</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Alberi di derivazione (sintattici)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Esempio di grammatica <strong>ambigua</strong>: due interpretazioni valide per <code>a + a * a</code><ul>
+<li><code>V<sub>T</sub> = {a, +, *, (, )};  V<sub>N</sub> = {E};</code></li>
+<li><code>E → E+E | E*E | (E) | a</code></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="images/comp/ambiguity.svg" /></p>
+<ul>
+<li>Grammatica non ambigua (con precedenza tra operatori)<ul>
+<li><code>E → E+T | T</code> <br> <code>T → T∗F | F</code> <br> <code>F → (E) | a</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classificazione di Chomsky</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/hierarchy.svg">
+        
+      </figure><ul>
+<li><em>Tipo 0</em>: grammatiche <strong>ricorsivam. enumerabili</strong> (RE)<ul>
+<li><code>αAβ → γ</code> (<em>non limitate</em>)</li>
+</ul>
+</li>
+<li><em>Tipo 1</em>: grammatiche <strong>contestuali</strong> (CS)<ul>
+<li><code>αAβ → αγβ</code></li>
+</ul>
+</li>
+<li><em>Tipo 2</em>: grammatiche <strong>non contestuali</strong> (CF)<ul>
+<li><code>A → γ</code></li>
+</ul>
+</li>
+<li><em>Tipo 3</em>: grammatiche <strong>regolari</strong> (REG)<ul>
+<li><code>A → aB</code> oppure <code>A → b</code></li>
+<li>Coincide con classe dei linguaggi definiti da <em>regex</em></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p><code>A, B ∈ V<sub>N</sub>; a, b ∈ V<sub>T</sub>; α, β, γ ∈ V*</code></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Linguaggi non contestuali</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi non contestuali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Controllo di <em>palindromi</em>, <em>bilanciamento di parentesi</em> e varie <em>simmetrie</em><ul>
+<li>Es.: <code>{a<sup>n</sup>b<sup>n</sup> : n≥1}</code> gen. da <code>S → aSb | ab</code> (CF)</li>
+<li>Ma non: <code>{a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> : n≥1}</code> (CS) (*)</li>
+</ul>
+</li>
+<li><strong>Linguaggi di programmazione</strong> comuni: grammatiche CF</li>
+<li>Definizione con notazione Extended <strong>Backus-Naur Form</strong> (EBNF)<ul>
+<li><code>{...}</code>: parte ripetibile (0+), <code>[...]</code>: parte opzionale, </li>
+<li><code>(...)</code>: raggruppamento, <code>|</code>: scelta</li>
+<li>Terminali tra virgolette</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>(*) Nell'es. visto, sostituire (3) con: (3a) <code>CB → HB</code>; (3b) <code>HB → HC</code>; (3c) <code>HC → BC</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi LL(1)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Sottoclasse dei linguaggi CF</li>
+<li>Ogni produzione relativa a stesso non-terminale (a sx)... <br> genera come primo simbolo un terminale diverso<ul>
+<li>No prefissi comuni, no ricorsione sinistra</li>
+</ul>
+</li>
+<li><strong>Recursive descent parser</strong>: analisi sintattica molto semplice ed efficiente<ul>
+<li>Basta “spiare” il simbolo di input successivo, per capire con certezza quale produzione applicare</li>
+</ul>
+</li>
+<li><em>Polish prefix notation</em><ul>
+<li>Es.: <code>* + 1 2 - 3 2</code> ⇒ (in forma infissa) <code>(1 + 2) * (3 - 2)</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="ebnf"><code>expr = number | "+" expr expr | "-" expr expr | "*" expr expr | "/" expr expr
+number = digit {digit}
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Espressioni infisse</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Grammatica equiv. LL(1), ma senza precedenza tra operatori</li>
+<li>Provare a generare <code>2 + 3 * 3</code></li>
+</ul>
+<pre class="prettyprint" data-lang="ebnf"><code>expr = term {( "+" | "-" | "*" | "/" ) term}
+term = number | "(" expr ")" | "-" term
+</code></pre>
+<ul>
+<li>Grammatica equiv. LL(1), con precedenza tra operatori</li>
+</ul>
+<pre class="prettyprint" data-lang="ebnf"><code>expr = term {( "+" | "-" ) term}
+term = factor {( "*" | "/" ) factor}
+factor = number | "(" expr ")" | "-" term
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pumping lemma REG</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/pumping-lemma-3.svg">
+        
+      </figure><ul>
+<li>Formalmente, <code>∀ L</code> regolare...<ul>
+<li><code>∃ k t.c. ∀ z ∈ L, |z| ≥ k</code></li>
+<li><code>∃ u, v, w, |uv| ≤ k, |v| ≥ 1 t.c.</code></li>
+<li><code>z = uvw, uv<sup>i</sup>w ∈ L, ∀ i ≥ 0</code></li>
+</ul>
+</li>
+<li>In ogni stringa abbastanza lunga,<ul>
+<li>c'è una parte che si può ripetere,</li>
+<li>generando un'altra stringa di <code>L</code></li>
+</ul>
+</li>
+<li>Uno stesso non-terminale, per un input abbastanza lungo, deve comparire più volte nell'albero sintattico …<ul>
+<li>Un Automa a Stati Finiti (*), per un input abbastanza lungo, torna in uno stato già visitato …</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Pumping lemma CF</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/pumping-lemma-2.svg">
+        
+      </figure><ul>
+<li>Formalmente, <code>∀ L</code> non contestuale...<ul>
+<li><code>∃ k t.c. ∀ z ∈ L, |z| ≥ k</code></li>
+<li><code>∃ u, v, w, x, y, |vwx| ≤ k, |vx| ≥ 1 t.c.</code></li>
+<li><code>z = uvwxy, uv<sup>i</sup>wx<sup>i</sup>y ∈ L, ∀ i ≥ 0</code></li>
+</ul>
+</li>
+<li>In ogni stringa abbastanza lunga,<ul>
+<li>ci sono due parti che si possono</li>
+<li>ripetere assieme, restando in <code>L</code></li>
+</ul>
+</li>
+<li>Uno stesso non-terminale, per un input abbastanza lungo, deve comparire più volte nell'albero sintattico …</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Corollari dei due pumping lemma</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>⇒ <code>L = {a<sup>n</sup>b<sup>n</sup> : n ≥ 0}</code> non è REG<ul>
+<li>Si prende <code>a<sup>m</sup>b<sup>m</sup>, con m &gt; k ⇒ |uv| &lt; m</code>, sono tutte <code>a</code>…</li>
+</ul>
+</li>
+<li>⇒ <code>L = {a<sup>n</sup>b<sup>n</sup>c<sup>n</sup> : n ≥ 0}</code> non è CF<ul>
+<li>Si prende <code>a<sup>m</sup>b<sup>m</sup>c<sup>m</sup>, con m &gt; k ⇒ |vwx| &lt; m</code></li>
+<li>Se <code>v</code> ed <code>x</code> con più simboli diversi, <code>uv<sup>2</sup>wx<sup>2</sup>y</code> con simboli mescolati</li>
+<li>Se <code>v</code> ed <code>x</code> con un solo simbolo, <code>uv<sup>2</sup>wx<sup>2</sup>y</code> con numero diverso di <code>a</code>, <code>b</code>, <code>c</code></li>
+<li>In entrambi i casi la nuova stringa <code>z' ∉ L</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Linguaggi di programmazione</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi di programmazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Notazione formale per definire algoritmi<ul>
+<li><em>Algoritmo</em>: sequenza di istruzioni per risolvere un dato problema in un tempo finito</li>
+</ul>
+</li>
+<li>Ogni linguaggio è caratterizzato da:<ul>
+<li><strong>Sintassi</strong></li>
+<li><strong>Semantica</strong></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Sintassi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/syntax-diagrams.png">
+        
+      </figure><ul>
+<li>Insieme di regole formali per scrivere <em>frasi</em> ben formate (programmi) in un certo linguaggio<ul>
+<li><em>Lessico</em>: parole riservate, operatori, variabili, costanti ecc. (<em>token</em>)</li>
+</ul>
+</li>
+<li>Grammatiche non contestuali (...) espresse con notazioni formali:<ul>
+<li>Backus-Naur Form</li>
+<li>Extended BNF</li>
+<li>Diagrammi sintattici</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Semantica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Attribuisce un <strong>significato</strong> alle frasi (sintatticamente corrette) costruite nel linguaggio</li>
+<li>Una frase può essere sintatticamente corretta e tuttavia non aver alcun significato<ul>
+<li>Soggetto – predicato – complemento</li>
+<li><em>“La mela mangia il bambino”</em></li>
+<li><em>“Il bambino mangia la mela”</em></li>
+</ul>
+</li>
+<li>Oppure avere un significato diverso da quello previsto...<ul>
+<li><em>GREEK_PI = 345</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Semantica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Correttezza sui tipi</strong><ul>
+<li>Quali tipi di dato possono essere elaborati?</li>
+<li>Quali operatori applicabili ad ogni dato?</li>
+<li>Quali regole per definire nuovi tipi e operatori?</li>
+</ul>
+</li>
+<li><strong>Semantica operazionale</strong><ul>
+<li>Qual è l'effetto di ogni azione elementare?</li>
+<li>Qual è l’effetto dell’aggregazione delle azioni?</li>
+<li>Cioè, qual è l’effetto dell’esecuzione di un certo programma?</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Linguaggi di basso livello</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/assembly.png">
+        
+      </figure><ul>
+<li>Più orientati alla macchina che ai problemi da trattare</li>
+<li><strong>Linguaggi macchina</strong>: solo operazioni eseguibili direttamente dall'elaboratore<ul>
+<li>Op. molto elementari, diverse per ogni processore, in formato binario</li>
+</ul>
+</li>
+<li><strong>Linguaggi assembly</strong>: prima evoluzione, codici binari → mnemonici</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi di alto livello</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Introdotti per facilitare la scrittura dei programmi</li>
+<li>Definizione della soluzione in modo intuitivo</li>
+<li>Con una certa <strong>astrazione</strong> rispetto al calcolatore su cui verranno eseguiti</li>
+<li>Devono essere tradotti in linguaggio macchina</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Storia dei linguaggi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/dev/languages-timeline.svg" /></p>
+<blockquote></blockquote>
+<p><a href="http://www.oreilly.com/news/graphics/prog_lang_poster.pdf">http://www.oreilly.com/news/graphics/prog_lang_poster.pdf</a> <br>
+<a href="http://www.levenez.com/lang/history.html">http://www.levenez.com/lang/history.html</a> <br>
+<a href="http://www.cs.brown.edu/~adf/programming_languages.html">http://www.cs.brown.edu/~adf/programming_languages.html</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>The Top 10 (IEEE Spectrum, 2011)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/dev/languages-spectrum.jpg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Paradigmi di sviluppo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Forniscono la filosofia e la metodologia con cui si scrivono i programmi</li>
+<li>Definiscono il concetto (astratto) di computazione</li>
+<li>Ogni linguaggio consente (o spinge verso) l'adozione di un particolare paradigma<ul>
+<li>Imperativo / procedurale</li>
+<li>Orientato agli oggetti</li>
+<li>Scripting (tipizzazione dinamica, principio DRY - Don't Repeat Yourself)</li>
+<li>Funzionale (funzioni come “cittadini di prima classe”)</li>
+<li>Logico (base di conoscenza + regole di inferenza)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi e paradigmi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Imperativi / procedurali</strong><ul>
+<li>Cobol, Fortran, Algol, C, Pascal </li>
+</ul>
+</li>
+<li><strong>Orientati agli oggetti</strong><ul>
+<li>Simula, Smalltalk, Eiffel, C++, Delphi, Java, C#, VB.NET</li>
+</ul>
+</li>
+<li><strong>Scripting</strong><ul>
+<li>Basic, Perl, PHP, Javascript, Python</li>
+</ul>
+</li>
+<li><strong>Funzionali</strong><ul>
+<li>Lisp, Scheme, ML, Haskell, Erlang</li>
+</ul>
+</li>
+<li><strong>Logici</strong><ul>
+<li>Prolog...</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esecuzione dei programmi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Linguaggio ad alto livello → passi necessari:<ul>
+<li><strong>Compilazione</strong>, traduzione in linguaggio macchina</li>
+<li><strong>Collegamento</strong> con librerie di supporto</li>
+<li><strong>Caricamento</strong> in memoria</li>
+</ul>
+</li>
+<li>Programmi <strong>compilati</strong>: applicati i 3 passi...<ul>
+<li>A tutto il codice; prima dell'esecuzione</li>
+</ul>
+</li>
+<li>Programmi <strong>interpretati</strong>: applicati i 3 passi...<ul>
+<li>In sequenza, su ogni istruzione; a tempo di esecuzione</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="images/dev/build.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Compilazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/compiler.svg">
+        
+      </figure><ul>
+<li>Traduzione da ling. alto livello a ling. macchina<ul>
+<li>Analisi: lessicale, grammaticale, contestuale</li>
+<li><em>Rappresentazione intermedia</em>: albero sintattico annotato (<strong>AST</strong>) </li>
+<li>Generazione codice oggetto</li>
+</ul>
+</li>
+<li>Codice oggetto: non ancora eseguibile<ul>
+<li>Linker, loader</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Albero sintattico</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/ast-euclid.svg">
+        
+      </figure><pre class="prettyprint" data-lang="Python"><code>while b != 0:
+    if a &gt; b:
+        a = a − b
+    else:
+        b = b − a
+return a
+</code></pre>
+<p>Algoritmo di Euclide per MCD</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collegamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il <strong>linker</strong> collega diversi moduli oggetto<ul>
+<li>Simboli irrisolti → riferimenti esterni</li>
+<li>Il collegamento può essere statico o dinamico</li>
+</ul>
+</li>
+<li><strong>Collegamento statico</strong><ul>
+<li>Libreria inclusa nel file oggetto, eseguibile stand-alone</li>
+<li>Dimensioni maggiori, ma possibile includere solo funzionalità utilizzate</li>
+</ul>
+</li>
+<li><strong>Collegamento dinamico</strong><ul>
+<li>Librerie condivise da diverse applicazioni</li>
+<li>Installazione ed aggiornamento unici</li>
+<li>Caricate in memoria una sola volta</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Caricamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il <strong>loader</strong> carica in memoria un programma rilocabile<ul>
+<li>Risolti tutti gli indirizzi relativi (variabili, salti ecc.)</li>
+<li>Caricati eventuali programmi di supporto</li>
+</ul>
+</li>
+<li><strong>Rilocazione statica</strong>: indirizzi logici trasformati in  indirizzi assoluti</li>
+<li><strong>Rilocazione  dinamica</strong>: indirizzi logici mantenuti nel programma in esecuzione<ul>
+<li>Programma compilato: indirizzamento relativo</li>
+<li>Tramite <em>registro base</em>: locazione in memoria del codice, dei dati e dello stack (reg. CS, DS e SS su x86)</li>
+<li><em>Memory Management Unit</em> in S.O.</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Codice gestito</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Compilazione in <strong>codice intermedio</strong><ul>
+<li>Bytecode (Java), Common Intermediate Lang. (.NET), …</li>
+<li>Python: compilato per una macchina virtuale (file .pyc), ma in modo trasparente</li>
+</ul>
+</li>
+<li>Esecuzione su una <strong>macchina virtuale</strong>, che gestisce la memoria (garbage collection)<ul>
+<li>Java Virtual Machine, Common Language Runtime, …</li>
+<li>Spesso compilazione “al volo” (<em>Just In Time</em>) in codice nativo</li>
+</ul>
+</li>
+<li><strong>Garbage collection</strong><ul>
+<li>Restituzione automatica della memoria</li>
+<li>Per oggetti/dati che non servono più</li>
+<li>Possibile anche per codice nativo: linguaggio <em>Go</em>, <em>“smart pointers”</em> in C++, estensioni…</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Garbage collection</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/garbage-truck.jpg">
+        
+      </figure><ul>
+<li>Vantaggi<ul>
+<li>Non è possibile dimenticare di liberare la memoria (<em>memory leak</em>)</li>
+<li>Non è possibile liberare della memoria che dovrà essere utilizzata in seguito (<em>dangling pointer</em>)</li>
+</ul>
+</li>
+<li>Svantaggi<ul>
+<li>Decide autonomamente quando liberare la memoria</li>
+<li>Liberare e compattare mem. richiede del calcolo</li>
+</ul>
+</li>
+<li>Diversi algoritmi<ul>
+<li><em>Reference counting</em>: idea di base, ma cicli…</li>
+<li><em>Mark &amp; sweep</em>: parte da riferimenti locali/globali, marca oggetti raggiungibili</li>
+<li><em>Generational garbage collection</em>: controlla spesso oggetti recenti</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

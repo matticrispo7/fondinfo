@@ -1,0 +1,625 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dati multimediali</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/repr/neo-matrix.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione all'informatica</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Caratteri e testo</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Caratteri e testo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Necessaria convenzione per codifica numerica (binaria) dei caratteri</li>
+<li>Codifica <strong>ASCII</strong> (American Standard Code for Information Interchange) a 7 bit<ul>
+<li><em>Caratteri alfanumerici</em>: lettere maiuscole, minuscole, numeri, spazio</li>
+<li><em>Simboli e punteggiatura</em>: @, #, …</li>
+<li><em>Caratteri di controllo</em> (non tutti visualizzabili): <code>TAB, LF, CR, BELL</code> ecc.</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Tabella ASCII di base</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/repr/ascii.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interruzione di riga</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Unix: <code>LF</code><ul>
+<li>Multics, Unix etc., Mac OS X, BeOS, Amiga, RISC OS</li>
+</ul>
+</li>
+<li>Windows: <code>CR+LF</code><ul>
+<li>Most early OSes, DOS, OS/2, Windows, Symbian</li>
+</ul>
+</li>
+<li>Vecchi Apple: <code>CR</code><ul>
+<li>Commodore machines, Apple II family, Mac OS up to version 9</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Tabella ASCII estesa</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/codepage-437.png">
+        
+      </figure><ul>
+<li>Caratteri accentati + caratteri per grafici<ul>
+<li><em>Code Page 437</em> per PC (DOS) in Nord America</li>
+<li>Possibile mischiare testo in inglese e francese (anche se in Francia <em>CP850</em>); ma non assieme greco (<em>CP737</em>), russo ecc.</li>
+</ul>
+</li>
+<li><strong>ISO 8859</strong>, estensioni standard per ASCII ad 8 bit<ul>
+<li>ISO 8859-1 (o Latin1): Lingue dell’Europa Occidentale</li>
+<li>ISO 8859-2: Lingue dell’Europa Orientale</li>
+<li>ISO 8859-5: Alfabeto cirillico</li>
+<li>ISO 8859-15: Latin1 con simbolo euro (€)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Unicode</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/hieroglyphics.jpg"><img src="images/repr/no-klingon.png">
+        
+      </figure><ul>
+<li>Unicode associa un preciso <strong>code-point</strong> (32 bit) a ciascun simbolo<ul>
+<li>Possibile rappresentare miliardi di simboli</li>
+<li>Primi 256 code-point = <em>Latin1</em></li>
+</ul>
+</li>
+<li>Attualmente &gt;30 sistemi di scrittura<ul>
+<li>Rappresentazione di <em>geroglifici</em> e caratteri <em>cuneiformi</em></li>
+<li>Proposta per <em>Klingon</em> (da Star Trek… rifiutata!)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>UTF-8, UTF-16</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/text-len.png">
+        
+      </figure><ul>
+<li><strong>Unicode Transformation Format</strong>: codifica di un <em>code-point</em> in una sequenza di bit (uno o più <strong>code-unit</strong>)<ul>
+<li><em>UTF-32</em> – code-unit di 32-bit, lunghezza fissa</li>
+<li><em>UTF-16</em> – code-unit di 16-bit, lunghezza variabile</li>
+<li><em>UTF-8</em> – code-unit di 8-bit, ma lunghezza variabile (1-4 byte), max compatibilità con ASCII</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="images/repr/utf-8.jpg" /></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Immagini</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Immagini raster</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/rgb-raster.png">
+        
+      </figure><ul>
+<li><em>Digitalizzazione</em>: da immagine a sequenza binaria</li>
+<li><strong>Immagine raster</strong> suddivisa in una griglia di punti (<strong>pixel</strong>)<ul>
+<li>Ogni pixel descritto da un codice, che ne individua il colore</li>
+</ul>
+</li>
+<li><strong>Profondità</strong>: # bit per rappresentare il colore di un pixel<ul>
+<li>1, 2, 8, 12, 16, 24, 32… bit per pixel (<em>bpp</em>)</li>
+<li>Es. 8 bit per 256 (2<sup>8</sup>) possibili colori</li>
+<li>Colore diretto o indicizzato da una <strong>palette</strong></li>
+</ul>
+</li>
+<li><strong>Risoluzione</strong>: # punti per pollice (<em>dpi</em>), come in tipografia<ul>
+<li>Spesso (ma non sempre), risoluzione orizzontale uguale a verticale</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Modelli di colore</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/spectral-sensitivity.svg">
+        
+      </figure><ul>
+<li>Occhio sensibile a variaz. luminosità<ul>
+<li>6 mln di coni, 125 di bastoncelli</li>
+</ul>
+</li>
+<li><strong>RGB</strong>: rosso, verde, blu<ul>
+<li>8 bit: 3 bit × R e G, 2 × B</li>
+<li>24 bit: 8 bit × R, G e B</li>
+<li>32 bit: canale alpha x opacità</li>
+</ul>
+</li>
+<li><strong>YUV</strong>: luminosità, crominanza di R e B<ul>
+<li>Sistema PAL, MPEG</li>
+<li>TV a colori (compat. B&amp;W)</li>
+</ul>
+</li>
+<li><strong>HSB</strong>: tonalità, saturazione e luminosità</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Formati di file grafici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>BMP</em>: immagine (normalmente) non compressa</li>
+<li><em>TIFF, PNG</em>: comprimono l’immagine, per ridurne l’occupazione, senza deteriorarla (compressione <em>lossless</em>)</li>
+<li><em>JPEG</em>: comprime (molto di più), ma deteriora l’immagine (compressione <em>lossy</em>)</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Formato BMP</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/bmp-header.jpg">
+        
+      </figure><pre class="prettyprint" data-lang="BMP Format"><code>FILE INFO HEADER (14)
+2   Tipo file (= “BM”)
+4   Dim. file (in byte)
+4   Riservato
+4   Offset immagine (in byte)
+BITMAP INFO HEADER (40)
+4   Dimensione struttura
+4+4 Larghezza e altezza immagine
+2   Piani (non usato)
+2   # bit per pixel
+4+4 Compressione e dim. img (0 senza compressione)
+4+4 Risoluzione orizz. e vert. (pixel per metro)
+4+4 # colori in palette e # colori importanti
+Palette (RGBQUAD)
+4   Blue, Green, Red, Riservato
+</code></pre></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Es. Redbrick.BMP</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/repr/redbrick-dump.png" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Es. Redbrick.BMP</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/repr/redbrick-scan.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Grafica vettoriale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/vector-example.svg">
+        
+      </figure><ul>
+<li>Immagine: insieme di primitive geometriche<ul>
+<li>Linee, poligoni..., colori, sfumature...</li>
+</ul>
+</li>
+<li>▲ Qualità, a varie risoluzioni</li>
+<li>▲ Compressione dati</li>
+<li>▲ Gestione modifiche</li>
+<li>▼ Non intuitiva per alcuni</li>
+<li>▼ Possibilmente onerosa</li>
+<li>▼ Risorse non note a priori</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Grafica vettoriale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Applicazioni</strong>: editoria (DTP), video-editing, architettura, ingegneria, grafica 3D (CAD), font vettoriali (caratteri scalabili in dimensione senza perdere definizione)</li>
+<li><strong>Formati esistenti</strong>: PS (PostScript), PDF (Portable Document Format), WMF (Windows MetaFile), DXF (AutoCAD), CDR (CorelDraw), SWF (Flash), SVG (Scalable Vector Graphics, per il web)</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di file SVG</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/svg-example.svg">
+        
+      </figure><pre class="prettyprint" data-lang="SVG"><code>&lt;!-- possibly inside an HTML5 file --&gt;
+
+&lt;svg width="800" height="600"&gt;
+
+  &lt;rect x="80" y="60" width="250" height="250" rx="20"
+    fill="#ff0000" stroke="#000000" stroke-width="2" /&gt;
+
+  &lt;rect x="140" y="120" width="250" height="250" rx="40"
+    fill="#0000ff" stroke="#000000" stroke-width="2"
+    fill-opacity="0.7" /&gt;
+
+&lt;/svg&gt;
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Audio digitale</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Audio digitale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/sampled-signal.svg"><img src="images/repr/digital-signal.svg">
+        
+      </figure><ul>
+<li>Grandezza analogica → discretizzazione<ul>
+<li><strong>Campionamento</strong> (<em>sampling</em>) nel tempo</li>
+<li><strong>Quantizzazione</strong> (<em>quantizing</em>) nelle ampiezze</li>
+<li>Qualità CD: 44 kHz, 16bit</li>
+<li>Spettro udibile: 20-20k Hz, Nyquist-Shannon</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Formato WAV</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/repr/wav-format.png" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Esempio di file WAV</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/repr/wav-bytes.png" /></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Documenti strutturati</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Documenti strutturati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Struttura logica</strong><ul>
+<li>Determina il <em>ruolo</em> della varie parti del testo</li>
+<li>Titoli, testo, note, etc.</li>
+</ul>
+</li>
+<li><strong>Struttura grafica</strong><ul>
+<li>Assegna una resa grafica ai ruoli</li>
+<li>Quindi determina la resa grafica del documento nel suo complesso</li>
+<li>“Stampa” in modo diverso ciò che ha ruolo diverso</li>
+</ul>
+</li>
+<li><strong>Word processing</strong>: non tanto <em>scrivere</em>, ma <em>ingegnerizzare informazione</em></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>WYSIWYG</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Focus su grafica, si perde di vista la struttura logica<ul>
+<li>Grafica: non con i comandi grafici...</li>
+<li>Ma definendo gli <strong>stili</strong> delle varie parti di doc, come <em>ruoli</em> logici</li>
+<li>Es. stili di Word/Writer: “<em>Titolo</em>”, “<em>Nota in Calce</em>”, “<em>Intestazione</em>”</li>
+<li>Non nomi grafici, ma logici</li>
+</ul>
+</li>
+<li>In alternativa: editing basato su <strong>comandi</strong> o su <strong>tag</strong></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>HyperText Markup Language</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Documenti <strong>strutturati</strong>, standard W3C: <a href="http://www.w3.org/html/">http://www.w3.org/html/</a></li>
+<li>HTML dichiara tipi di elementi<ul>
+<li>Paragrafi, titoli, liste, collegamenti ipertestuali, elementi multimediali ecc.</li>
+</ul>
+</li>
+<li>Tipo di <strong>elemento</strong> descritto da tre parti<ul>
+<li><strong>Tag di apertura</strong>, <strong>contenuto</strong>, <strong>tag di chiusura</strong></li>
+<li><code>Bla bla, &lt;b&gt;in grassetto.&lt;/b&gt;, normale.</code></li>
+</ul>
+</li>
+<li>Molti tag permettono la definizione di <strong>attributi</strong><ul>
+<li><code>&lt;a href="http://www.unipr.it/"&gt;UniPR&lt;/a&gt;</code></li>
+<li><code>id</code> e <code>class</code>: attributi generici per assegnare <em>ruoli logici</em></li>
+</ul>
+</li>
+<li>Tag semplici non hanno un contenuto<ul>
+<li><code>&lt;img src="blueribbon.gif" /&gt;</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Anatomia di una pagina</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/repr/html-page.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Tag di formattazione testo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="HTML"><code>&lt;p&gt;Questo è un paragrafo.&lt;br /&gt;A-capo ma stesso paragrafo.&lt;/p&gt;
+
+&lt;p&gt;Testo &lt;strong&gt;in grassetto&lt;/strong&gt;, e poi
+&lt;em&gt;in corsivo&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Il titolo più grande&lt;/h1&gt;
+...
+&lt;h6&gt;Il titolo più piccolo&lt;/h6&gt;
+
+&lt;div class="remark"&gt;
+  Struttura generica di livello blocco,
+  con un &lt;span&gt;elemento generico&lt;/span&gt; inline.
+&lt;/div&gt;
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Uniform Resource Locator</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Una URL è un riferimento per una risorsa</li>
+</ul>
+<p><img alt="" src="images/repr/url-example.png" /></p>
+<ul>
+<li>Il nome della risorsa dipende interamente dal protocollo. Per HTTP include:</li>
+<li>Nome dell’host su cui risiede la risorsa</li>
+<li>Numero di porta cui collegarsi (default = 80)</li>
+<li>Percorso della risorsa sulla macchina</li>
+<li>Stringa di query (dopo <code>?</code>)</li>
+<li>Frammento: id di un elemento all’interno della risorsa (dopo <code>#</code>)</li>
+<li><a href="http://www.ietf.org:80/rfc/rfc2732.txt">http://www.ietf.org:80/rfc/rfc2732.txt</a></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Html 5</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/html5-logo.svg">
+        
+      </figure><ul>
+<li>Nuovi elementi di struttura di Html 5<ul>
+<li><code>header, main, nav, aside, footer</code></li>
+<li><code>article, section, details, summary</code></li>
+<li><code>figure, figcaption</code></li>
+</ul>
+</li>
+<li>Altri nuovi elementi<ul>
+<li><code>video, audio, canvas, embed</code></li>
+<li><code>mark, menu, command, output, time</code></li>
+<li><code>progress, meter, datalist</code></li>
+</ul>
+</li>
+<li><a href="http://dev.w3.org/html5/html4-differences/">http://dev.w3.org/html5/html4-differences/</a></li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

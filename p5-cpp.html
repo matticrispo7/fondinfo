@@ -1,0 +1,1008 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linguaggio C++11</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/misc/cpp-logo.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione alla programmazione</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Hello, C++</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>cout</code>: output su console, op. di inserimento <code>&lt;&lt;</code><ul>
+<li>Possibile concatenare più operazioni di scrittura</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, C++!" &lt;&lt; endl;
+}
+</code></pre>
+<ul>
+<li>Da <em>Qt Creator</em> (ambiente di sviluppo): <em>Create Project →  Non-Qt →  Plain C++</em></li>
+<li><strong>C++11</strong>: aggiungere al file <code>.pro</code> (di progetto): <code>CONFIG += c++11</code></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Leggere e scrivere</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>cin</code>: input da console, op. di estrazione <code>&gt;&gt;</code><ul>
+<li>Possibile concatenare più operazioni di lettura</li>
+<li><code>getline(cin, line)</code>: lettura intera riga</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="c++"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    string name;
+    int age;
+    cout &lt;&lt; "Name, age?" &lt;&lt; endl;
+    cin &gt;&gt; name &gt;&gt; age;
+    cout &lt;&lt; "Hello, " &lt;&lt; name &lt;&lt; "." &lt;&lt; endl;
+    cout &lt;&lt; "You're " &lt;&lt; age &lt;&lt; " years old." &lt;&lt; endl;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Tipizzazione statica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/algo/my-shoes.png">
+        
+      </figure><ul>
+<li>Una delle differenze principali: le comuni variabili non sono <em>riferimenti</em>, ma <em>contenitori</em> di dati<ul>
+<li>Occorrono <strong>dichiarazioni</strong> di tipo</li>
+<li>Ma possibile <em>type inference</em> (<code>auto</code>)</li>
+</ul>
+</li>
+<li>Tipi principali: <code>int</code>, <code>float</code> (e <code>double</code>), <code>bool</code></li>
+<li><code>string</code>: sequenza mutevole di byte (tipo <code>char</code>)</li>
+</ul>
+<pre class="prettyprint" data-lang="c++"><code>int x = 10;
+double h = 3.7;
+string s = "hello";
+
+auto y = 5;               // type inference: C++11
+auto k = 2.2;
+auto t = string{"hola"};  // C++14: auto t = "hola"s;
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Operazioni di base</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Operazioni su numeri: <code>+, -, *, /, %</code><ul>
+<li>Anche incremento e decremento unitario: <code>++, --</code></li>
+<li><em>Attenzione</em>: la divisione tra interi dà risultato intero (<code>trunc</code>); il resto può essere negativo</li>
+<li>Assegnamento: <code>=, +=, -=</code> ...</li>
+<li>Confronti: <code>&gt;, &gt;=, &lt;, &lt;=, !=, ==</code></li>
+<li><em>Attenzione</em>: i confronti <strong>non</strong> si possono concatenare</li>
+</ul>
+</li>
+<li>Operazioni booleane (and, or, not): <code>&amp;&amp;, ||, !</code></li>
+</ul>
+<pre class="prettyprint" data-lang="c++"><code>cout &lt;&lt; (3 &lt; 5) &lt;&lt; endl;           // 1
+cout &lt;&lt; (3 &lt; 5 &lt; 4) &lt;&lt; endl;       // 1 (!)
+cout &lt;&lt; (3 &lt; 5 &amp;&amp; 5 &lt; 4) &lt;&lt; endl;  // 0
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Stringhe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Operazioni di confronto; concatenazione: <code>+</code></li>
+<li><em>Attenzione</em>: apici doppi per valori <code>string</code>, singoli per <code>char</code></li>
+</ul>
+<pre class="prettyprint" data-lang="c++"><code>string sentence = "Lorem ipsum";
+sentence[6] = 'I';
+cout &lt;&lt; sentence[6];  // 'I'
+
+int n = 5;
+string txt = to_string(n);
+int val = stoi(txt);  // see also `stod`, `stof`...
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Decisioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/algo/words.svg">
+        
+      </figure><pre class="prettyprint" data-lang="c++"><code>string a, b; cin &gt;&gt; a &gt;&gt; b;
+if (a &lt; b) {
+    cout &lt;&lt; "The words are ordered";
+} else if (a &gt; b) {
+    cout &lt;&lt; "The words are inverted";
+} else {
+    cout &lt;&lt; "The words are equal";
+}
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>int choice; cin &gt;&gt; choice;
+switch (choice) {
+    case 1: cout &lt;&lt; "First option"; break;
+    case 2: cout &lt;&lt; "Second option"; break;
+    default: cout &lt;&lt; "Error";
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Iterazioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/algo/average.svg">
+        
+      </figure><pre class="prettyprint" data-lang="c++"><code>int val, tot = 0, count = 0;
+cout &lt;&lt; "Val (0 to end)? "; cin &gt;&gt; val;
+while (val != 0) {
+    tot += val; ++count;
+    cout &lt;&lt; "Val (0 to end)? "; cin &gt;&gt; val;
+}
+if (count &gt; 0) cout &lt;&lt; "Avg: " &lt;&lt; tot / float(count);
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>int val, tot = 0, count = 0;
+do {
+    cout &lt;&lt; "Val (0 to end)? "; cin &gt;&gt; val;
+    if (val != 0) { tot += val; ++count; }
+} while (val != 0);  // the check is at the end
+if (count &gt; 0) cout &lt;&lt; "Avg: " &lt;&lt; tot / float(count);
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Vector, array dinamici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/shopping-list.jpg">
+        
+      </figure><pre class="prettyprint" data-lang="c++"><code>#include &lt;vector&gt;
+// ...
+
+vector&lt;string&gt; shopping_list = {"milk", "cocoa",
+                                "yogurt"};
+cout &lt;&lt; shopping_list[1] &lt;&lt; endl;  // cocoa
+shopping_list[1] = "coffee";
+shopping_list.push_back("corn flakes");
+cout &lt;&lt; shopping_list.size() &lt;&lt; endl;  // 4
+
+shopping_list.erase(begin(shopping_list) + 2);
+shopping_list.insert(begin(shopping_list) + 2, "biscuits");
+
+vector&lt;string&gt; another_list;
+another_list.assign(10, ""); // 10 strings
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cicli for</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>for (auto x : shopping_list) {  // for-each, C++11
+    cout &lt;&lt; x &lt;&lt; endl;
+}
+
+for (int i = 0; i &lt; shopping_list.size(); ++i) {  // range, C++98
+    cout &lt;&lt; shopping_list[i] &lt;&lt; endl;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Somma colonne: matrice</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>vector&lt;vector&lt;int&gt;&gt; matrix = {{2, 4, 3, 8},
+                              {9, 3, 2, 7},
+                              {5, 6, 9, 1}};
+auto rows = matrix.size();
+auto cols = matrix[0].size();
+for (auto x = 0; x &lt; cols; ++x) {
+    auto total = 0;
+    for (auto y = 0; y &lt; rows; ++y) {
+        total += matrix[y][x];
+    }
+    cout &lt;&lt; "Col #" &lt;&lt; x &lt;&lt; " sums to " &lt;&lt; total &lt;&lt; endl;
+}
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>vector&lt;vector&lt;char&gt;&gt; another_matrix;
+another_matrix.assign(rows, vector&lt;char&gt;(cols, '-'));
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Funzioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>float cube(float x) {
+    return x * x * x;
+}
+
+// pass by reference: external vars can be modified
+void swap(int&amp; m, int&amp; n) {
+    int tmp = m;
+    m = n; n = tmp;
+}
+
+int main() {
+    int a = 5, b = 7;
+    swap(a, b);
+    cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b &lt;&lt; endl;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Flussi e file</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>#include &lt;fstream&gt;
+// ...
+
+int n; float r; string w;
+ifstream file1{"input.txt"};   // file input stream
+if (file1.good()) {            // is stream available?
+    file1 &gt;&gt; n &gt;&gt; r &gt;&gt; w;
+}
+file1.close();
+
+ofstream file2{"output.txt"};  // file output stream
+if (file2.good()) {            // is stream available?
+    file2 &lt;&lt; "Values: " &lt;&lt; n &lt;&lt; " " &lt;&lt; r &lt;&lt; " " &lt;&lt; w &lt;&lt; endl;
+}
+file2.close();
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lettura di righe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>ifstream file1{"input.txt"};    // file input stream
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>string first_line, second_line;
+getline(file1, first_line);
+getline(file1, second_line);
+// read lines do not include newline
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>string whole_text;
+getline(file1, whole_text, '\0');
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>string line;
+while (getline(file1, line)) {
+    cout &lt;&lt; line &lt;&lt; endl;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lettura di dati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>int val;  // or float, string ...
+while (file1 &gt;&gt; val) {
+    cout &lt;&lt; setw(4) &lt;&lt; val &lt;&lt; endl;  // val occupies 4 chars
+}                                    // setw in &lt;iomanip&gt;
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>char val;
+file1 &gt;&gt; noskipws;      // otherwise, whitespaces are skipped
+while (file1 &gt;&gt; val) {
+    cout &lt;&lt; val &lt;&lt; endl;
+}
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>int n; float r; string w;
+istringstream sstr{"5 7.5 hello"};  // istringstream in &lt;sstream&gt;
+sstr &gt;&gt; n &gt;&gt; r &gt;&gt; w;                // a stream view on a string
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Flussi e stringhe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Si può gestire una stringa come uno stream<ul>
+<li><code>istringstream</code>, <code>ostringstream</code> in libreria <code>&lt;sstream&gt;</code></li>
+<li>Per estrarre valori ed inserire valori, rispettivamente</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="c++"><code>/* Split a text into a vector of strings */
+string text = "one:two::three";
+vector&lt;string&gt; values;
+
+istringstream sstr{text};
+string item;
+while (getline(sstr, item, ':')) {
+    values.push_back(item);
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Numeri casuali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;ctime&gt;
+using namespace std;
+
+int main() {
+    srand(time(nullptr));           // just once! (initial seed
+                                    // for random numbers)
+
+    for (int i = 0; i &lt; 10; ++i) {  // generate 10 random numbers
+        int r = rand() % 90;  // 0 &lt;= r &lt; 90
+        cout &lt;&lt; r &lt;&lt; endl;
+    }
+}
+</code></pre>
+<blockquote></blockquote>
+<p>C++11 ha anche una libreria <code>random</code>, più avanzata <br>
+<a href="http://www.stroustrup.com/C++11FAQ.html#std-random">http://www.stroustrup.com/C++11FAQ.html#std-random</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Rettangoli e cerchi con Qt</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/qt/slogan.png"><img src="images/oop/raster-coord.png">
+        
+      </figure><pre class="prettyprint" data-lang="C++"><code>#include &lt;QtWidgets&gt;
+</code></pre>
+<pre class="prettyprint" data-lang="C++"><code>QPixmap screen{600, 400}; QPainter painter{&amp;screen};
+
+painter.setBrush(QColor{255, 255, 0});
+painter.drawRect(50, 75, 90, 50);
+
+painter.setBrush(QColor{0, 0, 255});
+painter.drawEllipse(QPoint{300, 50}, 20, 20);
+
+QLabel label; label.setPixmap(screen); label.show();
+</code></pre>
+<pre class="prettyprint" data-lang="Project"><code>QT += widgets
+CONFIG += console c++11
+</code></pre>
+<blockquote></blockquote>
+<p>Progetto: <em>Application</em> → <em>Qt Widgets Application</em></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Oggetti</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>C++: definizione della classe separata dalla implementazione dei metodi<ul>
+<li>Definizione fornita agli utenti</li>
+<li>Implementazione compilata in libreria</li>
+</ul>
+</li>
+<li>Sorgenti organizzati in 3 file:<ul>
+<li><code>ball.h</code> – definizione della classe</li>
+<li><code>ball.cpp</code> – implementazione dei metodi</li>
+<li><code>main.cpp</code> – applicazione che usa la classe</li>
+<li>Dall'ambiente di sviluppo: <em>Add new → C++ Class</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Definizione: ball.h</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/ball-object.svg">
+        
+      </figure><pre class="prettyprint" data-lang="c++"><code>class Ball {
+public:
+    Ball(int x0, int y0);
+    void move();
+    int get_x();
+    int get_y();
+
+    static const int ARENA_W = 320;
+    static const int ARENA_H = 240;
+    static const int W = 20;
+    static const int H = 20;
+
+private:
+    int x; int y;
+    int dx; int dy;
+};
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Implementazione: ball.cpp</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>#include "ball.h"
+
+Ball::Ball(int x0, int y0) {
+    x = x0; y = y0; dx = 5; dy = 5;
+}
+void Ball::move() {
+    if (!(0 &lt;= x + dx &amp;&amp; x + dx &lt;= ARENA_W - W)) dx = -dx;
+    if (!(0 &lt;= y + dy &amp;&amp; y + dy &lt;= ARENA_H - H)) dy = -dy;
+    x += dx; y += dy;
+}
+int Ball::get_x() {
+    return x;
+}
+int Ball::get_y() {
+    return y;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Applicazione: main.cpp</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>#include "ball.h"
+// ...
+int main() {
+    Ball ball1{40, 80};
+    Ball ball2{80, 40};
+
+    string line;
+    while (getline(cin, line)) {
+        ball1.move();
+        ball2.move();
+
+        cout &lt;&lt; ball1.get_x() &lt;&lt; ", " &lt;&lt; ball1.get_y() &lt;&lt; endl;
+        cout &lt;&lt; ball2.get_x() &lt;&lt; ", " &lt;&lt; ball2.get_y() &lt;&lt; endl &lt;&lt; endl;
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Allocazione dinamica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>// ...
+int main() {
+    Ball ball1{40, 80};
+    Ball* ball2 = new Ball{80, 40};
+    // Ball* alias1 = &amp;ball1; // no new ball is created
+    // Ball* alias2 = ball2;  // no new ball is created
+
+    for (string line; getline(cin, line);) {
+        ball1.move();
+        ball2-&gt;move();
+        cout &lt;&lt; ball1.get_x() &lt;&lt; ", " &lt;&lt; ball1.get_y() &lt;&lt; endl;
+        cout &lt;&lt; ball2-&gt;get_x() &lt;&lt; ", " &lt;&lt; ball2-&gt;get_y() &lt;&lt; endl &lt;&lt; endl;
+    }
+    delete ball2;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Swig: C++ per moduli Python</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="file: ball.i"><code>%module ball
+%include "std_string.i"
+%{
+#include "ball.h"
+%}
+%include "ball.h"
+</code></pre>
+<pre class="prettyprint" data-lang="cmd"><code>swig -python -c++ ball.i
+g++ -fPIC -c ball.cpp ball_wrap.cxx -I/usr/include/python3.4/ -std=c++11
+g++ -shared ball.o ball_wrap.o -o _ball.so
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; from ball import Ball
+&gt;&gt;&gt; b = Ball(60, 60)
+&gt;&gt;&gt; b.move()
+&gt;&gt;&gt; print(b.get_x(), b.get_y())
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Puntatori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/pointer.png">
+        
+      </figure><ul>
+<li>Ogni dato presente in memoria ha un indirizzo: variabile puntatore per memorizzarlo<ul>
+<li>Operatore <code>&amp;</code> per indirizzo di un dato</li>
+<li>Op. <code>*</code> per accesso a dato puntato (<em>dereferenziazione</em>)</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="c++"><code>char i = 56;  // a byte
+char* p;      // a ptr to some byte (uninitialized)
+p = &amp;i;       // now p points to i
+*p = *p + 1;  // ++i
+p = nullptr;  // ptr to nothing
+</code></pre>
+<ul>
+<li>No <em>garbage collection</em>: a <code>new</code> deve corrispondere <code>delete</code></li>
+<li><em>Resource Acquisition Is Initialization (RAII)</em><ul>
+<li><em>Costruttore</em> alloca risorse, <em>distruttore</em> le libera: <code>~Ball()</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Livelli di astrazione</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Livelli di astrazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/actors.svg">
+        
+      </figure><ul>
+<li><code>Actor</code>: <em>classe base</em><ul>
+<li>Dichiara un metodo <code>move</code> ecc.</li>
+<li><code>virtual</code>: il metodo può essere ridefinito nelle sottoclassi (<em>polimorfo</em>)</li>
+<li><code>= 0</code>: il metodo non è implementato qui (la classe è <em>astratta</em>)</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="c++"><code>class Actor {
+    virtual void move() = 0;
+    // ...
+};
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Composizione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>class Arena {  // ...
+public:
+    void add(Actor* c);
+    void move_all();
+private:
+    vector&lt;Actor*&gt; actors;
+};
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>void Arena::add(Actor* c) {
+    actors.push_back(c);
+}
+void Arena::move_all() {
+    for (auto c : actors) c-&gt;move();
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ereditarietà e polimorfismo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="c++"><code>arena-&gt;add(new Ball(4, 8));
+arena-&gt;add(new Ghost(12,4));
+arena-&gt;move_all();
+</code></pre>
+<pre class="prettyprint" data-lang="c++"><code>class Ghost: public Actor {
+    // ...
+    Ghost() { /* ... */ }
+
+    void move() {
+        int dx = 5 * (rand() % 3 - 1);  // one of {-5, 0, +5}
+        int dy = 5 * (rand() % 3 - 1);
+        x = (x + dx + arena-&gt;get_w()) % arena-&gt;get_w();
+        y = (y + dy + arena-&gt;get_h()) % arena-&gt;get_h();
+    }
+};
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ciclo di animazione in Qt</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>// fields: int x = 0; QPixmap image{"ball.png"};
+
+Widget::Widget() {
+    startTimer(1000 / 60);  // 60 fps
+}
+void Widget::timerEvent(QTimerEvent* event) {
+    x = (x + 5) % 600;  // or width()
+    update();           // async: this widget should be redrawn
+}
+void Widget::paintEvent(QPaintEvent* event) {
+    QPainter painter{this};
+    painter.drawPixmap(x, 10, image);
+}
+</code></pre>
+<blockquote></blockquote>
+<p>Progetto: <em>Application</em> → <em>Qt Widgets Application</em></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Strutture dati lineari</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Vector, array dinamici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/dynamic-array.svg">
+        
+      </figure><ul>
+<li><strong>Array</strong>: area di memoria che contiene in <em>celle contigue</em> elementi tutti dello <em>stesso tipo</em></li>
+<li>Usato internamente dai <code>vector</code> del C++<ul>
+<li>Riallocazione dinamica e trasparente per inserimenti e rimozioni</li>
+</ul>
+</li>
+<li><code>Vector</code> come <strong>array dinamici</strong><ul>
+<li>Accesso casuale: <code>O(1)</code></li>
+<li>Aggiunta o rimozione in fondo all'array: <code>O(1)</code>, ma a volte riallocazione</li>
+<li>Inserimento o rimozione: <code>O(n)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Vector di float</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>class FloatVector {  // ...
+    int capacity_;
+    int size_;
+    float* data_;
+public:
+    FloatVector(int size, float val);
+    float get(int pos);
+    void set(int pos, float val);
+    void insert(int pos, float val);
+    float remove(int pos);
+    int size();
+};
+</code></pre>
+<p>Implementazione nel repository di esempi</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Inserimento in vector</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>void FloatVector::insert(int pos, float val) {
+    if (pos &lt; 0 || pos &gt; size_) throw out_of_range("wrong pos");
+    if (size_ == capacity_) expand_capacity();
+    for (int i = size_; i &gt; pos; --i) data_[i] = data_[i - 1];
+    data_[pos] = val;
+    ++size_;
+}
+void FloatVector::expand_capacity() {
+    capacity_ *= 2;
+    float* bigger = new float[capacity_];
+    for (int i = 0; i &lt; size_; i++) bigger[i] = data_[i];
+    delete[] data_;
+    data_ = bigger;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Liste concatenate</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/fun/linked-list.svg" /></p>
+<ul>
+<li>Ciascun <strong>nodo</strong> contiene un <em>valore</em> della lista ed un <em>puntatore</em> al nodo successivo<ul>
+<li>Accesso casuale: <code>O(n)</code></li>
+<li>Aggiunta o rimozione in testa all'array: <code>O(1)</code></li>
+<li>Aggiunta o rimozione in fondo all'array: <code>O(n)</code>, oppure <code>O(1)</code> se noto ultimo nodo</li>
+<li>Inserimento o rimozione: <code>O(1) + O(n)</code> per ricerca</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lista di float</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>struct Node {
+    float val;
+    Node* next;
+};
+class FloatList {  // ...
+    Node* head_; int size_;
+public:
+    FloatList(int size, float val);
+    float get(int pos);
+    void set(int pos, float val);
+    void insert(int pos, float val);
+    float remove(int pos);
+    int size();
+};
+</code></pre>
+<p>Implementazione nel repository di esempi</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Inserimento in lista</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>void FloatList::insert(int pos, float val) {
+    if (pos &lt; 0 || pos &gt; size_) throw out_of_range("wrong pos");
+    if (pos == 0) {
+        head_ = new Node{val, head_};
+    } else {
+        Node* n = head_;
+        for (int i = 0; i &lt; pos - 1; ++i) n = n-&gt;next;
+        n-&gt;next = new Node{val, n-&gt;next};
+    }
+    ++size_;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Template C++</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Programmazione generica</strong>: codice che opera su <em>tipi parametrizzati</em><ul>
+<li>Es. liste di <code>int</code>, <code>string</code> ecc.: cambia solo il tipo di dato!</li>
+</ul>
+</li>
+<li><strong>Template</strong>: meccanismo di programmazione generica in C++<ul>
+<li>Generaz. trasparente di codice specializzato per un tipo</li>
+<li>Es. <code>vector&lt;float&gt;</code> genera una classe ≈ <code>FloatVector</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="C++"><code>template &lt;class T&gt;
+T max(T a, T b) {
+    if (a &gt;= b) return a;
+    return b;
+}
+</code></pre>
+<pre class="prettyprint" data-lang="C++"><code>double x = max&lt;double&gt;(5.0, 3.5);  # &lt;double&gt;, &lt;int&gt;: optional
+int i = max&lt;int&gt;(4, 6);            # inferred from parameters
+</code></pre></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

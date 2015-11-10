@@ -1,0 +1,690 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Complessità computazionale</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/tomamic.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/comp/chess.jpg"></figure>
+  <hgroup>
+    <h2>Introduzione all'informatica</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Problemi e complessità</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Problemi <em>non risolvibili</em><ul>
+<li>Es. Questa frase è falsa</li>
+<li>Incompletezza Gödel; indecidibilità terminazione</li>
+</ul>
+</li>
+<li>Risolvibili<ul>
+<li><em>Non trattabili</em> (costo “esponenziale”)</li>
+<li>Trattabili (costo accettabile, “polinomiale”) <br> &nbsp;</li>
+</ul>
+</li>
+<li><strong>Calcolabilità</strong>: classificare risolvibili e non risolvibili</li>
+<li><strong>Complessità</strong>: “facili” e “difficili”</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ricerca lineare</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Python"><code>def linear_search(v: list, value) -&gt; int:
+    '''v: not necessarily sorted'''
+
+    for i in range(len(v)):
+        if v[i] == value:
+            return i
+
+    return -1
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ricerca binaria</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Python"><code>def binary_search(v: list, value) -&gt; int:
+    '''v: sorted list'''
+
+    begin, end = 0, len(v)
+    while begin &lt; end:
+        middle = (begin + end) // 2
+        if v[middle] &gt; value:
+            end = middle
+        elif v[middle] &lt; value:
+            begin = middle
+        else:
+            return middle
+
+    return -1
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Costo di un algoritmo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Spazio</strong>, memoria richiesta</li>
+<li><strong>Tempo</strong>, necessario all'esecuzione <br> &nbsp;</li>
+<li>Di solito si contano i cicli, in funzione di <code>n</code></li>
+<li>O i confronti/scambi tra elementi dell'array<ul>
+<li>Array in memoria centrale, accesso lento</li>
+<li>Altre variabili nei registri del processore</li>
+</ul>
+</li>
+<li>Test e misure empiriche</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Confronto tra algoritmi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Caso peggiore negli algoritmi di ricerca: elemento non presente</li>
+<li>Ricerca lineare: <code>n</code> confronti</li>
+<li>Ricerca binaria: <code>⌈log<sub>2</sub>(n)⌉</code> confronti<ul>
+<li>A ogni iterazione l'insieme è dimezzato</li>
+<li>Quante volte <code>n</code> dev'essere diviso per 2, per arrivare ad 1?</li>
+<li><code>2<sup>k</sup> ≥ n → k ≥ log<sub>2</sub>(n)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Def. di complessità</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Una funzione <code>f(n)</code> ha <em>ordine</em> <code>O(g(n))</code> sse:<ul>
+<li>Esistono due costanti positive <code>c</code> ed <code>m</code>, tali che</li>
+<li><code>|f(n)| ≤ c|g(n)| ∀ n &gt; m</code></li>
+</ul>
+</li>
+<li>Un algoritmo ha una <em>complessità</em> <code>O(g(n))</code> sse:<ul>
+<li>Il tempo di calcolo <code>t(n)</code>, sufficiente per eseguire l'algoritmo con ogni istanza(*) di dimensione <code>n</code>, ha ordine <code>O(g(n))</code></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>(*) Istanza: insieme di dati su cui è definito il problema; quindi per la complessità conta il caso peggiore</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Analisi asintotica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/orders.svg">
+        
+      </figure><ul>
+<li>Per <code>n</code> abbastanza grande, a meno di una costante moltiplicativa, <code>f(n)</code> non supera in modulo <code>g(n)</code></li>
+<li>Comportamento dell'algoritmo al limite, per dimensione delle istanze tendente all'infinito</li>
+<li>Es. n = 1 000 000<ul>
+<li>Ricerca lineare: 1'000'000 cicli</li>
+<li>Ricerca binaria: 20 cicli</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Complessità intrinseca</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Limite inferiore di complessità di un problema</li>
+<li>Una funzione <code>f(n)</code> è <code>Ω(g(n))</code> sse<ul>
+<li>Esistono due costanti positive <code>c</code> e <code>m</code> tali che</li>
+<li><code>|f(n)| ≥ c|g(n)| ∀ n &gt; m</code></li>
+</ul>
+</li>
+<li>Un problema ha una <em>delimitazione inferiore</em> alla complessità <code>Ω(g(n))</code> sse<ul>
+<li>Per ogni algoritmo risolutore…</li>
+<li>∃ una istanza (caso peggiore)…</li>
+<li>per cui il tempo di calcolo <code>t(n)</code> è <code>Ω(g(n))</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Algoritmo ottimale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Algoritmo che risolve un problema P, con le due seguenti condizioni:<ul>
+<li>Costo di esecuzione <code>O(g(n))</code></li>
+<li>P ha una delimitazione inferiore <code>Ω(g(n))</code></li>
+</ul>
+</li>
+<li>Es. L'algoritmo della ricerca binaria è ottimale<ul>
+<li>È dimostrato che <code>log<sub>2</sub>(n)</code> è la complessità intrinseca della ricerca</li>
+<li>Ma ricerca lineare funziona anche per liste non ordinate!</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Algoritmi di ordinamento</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Algoritmi di ordinamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Ricerca binaria: importante avere dati ordinati<ul>
+<li>Ordinateur, ordenador</li>
+</ul>
+</li>
+<li>Algoritmi di ordinamento più semplici hanno complessità <code>n<sup>2</sup></code><ul>
+<li>Confronto tra ciascun elemento e gli altri</li>
+</ul>
+</li>
+<li>Algoritmi di ordinamento <em>divide et impera</em><ul>
+<li>Complessità <code>n·log<sub>2</sub>(n)</code></li>
+<li>Complessità instrinseca</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Bubble sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/bubble-sort.png">
+        
+      </figure><pre class="prettyprint" data-lang="Python"><code>def swap(v: list, i: int, j: int):
+    v[i], v[j] = v[j], v[i]
+
+def bubble_sort(v: list):
+    end = len(v) – 1
+    while end &gt; 0:
+        for i in range(end):
+            if v[i] &gt; v[i + 1]:
+                swap(v, i, i + 1)
+        end -= 1
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Analisi Bubble Sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Gli elementi maggiori salgono rapidamente, <em>“come bollicine di champagne”</em></li>
+<li>Caso peggiore: lista rovesciata<ul>
+<li>Numero di confronti e scambi: <code>n<sup>2</sup>/2</code></li>
+<li><code>(n-1)+(n-2)+...+2+1 = n(n-1)/2 = n<sup>2</sup>/2 - n/2 ≈ n<sup>2</sup>/2</code></li>
+<li>(Applicata la formula di Gauss per la somma dei primi numeri)</li>
+<li>Complessità <code>n<sup>2</sup></code></li>
+</ul>
+</li>
+<li>Anche in media, circa stessi valori</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Selection Sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/selection-sort.png">
+        
+      </figure><pre class="prettyprint" data-lang="Python"><code>def selection_sort(v: list):
+    for i in range(len(v) – 1):
+        min_pos = i
+
+        for j in range(i + 1, len(v)):
+            if v[j] &lt; v[min_pos]:
+                min_pos = j
+
+        swap(v, pos_min, i)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Analisi Selection Sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Ad ogni ciclo principale, si seleziona il valore minore</li>
+<li>Caso peggiore: lista rovesciata<ul>
+<li>Numero di confronti <code>n·(n-1)/2</code>; complessità <code>n<sup>2</sup></code></li>
+<li>Numero di scambi: <code>n-1</code> scambi</li>
+</ul>
+</li>
+<li>Anche in media, circa stessi valori</li>
+</ul>
+<blockquote></blockquote>
+<p>Numero di confronti: (n - 1) + (n - 2) + (n - 3) + ... + 0 <br> Si applica Gauss</p></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Insertion sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/insertion-sort.png">
+        
+      </figure><pre class="prettyprint" data-lang="Python"><code>def insertion_sort(v: list):
+    for i in range(1, n):
+        value = v[i]
+
+        for j in range(i – 1, -1, -1):
+            if v[j] &lt;= value: break
+            v[j + 1] = v[j]
+
+        v[j + 1] = value
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Analisi Insertion Sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>La prima parte è ordinata, vi si inserisce un elemento alla volta, più facile trovare il posto</li>
+<li>Caso peggiore: lista rovesciata<ul>
+<li>Cicli: <code>1+2+...+(n-1) = n·(n-1)/2</code>; compl: <code>O(n<sup>2</sup>)</code></li>
+</ul>
+</li>
+<li>In media si scorre solo 1/2 della prima parte<ul>
+<li>In media <code>n<sup>2</sup>/4</code> confronti e <code>n<sup>2</sup>/4</code> scambi</li>
+</ul>
+</li>
+<li>Ottimizzazioni<ul>
+<li>Ricerca binaria in parte ordinata, ma scambi</li>
+<li>Inserimento a coppie, o gruppi</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Quick Sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/quick-sort.png">
+        
+      </figure><pre class="prettyprint" data-lang="Python"><code>def quick_sort(v: list, begin=0, end=len(v)):
+    if end - begin &gt; 1:
+        pivot = v[end – 1]
+        j = begin
+        for i in range(begin, end – 1):
+            if v[i] &lt; pivot:
+                swap(v, i, j)
+                j += 1
+    swap(v, end – 1, j)
+    quick_sort(v, begin, j)
+    quick_sort(v, j + 1, end)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Analisi Quick Sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Dato un insieme, sceglie un valore <code>pivot</code></li>
+<li>Crea due sottoinsiemi: <code>x ≤ pivot</code>, <code>x &gt; pivot</code></li>
+<li>Stesso algoritmo sui 2 insiemi (ricorsione)</li>
+<li>Caso peggiore: lista rovesciata, <code>n<sup>2</sup></code><ul>
+<li>Dipende da scelta pivot, ma esiste sempre</li>
+</ul>
+</li>
+<li>Caso medio: <code>n·log<sub>2</sub>(n)</code><ul>
+<li><code>t(n) = α·n + 2·t(n/2)</code></li>
+<li>Sostituzione <code>k</code> volte: <code>t(n) = α·k·n + 2<sup>k</sup>t(n/2<sup>k</sup>)</code> …</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Merge Sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Python"><code>def merge_sort(v, begin=0, end=len(v)):
+    '''In v, sort elements in range(begin, end)'''
+    if end - begin &gt; 1:
+        middle = (begin + end) / 2
+        merge_sort(v, begin, middle)
+        merge_sort(v, middle, end)
+        merge(v, begin, middle, end)
+</code></pre>
+<p><img alt="" src="images/comp/merge-sort.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Merge, con appoggio</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Python"><code>def merge(v, begin, middle, end):
+    '''Merge two sorted portions of a single list'''
+    i1, i2, n = begin, middle, end - begin
+    result = []
+
+    for k in range(n):
+        if i1 &lt; middle and (i2 &gt;= end or v[i1] &lt;= v[i2]):
+            result.append(v[i1])
+            i1 += 1
+        else:
+            result.append(v[i2])
+            i2 += 1
+
+    for k in range(n):
+        cards[begin + k] = result[k]
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Analisi Merge Sort</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Simile a Quick Sort, ma non si sceglie pivot</li>
+<li>La fusione ha complessità lineare</li>
+<li>Caso peggiore, caso medio: <code>n·log<sub>2</sub>(n)</code></li>
+<li><strong>Spazio</strong>: la fusione richiede altra memoria: <code>n</code><ul>
+<li>Ma si può evitare il costo con spostamenti <em>in place</em></li>
+</ul>
+</li>
+<li>Accessi sequenziali, buon uso <em>cache</em></li>
+<li>Integraz. con Insertion Sort (Python, Java7)</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Classi di complessità</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classi di complessità</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/orders.svg">
+        
+      </figure><ul>
+<li>Costante: numero op. non dipende da <code>n</code>, dim. istanza</li>
+<li>Sotto-lineare: <code>n<sup>k</sup></code>, <code>k&lt;1</code>; <code>log(n)</code>, ricerca binaria</li>
+<li>Lineare: numero op. <code>∝ n</code>, ricerca lineare</li>
+<li>Sovra-lineare: <code>n·log(n)</code>, merge sort</li>
+<li>Polinomiale: <code>n<sup>k</sup>, k≥2</code>, insertion sort <br> &nbsp;</li>
+<li><strong>Algoritmo efficiente</strong>: fino a classe polinomiale</li>
+<li><strong>Problema trattabile</strong>: ∃ algoritmo efficiente</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Complessità esponenziale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/orders.svg">
+        
+      </figure><ul>
+<li>Complessità esponenziale: <code>k<sup>n</sup></code><ul>
+<li>Es. elenco sottinsiemi, strategia perfetta per scacchi</li>
+</ul>
+</li>
+<li>Complessità super-esponenziale: <code>n!</code>, <code>n<sup>n</sup></code>, …<ul>
+<li>Es. elenco permutazioni</li>
+</ul>
+</li>
+<li><strong>Problemi intrattabili</strong><ul>
+<li>∄ algoritmo efficiente</li>
+<li>Soluzioni non esatte/ottime, euristiche</li>
+<li>Ma minimi locali...</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Problemi P ed NP</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Problemi <strong>P</strong>: ∃ algoritmo <em>deterministico polinomiale</em></li>
+<li><strong>NP</strong>: ∃ algoritmo <em>non-deterministico polinomiale</em><ul>
+<li>Su macchine deterministiche: non noto algoritmo polinomiale per la <strong>ricerca</strong> di una soluzione...</li>
+<li>Ma algoritmo polinomiale per la <strong>verifica</strong> di una soluzione</li>
+</ul>
+</li>
+<li>Esempio: fattorizzazione di grandi numeri<ul>
+<li>Ricerca: quali sono i fattori primi di un numero di <code>n</code> cifre?</li>
+<li>Verifica: è vero che <code>x</code> è divisore di <code>y</code>?</li>
+</ul>
+</li>
+<li><strong>Non è dimostrato che P≠NP, né che P=NP</strong><ul>
+<li>Millenium Prize Problems: 1M$</li>
+<li>Se <em>P=NP</em>, trovare i fattori primi di un numero o verificarli: stessa classe di complessità</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Complessità dei linguaggi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>Linguaggi di classe P / NP</em>: stringa <code>x</code> riconosciuta in tempo polinomiale rispetto a <code>|x|</code>...<ul>
+<li><em>P</em>: da una macchina di Turing deterministica (<em>DTM</em>)</li>
+<li><em>NP</em>: da una macchina di Turing non-deterministica (<em>NTM</em>)</li>
+<li>Sappiamo che <em>P ⊆ NP</em> (DTM: caso particolare di NTM)</li>
+</ul>
+</li>
+<li><em>Linguaggi di classe EXP</em>: stringa <code>x</code> riconosciuta in tempo esponenziale rispetto a <code>|x|</code> da una DTM<ul>
+<li>NTM: simulata da DTM in tempo esponenziale</li>
+<li>Quindi <em>NP ⊆ EXP</em></li>
+</ul>
+</li>
+<li><strong>P ⊆ NP ⊆ EXP</strong></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Problemi NP-completi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/comp/classes.svg"><img src="images/comp/knapsack.svg">
+        
+      </figure><ul>
+<li>Ogni problema NP può essere ricondotto ad un problema <strong>NP-completo</strong> con algoritmo deterministico <em>polinomiale</em><ul>
+<li><em>Lower-bound</em> deterministico esponenziale per uno dei problemi NP-completi? ⇒ <em>P≠NP</em></li>
+<li>Oppure, <em>soluzione</em> con algoritmo deterministico polinomiale? ⇒ <em>P=NP</em></li>
+</ul>
+</li>
+<li>Esempio: <em>SAT</em><ul>
+<li>Data una formula booleana <em>PdS</em>, è soddisfacibile?</li>
+<li>∃ combinazione di input che dà risultato vero?</li>
+</ul>
+</li>
+<li>Esempio: <em>Knapsack</em><ul>
+<li>∃ combinazione di elementi che realizza utilità <code>≥V</code>, con peso <code>≤W</code>?</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>
