@@ -764,8 +764,9 @@ arena-&gt;move_all();
     Ghost() { /* ... */ }
 
     void move() {
-        int dx = 5 * (rand() % 3 - 1);  // one of {-5, 0, +5}
-        int dy = 5 * (rand() % 3 - 1);
+        vector&lt;int&gt; vals = {-5, 0, 5};
+        int dx = vals[rand() % 3];  // one of {-5, 0, +5}
+        int dy = vals[rand() % 3];
         x = (x + dx + arena-&gt;get_w()) % arena-&gt;get_w();
         y = (y + dy + arena-&gt;get_h()) % arena-&gt;get_h();
     }
