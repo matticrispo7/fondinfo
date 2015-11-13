@@ -607,27 +607,24 @@ centralWidget()-&gt;setLayout(layout);
 <slide  >
   
     <hgroup>
-      <h2>FifteenGui</h2>
+      <h2>Fifteen</h2>
       <h3></h3>
     </hgroup>
     <article >
       <figure>
         <img src="images/qt/fifteen-puzzle.jpg">
         
-      </figure><pre class="prettyprint" data-lang="C++"><code>class FifteenGui : public QWidget {
+      </figure><pre class="prettyprint" data-lang="C++"><code>class GameGui : public QWidget {
     Q_OBJECT
 public:
-    FifteenGui(FifteenPuzzle* puzzle);
+    GameGui(Fifteen* puzzle);
 private:
     void handle_click(int x, int y);
     void update_button(int x, int y);
     void update_all_buttons();
 
-    int cols() { return puzzle_-&gt;cols(); }
-    int rows() { return puzzle_-&gt;rows(); }
-
-    vector&lt;QPushButton*&gt; buttons_;
-    FifteenPuzzle* puzzle_;
+    Fifteen* puzzle_;
+    int cols_, rows_;
 };
 </code></pre></article>
  
@@ -636,30 +633,31 @@ private:
 <slide  >
   
     <hgroup>
-      <h2>FifteenGui – Costruttore</h2>
+      <h2>Fifteen – Costruzione gui</h2>
       <h3></h3>
     </hgroup>
     <article >
       <figure>
         <img src="images/qt/puzzle.png">
         
-      </figure><pre class="prettyprint" data-lang="C++"><code>auto grid = new QGridLayout; setLayout(grid);
-for (auto y = 0; y &lt; rows(); ++y) {
-    for (auto x = 0; x &lt; cols(); ++x) {
-        auto b = new QPushButton; 
-        buttons_.push_back(b);
-        grid-&gt;addWidget(b, y, x);
-        connect(b, &amp;QPushButton::clicked,
-                [=]{ handle_click(x, y); });
+      </figure><pre class="prettyprint" data-lang="C++"><code>GameGui::GameGui(Fifteen* puzzle) {
+    cols_ = puzzle.cols(); rows_ = puzzle.rows();
+    puzzle_ = puzzle; 
+    auto grid = new QGridLayout; setLayout(grid);
+    for (auto y = 0; y &lt; rows_; ++y) {
+        for (auto x = 0; x &lt; cols_; ++x) {
+            auto b = new QPushButton; 
+            grid-&gt;addWidget(b, y, x);
+            connect(b, &amp;QPushButton::clicked,
+                    [=]{ handle_click(x, y); });
+        }
     }
+    update_all_buttons();
 }
-update_all_buttons();
 </code></pre>
 <ul>
-<li><strong>Funzioni lambda</strong>: anonime, annidate (<em>Church</em>, 1936)<ul>
-<li><strong>Closure</strong>: cattura di valori dal contesto; <code>this</code>, <code>x</code>, <code>y</code></li>
-</ul>
-</li>
+<li><em>Funzioni lambda</em>: anonime, annidate (<em>Church</em>, 1936)</li>
+<li><em>Closure</em>: cattura di valori dal contesto; <code>this</code>, <code>x</code>, <code>y</code></li>
 </ul></article>
  
 </slide>
@@ -671,19 +669,21 @@ update_all_buttons();
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="C++"><code>void FifteenGui::update_button(int x, int y) {
-    auto val = puzzle_-&gt;get({x, y});
-    auto symbol = 'A' + val - FifteenPuzzle::FIRST;
-    if (val == FifteenPuzzle::BLANK) symbol = ' ';
+      <pre class="prettyprint" data-lang="C++"><code>void GameGui::update_button(int x, int y) {
+    auto val = puzzle_-&gt;get(x, y);
+    string symbol = "";
+    if (val &gt; 0) symbol = to_string(val);
 
-    auto b = buttons_[y * cols() + x];
-    b-&gt;setText(QString{symbol});
+    auto b = layout()-&gt;itemAt(y * cols_ + x)-&gt;widget();
+    dynamic_cast&lt;QPushButton*&gt;(b)-&gt;setText(symbol.c_str());
 }
 
-void FifteenGui::update_all_buttons() {
-    for (auto y = 0; y &lt; rows(); y++)
-        for (auto x = 0; x &lt; cols(); x++)
+void GameGui::update_all_buttons() {
+    for (auto y = 0; y &lt; rows_; y++) {
+        for (auto x = 0; x &lt; cols_; x++) {
             update_button(x, y);
+        }
+    }
 }
 </code></pre></article>
  
@@ -692,22 +692,21 @@ void FifteenGui::update_all_buttons() {
 <slide  >
   
     <hgroup>
-      <h2>FifteenGui – Gestione click</h2>
+      <h2>Fifteen – Gestione click</h2>
       <h3></h3>
     </hgroup>
     <article >
       <figure>
         <img src="images/qt/puzzle-solved.png">
         
-      </figure><pre class="prettyprint" data-lang="C++"><code>void FifteenGui::handle_click(int x, int y) {
-    puzzle_-&gt;move({x, y});
-    auto blank = puzzle_-&gt;blank(), moved = puzzle_-&gt;moved();
-    update_button(blank.real(), blank.imag());
-    update_button(moved.real(), moved.imag());
+      </figure><pre class="prettyprint" data-lang="C++"><code>void GameGui::handle_click(int x, int y) {
+    puzzle_-&gt;move_pos(x, y);
+    update_all_buttons();  // ...
 
-    if (puzzle_-&gt;finished()) {
-        QMessageBox::information(this, tr("Congratulations"),
-                                 tr("Game finished!"));
+    if (puzzle_-&gt;is_finished()) {
+        QMessageBox::information(this,
+                tr("Congratulations"),
+                tr("Game finished!"));
         puzzle_-&gt;shuffle();
         update_all_buttons();
     }
@@ -738,14 +737,12 @@ void FifteenGui::update_all_buttons() {
         
       </figure><pre class="prettyprint" data-lang="python"><code>class FifteenGui(QWidget):
     def __init__(self, puzzle: FifteenPuzzle):
-        super().__init__()
+        QWidget.__init__(self)
         self._puzzle = puzzle
-        self._buttons = []
         self.setLayout(QGridLayout())
-        for y in range(puzzle.rows):
-            for x in range(puzzle.cols):
+        for y in range(self.rows()):
+            for x in range(self.cols()):
                 b = QPushButton()
-                self._buttons.append(b)
                 self.layout().addWidget(b, y, x)
                 b.clicked.connect(lambda x=x, y=y:
                     self.handle_click(x, y))
@@ -762,22 +759,19 @@ void FifteenGui::update_all_buttons() {
       <h3></h3>
     </hgroup>
     <article >
-      <figure>
-        <img src="images/qt/puzzle.png">
-        
-      </figure><pre class="prettyprint" data-lang="python"><code>class FifteenGui(QWidget):
+      <pre class="prettyprint" data-lang="python"><code>class FifteenGui(QWidget):
     # ...
     def update_button(self, x: int, y: int):
         val = self._puzzle.get(x, y)
-        symbol = chr(ord('A') + val - 1)
-        if val == 0: symbol = ' '
+        symbol = ' '
+        if val &gt; 0: symbol = chr(ord('A') + val - 1)
 
-        b = self._buttons[y * self._puzzle.cols + x]
+        b = self.layout().itemAt(y * self.cols() + x).widget()
         b.setText(symbol)
 
     def update_all_buttons(self):
-        for y in range(self._puzzle.rows):
-            for x in range(self._puzzle.cols):
+        for y in range(self.rows()):
+            for x in range(self.cols()):
                 self.update_button(x, y)
 </code></pre></article>
  
@@ -797,12 +791,12 @@ void FifteenGui::update_all_buttons() {
     # ...
     def handle_click(self, x: int, y: int):
         self._puzzle.move_pos(x, y)
-        self.update_button(*self._puzzle.blank)  # args unpacking
-        self.update_button(*self._puzzle.moved)
+        self.update_all_buttons()  # ...
 
         if self._puzzle.finished:
-            QMessageBox.information(self, self.tr('Congratulations'),
-                                    self.tr('Game finished!'))
+            QMessageBox.information(self,
+                    self.tr('Congratulations'),
+                    self.tr('Game finished!'))
             self._puzzle.shuffle()
             self.update_all_buttons()
 </code></pre></article>
