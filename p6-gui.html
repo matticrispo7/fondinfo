@@ -665,7 +665,7 @@ private:
 <slide  >
   
     <hgroup>
-      <h2>FifteenGui – Aggiornamento bottoni</h2>
+      <h2>Fifteen – Aggiornamento bottoni</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -707,7 +707,7 @@ void GameGui::update_all_buttons() {
         QMessageBox::information(this,
                 tr("Congratulations"),
                 tr("Game finished!"));
-        puzzle_-&gt;shuffle();
+        puzzle_-&gt;new_game();
         update_all_buttons();
     }
 }
@@ -728,7 +728,7 @@ void GameGui::update_all_buttons() {
 <slide  >
   
     <hgroup>
-      <h2>Pyside – Inizializzazione</h2>
+      <h2>Pyside – Costruzione gui</h2>
       <h3></h3>
     </hgroup>
     <article >
