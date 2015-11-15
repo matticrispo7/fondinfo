@@ -607,23 +607,46 @@ centralWidget()-&gt;setLayout(layout);
 <slide  >
   
     <hgroup>
-      <h2>Fifteen</h2>
+      <h2>Fifteen – Gioco astratto</h2>
       <h3></h3>
     </hgroup>
     <article >
       <figure>
         <img src="images/qt/fifteen-puzzle.jpg">
         
+      </figure><pre class="prettyprint" data-lang="C++"><code>class Game {
+public:
+    virtual void play_at(int x, int y) = 0;
+    virtual int cols() const = 0;
+    virtual int rows() const = 0;
+    virtual std::string get_val(int x, int y) const = 0;
+    virtual bool is_finished() const = 0;
+    virtual std::string get_message() const = 0;
+};
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fifteen – Gui generica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/qt/puzzle.png">
+        
       </figure><pre class="prettyprint" data-lang="C++"><code>class GameGui : public QWidget {
     Q_OBJECT
 public:
-    GameGui(Fifteen* puzzle);
+    GameGui(Game* game);
 private:
     void handle_click(int x, int y);
     void update_button(int x, int y);
     void update_all_buttons();
 
-    Fifteen* puzzle_;
+    Game* game_;
     int cols_, rows_;
 };
 </code></pre></article>
@@ -637,12 +660,9 @@ private:
       <h3></h3>
     </hgroup>
     <article >
-      <figure>
-        <img src="images/qt/puzzle.png">
-        
-      </figure><pre class="prettyprint" data-lang="C++"><code>GameGui::GameGui(Fifteen* puzzle) {
-    cols_ = puzzle.cols(); rows_ = puzzle.rows();
-    puzzle_ = puzzle; 
+      <pre class="prettyprint" data-lang="C++"><code>GameGui::GameGui(Game* game) {
+    cols_ = game.cols(); rows_ = game.rows();
+    puzzle_ = game;
     auto grid = new QGridLayout; setLayout(grid);
     for (auto y = 0; y &lt; rows_; ++y) {
         for (auto x = 0; x &lt; cols_; ++x) {
@@ -670,12 +690,9 @@ private:
     </hgroup>
     <article >
       <pre class="prettyprint" data-lang="C++"><code>void GameGui::update_button(int x, int y) {
-    auto val = puzzle_-&gt;get(x, y);
-    string symbol = "";
-    if (val &gt; 0) symbol = to_string(val);
-
+    auto val = puzzle_-&gt;get_val(x, y);
     auto b = layout()-&gt;itemAt(y * cols_ + x)-&gt;widget();
-    dynamic_cast&lt;QPushButton*&gt;(b)-&gt;setText(symbol.c_str());
+    dynamic_cast&lt;QPushButton*&gt;(b)-&gt;setText(val.c_str());
 }
 
 void GameGui::update_all_buttons() {
@@ -700,15 +717,13 @@ void GameGui::update_all_buttons() {
         <img src="images/qt/puzzle-solved.png">
         
       </figure><pre class="prettyprint" data-lang="C++"><code>void GameGui::handle_click(int x, int y) {
-    puzzle_-&gt;move_pos(x, y);
+    game_-&gt;play_at(x, y);
     update_all_buttons();  // ...
 
-    if (puzzle_-&gt;is_finished()) {
-        QMessageBox::information(this,
-                tr("Congratulations"),
-                tr("Game finished!"));
-        puzzle_-&gt;new_game();
-        update_all_buttons();
+    if (game_-&gt;is_finished()) {
+        QMessageBox::information(nullptr, tr("Game finished"),
+                                 tr(game_-&gt;get_message().c_str()));
+        window()-&gt;close();
     }
 }
 </code></pre></article>
