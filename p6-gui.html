@@ -750,13 +750,14 @@ void GameGui::update_all_buttons() {
       <figure>
         <img src="images/qt/puzzle.png">
         
-      </figure><pre class="prettyprint" data-lang="python"><code>class FifteenGui(QWidget):
-    def __init__(self, puzzle: FifteenPuzzle):
+      </figure><pre class="prettyprint" data-lang="python"><code>class GameGui(QWidget):
+    def __init__(self, puzzle: Game):
         QWidget.__init__(self)
-        self._puzzle = puzzle
+        self._game = game
+        self._cols, self._rows = game.size()
         self.setLayout(QGridLayout())
-        for y in range(self.rows()):
-            for x in range(self.cols()):
+        for y in range(self._rows):
+            for x in range(self._cols):
                 b = QPushButton()
                 self.layout().addWidget(b, y, x)
                 b.clicked.connect(lambda x=x, y=y:
@@ -774,19 +775,16 @@ void GameGui::update_all_buttons() {
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="python"><code>class FifteenGui(QWidget):
+      <pre class="prettyprint" data-lang="python"><code>class GameGui(QWidget):
     # ...
     def update_button(self, x: int, y: int):
-        val = self._puzzle.get(x, y)
-        symbol = ' '
-        if val &gt; 0: symbol = chr(ord('A') + val - 1)
-
-        b = self.layout().itemAt(y * self.cols() + x).widget()
-        b.setText(symbol)
+        val = self._game.get_val(x, y)
+        b = self.layout().itemAt(y * self._cols + x).widget()
+        b.setText(val)
 
     def update_all_buttons(self):
-        for y in range(self.rows()):
-            for x in range(self.cols()):
+        for y in range(self._rows):
+            for x in range(self._cols):
                 self.update_button(x, y)
 </code></pre></article>
  
@@ -802,18 +800,16 @@ void GameGui::update_all_buttons() {
       <figure>
         <img src="images/qt/puzzle-solved.png">
         
-      </figure><pre class="prettyprint" data-lang="python"><code>class FifteenGui(QWidget):
+      </figure><pre class="prettyprint" data-lang="python"><code>class GameGui(QWidget):
     # ...
     def handle_click(self, x: int, y: int):
-        self._puzzle.move_pos(x, y)
-        self.update_all_buttons()  # ...
+        self._game.play_at(x, y)
+        self.update_all_buttons()
 
-        if self._puzzle.finished:
-            QMessageBox.information(self,
-                    self.tr('Congratulations'),
-                    self.tr('Game finished!'))
-            self._puzzle.shuffle()
-            self.update_all_buttons()
+        if self._game.is_finished():
+            QMessageBox.information(self, self.tr('Game finished'),
+                                    self.tr(self._game.get_message()))
+            self.window().close()
 </code></pre></article>
  
 </slide>
