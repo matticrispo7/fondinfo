@@ -721,7 +721,7 @@ void GameGui::update_all_buttons() {
     update_all_buttons();  // ...
 
     if (game_-&gt;is_finished()) {
-        QMessageBox::information(nullptr,
+        QMessageBox::information(this,
                                  tr("Game finished"),
                                  tr(game_-&gt;get_message().c_str()));
         window()-&gt;close();
