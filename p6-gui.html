@@ -721,7 +721,8 @@ void GameGui::update_all_buttons() {
     update_all_buttons();  // ...
 
     if (game_-&gt;is_finished()) {
-        QMessageBox::information(nullptr, tr("Game finished"),
+        QMessageBox::information(nullptr,
+                                 tr("Game finished"),
                                  tr(game_-&gt;get_message().c_str()));
         window()-&gt;close();
     }
@@ -807,7 +808,8 @@ void GameGui::update_all_buttons() {
         self.update_all_buttons()
 
         if self._game.is_finished():
-            QMessageBox.information(self, self.tr('Game finished'),
+            QMessageBox.information(self, 
+                                    self.tr('Game finished'),
                                     self.tr(self._game.get_message()))
             self.window().close()
 </code></pre></article>
