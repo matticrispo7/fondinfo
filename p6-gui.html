@@ -620,8 +620,8 @@ public:
     virtual int cols() const = 0;
     virtual int rows() const = 0;
     virtual std::string get_val(int x, int y) const = 0;
-    virtual bool is_finished() const = 0;
-    virtual std::string get_message() const = 0;
+    virtual bool finished() const = 0;
+    virtual std::string message() const = 0;
 };
 </code></pre></article>
  
@@ -720,10 +720,10 @@ void GameGui::update_all_buttons() {
     game_-&gt;play_at(x, y);
     update_all_buttons();  // ...
 
-    if (game_-&gt;is_finished()) {
+    if (game_-&gt;finished()) {
         QMessageBox::information(this,
                                  tr("Game finished"),
-                                 tr(game_-&gt;get_message().c_str()));
+                                 tr(game_-&gt;message().c_str()));
         window()-&gt;close();
     }
 }
@@ -807,10 +807,10 @@ void GameGui::update_all_buttons() {
         self._game.play_at(x, y)
         self.update_all_buttons()
 
-        if self._game.is_finished():
+        if self._game.finished():
             QMessageBox.information(self, 
                                     self.tr('Game finished'),
-                                    self.tr(self._game.get_message()))
+                                    self.tr(self._game.message()))
             self.window().close()
 </code></pre></article>
  

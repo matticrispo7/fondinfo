@@ -331,7 +331,7 @@ if __name__ == '__main__':
     def draw_game(self):
         self.canvas.clear()
         with self.canvas:
-            Color(0, 1, 0);
+            Color(0, 1, 0)
             Rectangle(pos=(self._x, 10), size=(80, 40))
 </code></pre>
 <p><a href="https://github.com/tomamic/fondinfo/blob/master/arena/bounce_kivy.py">https://github.com/tomamic/fondinfo/blob/master/arena/bounce_kivy.py</a></p></article>
@@ -371,7 +371,7 @@ if __name__ == '__main__':
 <slide  >
   
     <hgroup>
-      <h2>FifteenGui – Layout a griglia</h2>
+      <h2>Fifteen – Layout a griglia</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -381,18 +381,19 @@ if __name__ == '__main__':
       </figure><pre class="prettyprint" data-lang="Python"><code>class GridButton(Button):
     grid_pos = ListProperty((0, 0))  # Kivy
 
-class FifteenGui(GridLayout):
-    def __init__(self):
-        GridLayout.__init__(self, cols=4)
-        self._puzzle = FifteenPuzzle(4, 4)
-        for y in range(self._puzzle.rows):
-            for x in range(self._puzzle.cols):
-                btn = GridButton(grid_pos=(x, y),
-                                 background_color=(0, 1, 0, 1))
+class GameGui(GridLayout):
+    def __init__(self, game: Game):
+        self.__game = game
+        self.__cols, self.__rows = game.size()
+        GridLayout.__init__(self, cols=self.__cols)
+
+        for y in xrange(0, self.__rows):
+            for x in xrange(0, self.__cols):
+                btn = GridButton(grid_pos=(x, y))
                 btn.bind(on_release=self.handle_click)
                 self.add_widget(btn)
-        self.update_buttons()
-        # ...
+        self.update_all_buttons()
+    # ...
 </code></pre></article>
  
 </slide>
@@ -400,24 +401,21 @@ class FifteenGui(GridLayout):
 <slide  >
   
     <hgroup>
-      <h2>FifteenGui – Aggiornamento bottoni</h2>
+      <h2>Fifteen – Aggiornamento bottoni</h2>
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="Python"><code>class FifteenGui(GridLayout):
+      <pre class="prettyprint" data-lang="Python"><code>class GameGui(GridLayout):
     # ...
     def update_button(self, x: int, y: int):
-        val = self._puzzle.get(x, y)
-        symbol = chr(ord('A') + val - 1)
-        if val == 0: symbol = ' '
+        val = self.__game.get_val(x, y)
+        b = self.children[-1 - y * self.__cols - x]
+        b.text = val  # children are reversed, in Kivy
 
-        b = self.children[-1 - y * self._puzzle.cols - x]
-        b.text = symbol  # children are reversed, in Kivy
-
-    def update_buttons(self):
-        for y in range(self._puzzle.rows):
-            for x in range(self._puzzle.cols):
-                self.update_button(x, y)                    
+    def update_all_buttons(self):
+        for y in range(self.__rows):
+            for x in range(self.__cols):
+                self.update_button(x, y)
     # ...
 </code></pre></article>
  
@@ -426,26 +424,24 @@ class FifteenGui(GridLayout):
 <slide  >
   
     <hgroup>
-      <h2>FifteenGui – Click</h2>
+      <h2>Fifteen – Click</h2>
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="Python"><code>class FifteenGui(GridLayout):
+      <pre class="prettyprint" data-lang="Python"><code>class GameGui(GridLayout):
     # ...
-    def handle_click(self, btn: Button):
-        self._puzzle.move_pos(*btn.grid_pos)     # args unpacking
-        self.update_button(*self._puzzle.blank)
-        self.update_button(*self._puzzle.moved)
+    def handle_click(self, btn: GridButton):
+        self.__game.play_at(*btn.grid_pos)  # args unpacking
+        self.update_all_buttons()
 
-        if self._puzzle.finished:
-            popup = Popup(title='Congratulations',
-                          content=Button(text='Game finished!'))
+        if self.__game.finished():
+            popup = Popup(title='Game finished',
+                          content=Button(text=self.__game.message()))
             popup.content.bind(on_release=popup.dismiss)
             popup.open()
-            self._puzzle.shuffle()
-            self.update_buttons()
+            stopTouchApp()
 </code></pre>
-<p><a href="https://github.com/tomamic/fondinfo/blob/master/examples/p6_fifteen_kivy.py">https://github.com/tomamic/fondinfo/blob/master/examples/p6_fifteen_kivy.py</a></p></article>
+<p><a href="https://github.com/tomamic/fondinfo/blob/master/examples/x7_fifteen_kivy.py">https://github.com/tomamic/fondinfo/blob/master/examples/x7_fifteen_kivy.py</a></p></article>
  
 </slide>
 
