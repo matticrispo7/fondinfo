@@ -664,7 +664,7 @@ private:
     <article >
       <pre class="prettyprint" data-lang="C++"><code>GameGui::GameGui(Game* game) {
     cols_ = game.cols(); rows_ = game.rows();
-    puzzle_ = game;
+    game_ = game;
     auto grid = new QGridLayout; setLayout(grid);
     for (auto y = 0; y &lt; rows_; ++y) {
         for (auto x = 0; x &lt; cols_; ++x) {
@@ -692,7 +692,7 @@ private:
     </hgroup>
     <article >
       <pre class="prettyprint" data-lang="C++"><code>void GameGui::update_button(int x, int y) {
-    auto val = puzzle_-&gt;get_val(x, y);
+    auto val = game_-&gt;get_val(x, y);
     auto b = layout()-&gt;itemAt(y * cols_ + x)-&gt;widget();
     dynamic_cast&lt;QPushButton*&gt;(b)-&gt;setText(val.c_str());
 }
@@ -754,7 +754,7 @@ void GameGui::update_all_buttons() {
         <img src="images/qt/puzzle.png">
         
       </figure><pre class="prettyprint" data-lang="python"><code>class GameGui(QWidget):
-    def __init__(self, puzzle: Game):
+    def __init__(self, game: Game):
         QWidget.__init__(self)
         self._game = game
         self._cols, self._rows = game.size()
