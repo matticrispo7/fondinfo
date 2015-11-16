@@ -301,12 +301,14 @@ private:
     // QObject::tr translates GUI texts (see Qt Linguist)
 
     text_edit = new QTextEdit;
-    exit_button = new QPushButton{tr("E&amp;xit")};
+    exit_button = new QPushButton{tr("Quit")};
 
     // widgets in a vertical layout
-    setLayout(new QVBoxLayout); // QWidget
-    layout()-&gt;addWidget(text_edit);
-    layout()-&gt;addWidget(exit_button);
+    auto layout = new QVBoxLayout
+    layout-&gt;addWidget(text_edit);
+    layout-&gt;addWidget(exit_button);
+
+    setLayout(layout); // QWidget
 }
 </code></pre></article>
  
