@@ -1358,6 +1358,67 @@ private:
  
 </slide>
 
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 9</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Mossa suggerita</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/artificial-intelligence.png">
+        
+      </figure><ul>
+<li>Comando per completare automaticamente un incrocio (<code>+</code>):<ul>
+<li>Es. manca solo una casella → linea o <code>x</code></li>
+<li>Es. ci sono già due linee → tutte <code>x</code></li>
+</ul>
+</li>
+<li>Comando per completare automaticamente un vincolo numerico<ul>
+<li>Es. ci sono già le linee giuste → tutte <code>x</code></li>
+<li>Es. mancano <code>n</code> linee e ci sono <code>n</code> caselle libere → tutte linee</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Dare un suggerimento su richiesta dell'utente (es. click su cella, oppure menù)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Vicolo cieco (opzionale)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/dead-end.jpg">
+        
+      </figure><ul>
+<li>Aggiungere un metodo <code>wrong</code> al puzzle, per verificare una condizione di vicolo cieco<ul>
+<li>Impossibile risolvere il puzzle, senza <em>rimuovere</em> un simbolo (linea o <code>x</code>)</li>
+<li><em>Attenzione</em>: condizione più stringente di <code>not finished</code></li>
+<li>Almeno un vincolo violato per eccesso di linee, oppure di <code>x</code></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Una delle cause possibili (ma non la sola): un circuito chiuso non include tutte le linee</p>
+<p>Effettuare la verifica su richiesta dell'utente (es. tramite menù)</p></article>
+ 
+</slide>
+
 
 <slide class="thank-you-slide segue nobackground">
   <aside class="gdbar right"><img src="images/logo.png"></aside>
