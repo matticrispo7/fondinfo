@@ -1391,7 +1391,7 @@ private:
 </li>
 </ul>
 <blockquote></blockquote>
-<p>Dare un suggerimento su richiesta dell'utente (es. click su cella, oppure menù)</p></article>
+<p>Autocompletamento su richiesta dell'utente (es. click su cella, o menù)</p></article>
  
 </slide>
 
@@ -1406,7 +1406,7 @@ private:
         <img src="images/misc/dead-end.jpg">
         
       </figure><ul>
-<li>Aggiungere un metodo <code>wrong</code> al puzzle, per verificare una condizione di vicolo cieco<ul>
+<li>Aggiungere un metodo booleano <code>wrong</code> al puzzle, per verificare una condizione di vicolo cieco<ul>
 <li>Impossibile risolvere il puzzle, senza <em>rimuovere</em> un simbolo (linea o <code>x</code>)</li>
 <li><em>Attenzione</em>: condizione più stringente di <code>not finished</code></li>
 <li>Almeno un vincolo violato per eccesso di linee, oppure di <code>x</code></li>
@@ -1416,6 +1416,70 @@ private:
 <blockquote></blockquote>
 <p>Una delle cause possibili (ma non la sola): un circuito chiuso non include tutte le linee</p>
 <p>Effettuare la verifica su richiesta dell'utente (es. tramite menù)</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 10</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ulteriori suggerimenti (opzionale)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Ragionare come un giocatore umano (senza <em>backtracking</em>!)<ul>
+<li><a href="https://www.brainbashers.com/slitherlinkhelp.asp">https://www.brainbashers.com/slitherlinkhelp.asp</a></li>
+</ul>
+</li>
+<li>In una singola cella, provare i due segni alternativi (linea o <code>x</code>)<ul>
+<li>Operare su due copie del gioco</li>
+<li>Su ciascuna copia, applicare tutti gli autocompletamenti possibili (scorsa esercitazione)</li>
+<li>Se si finisce in un vicolo cieco (<code>wrong</code>), allora il segno giusto è l'altro</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="C++"><code>auto copy1 = *this; copy1.board_[y][x] = '-'; copy1.autocomplete();
+auto copy2 = *this; copy2.board_[y][x] = 'x'; copy2.autocomplete();
+</code></pre>
+<blockquote></blockquote>
+<p>Ulteriore possibilità: se entrambe le opzioni determinano uno stesso segno in una certa altra posizione, allora fissare quel segno nella sua posizione</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Soluzione ricorsiva (opzionale)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>bool Slitherlink::solve_recursive() {
+    // solve_simple();
+    complex&lt;int&gt; pos = find_first_playable();  // Cartesian coord
+    if (pos.real() &gt;= 0 &amp;&amp; pos.imag() &gt;= 0 &amp;&amp; !wrong()) {
+        auto copy = *this;  // save current status
+        for (auto sign : {'-', 'x'}) {
+            board_[pos.imag()][pos.real()] = sign;
+            if (solve_recursive()) return true;
+            *this = copy;  // backtracking
+        }
+    }
+    return finished();
+}
+</code></pre>
+<blockquote></blockquote>
+<p>Il metodo <code>find_first_playable</code> cerca la prima casella giocabile, non già segnata</p>
+<p>Opzionalmente, <code>solve_simple</code> applica prima tutte (!) le altre strategie di soluzione</p></article>
  
 </slide>
 
