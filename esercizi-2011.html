@@ -617,14 +617,14 @@ Bastano due cicli for annidati, senza array</p></article>
     <article >
       <ul>
 <li>Gestire un vettore di puntatori a punti<ul>
-<li>vector<Point*> points;</li>
+<li><code>vector&lt;Point*&gt; points;</code></li>
 </ul>
 </li>
 <li>Ripetutamente chiedere all'utente di scegliere tra:<ul>
-<li>Aggiunta di un nuovo punto <br>
-Point* pt = new Point(x, y); // ...</li>
+<li>Aggiunta di un nuovo punto</li>
+<li><code>Point* pt = new Point(x, y); // ...</code></li>
 <li>Eliminazione di un punto esistente (deallocazione memoria + rimozione puntatore)</li>
-<li>delete points[i]; // ...</li>
+<li><code>delete points[i]; // ...</code></li>
 <li>Calcolo della distanza tra due punti scelti dall'utente</li>
 </ul>
 </li>
@@ -757,17 +757,17 @@ Point* pt = new Point(x, y); // ...</li>
         <img src="images/misc/sqrt-bisection.png">
         
       </figure><ul>
-<li>Scrivere una nuova funzione sqrt<ul>
-<li>Parametro x e risultato di tipo float</li>
-<li>Restituire risultato con errore minore di 0.0001</li>
+<li>Scrivere una nuova funzione <code>sqrt</code><ul>
+<li>Parametro <code>x</code> e risultato di tipo <code>float</code></li>
+<li>Restituire risultato con errore minore di <code>0.0001</code></li>
 </ul>
 </li>
 <li>In un ciclo, trovare approssimazioni successive:<ul>
-<li>Due variabili low, high: inizio e fine intervallo di stima</li>
-<li>(intervallo iniziale: da 0 ad x, oppure da 0 ad 1, se x&lt;1)</li>
-<li>Si pone la stima y a metà intervallo</li>
-<li>Se y*y - x &gt; 0, nel seguito si considera solo la prima metà dell'intervallo (da low ad y)</li>
-<li>Altrimenti solo la seconda metà (da y ad high)</li>
+<li>Due variabili <code>low</code>, <code>high</code>: inizio e fine intervallo di stima</li>
+<li>(intervallo iniziale: da <code>0</code> ad <code>x</code>, oppure da <code>0</code> ad <code>1</code>, se <code>x &lt; 1</code>)</li>
+<li>Si pone la stima <code>y</code> a metà intervallo</li>
+<li>Se <code>y*y - x &gt; 0</code>, nel seguito si considera solo la prima metà dell'intervallo (da <code>low</code> ad <code>y</code>)</li>
+<li>Altrimenti solo la seconda metà (da <code>y</code> ad <code>high</code>)</li>
 <li>Ad ogni iterazione si dimezza l'intervallo residuo</li>
 </ul>
 </li>
@@ -786,10 +786,10 @@ Point* pt = new Point(x, y); // ...</li>
         <img src="images/misc/sqrt-bisection.png">
         
       </figure><ul>
-<li>Implementazione ricorsiva della funzione sqrt, con il metodo della bisezione (come esercizio 5.2)<ul>
-<li>Parametro x: float</li>
-<li>Parametro inizio intervallo di stima: float</li>
-<li>Parametro fine intervallo di stima: float</li>
+<li>Implementazione ricorsiva della funzione <code>sqrt</code>, con il metodo della bisezione (come esercizio 5.2)<ul>
+<li>Parametro <code>x</code>: <code>float</code></li>
+<li>Parametro inizio intervallo di stima: <code>float</code></li>
+<li>Parametro fine intervallo di stima: <code>float</code></li>
 </ul>
 </li>
 <li>Bisezione: invocare ad ogni livello la funzione su un intervallo dimezzato</li>
@@ -806,8 +806,8 @@ Point* pt = new Point(x, y); // ...</li>
     <article >
       <ul>
 <li>Scrivere una classe per rappresentare cerchi<ul>
-<li>center: puntatore a Point (es. 4.2)</li>
-<li>radius: float</li>
+<li>center: puntatore a <code>Point</code> (es. 4.2)</li>
+<li>radius: <code>float</code></li>
 <li>Costruttore con parametri: centro (ptr) e raggio</li>
 <li>Metodi per calcolo area e perimetro</li>
 </ul>
@@ -832,8 +832,8 @@ Point* pt = new Point(x, y); // ...</li>
     <article >
       <ul>
 <li>Point, metodi di lettura/scrittura stato su stream<ul>
-<li>void read(istream&amp; in);</li>
-<li>void write(ostream&amp; out);</li>
+<li><code>void read(istream&amp; in);</code></li>
+<li><code>void write(ostream&amp; out);</code></li>
 </ul>
 </li>
 <li>Scrivere una classe per rappresentare poligoni<ul>
