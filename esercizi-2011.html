@@ -300,14 +300,14 @@ ma simboli tra apici singoli (<code>'a'</code>, <code>'z'</code> ecc.)</p></arti
 <li>Calcolare l'interesse composto di un certo capitale ad un certo tasso d'interesse, per un certo numero di anni (dati dall'utente)</li>
 <li>Es. per 100€ di capitale, l'interesse (4,5%) del primo anno sarà di 4,5€, da aggiungere al capitale</li>
 </ul>
-<p>code: output
-    Anni  Capitale
-    0     100.00
-    1     104.50
-    2     109.20
-    3     114.12
-    4     119.25
-    ...   ...</p></article>
+<pre class="prettyprint" data-lang="output"><code>Anni  Capitale
+0     100.00
+1     104.50
+2     109.20
+3     114.12
+4     119.25
+...   ...
+</code></pre></article>
  
 </slide>
 
@@ -752,17 +752,22 @@ Point* pt = new Point(x, y); // ...</li>
       <figure>
         <img src="images/misc/sqrt-bisection.png">
         
-      </figure><p>Scrivere una nuova funzione sqrt
-Parametro x e risultato di tipo float
-Restituire risultato con errore minore di 0.0001
-In un ciclo, trovare approssimazioni successive:
-Due variabili low, high: inizio e fine intervallo di stima
-(intervallo iniziale: da 0 ad x, oppure da 0 ad 1, se x&lt;1)
-Si pone la stima y a metà intervallo
-Se y*y - x &gt; 0, nel seguito si considera solo la prima
-metà dell'intervallo (da low ad y)
-Altrimenti solo la seconda metà (da y ad high)
-Ad ogni iterazione si dimezza l'intervallo residuo</p></article>
+      </figure><ul>
+<li>Scrivere una nuova funzione sqrt<ul>
+<li>Parametro x e risultato di tipo float</li>
+<li>Restituire risultato con errore minore di 0.0001</li>
+</ul>
+</li>
+<li>In un ciclo, trovare approssimazioni successive:<ul>
+<li>Due variabili low, high: inizio e fine intervallo di stima</li>
+<li>(intervallo iniziale: da 0 ad x, oppure da 0 ad 1, se x&lt;1)</li>
+<li>Si pone la stima y a metà intervallo</li>
+<li>Se y*y - x &gt; 0, nel seguito si considera solo la prima metà dell'intervallo (da low ad y)</li>
+<li>Altrimenti solo la seconda metà (da y ad high)</li>
+<li>Ad ogni iterazione si dimezza l'intervallo residuo</li>
+</ul>
+</li>
+</ul></article>
  
 </slide>
 
@@ -776,13 +781,15 @@ Ad ogni iterazione si dimezza l'intervallo residuo</p></article>
       <figure>
         <img src="images/misc/sqrt-bisection.png">
         
-      </figure><p>Implementazione ricorsiva della funzione sqrt, con il
-metodo della bisezione (come esercizio 5.2)
-Parametro x: float
-Parametro inizio intervallo di stima: float
-Parametro fine intervallo di stima: float
-Bisezione: invocare ad ogni livello la funzione su un
-intervallo dimezzato</p></article>
+      </figure><ul>
+<li>Implementazione ricorsiva della funzione sqrt, con il metodo della bisezione (come esercizio 5.2)<ul>
+<li>Parametro x: float</li>
+<li>Parametro inizio intervallo di stima: float</li>
+<li>Parametro fine intervallo di stima: float</li>
+</ul>
+</li>
+<li>Bisezione: invocare ad ogni livello la funzione su un intervallo dimezzato</li>
+</ul></article>
  
 </slide>
 
@@ -793,17 +800,22 @@ intervallo dimezzato</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      <p>Scrivere una classe per rappresentare cerchi
-center: puntatore a Point (es. 4.2)
-radius: float
-Costruttore con parametri: centro (ptr) e raggio
-Metodi per calcolo area e perimetro
-Gestire un vettore di puntatori a punti ed un vettore di
-puntatori a cerchi
-Centro dei cerchi: uno dei punti del primo vettore
-Diversi cerchi possono condividere lo stesso centro
-Cambiando le coordinate di un singolo punto...
-tutti i cerchi che lo hanno come centro risultano spostati</p></article>
+      <ul>
+<li>Scrivere una classe per rappresentare cerchi<ul>
+<li>center: puntatore a Point (es. 4.2)</li>
+<li>radius: float</li>
+<li>Costruttore con parametri: centro (ptr) e raggio</li>
+<li>Metodi per calcolo area e perimetro</li>
+</ul>
+</li>
+<li>Gestire un vettore di puntatori a punti ed un vettore di puntatori a cerchi<ul>
+<li>Centro dei cerchi: uno dei punti del primo vettore</li>
+<li>Diversi cerchi possono condividere lo stesso centro</li>
+<li>Cambiando le coordinate di un singolo punto...</li>
+<li>tutti i cerchi che lo hanno come centro risultano spostati</li>
+</ul>
+</li>
+</ul></article>
  
 </slide>
 
@@ -814,17 +826,22 @@ tutti i cerchi che lo hanno come centro risultano spostati</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      <p>Point, metodi di lettura/scrittura stato su stream
-void read(istream&amp; in);
-void write(ostream&amp; out);
-Scrivere una classe per rappresentare poligoni
-Vertici (punti) non condivisi con altri oggetti
-Metodi per lettura/scrittura di tutti i vertici su stream
-Metodo per calcolare il perimetro
-Distruttore per deallocare eventualmente i vertici
-Istanziare un poligono
-Leggere i vertici inseriti da console, mostrare il perimetro,
-infine salvare i vertici su file</p></article>
+      <ul>
+<li>Point, metodi di lettura/scrittura stato su stream<ul>
+<li>void read(istream&amp; in);</li>
+<li>void write(ostream&amp; out);</li>
+</ul>
+</li>
+<li>Scrivere una classe per rappresentare poligoni<ul>
+<li>Vertici (punti) non condivisi con altri oggetti</li>
+<li>Metodi per lettura/scrittura di tutti i vertici su stream</li>
+<li>Metodo per calcolare il perimetro</li>
+<li>Distruttore per deallocare eventualmente i vertici</li>
+</ul>
+</li>
+<li>Istanziare un poligono</li>
+<li>Leggere i vertici inseriti da console, mostrare il perimetro, infine salvare i vertici su file</li>
+</ul></article>
  
 </slide>
 
@@ -835,16 +852,19 @@ infine salvare i vertici su file</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      <p>Chiedere all'utente il nome di uno o più file
-Leggere le parole presenti in questi file, memorizzarle
-tutte in un vettore v (possibilmente senza ripetizioni)
-Mostrare a schermo le N parole più lunghe in
-assoluto, in ordine decrescente di lunghezza
-Chiedere all'utente N
-Scrivere una funzione booleana order che, dati due parametri
-di tipo stringa, stabilisca se sono ordinati (per lunghezza)
-count(v.begin(), v.end(), x); // is x in v?
-sort(v.begin(), v.end(), order); // sort v</p></article>
+      <ul>
+<li>Chiedere all'utente il nome di uno o più file<ul>
+<li>Leggere le parole presenti in questi file, memorizzarle tutte in un vettore <code>v</code> (possibilmente senza ripetizioni)</li>
+<li>Mostrare a schermo le <code>N</code> parole più lunghe in assoluto, in ordine decrescente di lunghezza</li>
+<li>Chiedere all'utente <code>N</code></li>
+</ul>
+</li>
+<li>Scrivere una funzione booleana <code>order</code> che, dati due parametri di tipo stringa, stabilisca se sono ordinati (per lunghezza)<ul>
+<li><code>count(v.begin(), v.end(), x); // is x in v?</code></li>
+<li><code>sort(v.begin(), v.end(), order); // sort v</code></li>
+</ul>
+</li>
+</ul></article>
  
 </slide>
 
@@ -855,17 +875,24 @@ sort(v.begin(), v.end(), order); // sort v</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      <p>Leggere una riga di testo in una stringa
-Scrivere una funzione che valuti la stringa come una
-espressione, nella forma: "+ 2 7" (=9)
-Gli operandi possono essere a loro volta espressioni:
-"+ * 3 4 15" (=27)
-Scrivere una seconda funzione che trasformi
-l'espressione nell'abituale notazione infissa:
-"((3 * 4) + 15)"
-Usare la ricorsione
-Supporre che i “token” siano tutti separati da spazio
-e che gli operatori abbiano tutti cardinalità fissa</p></article>
+      <ul>
+<li>Leggere una riga di testo in una stringa</li>
+<li>Scrivere una funzione che valuti la stringa come una espressione, nella forma:<ul>
+<li><code>"+ 2 7" (=9)</code></li>
+</ul>
+</li>
+<li>Gli operandi possono essere a loro volta espressioni:<ul>
+<li><code>"+ * 3 4 15" (=27)</code></li>
+</ul>
+</li>
+<li>Scrivere una seconda funzione che trasformi l'espressione nell'abituale notazione infissa:<ul>
+<li><code>"((3 * 4) + 15)"</code></li>
+</ul>
+</li>
+<li>Usare la ricorsione</li>
+</ul>
+<blockquote></blockquote>
+<p>Supporre che i “token” siano tutti separati da spazio e che gli operatori abbiano tutti cardinalità fissa</p></article>
  
 </slide>
 
@@ -873,17 +900,7 @@ e che gli operatori abbiano tutti cardinalità fissa</p></article>
   
     <aside class="gdbar"><img src="images/logo.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Esercitazione 2</h2>
-      <h3></h3>
-    </hgroup>
-  
-</slide>
-
-<slide class="segue dark" >
-  
-    <aside class="gdbar"><img src="images/logo.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Progetto 1</h2>
+      <h2>Esercitazione 6</h2>
       <h3></h3>
     </hgroup>
   
@@ -919,15 +936,15 @@ e che gli operatori abbiano tutti cardinalità fissa</p></article>
       <figure>
         <img src="images/misc/akari.svg">
         
-      </figure><p>Scopo: disporre delle
-lampade (cerchi), fino ad
-illuminare tutte le celle
-Una lampada illumina le celle sulla sua riga e la sua
-colonna, fino ad una cella nera o al bordo esterno
-Ogni cella bianca può ospitare una lampada, ma:
-Un numero indica quante lampade devono trovarsi
-nelle celle adiacenti (in orizzontale e verticale)
-Due lampade non possono illuminarsi a vicenda</p>
+      </figure><ul>
+<li>Scopo: disporre delle lampade (cerchi), fino ad illuminare tutte le celle</li>
+<li>Una lampada illumina le celle sulla sua riga e la sua colonna, fino ad una cella nera o al bordo esterno</li>
+<li>Ogni cella bianca può ospitare una lampada, ma:<ul>
+<li>Un numero indica quante lampade devono trovarsi nelle celle adiacenti (in orizzontale e verticale)</li>
+<li>Due lampade non possono illuminarsi a vicenda</li>
+</ul>
+</li>
+</ul>
 <p><a href="http://www.nikoli.com/en/puzzles/bijutsukan/rule.html">http://www.nikoli.com/en/puzzles/bijutsukan/rule.html</a></p></article>
  
 </slide>
@@ -939,15 +956,19 @@ Due lampade non possono illuminarsi a vicenda</p>
       <h3></h3>
     </hgroup>
     <article >
-      <p>Inserire una lampada in una cella (bulb)
-Controllare se le regole sono violate
-Controllare se il gioco è stato risolto
-Scrivere lo stato del gioco su uno stream generico
-Per ciascuna cella, indicare anche se è illuminata
-Aggiungere inoltre metodi per...
-Leggere lo stato del gioco da uno stream generico
-Marcare una cella con un punto (dot)
-L'utente intende che lì non può trovarsi una lampada</p></article>
+      <ul>
+<li>Inserire una lampada in una cella (<em>bulb</em>)</li>
+<li>Controllare se le regole sono violate</li>
+<li>Controllare se il gioco è stato risolto</li>
+<li>Scrivere lo stato del gioco su uno stream generico</li>
+<li>Per ciascuna cella, indicare anche se è illuminata</li>
+<li>Aggiungere inoltre metodi per...<ul>
+<li>Leggere lo stato del gioco da uno stream generico</li>
+<li>Marcare una cella con un punto (<em>dot</em>)</li>
+<li>L'utente intende che lì non può trovarsi una lampada</li>
+</ul>
+</li>
+</ul></article>
  
 </slide>
 
@@ -958,23 +979,34 @@ L'utente intende che lì non può trovarsi una lampada</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      <p>class AkariPuzzle
+      <pre class="prettyprint" data-lang="C++"><code>class AkariPuzzle
 {
 public:
-AkariPuzzle();
-int getRows();
-int getColumns();
-bool isSolved();
-bool isWrong();
-char get(int y, int x);
-void putBulb(int y, int x);
-void putDot(int y, int x);
-void read(istream&amp; in);
-void write(ostream&amp; out);
+    AkariPuzzle();
+    int getRows();
+    int getColumns();
+    bool isSolved();
+    bool isWrong();
+    char get(int y, int x);
+    void putBulb(int y, int x);
+    void putDot(int y, int x);
+    void read(istream&amp; in);
+    void write(ostream&amp; out);
 private:
 // ...
-}</p></article>
+}
+</code></pre></article>
  
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 7</h2>
+      <h3></h3>
+    </hgroup>
+  
 </slide>
 
 <slide  >
@@ -997,19 +1029,12 @@ private:
 </li>
 <li><strong>Riuso</strong> - Classe di modello definita in modo generico<ul>
 <li>Usabile sia da interfaccia grafica che da console</li>
+<li>Permettere di aggiungere/rimuovere lampade e punti</li>
 </ul>
 </li>
 </ul>
-<p>Aggiungere una interfaccia grafica al progetto
-Creare una sottoclasse di QWidget o QMainWindow
-Interfaccia adattabile a dimensioni diverse del gioco
-Riuso - Definire la classe di modello per le partite in
-modo generico
-Usabile sia da interfaccia grafica che da console
-Permettere di aggiungere/rimuovere lampade e punti
-Sono fornite due classi per gestire anche
-i click con il tasto destro del mouse
-(RightButtonGroup, sulla pagina del corso)</p></article>
+<blockquote></blockquote>
+<p>Sono fornite due classi per gestire anche i click con il tasto destro del mouse (<code>RightButtonGroup</code>, sulla pagina del corso)</p></article>
  
 </slide>
 
@@ -1043,6 +1068,16 @@ i click con il tasto destro del mouse
  
 </slide>
 
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 8</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
 <slide  >
   
     <hgroup>
@@ -1053,17 +1088,18 @@ i click con il tasto destro del mouse
       <figure>
         <img src="images/misc/artificial-intelligence.png">
         
-      </figure><p>Metodo che calcola e
-suggerisce una mossa
-1. Controllare i vincoli numerici
-Vincolo N già circondato da N lampade:
-marcare con punti tutte le celle libere
-Vincolo N circondato da M lampade ed esattamente N-M
-celle libere: posizionare lampade in tutte le celle libere
-2. Cercare una cella libera (vuota e non illuminata),
-senza altre celle libere visibili (possibili fonti di luce)
-3. Cercare una cella marcata con punto non illuminata,
-con una sola cella libera visibile</p></article>
+      </figure><ul>
+<li>Metodo che calcola e suggerisce una mossa</li>
+<li><strong>1.</strong> Controllare i vincoli numerici<ul>
+<li>Vincolo <code>N</code> già circondato da <code>N</code> lampade:</li>
+<li>marcare con punti tutte le celle libere</li>
+<li>Vincolo <code>N</code> circondato da <code>M</code> lampade ed esattamente <code>N-M</code></li>
+<li>celle libere: posizionare lampade in tutte le celle libere</li>
+</ul>
+</li>
+<li><strong>2.</strong> Cercare una cella libera (vuota e non illuminata), senza altre celle libere visibili (possibili fonti di luce)</li>
+<li><strong>3.</strong> Cercare una cella marcata con punto non illuminata, con una sola cella libera visibile</li>
+</ul></article>
  
 </slide>
 
@@ -1077,17 +1113,22 @@ con una sola cella libera visibile</p></article>
       <figure>
         <img src="images/misc/artificial-intelligence.png">
         
-      </figure><p>Suggerire mosse più difficili
-Celle d'angolo nei vincoli
-Vincoli incrociati (in celle vicine, in diagonale)
-Verificare se una possibile mossa porta in un vicolo cieco
-Verificare se entrambe le mosse (lampada / punto) in
-cella X producono un risultato invariante in cella Y
-Migliorare l'interfaccia utente
-Inserire un menù e/o una barra degli strumenti
-Comandi per apertura e salvataggio di una partita
-Comandi per suggerimenti di diversa difficoltà
-Ereditare da QMainWindow</p></article>
+      </figure><ul>
+<li>Suggerire mosse più difficili<ul>
+<li>Celle d'angolo nei vincoli</li>
+<li>Vincoli incrociati (in celle vicine, in diagonale)</li>
+<li>Verificare se una possibile mossa porta in un vicolo cieco</li>
+<li>Verificare se entrambe le mosse (lampada / punto) in cella <code>A</code> producono un risultato invariante in cella <code>B</code></li>
+</ul>
+</li>
+<li>Migliorare l'interfaccia utente<ul>
+<li>Inserire un menù e/o una barra degli strumenti</li>
+<li>Comandi per apertura e salvataggio di una partita</li>
+<li>Comandi per suggerimenti di diversa difficoltà</li>
+<li>Ereditare da <code>QMainWindow</code></li>
+</ul>
+</li>
+</ul></article>
  
 </slide>
 
@@ -1098,22 +1139,23 @@ Ereditare da QMainWindow</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      <p>void AkariPuzzle::solveCuldesac(int y, int x) {
-AkariPuzzle copyBulb = <em>this; // copy the whole game
-copyBulb.putBulb(y, x);
-copyBulb.solveSimple(); // take all obvious moves (1+2+3)
-AkariPuzzle copyDot = </em>this; // copy the whole game
-copyDot.putDot(y, x);
-copyDot.solveSimple(); // take all obvious moves (1+2+3)
-if (copyBulb.isWrong()) {
-putDot(y, x); // bulb in x, y is a culdesac, put dot
-} else if (copyDot.isWrong()) {
-putBulb(y, x); // dot in x, y is a culdesac, put bulb
-} else {
-// find invariant cells elsewhere in the table
-// (set with the same value, in both cases)
+      <pre class="prettyprint" data-lang="C++"><code>void AkariPuzzle::solveCuldesac(int y, int x) {
+    AkariPuzzle copyBulb = *this; // copy the whole game
+    copyBulb.putBulb(y, x);
+    copyBulb.solveSimple(); // take all obvious moves (1+2+3)
+    AkariPuzzle copyDot = *this; // copy the whole game
+    copyDot.putDot(y, x);
+    copyDot.solveSimple(); // take all obvious moves (1+2+3)
+    if (copyBulb.isWrong()) {
+        putDot(y, x); // bulb in x, y is a culdesac, put dot
+    } else if (copyDot.isWrong()) {
+        putBulb(y, x); // dot in x, y is a culdesac, put bulb
+    } else {
+        // find invariant cells elsewhere in the table
+        // (set with the same value, in both cases)
+    }
 }
-}</p></article>
+</code></pre></article>
  
 </slide>
 
@@ -1127,22 +1169,23 @@ putBulb(y, x); // dot in x, y is a culdesac, put bulb
       <figure>
         <img src="images/misc/artificial-intelligence.png">
         
-      </figure><p>// Adapt the following code to find <em>all</em> solutions
+      </figure><pre class="prettyprint" data-lang="C++"><code>// Adapt the following code to find *all* solutions
 // (e.g. a random game should have one single solution)
 void AkariPuzzle::solveRecursive(int i) {
-solveSimple(); // take all obvious moves (1+2+3)
-// is there an empty cell after i?
-while (i &lt; table.size() &amp;&amp; table[i] != EMPTY) ++i;
-if (i &lt; table.size() &amp;&amp; !isWrong()) {
-AkariPuzzle copy = <em>this; // save current status
-for (int m = 0; m &lt;= 1 &amp;&amp; !isSolved(); ++m) {
-if (m == 0) putBulb(i/columns, i%columns);
-else putDot(i/columns, i%columns);
-solveRecursive(i + 1);
-if (!isSolved()) </em>this = copy; // backtracking
+    solveSimple(); // take all obvious moves (1+2+3)
+    // is there an empty cell after i?
+    while (i &lt; table.size() &amp;&amp; table[i] != EMPTY) ++i;
+    if (i &lt; table.size() &amp;&amp; !isWrong()) {
+        AkariPuzzle copy = *this; // save current status
+        for (int m = 0; m &lt;= 1 &amp;&amp; !isSolved(); ++m) {
+            if (m == 0) putBulb(i/columns, i%columns);
+            else putDot(i/columns, i%columns);
+            solveRecursive(i + 1);
+            if (!isSolved()) *this = copy; // backtracking
+        }
+    }
 }
-}
-}</p></article>
+</code></pre></article>
  
 </slide>
 
@@ -1150,7 +1193,7 @@ if (!isSolved()) </em>this = copy; // backtracking
   
     <aside class="gdbar"><img src="images/logo.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Progetto 2</h2>
+      <h2>Esercitazione 9</h2>
       <h3></h3>
     </hgroup>
   
@@ -1163,16 +1206,18 @@ if (!isSolved()) </em>this = copy; // backtracking
       <h3></h3>
     </hgroup>
     <article >
-      <figure>
-        <img src="images/misc/invaders.png">
-        
-      </figure><p>Realizzare un gioco con diversi personaggi
-Classe per partita
-Classe base astratta (e sottoclassi) per personaggi
-Polimorfismo nei vari personaggi, per:
-Il movimento
-L'interazione
-reciproca</p></article>
+      <ul>
+<li>Realizzare un gioco con diversi personaggi<ul>
+<li>Classe per partita</li>
+<li>Classe base astratta (e sottoclassi) per personaggi</li>
+</ul>
+</li>
+<li>Polimorfismo nei vari personaggi, per:<ul>
+<li>Il movimento</li>
+<li>L'interazione reciproca</li>
+</ul>
+</li>
+</ul></article>
  
 </slide>
 
@@ -1183,7 +1228,21 @@ reciproca</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      </article>
+      <figure>
+        <img src="images/misc/frogger.png">
+        
+      </figure><ul>
+<li><strong>Rana</strong>: guidata dall'utente in 4 direzioni: ↕ ↔<ul>
+<li>Deve attraversare una strada percorsa da camion</li>
+<li>Muore se investita da un camion (collisione)</li>
+</ul>
+</li>
+<li><strong>Camion</strong>: scorrono in uno dei 2 versi, in orizzontale ↔<ul>
+<li>Rientrano in ciclo dalla parte opposta</li>
+</ul>
+</li>
+<li>È fornito un semplice framework di esempio</li>
+</ul></article>
  
 </slide>
 
@@ -1194,8 +1253,34 @@ reciproca</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      </article>
+      <ul>
+<li><strong>Rana</strong>: deve attraversare un fiume percorso da tronchi<ul>
+<li>Può saltare sui tronchi</li>
+<li>Muore se cade in acqua</li>
+</ul>
+</li>
+<li><strong>Tronchi</strong>: scorrimento ↔<ul>
+<li>Rientrano in ciclo...</li>
+<li>Rana scorre con tronco</li>
+</ul>
+</li>
+<li><strong>Fiume</strong>: a scelta... modellato come personaggio del gioco<ul>
+<li>(immobile, per gestire collisioni con rana)</li>
+</ul>
+</li>
+<li>Rana.z &gt; Tronco.z &gt; Fiume.z</li>
+</ul></article>
  
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 10</h2>
+      <h3></h3>
+    </hgroup>
+  
 </slide>
 
 <slide  >
@@ -1205,7 +1290,19 @@ reciproca</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      </article>
+      <ul>
+<li>Due rane contemporaneamente in gioco</li>
+<li>Altri personaggi a fantasia, per esempio:<ul>
+<li>Tartarughe che scorrono sul fiume</li>
+<li>La rana può sfruttarle per attraversare il fiume</li>
+<li>Ma periodicamente si immergono...</li>
+<li>Coccodrilli ecc.</li>
+</ul>
+</li>
+<li>Limite massimo di tempo per completare una partita</li>
+<li>Vari bonus a fantasia, per punti, tempo, vite ecc.</li>
+<li>Icone al posto del testo nelle label (<code>QPixmap</code>, o stile)</li>
+</ul></article>
  
 </slide>
 
@@ -1216,7 +1313,20 @@ reciproca</p></article>
       <h3></h3>
     </hgroup>
     <article >
-      </article>
+      <ul>
+<li>Movimento dei personaggi libero e fluido<ul>
+<li>(non su una griglia rigida, ma su qualsiasi pixel)</li>
+<li><code>QGraphicsScene</code> + <code>Item</code> + <code>View</code>, oppure...</li>
+<li><code>QPainter</code> + <code>Qwidget::paintEvent</code></li>
+</ul>
+</li>
+<li>La posizione <code>y</code> rimane sempre su righe prefissate...<ul>
+<li>tranne che per la rana, durante i salti tra righe</li>
+</ul>
+</li>
+<li>Mantenere un ciclo simile a <code>Game::moveAll</code></li>
+<li>Mantenere polimorfismo di <code>Actor::move</code> e <code>Actor::touchedBy</code></li>
+</ul></article>
  
 </slide>
 
