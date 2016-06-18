@@ -343,6 +343,33 @@ pygame.quit()
  
 </slide>
 
+<slide  >
+  
+    <hgroup>
+      <h2>Ciclo di animazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>import pygame
+pygame.init()                     # Prepare pygame
+screen = pygame.display.set_mode((320, 240))
+clock = pygame.time.Clock()       # To set game speed
+image = pygame.image.load('ball.png')
+
+x = 50; playing = True
+while playing:
+    for e in pygame.event.get():  # Handle events: mouse, keyb etc.
+        if e.type == pygame.QUIT: playing = False
+    screen.fill((255, 255, 255))  # Draw background        
+    screen.blit(image, (x, 50))   # Draw foreground
+    x = (x + 5) % 320             # Update ball's position
+    pygame.display.flip()         # Surface ready, show it!
+    clock.tick(30)                # Wait 1/30 seconds
+pygame.quit()                     # Close the window
+</code></pre></article>
+ 
+</slide>
+
 <slide class="segue dark" >
   
     <aside class="gdbar"><img src="images/logo.png"></aside>
@@ -616,17 +643,17 @@ except IOError as err:
 <slide  >
   
     <hgroup>
-      <h2>Conteggio spazi</h2>
+      <h2>2.1 Conteggio cifre</h2>
       <h3></h3>
     </hgroup>
     <article >
       <figure>
-        <img src="images/misc/finger-counting.png">
+        <img src="images/misc/numbers.jpg">
         
       </figure><ul>
 <li>Chiedere una riga di testo all'utente</li>
-<li>Contare il numero di spazi presenti</li>
-<li>Se si incontra un carattere di tabulazione, contarlo come 4 spazi</li>
+<li>Contare il numero complessivo di cifre presenti (da <code>'0'</code> a <code>'9'</code>)</li>
+<li>Valutare anche la somma di tutte le singole cifre trovate</li>
 </ul>
 <blockquote></blockquote>
 <p>Usare un ciclo <code>for</code> sulla stringa (sequenza di caratteri)</p></article>
