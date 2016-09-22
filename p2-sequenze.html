@@ -317,13 +317,62 @@ a, b = b, a
 <slide  >
   
     <hgroup>
-      <h2>Rettangoli e cerchi con Pygame</h2>
+      <h2>Disegno nel browser</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/brython.png"><img src="images/oop/raster-coord.png">
+        <figcaption>→ brython.info</figcaption>
+      </figure><pre class="prettyprint" data-lang="python"><code>from game2d import *
+
+# New canvas, width=600, height=400
+canvas = screen_set_mode((600, 400))
+
+# Yellow rectangle: red=255, green=255, blue=0
+# left=100, top=150, w=250, h=200
+draw_rect(canvas, (255, 255, 0), (100, 150, 250, 200))
+
+# Blue circle, center=(100, 150), radius=20
+draw_circle(canvas, (0, 0, 255), (100, 150), 20)
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Animazione nel browser</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>from game2d import *
+
+def update():
+    global x
+    screen_fill(canvas, (255, 255, 255))  # Draw background        
+    image_blit(canvas, image, (x, 50))    # Draw foreground
+    x = (x + 5) % 320                  # Update ball's position
+
+canvas = screen_set_mode((320, 240))
+image = image_load("ball.png")
+x = 50
+
+timer.set_interval(update, 30)         # Call update 30 times/second
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Disegno con Pygame</h2>
       <h3></h3>
     </hgroup>
     <article >
       <figure>
         <img src="images/oop/pygame-logo.png"><img src="images/oop/raster-coord.png">
-        <figcaption>→ pygame.info</figcaption>
+        <figcaption>→ pygame.org/docs</figcaption>
       </figure><pre class="prettyprint" data-lang="python"><code>import pygame
 pygame.init()                     # Prepare pygame
 screen = pygame.display.set_mode((640, 480)) # (w, h)
@@ -346,7 +395,7 @@ pygame.quit()
 <slide  >
   
     <hgroup>
-      <h2>Ciclo di animazione</h2>
+      <h2>Animazione con Pygame</h2>
       <h3></h3>
     </hgroup>
     <article >
