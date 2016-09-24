@@ -222,6 +222,54 @@ Ball.move(b1)
 <slide  >
   
     <hgroup>
+      <h2>Animazione di due palline</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>from game2d import *
+from p4_ball import Ball
+
+def update():
+    canvas_fill(canvas, (255, 255, 255))  # BG
+    b1.move()
+    b2.move()
+    draw_rect(canvas, (127, 127, 127), b1.rect())  # FG
+    draw_rect(canvas, (127, 127, 127), b2.rect())  # FG
+
+b1 = Ball(40, 80)
+b2 = Ball(80, 40)
+canvas = canvas_init((Ball.ARENA_W, Ball.ARENA_H))
+timer.set_interval(update, 1000 // 30)  # Millis
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Animazione lista di palline</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>from game2d import *
+from p4_ball import Ball
+
+def update():
+    canvas_fill(canvas, (255, 255, 255))  # BG
+    for b in balls:
+        b.move()
+        draw_rect(canvas, (127, 127, 127), b.rect())  # FG
+
+balls = [Ball(40, 80), Ball(80, 40), Ball(120, 120)]
+canvas = canvas_init((Ball.ARENA_W, Ball.ARENA_H))
+timer.set_interval(update, 1000 // 30)  # Millis
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
       <h2>Proprietà</h2>
       <h3></h3>
     </hgroup>
@@ -492,10 +540,94 @@ arena.move_all()
   
     <aside class="gdbar"><img src="images/logo.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Grafica con Pygame</h2>
+      <h2>Animazione dei personaggi</h2>
       <h3></h3>
     </hgroup>
   
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Animazione nel browser</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>from game2d import *
+
+def update():
+    global x
+    canvas_fill(canvas, (255, 255, 255))  # Draw background        
+    image_blit(canvas, image, (x, 50))    # Draw foreground
+    x = (x + 5) % 320                     # Update ball's position
+
+canvas = canvas_init((320, 240))
+image = image_load("ball.png")
+x = 50
+
+timer.set_interval(update, 1000 // 30)    # Call update 30 times/second
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Rimbalzi nel browser</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/bounce.png">
+        
+      </figure><pre class="prettyprint" data-lang="python"><code>from game2d import *
+from bounce import Arena, Ball, Ghost, Turtle
+
+def update():
+    arena.move_all()  # Game logic
+    canvas_fill(canvas, (255, 255, 255))  # Background
+    for a in arena.actors():
+        x, y, w, h = a.rect();  xs, ys = a.symbol()
+        # Foreground; cut an area from a larger image
+        image_blit(canvas, sprites, (x, y), area=(xs, ys, w, h))
+
+arena = Arena(320, 240)
+Ball(arena, 40, 80);  Ball(arena, 80, 40);  Ghost(arena, 120, 80)
+turtle = Turtle(arena, 80, 80)
+canvas = canvas_init(arena.size())
+sprites = image_load("sprites.png")
+timer.set_interval(update, 1000 // 30)  # Millis
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Eventi nel browser</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/bounce.png">
+        
+      </figure><pre class="prettyprint" data-lang="python"><code>def keydown(e):
+    if e.keyCode == K_UP:
+        turtle.go_up()
+    elif e.keyCode == K_DOWN:
+        turtle.go_down()
+    elif e.keyCode == K_LEFT:
+        turtle.go_left()
+    elif e.keyCode == K_RIGHT:
+        turtle.go_right()
+
+def keyup(e):
+    turtle.stay()
+
+doc.onkeydown = keydown
+doc.onkeyup = keyup
+</code></pre></article>
+ 
 </slide>
 
 <slide  >

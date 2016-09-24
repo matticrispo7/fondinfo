@@ -327,15 +327,19 @@ a, b = b, a
       </figure><pre class="prettyprint" data-lang="python"><code>from game2d import *
 
 # New canvas, width=600, height=400
-canvas = screen_set_mode((600, 400))
+canvas = canvas_init((600, 400))
 
-# Yellow rectangle: red=255, green=255, blue=0
-# left=100, top=150, w=250, h=200
+# Yellow rectangle, left=100, top=150, w=250, h=200
+# red=255 (max), green=255 (max), blue=0 (min)
 draw_rect(canvas, (255, 255, 0), (100, 150, 250, 200))
 
 # Blue circle, center=(100, 150), radius=20
 draw_circle(canvas, (0, 0, 255), (100, 150), 20)
-</code></pre></article>
+</code></pre>
+<p>Color: <code>(red, green, blue)</code><br>
+Point: <code>(x, y)</code><br>
+Size: <code>(width, height)</code><br>
+Rect: <code>(left, top, width, height)</code></p></article>
  
 </slide>
 
@@ -350,15 +354,15 @@ draw_circle(canvas, (0, 0, 255), (100, 150), 20)
 
 def update():
     global x
-    screen_fill(canvas, (255, 255, 255))  # Draw background        
+    canvas_fill(canvas, (255, 255, 255))  # Draw background        
     image_blit(canvas, image, (x, 50))    # Draw foreground
-    x = (x + 5) % 320                  # Update ball's position
+    x = (x + 5) % 320                     # Update ball's position
 
-canvas = screen_set_mode((320, 240))
+canvas = canvas_init((320, 240))
 image = image_load("ball.png")
 x = 50
 
-timer.set_interval(update, 30)         # Call update 30 times/second
+timer.set_interval(update, 1000 // 30)    # Call update 30 times/second
 </code></pre></article>
  
 </slide>
