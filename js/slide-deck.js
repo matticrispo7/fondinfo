@@ -188,7 +188,7 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
       break;
 
     case 8: // Backspace
-      window.location.href='./';
+      window.location.href='./index.html';
       e.preventDefault();
       break;
 
