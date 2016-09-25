@@ -755,6 +755,33 @@ else:
  
 </slide>
 
+<slide  >
+  
+    <hgroup>
+      <h2>Moduli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>Python Standard Library</em>: <a href="https://docs.python.org/3/library/">https://docs.python.org/3/library/</a></li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>import math
+y = math.sin(math.pi / 4)
+print(y)
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>from math import sin, pi
+print(sin(pi / 4))
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>from random import randrange
+n1 = randrange(90)  # something between 0 and 89
+n2 = randrange(90)  # possibly, a different number
+print(n1, n2)
+</code></pre>
+<blockquote></blockquote>
+<p>Tutti gli <code>import</code> all'inizio dello script, per evidenziare le dipendenze</p></article>
+ 
+</slide>
+
 <slide class="segue dark" >
   
     <aside class="gdbar"><img src="images/logo.png"></aside>

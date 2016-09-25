@@ -187,8 +187,12 @@ SlideDeck.prototype.onBodyKeyDown_ = function(e) {
       e.preventDefault();
       break;
 
-    case 37: // left arrow
     case 8: // Backspace
+      window.location.href='../';
+      e.preventDefault();
+      break;
+
+    case 37: // left arrow
     case 33: // PgUp
       this.prevSlide();
       e.preventDefault();

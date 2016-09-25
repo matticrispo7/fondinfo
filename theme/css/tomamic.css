@@ -77,7 +77,7 @@ figcaption, pre ~ p, blockquote ~ p {
 }
 
 slides > slide:not(.nobackground):before {
-    content: "www.ce.unipr.it/people/tomamic";
+    content: "tomamic.github.io/fondinfo";
     background: url(../../images/logo-tiny.png) no-repeat 0 50%;
     background-size: 30px 30px;
 }
