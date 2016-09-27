@@ -748,7 +748,7 @@ URL: https://code.google.com/p/io-2012-slides
  
 </slide>
 
-<slide  >
+<slide class="large-image" >
   
     <hgroup>
       <h2>Virgola mobile</h2>
@@ -758,16 +758,16 @@ URL: https://code.google.com/p/io-2012-slides
       <ul>
 <li>Numero espresso come: <code>r = ±(1+f)·2<sup>e</sup></code><ul>
 <li><strong><code>e</code></strong> è l'esponente intero (o caratteristica), <code>n<sub>1</sub></code> bit</li>
-<li><strong><code>f</code></strong> è la parte frazionaria, <code>n<sub>2</sub></code> bit</li>
+<li><strong><code>f</code></strong> è la parte frazionaria <em>(0 ≤ f &lt; 1)</em>, <code>n<sub>2</sub></code> bit</li>
 <li><code>2</code> è la base, <code>1+f</code> è anche detto <em>mantissa</em></li>
 </ul>
 </li>
-<li>Precisione variabile lungo l’asse reale<ul>
-<li>P.es. <code>f</code> di 3 bit, <code>e</code> in [-3, 2]</li>
+<li>Precisione variabile lungo l’asse reale; p.es.:<ul>
+<li><code>f ∈ {0, 1/4, 2/4, 3/4}</code>, 2 bit <br> <code>e ∈ {-2, -1, 0, 1}</code>, 2 bit</li>
 </ul>
 </li>
 </ul>
-<p><img alt="" src="images/repr/floating-point-cleve.png" /></p>
+<p><img alt="" src="images/repr/float4.png" /></p>
 <blockquote></blockquote>
 <p><a href="http://www.mathworks.com/company/newsletters/news_notes/pdf/Fall96Cleve.pdf">http://www.mathworks.com/company/newsletters/news_notes/pdf/Fall96Cleve.pdf</a></p></article>
  
@@ -781,7 +781,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article >
       <ul>
-<li><code>118.625 = 1110110.101<sub>2</sub> = 1.110110101<sub>2</sub> × 2<sup>6</sup></code></li>
+<li><code>-118.625 = -1110110.101<sub>2</sub> = -1.110110101<sub>2</sub> × 2<sup>6</sup></code></li>
 <li>All’esponente, su 8 bit, bisogna sommare <code>127</code> (<code>=2<sup>8 − 1</sup> − 1</code>)</li>
 </ul>
 <p><img alt="" src="images/repr/ieee754-32-ex.svg" />
