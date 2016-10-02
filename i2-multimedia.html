@@ -179,9 +179,15 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article >
       <ul>
-<li>Se bit più alto a 0: simbolo ASCII su 7 bit</li>
-<li>Altrimenti, numero 1 iniziali = numero di byte per <em>code-point</em></li>
-<li>I byte seguenti cominciano tutti con <code>10</code></li>
+<li>Se bit più alto a 0:<ul>
+<li>Simbolo ASCII su 7 bit</li>
+</ul>
+</li>
+<li>Altrimenti:<ul>
+<li>Numero 1 in byte iniziale = numero di byte per <em>code-point</em></li>
+<li>Byte seguenti cominciano tutti con <code>10</code></li>
+</ul>
+</li>
 </ul>
 <p><img alt="" src="images/repr/utf8-examples.png" /></p></article>
  
@@ -377,11 +383,13 @@ Palette (RGBQUAD)
 
 &lt;svg width="800" height="600"&gt;
 
-  &lt;rect x="80" y="60" width="250" height="250" rx="20"
-    fill="#ff0000" stroke="#000000" stroke-width="2" /&gt;
+  &lt;rect x="80" y="60" width="250" height="250"
+    rx="20" fill="#ff0000"
+    stroke="#000000" stroke-width="2" /&gt;
 
-  &lt;rect x="140" y="120" width="250" height="250" rx="40"
-    fill="#0000ff" stroke="#000000" stroke-width="2"
+  &lt;rect x="140" y="120" width="250" height="250"
+    rx="40" fill="#0000ff"
+    stroke="#000000" stroke-width="2"
     fill-opacity="0.7" /&gt;
 
 &lt;/svg&gt;
