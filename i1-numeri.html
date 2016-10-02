@@ -191,8 +191,8 @@ URL: https://code.google.com/p/io-2012-slides
 <thead>
 <tr>
 <th>n</th>
-<th>n//B</th>
-<th>n%B</th>
+<th>n // B</th>
+<th>n % B</th>
 <th>peso</th>
 </tr>
 </thead>
@@ -201,37 +201,37 @@ URL: https://code.google.com/p/io-2012-slides
 <td>35</td>
 <td>17</td>
 <td>1</td>
-<td>2<sup>0</sup></td>
+<td>1 = 2<sup>0</sup></td>
 </tr>
 <tr>
 <td>17</td>
 <td>8</td>
 <td>1</td>
-<td>2<sup>1</sup></td>
+<td>2 = 2<sup>1</sup></td>
 </tr>
 <tr>
 <td>8</td>
 <td>4</td>
 <td>0</td>
-<td>2<sup>2</sup></td>
+<td>4 = 2<sup>2</sup></td>
 </tr>
 <tr>
 <td>4</td>
 <td>2</td>
 <td>0</td>
-<td>2<sup>3</sup></td>
+<td>8 = 2<sup>3</sup></td>
 </tr>
 <tr>
 <td>2</td>
 <td>1</td>
 <td>0</td>
-<td>2<sup>4</sup></td>
+<td>16 = 2<sup>4</sup></td>
 </tr>
 <tr>
 <td>1</td>
 <td>0</td>
 <td>1</td>
-<td>2<sup>5</sup></td>
+<td>32 = 2<sup>5</sup></td>
 </tr>
 </tbody>
 </table></article>
@@ -271,8 +271,6 @@ URL: https://code.google.com/p/io-2012-slides
       <table>
 <thead>
 <tr>
-<th>Bin</th>
-<th>Hex</th>
 <th>Dec</th>
 <th>Bin</th>
 <th>Hex</th>
@@ -280,184 +278,186 @@ URL: https://code.google.com/p/io-2012-slides
 <th>Bin</th>
 <th>Hex</th>
 <th>Dec</th>
+<th>Bin</th>
+<th>Hex</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td><strong>00</strong></td>
 <td>0000 0000</td>
 <td>00</td>
-<td>000</td>
+<td><strong>16</strong></td>
 <td>0001 0000</td>
 <td>10</td>
-<td>016</td>
+<td><strong>32</strong></td>
 <td>0010 0000</td>
 <td>20</td>
-<td>032</td>
 </tr>
 <tr>
+<td><strong>01</strong></td>
 <td>0000 0001</td>
 <td>01</td>
-<td>001</td>
+<td><strong>17</strong></td>
 <td>0001 0001</td>
 <td>11</td>
-<td>017</td>
+<td><strong>33</strong></td>
 <td>0010 0001</td>
 <td>21</td>
-<td>033</td>
 </tr>
 <tr>
+<td><strong>02</strong></td>
 <td>0000 0010</td>
 <td>02</td>
-<td>002</td>
+<td><strong>18</strong></td>
 <td>0001 0010</td>
 <td>12</td>
-<td>018</td>
+<td><strong>34</strong></td>
 <td>0010 0010</td>
 <td>22</td>
-<td>034</td>
 </tr>
 <tr>
+<td><strong>03</strong></td>
 <td>0000 0011</td>
 <td>03</td>
-<td>003</td>
+<td><strong>19</strong></td>
 <td>0001 0011</td>
 <td>13</td>
-<td>019</td>
+<td><strong>35</strong></td>
 <td>0010 0011</td>
 <td>23</td>
-<td>035</td>
 </tr>
 <tr>
+<td><strong>04</strong></td>
 <td>0000 0100</td>
 <td>04</td>
-<td>004</td>
+<td><strong>20</strong></td>
 <td>0001 0100</td>
 <td>14</td>
-<td>020</td>
+<td><strong>36</strong></td>
 <td>0010 0100</td>
 <td>24</td>
-<td>036</td>
 </tr>
 <tr>
+<td><strong>05</strong></td>
 <td>0000 0101</td>
 <td>05</td>
-<td>005</td>
+<td><strong>21</strong></td>
 <td>0001 0101</td>
 <td>15</td>
-<td>021</td>
+<td><strong>37</strong></td>
 <td>0010 0101</td>
 <td>25</td>
-<td>037</td>
 </tr>
 <tr>
+<td><strong>06</strong></td>
 <td>0000 0110</td>
 <td>06</td>
-<td>006</td>
+<td><strong>22</strong></td>
 <td>0001 0110</td>
 <td>16</td>
-<td>022</td>
+<td><strong>38</strong></td>
 <td>0010 0110</td>
 <td>26</td>
-<td>038</td>
 </tr>
 <tr>
+<td><strong>07</strong></td>
 <td>0000 0111</td>
 <td>07</td>
-<td>007</td>
+<td><strong>23</strong></td>
 <td>0001 0111</td>
 <td>17</td>
-<td>023</td>
+<td><strong>39</strong></td>
 <td>0010 0111</td>
 <td>27</td>
-<td>039</td>
 </tr>
 <tr>
+<td><strong>08</strong></td>
 <td>0000 1000</td>
 <td>08</td>
-<td>008</td>
+<td><strong>24</strong></td>
 <td>0001 1000</td>
 <td>18</td>
-<td>024</td>
+<td><strong>40</strong></td>
 <td>0010 1000</td>
 <td>28</td>
-<td>040</td>
 </tr>
 <tr>
+<td><strong>09</strong></td>
 <td>0000 1001</td>
 <td>09</td>
-<td>009</td>
+<td><strong>25</strong></td>
 <td>0001 1001</td>
 <td>19</td>
-<td>025</td>
+<td><strong>41</strong></td>
 <td>0010 1001</td>
 <td>29</td>
-<td>041</td>
 </tr>
 <tr>
+<td><strong>10</strong></td>
 <td>0000 1010</td>
 <td>0A</td>
-<td>010</td>
+<td><strong>26</strong></td>
 <td>0001 1010</td>
 <td>1A</td>
-<td>026</td>
+<td><strong>42</strong></td>
 <td>0010 1010</td>
 <td>2A</td>
-<td>042</td>
 </tr>
 <tr>
+<td><strong>11</strong></td>
 <td>0000 1011</td>
 <td>0B</td>
-<td>011</td>
+<td><strong>27</strong></td>
 <td>0001 1011</td>
 <td>1B</td>
-<td>027</td>
+<td><strong>43</strong></td>
 <td>0010 1011</td>
 <td>2B</td>
-<td>043</td>
 </tr>
 <tr>
+<td><strong>12</strong></td>
 <td>0000 1100</td>
 <td>0C</td>
-<td>012</td>
+<td><strong>28</strong></td>
 <td>0001 1100</td>
 <td>1C</td>
-<td>028</td>
+<td><strong>44</strong></td>
 <td>0010 1100</td>
 <td>2C</td>
-<td>044</td>
 </tr>
 <tr>
+<td><strong>13</strong></td>
 <td>0000 1101</td>
 <td>0D</td>
-<td>013</td>
+<td><strong>29</strong></td>
 <td>0001 1101</td>
 <td>1D</td>
-<td>029</td>
+<td><strong>45</strong></td>
 <td>0010 1101</td>
 <td>2D</td>
-<td>045</td>
 </tr>
 <tr>
+<td><strong>14</strong></td>
 <td>0000 1110</td>
 <td>0E</td>
-<td>014</td>
+<td><strong>30</strong></td>
 <td>0001 1110</td>
 <td>1E</td>
-<td>030</td>
+<td><strong>46</strong></td>
 <td>0010 1110</td>
 <td>2E</td>
-<td>046</td>
 </tr>
 <tr>
+<td><strong>15</strong></td>
 <td>0000 1111</td>
 <td>0F</td>
-<td>015</td>
+<td><strong>31</strong></td>
 <td>0001 1111</td>
 <td>1F</td>
-<td>031</td>
+<td><strong>47</strong></td>
 <td>0010 1111</td>
 <td>2F</td>
-<td>047</td>
 </tr>
 </tbody>
 </table></article>
