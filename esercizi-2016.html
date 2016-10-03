@@ -35,6 +35,210 @@ URL: https://code.google.com/p/io-2012-slides
 </slide>
 
 
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 1</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.1 Hello, user!</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/handshake.png">
+        
+      </figure><ul>
+<li>Compilare ed eseguire il programma “<code>Hello world</code>”</li>
+<li>In una versione successiva del programma...</li>
+<li>Chiedere il nome all'utente e aggiungere tale nome al messaggio di saluto</li>
+<li>Se il nome dell'utente è “<code>admin</code>”, mostrare inoltre il messaggio speciale “<code>At your command</code>”</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.2 Equazione di secondo grado</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/quadratic-eq.svg"><img src="images/misc/quadratic-formula.svg">
+        
+      </figure><ul>
+<li>Chiedere all'utente i tre coefficienti <code>a, b, c</code> di una equazione di secondo grado<ul>
+<li><code>ax<sup>2</sup> + bx + c = 0</code></li>
+</ul>
+</li>
+<li>Comunicare all'utente che tipo di soluzioni presenta l'equazione<ul>
+<li>Due soluzioni reali</li>
+<li>Un'unica soluzione reale</li>
+<li>Nessuna soluzione reale</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Non è richiesto il valore delle soluzioni</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.3 Equazione di 2° grado, con ciclo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/quadratic-eq.svg"><img src="images/misc/quadratic-formula.svg">
+        
+      </figure><ul>
+<li>Riprendere l'esercizio 1.2</li>
+<li>In caso di soluzioni reali, mostrare all'utente il loro valore</li>
+<li>Chiedere infine all'utente se vuole valutare altre equazioni</li>
+</ul>
+<blockquote></blockquote>
+<p>Racchiudere il programma in un ciclo <code>while</code> <br>
+Per il calcolo della radice quadrata, utilizzare <code>sqrt(...)</code> <br>
+All'inizio del programma: <code>from math import sqrt</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.4 Fattoriale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere un numero intero positivo <code>n</code></li>
+<li>Calcolare il fattoriale del numero</li>
+</ul>
+<blockquote></blockquote>
+<p>Moltiplicare tra loro i primi <code>n</code> numeri</p>
+<p>Memorizzare in una variabile il risultato parziale; ad ogni ciclo, moltiplicarla per il nuovo numero</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.5 Divisori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente un numero <code>n</code></li>
+<li>Mostrare tutti i divisori di <code>n</code></li>
+</ul>
+<blockquote></blockquote>
+<p><code>n</code> è divisibile per <code>x</code> se <code>n % x == 0</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.6 Triangolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/impossible-triangle.jpg">
+        
+      </figure><ul>
+<li>Chiedere all'utente le lunghezze dei tre lati</li>
+<li>Controllare se il triangolo è:<ul>
+<li>Equilatero</li>
+<li>Isoscele</li>
+<li>Scaleno</li>
+<li>Oppure se i tre lati non formano affatto un triangolo</li>
+</ul>
+</li>
+<li>Visualizzare il responso</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.7 Massimo e minimo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/data-sequence.png">
+        
+      </figure><ul>
+<li>Leggere, attraverso un ciclo, una sequenza di numeri interi</li>
+<li>La sequenza termina quando l'utente inserisce il valore 0</li>
+<li>Visualizzare il valore massimo e quello minimo tra i numeri inseriti</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.8 Passeggiata casuale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chidere alluntente un numero <code>n</code></li>
+<li>A partire dalla posizione <code>x = 0, y = 0</code></li>
+<li>Compiere <code>n</code> passi, ciascuno in una direzione casuale<ul>
+<li>Estrarre un numero casuale <code>r</code> tra 0 e 3</li>
+<li>Se <code>r == 0</code>, sottrarre 1 alla <code>y</code> attuale (alto)</li>
+<li>Se <code>r == 1</code>, sommare 1 alla <code>x</code> attuale (destra)</li>
+<li>Se <code>r == 2</code>, sommare 1 alla <code>y</code> attuale (basso)</li>
+<li>Se <code>r == 3</code>, sottrarre 1 alla <code>x</code> attuale (sinistra)</li>
+</ul>
+</li>
+<li>Al termine comunicare le coordinate finali e la distanza raggiunta dall'origine, calcolata come <code>abs(x) + abs(y)</code></li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>from random import randrange
+# ...
+r = randrange(4)  # something between 0 and 3
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>1.9 Tre carte</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/three-cards.png">
+        
+      </figure><ul>
+<li>All'inizio l'utente ha 10 monete</li>
+<li>Ad ogni turno:<ul>
+<li>Viene estratto a sorte un numero segreto tra 1 e 3</li>
+<li>L'utente sceglie quante monete puntare e su quale numero</li>
+<li>Se indovina, gli viene sommato l'importo puntato</li>
+<li>Altrimenti gli viene sottratto lo stesso importo</li>
+</ul>
+</li>
+<li>Il gioco termina quando l'utente perde tutto o si ritira</li>
+</ul></article>
+ 
+</slide>
+
 
 <slide class="thank-you-slide segue nobackground">
   <aside class="gdbar right"><img src="images/logo.png"></aside>
