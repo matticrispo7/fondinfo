@@ -239,7 +239,7 @@ def update():
 b1 = Ball(40, 80)
 b2 = Ball(80, 40)
 canvas = canvas_init((Ball.ARENA_W, Ball.ARENA_H))
-timer.set_interval(update, 1000 // 30)  # Millis
+set_interval(update, 1000 // 30)  # Millis
 </code></pre></article>
  
 </slide>
@@ -262,7 +262,7 @@ def update():
 
 balls = [Ball(40, 80), Ball(80, 40), Ball(120, 120)]
 canvas = canvas_init((Ball.ARENA_W, Ball.ARENA_H))
-timer.set_interval(update, 1000 // 30)  # Millis
+set_interval(update, 1000 // 30)  # Millis
 </code></pre></article>
  
 </slide>
@@ -565,8 +565,30 @@ canvas = canvas_init((320, 240))
 image = image_load("ball.png")
 x = 50
 
-timer.set_interval(update, 1000 // 30)    # Call update 30 times/second
+set_interval(update, 1000 // 30)    # Call update 30 times/second
 </code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Eventi della tastiera</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>from game2d import *
+
+def keydown(event: DOMEvent):
+    print("Key down: ", event.key, event.code)
+
+def keyup(event: DOMEvent):
+    print("Key up: ", event.key, event.code)
+
+doc.onkeydown = keydown
+doc.onkeyup = keyup
+</code></pre>
+<p><a href="https://developer.mozilla.org/es/docs/Web/API/KeyboardEvent">https://developer.mozilla.org/es/docs/Web/API/KeyboardEvent</a></p></article>
  
 </slide>
 
@@ -596,7 +618,7 @@ Ball(arena, 40, 80);  Ball(arena, 80, 40);  Ghost(arena, 120, 80)
 turtle = Turtle(arena, 80, 80)
 canvas = canvas_init(arena.size())
 sprites = image_load("sprites.png")
-timer.set_interval(update, 1000 // 30)  # Millis
+set_interval(update, 1000 // 30)  # Millis
 </code></pre></article>
  
 </slide>
@@ -604,7 +626,7 @@ timer.set_interval(update, 1000 // 30)  # Millis
 <slide  >
   
     <hgroup>
-      <h2>Eventi nel browser</h2>
+      <h2>Controllo da tastiera</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -612,13 +634,13 @@ timer.set_interval(update, 1000 // 30)  # Millis
         <img src="images/oop/bounce.png">
         
       </figure><pre class="prettyprint" data-lang="python"><code>def keydown(e):
-    if e.keyCode == K_UP:
+    if e.code == "ArrowUp":
         turtle.go_up()
-    elif e.keyCode == K_DOWN:
+    elif e.code == "ArrowDown":
         turtle.go_down()
-    elif e.keyCode == K_LEFT:
+    elif e.code == "ArrowLeft":
         turtle.go_left()
-    elif e.keyCode == K_RIGHT:
+    elif e.code == "ArrowRight":
         turtle.go_right()
 
 def keyup(e):
@@ -633,7 +655,7 @@ doc.onkeyup = keyup
 <slide  >
   
     <hgroup>
-      <h2>Grafica con pygame</h2>
+      <h2>Grafica con pyGame (++)</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -656,7 +678,36 @@ doc.onkeyup = keyup
 <slide  >
   
     <hgroup>
-      <h2>Ciclo di animazione</h2>
+      <h2>Disegno con PyGame (++)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/pygame-logo.png"><img src="images/oop/raster-coord.png">
+        <figcaption>→ pygame.org/docs</figcaption>
+      </figure><pre class="prettyprint" data-lang="python"><code>import pygame
+pygame.init()                     # Prepare pygame
+screen = pygame.display.set_mode((640, 480)) # (w, h)
+screen.fill((255, 255, 255))      # BG (Red, Green Blue)
+
+# Yellow rectangle, left=50, top=75, w=90, h=50
+pygame.draw.rect(screen, (255, 255, 0), (50, 75, 90, 50))
+
+# Blue circle, center=(300, 50), radius=20
+pygame.draw.circle(screen, (0, 0, 255), (300, 50), 20)
+
+pygame.display.flip()             # Update the screen
+while pygame.event.wait().type != pygame.QUIT:
+    pass
+pygame.quit()
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Animazione con PyGame (++)</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -683,7 +734,34 @@ pygame.quit()                     # Close the window
 <slide  >
   
     <hgroup>
-      <h2>Rimbalzi</h2>
+      <h2>Ciclo di animazione (++)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>import pygame
+pygame.init()                     # Prepare pygame
+screen = pygame.display.set_mode((320, 240))
+clock = pygame.time.Clock()       # To set game speed
+image = pygame.image.load('ball.png')
+
+x = 50; playing = True
+while playing:
+    for e in pygame.event.get():  # Handle events: mouse, keyb etc.
+        if e.type == pygame.QUIT: playing = False
+    screen.fill((255, 255, 255))  # Draw background        
+    screen.blit(image, (x, 50))   # Draw foreground
+    x = (x + 5) % 320             # Update ball's position
+    pygame.display.flip()         # Surface ready, show it!
+    clock.tick(30)                # Wait 1/30 seconds
+pygame.quit()                     # Close the window
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Rimbalzi in PyGame (++)</h2>
       <h3></h3>
     </hgroup>
     <article >

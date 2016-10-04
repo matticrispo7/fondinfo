@@ -60,6 +60,9 @@ def limit_values(values, max_val):
     for i in range(len(values)):
         if values[i] &gt; max_val:
             values[i] = max_val
+
+    # the pythonic way:
+    # for i, val in enumerate(values): ...
 </code></pre></article>
  
 </slide>
@@ -203,7 +206,7 @@ def rq(x: int) -&gt; int:
   
     <aside class="gdbar"><img src="images/logo.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Programmazione ricorsiva</h2>
+      <h2>Programmazione ricorsiva (*)</h2>
       <h3></h3>
     </hgroup>
   
@@ -514,7 +517,7 @@ def under_attack(board: list, x: int, y: int) -&gt; bool:
 <slide  >
   
     <hgroup>
-      <h2>Massimo Comun Divisore</h2>
+      <h2>Massimo Comun Divisore (*)</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -536,7 +539,7 @@ MCD(a, b) = MCD(b, a mod b), se b &gt; 0</p></article>
 <slide  >
   
     <hgroup>
-      <h2>Torre di Hanoi</h2>
+      <h2>Torre di Hanoi (*)</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -560,7 +563,7 @@ spostare ancora gli altri N-1 dischi.</p></article>
 <slide  >
   
     <hgroup>
-      <h2>Spirale</h2>
+      <h2>Spirale (*)</h2>
       <h3></h3>
     </hgroup>
     <article >
