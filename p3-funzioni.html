@@ -42,7 +42,10 @@ URL: https://code.google.com/p/io-2012-slides
       <h3></h3>
     </hgroup>
     <article >
-      <ul>
+      <figure>
+        <img src="images/misc/pythagorean-theorem.png">
+        
+      </figure><ul>
 <li>
 <p>Operatore, applicato a operandi, per ottenere un risultato</p>
 <ul>
@@ -51,9 +54,9 @@ URL: https://code.google.com/p/io-2012-slides
 </ul>
 </li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>def add(a, b):
-    s = a + b
-    return s
+<pre class="prettyprint" data-lang="python"><code>def hypotenuse(a, b):
+    c = (a ** 2 + b ** 2) ** 0.5
+    return c
 
 def limit_values(values, max_val):
     # procedure: process data, no direct result
@@ -61,8 +64,7 @@ def limit_values(values, max_val):
         if values[i] &gt; max_val:
             values[i] = max_val
 
-    # the pythonic way:
-    # for i, val in enumerate(values): ...
+    # the pythonic way: for i, val in enumerate(values): ...
 </code></pre></article>
  
 </slide>
@@ -84,10 +86,10 @@ def limit_values(values, max_val):
 </ul>
 </li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>x = int(input('1st val? '))
-y = int(input('2nd val? '))
-z = add(x, y)
-print(z)
+<pre class="prettyprint" data-lang="python"><code>side1 = float(input('1st side? '))
+side2 = float(input('2nd side? '))
+side3 = hypotenuse(side1, side2)
+print('3rd side:', side3)
 
 data = [5, 4, 2]
 limit_values(data, 4)
@@ -129,6 +131,38 @@ print(x)      # just for debug
 <slide  >
   
     <hgroup>
+      <h2>Funzione main</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>A volte si preferisce creare una funzione principale<ul>
+<li>In questo modo si limitano le variabili globali</li>
+</ul>
+</li>
+<li>Nome del modulo in esecuzione: <code>__name__</code><ul>
+<li>É il nome del file, senza estensione</li>
+<li>Modulo che avvia l'app ha nome speciale <code>"__main__"</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code># def hypotenuse ...
+
+def main():
+    side1 = float(input("1st side? "))
+    side2 = float(input("2nd side? "))
+    side3 = hypotenuse(side1, side2)
+    print("3rd side:", side3)
+
+if __name__ == "__main__":
+    main()
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
       <h2>Documentazione di funzioni</h2>
       <h3></h3>
     </hgroup>
@@ -138,13 +172,12 @@ print(x)      # just for debug
 <li><strong>Docstring</strong>: descrizione testuale di una funzione</li>
 <li><strong><code>help</code></strong>: funzione per visualizzare la documentazione</li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>def x_intercept(m: float, b: float) -&gt; float:
+<pre class="prettyprint" data-lang="python"><code>def hypotenuse(cathetus1: float, cathetus2: float) -&gt; float:
     '''
-    Return the x intercept of the line y=m*x+b.
-    The x intercept of a line is the point at which
-    it crosses the x axis (y=0).
+    Return the hypotenuse of a right triangle,
+    given both its legs (catheti).
     '''
-    return -b/m
+    return (cathetus1 ** 2 + cathetus2 ** 2) ** 0.5
 </code></pre></article>
  
 </slide>
@@ -206,7 +239,7 @@ def rq(x: int) -&gt; int:
   
     <aside class="gdbar"><img src="images/logo.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Programmazione ricorsiva (*)</h2>
+      <h2>Ricorsione (*)</h2>
       <h3></h3>
     </hgroup>
   
@@ -491,23 +524,23 @@ def under_attack(board: list, x: int, y: int) -&gt; bool:
 <slide  >
   
     <hgroup>
-      <h2>Ipotenusa</h2>
+      <h2>Area di un'ellisse</h2>
       <h3></h3>
     </hgroup>
     <article >
       <figure>
-        <img src="images/misc/pythagorean-theorem.png">
+        <img src="images/misc/ellipse.svg">
         
       </figure><ul>
-<li>Scrivere una funzione per il calcolo dell'ipotenusa di un triangolo rettangolo<ul>
-<li>Parametri: due cateti come float</li>
-<li>Risultato: ipotenusa come float</li>
+<li>Definire una funzione che:<ul>
+<li>Riceve come parametri i semiassi di una ellisse: <code>a</code>, <code>b</code></li>
+<li>Restituisce l'area dell'ellisse: <code>A = π*a*b</code></li>
 </ul>
 </li>
 <li>Nel <code>main</code><ul>
-<li>Chiedere all'utente due valori,</li>
-<li>Invocare la funzione con questi parametri</li>
-<li>Visualizzare il risultato della funzione</li>
+<li>Chiedere ripetutamente all'utente una coppia di valori</li>
+<li>Invocare ogni volta la funzione con i valori inseriti dall'utente</li>
+<li>Visualizzare il risultato</li>
 </ul>
 </li>
 </ul></article>

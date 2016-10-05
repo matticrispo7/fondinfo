@@ -295,13 +295,44 @@ a, b = b, a
 <slide  >
   
     <hgroup>
+      <h2>Brython</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/brython.png">
+        <figcaption>→ brython.info</figcaption>
+      </figure><ul>
+<li><em>Transpiler</em>: converte codice Python in JavaScript<ul>
+<li>Sia traduttore che codice generato girano nel <em>browser</em></li>
+</ul>
+</li>
+<li>Useremo un modulo <em>ad-hoc</em>: <code>game2d</code><ul>
+<li>Genera html e lancia web-server locale</li>
+<li>Definisce funzioni di disegno</li>
+</ul>
+</li>
+<li>Spesso i parametri sono tuple<ul>
+<li><em>Color</em>: <code>(red, green, blue)</code> <br> Ogni componente nel range <code>0..255</code><br></li>
+<li><em>Point</em>: <code>(x, y)</code><br></li>
+<li><em>Size</em>: <code>(width, height)</code><br></li>
+<li><em>Rect</em>: <code>(left, top, width, height)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
       <h2>Disegno nel browser</h2>
       <h3></h3>
     </hgroup>
     <article >
       <figure>
-        <img src="images/misc/brython.png"><img src="images/oop/raster-coord.png">
-        <figcaption>→ brython.info</figcaption>
+        <img src="images/oop/raster-coord.png">
+        
       </figure><pre class="prettyprint" data-lang="python"><code>from game2d import *
 
 # New canvas, width=600, height=400
@@ -314,10 +345,8 @@ draw_rect(canvas, (255, 255, 0), (100, 150, 250, 200))
 # Blue circle, center=(100, 150), radius=20
 draw_circle(canvas, (0, 0, 255), (100, 150), 20)
 </code></pre>
-<p>Color: <code>(red, green, blue)</code> -- Ogni componente nel range <code>0..255</code><br>
-Point: <code>(x, y)</code><br>
-Size: <code>(width, height)</code><br>
-Rect: <code>(left, top, width, height)</code></p></article>
+<p>Servono i file <code>brython_dist.js</code> e <code>game2d.py</code>, in <code>examples</code>: <br>
+<a href="https://github.com/tomamic/fondinfo/archive/master.zip">https://github.com/tomamic/fondinfo/archive/master.zip</a></p></article>
  
 </slide>
 
@@ -337,7 +366,7 @@ canvas = canvas_init((300, 300))
 
 for i in range(5):
     x = i * 40
-    y = i * 40
+    y = x
     red = i * 60
     draw_rect(canvas, (red, 0, 0), (x, y, 140, 140))
 </code></pre>
@@ -519,13 +548,14 @@ Altrimenti, Python non genera immediatamente i risultati (<em>lazy</em>)</p></ar
 </ul>
 </li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>tel = {'john': 4098, 'terry': 4139}
-
-tel['graham'] = 4127
-tel  # {'graham': 4127, 'terry': 4139, 'john': 4098}
-
-list(tel.keys())  # ['graham', 'terry', 'john']
-</code></pre></article>
+<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; tel = {'john': 4098, 'terry': 4139}
+&gt;&gt;&gt; tel['john']
+4098
+&gt;&gt;&gt; tel['graham'] = 4127
+&gt;&gt;&gt; tel
+{'graham': 4127, 'terry': 4139, 'john': 4098}
+</code></pre>
+<p>Provare anche <code>list(tel)</code> e <code>list(tel.items())</code></p></article>
  
 </slide>
 
@@ -605,17 +635,16 @@ for x in range(cols):
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="python"><code>blank_matrix = [
-    [' ' for x in range(cols)] for y in range(rows) ]
+      <pre class="prettyprint" data-lang="python"><code>matrix = [[' ' for x in range(cols)] for y in range(rows)]
+# all elements are inited as ' ' -- ynmv
 </code></pre>
-<pre class="prettyprint" data-lang="python"><code>blank_matrix = [
-    [' '] * cols for y in range(rows) ]
-
-# blank_matrix = []
-# for y in range(rows):
-#    blank_matrix.append([' '] * cols)
-</code></pre>
-<p><strong>Nota.</strong> Se si usasse la <code>repetition</code> per replicare le righe, si otterrebbero più riferimenti alla stessa unica riga.</p></article>
+<pre class="prettyprint" data-lang="python"><code>matrix = []
+for y in range(rows):
+    new_row = []
+    for x in range(cols):
+        new_row.append(' ')
+    matrix.append(new_row)
+</code></pre></article>
  
 </slide>
 
@@ -764,7 +793,7 @@ except IOError as err:
 <slide  >
   
     <hgroup>
-      <h2>2.1 Conteggio cifre</h2>
+      <h2>Conteggio cifre</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -778,6 +807,27 @@ except IOError as err:
 </ul>
 <blockquote></blockquote>
 <p>Usare un ciclo <code>for</code> sulla stringa (sequenza di caratteri)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Conteggio di diversi caratteri</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/characters.png">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare separatamente le occorrenze di ciascuna lettera maiuscola (da <code>'A'</code> a <code>'Z'</code>)</li>
+</ul>
+<blockquote></blockquote>
+<p>Creare una lista (array) di 26 elementi, inizialmente tutti posti a <code>0</code></p>
+<p>Ciascun elemento è il contatore per una certa lettera</p>
+<p>L'indice del contatore corrispondente ad una lettera <code>val</code> può essere ottenuto come <code>ord(val) - ord('A')</code></p></article>
  
 </slide>
 
