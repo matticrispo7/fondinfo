@@ -421,11 +421,103 @@ doc.onkeyup = keyup
  
 </slide>
 
+<slide  >
+  
+    <hgroup>
+      <h2>Es.: Conteggio cifre</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/numbers.jpg">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare il numero complessivo di cifre presenti (da <code>'0'</code> a <code>'9'</code>)</li>
+<li>Valutare anche la somma di tutte le singole cifre trovate</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare un ciclo <code>for</code> sulla stringa (sequenza di caratteri)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Es.: Conteggio di diversi caratteri</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/characters.png">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare separatamente le occorrenze di ciascuna lettera maiuscola (da <code>'A'</code> a <code>'Z'</code>)</li>
+</ul>
+<blockquote></blockquote>
+<p>Creare una lista (array) di 26 elementi, inizialmente tutti posti a <code>0</code></p>
+<p>Ciascun elemento è il contatore per una certa lettera</p>
+<p>L'indice del contatore corrispondente ad una lettera <code>val</code> può essere ottenuto come <code>ord(val) - ord('A')</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Es.: Array, precalcolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sin-cos.png">
+        
+      </figure><ul>
+<li>Riempire una lista con i valori di <code>sin(x)</code><ul>
+<li>360 elementi, indice <code>x</code> tra 0 e 359</li>
+</ul>
+</li>
+<li>Chiedere ripetutamente un angolo all'utente, visualizzare il corrispondente valore precalcolato</li>
+</ul>
+<blockquote></blockquote>
+<p><code>sin</code>, <code>pi</code> in modulo <code>math</code>
+<br>
+<code>sin</code> opera su radianti: <code>rad = x * pi / 180</code></p>
+<p>Estensione opzionale: salvare la lista di valori in un file e ricaricarla all'avvio, se già disponibile</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Es.: Cerchi concentrici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/red-circles.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente il numero di cerchi da disegnare</li>
+<li>Disegnare i cerchi con raggio decrescente, ma tutti con lo stesso centro</li>
+<li>Far variare il colore dei cerchi<ul>
+<li>Dal rosso del livello più esterno</li>
+<li>Fino al nero del livello più interno</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Cominciare a disegnare un grosso cerchio rosso</p>
+<p>Poi, inserire l'operazione di disegno un ciclo, togliendo ad ogni passo <code>10</code> (p.es.) al raggio e al livello di rosso</p>
+<p>Infine, determinare automaticamente, prima del ciclo, le variazioni migliori per raggio e colore</p></article>
+ 
+</slide>
+
 <slide class="segue dark" >
   
     <aside class="gdbar"><img src="images/logo.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Strutture annidate e file (*)</h2>
+      <h2>Strutture annidate e file</h2>
       <h3></h3>
     </hgroup>
   
@@ -780,112 +872,10 @@ except IOError as err:
  
 </slide>
 
-<slide class="segue dark" >
-  
-    <aside class="gdbar"><img src="images/logo.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Esercizi</h2>
-      <h3></h3>
-    </hgroup>
-  
-</slide>
-
 <slide  >
   
     <hgroup>
-      <h2>Conteggio cifre</h2>
-      <h3></h3>
-    </hgroup>
-    <article >
-      <figure>
-        <img src="images/misc/numbers.jpg">
-        
-      </figure><ul>
-<li>Chiedere una riga di testo all'utente</li>
-<li>Contare il numero complessivo di cifre presenti (da <code>'0'</code> a <code>'9'</code>)</li>
-<li>Valutare anche la somma di tutte le singole cifre trovate</li>
-</ul>
-<blockquote></blockquote>
-<p>Usare un ciclo <code>for</code> sulla stringa (sequenza di caratteri)</p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Conteggio di diversi caratteri</h2>
-      <h3></h3>
-    </hgroup>
-    <article >
-      <figure>
-        <img src="images/misc/characters.png">
-        
-      </figure><ul>
-<li>Chiedere una riga di testo all'utente</li>
-<li>Contare separatamente le occorrenze di ciascuna lettera maiuscola (da <code>'A'</code> a <code>'Z'</code>)</li>
-</ul>
-<blockquote></blockquote>
-<p>Creare una lista (array) di 26 elementi, inizialmente tutti posti a <code>0</code></p>
-<p>Ciascun elemento è il contatore per una certa lettera</p>
-<p>L'indice del contatore corrispondente ad una lettera <code>val</code> può essere ottenuto come <code>ord(val) - ord('A')</code></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Array, precalcolo</h2>
-      <h3></h3>
-    </hgroup>
-    <article >
-      <figure>
-        <img src="images/misc/sin-cos.png">
-        
-      </figure><ul>
-<li>Riempire una lista con i valori di <code>sin(x)</code><ul>
-<li>360 elementi, indice <code>x</code> tra 0 e 359</li>
-</ul>
-</li>
-<li>Chiedere ripetutamente un angolo all'utente, visualizzare il corrispondente valore precalcolato</li>
-</ul>
-<blockquote></blockquote>
-<p><code>sin</code>, <code>pi</code> in modulo <code>math</code>
-<br>
-<code>sin</code> opera su radianti: <code>rad = x * pi / 180</code></p>
-<p>Estensione opzionale: salvare la lista di valori in un file e ricaricarla all'avvio, se già disponibile</p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Cerchi concentrici</h2>
-      <h3></h3>
-    </hgroup>
-    <article >
-      <figure>
-        <img src="images/misc/red-circles.png">
-        
-      </figure><ul>
-<li>Chiedere all'utente il numero di cerchi da disegnare</li>
-<li>Disegnare i cerchi con raggio decrescente, ma tutti con lo stesso centro</li>
-<li>Far variare il colore dei cerchi<ul>
-<li>Dal rosso del livello più esterno</li>
-<li>Fino al nero del livello più interno</li>
-</ul>
-</li>
-</ul>
-<blockquote></blockquote>
-<p>Cominciare a disegnare un grosso cerchio rosso</p>
-<p>Poi, inserire l'operazione di disegno un ciclo, togliendo ad ogni passo <code>10</code> (p.es.) al raggio e al livello di rosso</p>
-<p>Infine, determinare automaticamente, prima del ciclo, le variazioni migliori per raggio e colore</p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Memory (*)</h2>
+      <h2>Es.: Memory</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -916,7 +906,7 @@ Cella a fine riga: <code>i % cols == cols - 1</code></p>
 <slide  >
   
     <hgroup>
-      <h2>Scitala spartana (*)</h2>
+      <h2>Es.: Scitala spartana</h2>
       <h3></h3>
     </hgroup>
     <article >
