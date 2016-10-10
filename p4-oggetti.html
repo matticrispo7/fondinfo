@@ -549,52 +549,6 @@ arena.move_all()
 <slide  >
   
     <hgroup>
-      <h2>Animazione nel browser</h2>
-      <h3></h3>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="python"><code>from game2d import *
-
-def update():
-    global x
-    canvas_fill(canvas, (255, 255, 255))  # Draw background        
-    image_blit(canvas, image, (x, 50))    # Draw foreground
-    x = (x + 5) % 320                     # Update ball's position
-
-canvas = canvas_init((320, 240))
-image = image_load("ball.png")
-x = 50
-
-set_interval(update, 1000 // 30)    # Call update 30 times/second
-</code></pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Eventi della tastiera</h2>
-      <h3></h3>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="python"><code>from game2d import *
-
-def keydown(event: DOMEvent):
-    print("Key down: ", event.key, event.code)
-
-def keyup(event: DOMEvent):
-    print("Key up: ", event.key, event.code)
-
-doc.onkeydown = keydown
-doc.onkeyup = keyup
-</code></pre>
-<p><a href="https://developer.mozilla.org/es/docs/Web/API/KeyboardEvent">https://developer.mozilla.org/es/docs/Web/API/KeyboardEvent</a></p></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
       <h2>Rimbalzi nel browser</h2>
       <h3></h3>
     </hgroup>
@@ -649,6 +603,35 @@ def keyup(e):
 doc.onkeydown = keydown
 doc.onkeyup = keyup
 </code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collisioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/collision.svg"><img src="images/oop/reflection.png">
+        
+      </figure><ul>
+<li>Molti algoritmi di <em>collision detection</em><ul>
+<li>Casi semplici: intersezione di rettangoli</li>
+</ul>
+</li>
+<li>In caso di collisione, <code>Arena</code>...<ul>
+<li>Invoca il metodo <code>collide</code> di entrambi gli oggetti</li>
+<li>Collisione tra personaggio <code>self</code> e personaggio <code>other</code> (secondo parametro)</li>
+</ul>
+</li>
+<li>Possibili errori nel calcolo del rimbalzo<ul>
+<li>Di solito accettabili</li>
+<li>Altrimenti, applicare correzioni</li>
+</ul>
+</li>
+</ul></article>
  
 </slide>
 
@@ -792,7 +775,7 @@ while playing:
 <slide  >
   
     <hgroup>
-      <h2>Tastiera e mouse</h2>
+      <h2>Tastiera e mouse (++)</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -818,7 +801,7 @@ for e in pygame.event.get():
 <slide  >
   
     <hgroup>
-      <h2>Testo e suoni</h2>
+      <h2>Testo e suoni (++)</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -834,35 +817,6 @@ screen.blit(surface, (x, y))  # surface ~ image
 pick_up_sound = pygame.mixer.Sound('pickup.wav')
 pick_up_sound.play()  # play(-1) to loop, then stop()
 </code></pre></article>
- 
-</slide>
-
-<slide  >
-  
-    <hgroup>
-      <h2>Collisioni</h2>
-      <h3></h3>
-    </hgroup>
-    <article >
-      <figure>
-        <img src="images/oop/collision.svg"><img src="images/oop/reflection.png">
-        
-      </figure><ul>
-<li>Molti algoritmi di <em>collision detection</em><ul>
-<li>Casi semplici: intersezione di rettangoli</li>
-</ul>
-</li>
-<li>In caso di collisione, <code>Arena</code>...<ul>
-<li>Invoca il metodo <code>collide</code> di entrambi gli oggetti</li>
-<li>Collisione tra personaggio <code>self</code> e personaggio <code>other</code> (secondo parametro)</li>
-</ul>
-</li>
-<li>Possibili errori nel calcolo del rimbalzo<ul>
-<li>Di solito accettabili</li>
-<li>Altrimenti, applicare correzioni</li>
-</ul>
-</li>
-</ul></article>
  
 </slide>
 
