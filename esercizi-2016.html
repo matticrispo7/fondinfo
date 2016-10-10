@@ -239,6 +239,229 @@ r = randrange(4)  # something between 0 and 3
  
 </slide>
 
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 2</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.1 Percentuale di maiuscole</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/troll-key.png">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Mostrare la percentuale di lettere maiuscole presenti</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare un ciclo <code>for</code> sulla stringa</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.2 Valori sopra e sotto la media</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente una sequenza in interi, terminata da 0</li>
+<li>Calcolare e mostrare il valore medio</li>
+<li>Elencare i valori sotto alla media</li>
+<li>Elencare i valori sopra (o uguali) alla media</li>
+</ul>
+<blockquote></blockquote>
+<p>Aggiungere ciascun valore ad una lista inizialmente vuota, con <code>append</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.3 Funzione, Erone</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/triangle-notations.svg">
+        
+      </figure><ul>
+<li>Definire una funzione <code>heron</code> per il calcolo dell'area di un triangolo<ul>
+<li>Parametri: tre lati come <code>float</code></li>
+<li>Risultato: area come <code>float</code></li>
+</ul>
+</li>
+<li>Invocare la funzione dalla shell interattiva</li>
+<li>Aggiungere poi al programma una funzione <code>main</code><ul>
+<li><em>Procedura, senza parametri e senza risultato</em></li>
+<li>Chiedere all'utente tre valori (chiamando <code>input</code>)</li>
+<li>Poi chiamare <code>heron</code> con questi parametri</li>
+<li>Infine mostrare all'utente il risultato (chiamando <code>print</code>)</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Formula di Erone: <code>area = sqrt(s * (s - a) * (s - b) * (s - c))</code> <br>
+Con <code>s = (a + b + c) / 2</code>, semiperimetro</p>
+<p><a href="http://en.wikipedia.org/wiki/Heron%27s_formula">http://en.wikipedia.org/wiki/Heron%27s_formula</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.4 Sequenza di quadrati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/green-squares.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente il numero di quadrati da disegnare</li>
+<li>Disegnare i quadrati con lato decrescente, tutti allineati in alto e a sinistra</li>
+<li>Far variare il colore dei quadrati<ul>
+<li>Dal nero del quadrato più grande</li>
+<li>Fino al verde del quadrato più piccolo</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Cominciare a disegnare un grosso quadrato nero</p>
+<p>Poi, inserire l'operazione di disegno un ciclo, aggiungendo ad ogni passo <code>10</code> (p.es.) al livello di verde, e togliendo lo stesso valore al lato</p>
+<p>Infine, determinare automaticamente le variazioni migliori per lato e colore, prima di iniziare il ciclo</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.5 Griglia di colori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/color-grid.png"><img src="images/oop/raster-tile.png">
+        
+      </figure><ul>
+<li>Chidere all'utente dei valori per <code>rows</code> e <code>cols</code></li>
+<li>Mostrare una griglia di rettangoli di dimensione <code>rows×cols</code></li>
+<li>Partire da un rettangolo nero in alto a sinistra</li>
+<li>In orizzontale, aumentare gradatamente la componente di blu</li>
+<li>In verticale, aumentare gradatamente la componente di verde</li>
+</ul>
+<blockquote></blockquote>
+<p>Cominciare a creare una griglia di riquadri tutti neri, con due cicli <code>for</code> annidati</p>
+<p>Lasciare tra i riquadri un piccolo margine</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.6 Triangolo di cifre</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere un numero intero positivo <code>n</code> (&lt; 10)</li>
+<li>Per ciascun valore <code>y</code> tra 1 ed <code>n</code>...</li>
+<li>Stampare una riga con le cifre da 1 ad <code>y</code></li>
+</ul>
+<pre class="prettyprint" data-lang="Output"><code>1
+12
+123
+1234
+</code></pre>
+<p>Usare due cicli for annidati <br>
+All'inizio non considerare <code>n</code>, ma fissare <code>y</code> e scrivere una sola riga: <code>y = 3</code> → <code>“123”</code> <br>
+Poi racchiudere tutto in un ciclo for esterno</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.7 Nomi sopra e sotto la media</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente una sequenza di dati<ul>
+<li>Ciascun nome (<code>str</code>) è associato ad un valore (<code>int</code>)</li>
+<li>La sequenza termina quando il nome è vuoto</li>
+</ul>
+</li>
+<li>Calcolare e mostrare il valore medio</li>
+<li>Elencare i nomi con valori sotto alla media</li>
+<li>Elencare i nomi con valori sopra (o uguali) alla media</li>
+</ul>
+<blockquote></blockquote>
+<p>Inserire nella lista delle tuple (coppie nome/valore)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.8 Istogramma con barre orizzontali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/histogram-rot.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente una lista di valori positivi<ul>
+<li>La lista termina quando l'utente inserisce il valore <code>0</code></li>
+</ul>
+</li>
+<li>Mostrare un istogramma<ul>
+<li>Larghezza di ciascuna barra proporzionale al valore corrispondente</li>
+<li>La barra più lunga occupa tutto lo spazio disponibile</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>2.9 Istogramma con barre verticali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/histogram.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente una lista di valori positivi<ul>
+<li>La lista termina quando l'utente inserisce il valore <code>0</code></li>
+</ul>
+</li>
+<li>Mostrare un istogramma<ul>
+<li>Altezza di ciascuna barra proporzionale al valore corrispondente</li>
+<li>La barra più alta occupa tutto lo spazio disponibile</li>
+<li>Barre in blu, per valori sotto alla media</li>
+<li>Barre in rosso, per valori sopra (o uguali) alla media</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
 
 <slide class="thank-you-slide segue nobackground">
   <aside class="gdbar right"><img src="images/logo.png"></aside>
