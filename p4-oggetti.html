@@ -270,43 +270,6 @@ set_interval(update, 1000 // 30)  # Millis
 <slide  >
   
     <hgroup>
-      <h2>Proprietà (++)</h2>
-      <h3></h3>
-    </hgroup>
-    <article >
-      <ul>
-<li>Permettono un accesso controllato allo stato</li>
-</ul>
-<pre class="prettyprint" data-lang="python"><code>class Ball:
-
-    @property  # a getter for the pos property
-    def pos(self) -&gt; (int, int):
-        return self._x, self._y
-
-    # @pos.setter  # if you also really need a setter
-    # def pos(self, val: (int, int)):
-    #     self._x, self._y = val
-</code></pre>
-<pre class="prettyprint" data-lang="python"><code>ball = Ball(40, 80)
-print('ball @', ball.pos)
-# ball.pos = (60, 20)   # with the setter, you could change the pos
-</code></pre></article>
- 
-</slide>
-
-<slide class="segue dark backdrop" >
-  
-    <aside class="gdbar"><img src="images/logo.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Livelli di astrazione</h2>
-      <h3></h3>
-    </hgroup>
-  
-</slide>
-
-<slide  >
-  
-    <hgroup>
       <h2>Composizione</h2>
       <h3></h3>
     </hgroup>
@@ -339,7 +302,34 @@ arena.move_all()
 <slide  >
   
     <hgroup>
-      <h2>Ciclo di vita di un oggetto</h2>
+      <h2>Proprietà (++)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Permettono un accesso controllato allo stato</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>class Ball:
+
+    @property  # a getter for the pos property
+    def pos(self) -&gt; (int, int):
+        return self._x, self._y
+
+    # @pos.setter  # if you also really need a setter
+    # def pos(self, val: (int, int)):
+    #     self._x, self._y = val
+</code></pre>
+<pre class="prettyprint" data-lang="python"><code>ball = Ball(40, 80)
+print('ball @', ball.pos)
+# ball.pos = (60, 20)   # with the setter, you could change the pos
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ciclo di vita di un oggetto (++)</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -362,7 +352,7 @@ arena.move_all()
 <slide  >
   
     <hgroup>
-      <h2>Garbage collection</h2>
+      <h2>Garbage collection (++)</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -387,7 +377,7 @@ arena.move_all()
  
 </slide>
 
-<slide class="segue dark" >
+<slide class="segue dark backdrop" >
   
     <aside class="gdbar"><img src="images/logo.png"></aside>
     <hgroup class="auto-fadein">
@@ -847,7 +837,7 @@ pick_up_sound.play()  # play(-1) to loop, then stop()
 </ul>
 </li>
 <li>Entrambi gli stili, scarsamente <em>automatizzati</em><ul>
-<li>Necessità di intervento attivo durante l'esecuzione dei test</li>
+<li>Necessità di intervento attivo durante i test</li>
 <li>Giudizio dei risultati da parte dell'utente</li>
 <li>Quali valori analizzare? Sono coerenti?</li>
 </ul>

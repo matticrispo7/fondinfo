@@ -530,7 +530,10 @@ doc.onkeyup = keyup
       <h3></h3>
     </hgroup>
     <article >
-      <ul>
+      <figure>
+        <img src="images/misc/lightsaber.png">
+        
+      </figure><ul>
 <li>Modo conciso per creare una lista</li>
 <li>Ogni elemento: risultato di una operazione su un membro di altro iterabile</li>
 <li>Condizione sugli elementi, opzionale</li>
@@ -568,7 +571,7 @@ doc.onkeyup = keyup
 for i, val in enumerate(shopping_list):
     print(i, val)
 </code></pre>
-<p>Risultati in lista, per visualizzarli <br>
+<p>Risultati in lista, solo (!) per visualizzarli <br>
 Altrimenti, Python non genera immediatamente i risultati (<em>lazy</em>)</p></article>
  
 </slide>
@@ -593,7 +596,8 @@ Altrimenti, Python non genera immediatamente i risultati (<em>lazy</em>)</p></ar
 &gt;&gt;&gt; list(zip(shopping_list, quantities))
 [('spam', '100 g'), ('eggs', '6 pc'), ('bacon', '200 g'),
 ('ketchup', '1 bottle')]
-</code></pre></article>
+</code></pre>
+<p>Risultati in lista, solo (!) per visualizzarli</p></article>
  
 </slide>
 
@@ -604,7 +608,10 @@ Altrimenti, Python non genera immediatamente i risultati (<em>lazy</em>)</p></ar
       <h3></h3>
     </hgroup>
     <article >
-      <ul>
+      <figure>
+        <img src="images/misc/lightsaber.png">
+        
+      </figure><ul>
 <li>Prende come parametri una funzione ed una sequenza</li>
 <li><em>Funzione di ordine superiore</em></li>
 <li>Applica la funzione a ciascuno dei valori</li>
@@ -618,7 +625,8 @@ Altrimenti, Python non genera immediatamente i risultati (<em>lazy</em>)</p></ar
 <pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; from math import sqrt
 &gt;&gt;&gt; list(map(sqrt, range(5)))
 [0.0, 1.0, 1.4142, 1.7320, 2.0]
-</code></pre></article>
+</code></pre>
+<p>Risultati in lista, solo (!) per visualizzarli</p></article>
  
 </slide>
 
