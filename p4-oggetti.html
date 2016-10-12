@@ -179,7 +179,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="python"><code>from ball import Ball  # Ball is defined in ball.py
+      <pre class="prettyprint" data-lang="python"><code>from p4_ball import Ball  # Ball is defined in p4_ball.py
 
 # Create two objects, instances of the Ball class
 b1 = Ball(40, 80)
@@ -554,7 +554,7 @@ def update():
     canvas_fill(canvas, (255, 255, 255))  # Background
     for a in arena.actors():
         x, y, w, h = a.rect();  xs, ys = a.symbol()
-        # Foreground; cut an area from a larger image
+        # Foreground; cut an area from a larger image__init__
         image_blit(canvas, sprites, (x, y), area=(xs, ys, w, h))
 
 arena = Arena(320, 240)

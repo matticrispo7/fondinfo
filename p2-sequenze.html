@@ -736,7 +736,7 @@ for x in range(cols):
     </hgroup>
     <article >
       <pre class="prettyprint" data-lang="python"><code>matrix = [[' ' for x in range(cols)] for y in range(rows)]
-# all elements are inited as ' ' -- ynmv
+# all elements are inited as ' ' -- your need may vary
 </code></pre>
 <pre class="prettyprint" data-lang="python"><code>matrix = []
 for y in range(rows):
@@ -792,10 +792,13 @@ for y in range(rows):
 <li>Scrittura su file: funzione <code>print</code>, o metodo <code>write</code></li>
 <li>Blocco <code>with</code>: chiude il file al termine delle operazioni (anche in caso di errore)</li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>with open('some_file.txt', 'w') as f:
-    f.write('First line\n')  # explicit newline
-    print('Second line', file=f)
-    # continue writing here...
+<pre class="prettyprint" data-lang="python"><code>with open('some_file.txt', 'w') as f1:
+    f1.write('First line\n')   # explicit newline
+    f1.write('Second line\n')  # continue writing here...
+
+with open('other_file.txt', 'w') as f2:
+    for x in range(10):
+        print(x, x ** 2, file=f2)
 </code></pre></article>
  
 </slide>
