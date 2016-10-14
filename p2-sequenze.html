@@ -55,14 +55,14 @@ URL: https://code.google.com/p/io-2012-slides
 </ul>
 </li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>to_buy = ['spam', 'eggs', 'beans']
+<pre class="prettyprint" data-lang="python"><code>to_buy = ["spam", "eggs", "beans"]
 </code></pre>
 <pre class="prettyprint" data-lang="python"><code>rainfall_data = [13, 24, 18, 15]
 </code></pre>
-<pre class="prettyprint" data-lang="python"><code>months = ['Jan', 'Feb', 'Mar',
-          'Apr', 'May', 'Jun', 
-          'Jul', 'Aug', 'Sep', 
-          'Oct', 'Nov', 'Dec']
+<pre class="prettyprint" data-lang="python"><code>months = ["Jan", "Feb", "Mar",
+          "Apr", "May", "Jun", 
+          "Jul", "Aug", "Sep", 
+          "Oct", "Nov", "Dec"]
 </code></pre></article>
  
 </slide>
@@ -86,12 +86,12 @@ URL: https://code.google.com/p/io-2012-slides
 </li>
 </ul>
 <pre class="prettyprint" data-lang="python"><code>n = len(months)            # 12
-months[3]                  # 'Apr'
-months[-2]                 # 'Nov', same as n - 2
+months[3]                  # "Apr"
+months[-2]                 # "Nov", same as n - 2
 </code></pre>
-<pre class="prettyprint" data-lang="python"><code>to_buy = ['spam', 'eggs', 'beans']
+<pre class="prettyprint" data-lang="python"><code>to_buy = ["spam", "eggs", "beans"]
 
-to_buy[1] = 'ketchup'      # replace an element
+to_buy[1] = "ketchup"      # replace an element
 </code></pre></article>
  
 </slide>
@@ -103,17 +103,17 @@ to_buy[1] = 'ketchup'      # replace an element
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="python"><code>to_buy = ['spam', 'eggs', 'beans']
+      <pre class="prettyprint" data-lang="python"><code>to_buy = ["spam", "eggs", "beans"]
 
-'eggs' in to_buy           # True, to_buy contains 'eggs'
+"eggs" in to_buy           # True, to_buy contains "eggs"
 </code></pre>
-<pre class="prettyprint" data-lang="python"><code>to_buy.append('bacon')     # add an element to the end
+<pre class="prettyprint" data-lang="python"><code>to_buy.append("bacon")     # add an element to the end
 to_buy.pop()               # remove (and return) last element
 
-to_buy.insert(1, 'bacon')  # other elements shift
+to_buy.insert(1, "bacon")  # other elements shift
 removed = to_buy.pop(1)    # remove (and return) element at index
 
-to_buy.remove('eggs')      # remove an element by value
+to_buy.remove("eggs")      # remove an element by value
 </code></pre></article>
  
 </slide>
@@ -125,13 +125,13 @@ to_buy.remove('eggs')      # remove an element by value
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="python"><code>spring = months[2:5]       # ['Mar', 'Apr', 'May']
-quart1 = months[:3]        # ['Jan', 'Feb', 'Mar']
-quart4 = months[-3:]       # ['Oct', 'Nov', 'Dec']
+      <pre class="prettyprint" data-lang="python"><code>spring = months[2:5]       # ["Mar", "Apr", "May"]
+quart1 = months[:3]        # ["Jan", "Feb", "Mar"]
+quart4 = months[-3:]       # ["Oct", "Nov", "Dec"]
 whole_year = months[:]     # Copy the whole list
 </code></pre>
-<pre class="prettyprint" data-lang="python"><code>list1 = ['spam', 'eggs', 'beans']
-list2 = ['sausage', 'mushrooms']
+<pre class="prettyprint" data-lang="python"><code>list1 = ["spam", "eggs", "beans"]
+list2 = ["sausage", "mushrooms"]
 to_buy = list1 + list2     # List concatenation
 </code></pre>
 <pre class="prettyprint" data-lang="python"><code>so_boring = [1, 2] * 3     # List repetition:
@@ -175,14 +175,14 @@ c is a         # True, same object in memory
 txt[0]    # 'M'
 txt[1]    # 'o'
 txt[-1]   # 's'
-txt[6:12] # 'Python'
-txt[-6:]  # 'Circus'
+txt[6:12] # "Python"
+txt[-6:]  # "Circus"
 
-days = ['tue', 'thu', 'sat']
-txt = '|'.join(days)  # 'tue|thu|sat'
+days = ["tue", "thu", "sat"]
+txt = "|".join(days)  # "tue|thu|sat"
 
-days = 'mon|wed|fri'.split('|')
-# ['mon', 'wed', 'fri']
+days = "mon|wed|fri".split("|")
+# ["mon", "wed", "fri"]
 </code></pre></article>
  
 </slide>
@@ -194,9 +194,9 @@ days = 'mon|wed|fri'.split('|')
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="python"><code>shopping_list = ['spam', 'eggs', 'bacon', 'ketchup']
+      <pre class="prettyprint" data-lang="python"><code>shopping_list = ["spam", "eggs", "bacon", "ketchup"]
 
-print('Your shopping list contains:')
+print("Your shopping list contains:")
 
 for product in shopping_list:
     print(product)
@@ -252,19 +252,19 @@ for i in range(1, 11):
       </figure><pre class="prettyprint" data-lang="python"><code>MAX = 12
 y = int(input("Insert a value: "))
 for x in range(1, MAX + 1):
-    print(x * y, end = ' ')
+    print(x * y, end = " ")
     # inserts a space, instead of a newline
 </code></pre>
 <pre class="prettyprint" data-lang="python"><code>MAX = 12
 for y in range(1, MAX + 1):
     for x in range(1, MAX + 1):
         val = x * y
-        print(val, end = ' ')
+        print(val, end = " ")
     print()
 </code></pre>
 <p>Per fare in modo che ciascun valore richieda almeno 3 caratteri:
 <br>
-<code>val = '{:3}'.format(x * y)</code></p></article>
+<code>val = "{:3}".format(x * y)</code></p></article>
  
 </slide>
 
@@ -279,10 +279,10 @@ for y in range(1, MAX + 1):
 <li>Sequenza <strong>immutabile</strong> di valori, anche di <em>tipo diverso</em></li>
 </ul>
 <pre class="prettyprint" data-lang="python"><code># Tuple packing
-pt = 5, 6, 'red'
+pt = 5, 6, "red"
 pt[0]  # 5
 pt[1]  # 6
-pt[2]  # 'red'
+pt[2]  # "red"
 
 # multiple assignments, from a tuple
 x, y, colour = pt  # sequence unpacking
@@ -563,11 +563,11 @@ doc.onkeyup = keyup
 <li>Genera una sequenza di tuple (coppie)</li>
 <li>Spesso si usa nei cicli <code>for</code>, quando serve sia il valore che l'indice</li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; shopping_list = ['spam', 'eggs', 'bacon', 'ketchup']
+<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; shopping_list = ["spam", "eggs", "bacon", "ketchup"]
 &gt;&gt;&gt; list(enumerate(shopping_list))
-[(0, 'spam'), (1, 'eggs'), (2, 'bacon'), (3, 'ketchup')]
+[(0, "spam"), (1, "eggs"), (2, "bacon"), (3, "ketchup")]
 </code></pre>
-<pre class="prettyprint" data-lang="python"><code>shopping_list = ['spam', 'eggs', 'bacon', 'ketchup']
+<pre class="prettyprint" data-lang="python"><code>shopping_list = ["spam", "eggs", "bacon", "ketchup"]
 for i, val in enumerate(shopping_list):
     print(i, val)
 </code></pre>
@@ -591,11 +591,11 @@ Altrimenti, Python non genera immediatamente i risultati (<em>lazy</em>)</p></ar
 <li>Genera una sequenza di tuple (coppie)</li>
 <li>Il risultato ha la lunghezza della sequenza più breve</li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; shopping_list = ['spam', 'eggs', 'bacon', 'ketchup']
-&gt;&gt;&gt; quantities = ['100 g', '6 pc', '200 g', '1 bottle', 'too much']
+<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; shopping_list = ["spam", "eggs", "bacon", "ketchup"]
+&gt;&gt;&gt; quantities = ["100 g", "6 pc", "200 g", "1 bottle", "too much"]
 &gt;&gt;&gt; list(zip(shopping_list, quantities))
-[('spam', '100 g'), ('eggs', '6 pc'), ('bacon', '200 g'),
-('ketchup', '1 bottle')]
+[("spam", "100 g"), ("eggs", "6 pc"), ("bacon", "200 g"),
+("ketchup", "1 bottle")]
 </code></pre>
 <p>Risultati in lista, solo (!) per visualizzarli</p></article>
  
@@ -648,12 +648,12 @@ Altrimenti, Python non genera immediatamente i risultati (<em>lazy</em>)</p></ar
 </ul>
 </li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; tel = {'john': 4098, 'terry': 4139}
-&gt;&gt;&gt; tel['john']
+<pre class="prettyprint" data-lang="python"><code>&gt;&gt;&gt; tel = {"john": 4098, "terry": 4139}
+&gt;&gt;&gt; tel["john"]
 4098
-&gt;&gt;&gt; tel['graham'] = 4127
+&gt;&gt;&gt; tel["graham"] = 4127
 &gt;&gt;&gt; tel
-{'graham': 4127, 'terry': 4139, 'john': 4098}
+{"graham": 4127, "terry": 4139, "john": 4098}
 </code></pre>
 <p>Provare anche <code>list(tel)</code> e <code>list(tel.items())</code></p></article>
  
@@ -700,7 +700,7 @@ for x in range(cols):
     for y in range(rows):
         val = matrix[y][x]
         total += val
-    print('Col #', x, 'sums to', total)
+    print("Col #", x, "sums to", total)
 </code></pre></article>
  
 </slide>
@@ -723,7 +723,7 @@ for x in range(cols):
     for y in range(rows):
         val = matrix[y * cols + x]   # 2D -&gt; 1D
         total += val
-    print('Col #', x, 'sums to', total)
+    print("Col #", x, "sums to", total)
 </code></pre></article>
  
 </slide>
@@ -786,17 +786,17 @@ for y in range(rows):
     <article >
       <ul>
 <li>Funzione <code>open</code> per accedere ad un file (di testo)<ul>
-<li>Modalità scrittura o lettura: <code>'w'</code>, o <code>'r'</code></li>
+<li>Modalità scrittura o lettura: <code>"w"</code>, o <code>"r"</code></li>
 </ul>
 </li>
 <li>Scrittura su file: funzione <code>print</code>, o metodo <code>write</code></li>
 <li>Blocco <code>with</code>: chiude il file al termine delle operazioni (anche in caso di errore)</li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>with open('some_file.txt', 'w') as f1:
-    f1.write('First line\n')   # explicit newline
-    f1.write('Second line\n')  # continue writing here...
+<pre class="prettyprint" data-lang="python"><code>with open("some_file.txt", "w") as f1:
+    f1.write("First line\n")   # explicit newline
+    f1.write("Second line\n")  # continue writing here...
 
-with open('other_file.txt', 'w') as f2:
+with open("other_file.txt", "w") as f2:
     for x in range(10):
         print(x, x ** 2, file=f2)
 </code></pre></article>
@@ -810,17 +810,17 @@ with open('other_file.txt', 'w') as f2:
       <h3></h3>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="python"><code>with open('some_file.txt', 'r') as f1:
+      <pre class="prettyprint" data-lang="python"><code>with open("some_file.txt", "r") as f1:
     first_line = f1.readline()
     second_line = f1.readline()
     # both strings contain '\n' at the end
     # at end of file, an empty string is read
 
-with open('other_file.txt', 'r') as f2:
+with open("other_file.txt", "r") as f2:
     whole_text = f2.read()
     # do stg with whole_text
 
-with open('last_file.txt', 'r') as f3:
+with open("last_file.txt", "r") as f3:
     for line in f3:
         # line contains '\n' at the end
         # strip() removes withespaces at both ends
@@ -843,9 +843,9 @@ with open('last_file.txt', 'r') as f3:
 <pre class="prettyprint" data-lang="python"><code>import io, sys
 
 with io.StringIO() as output:
-    output.write('First line.\n')
-    print('Second line.', file=output)
-    # Retrieve stream contents, i.e. 'First line.\nSecond line.\n'
+    output.write("First line.\n")
+    print("Second line.", file=output)
+    # Retrieve stream contents, i.e. "First line.\nSecond line.\n"
     contents = output.getvalue()        
     sys.stdout.write(contents)
 </code></pre>
@@ -874,11 +874,11 @@ with io.StringIO() as output:
 </li>
 </ul>
 <pre class="prettyprint" data-lang="python"><code>try:
-    with open('other_file.txt', 'r') as f:
+    with open("other_file.txt", "r") as f:
         whole_text = f.read()
         # do stg with whole_text
 except IOError as err:
-    print('Oh, my!')
+    print("Oh, my!")
 </code></pre></article>
  
 </slide>
