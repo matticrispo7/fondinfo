@@ -465,6 +465,246 @@ Poi racchiudere tutto in un ciclo for esterno</p></article>
  
 </slide>
 
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 3</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.1 Classe dei pianeti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/trigonometry.svg">
+        
+      </figure><ul>
+<li>Scrivere una classe <code>Planet</code>, con dati (campi privati):<ul>
+<li>Raggio <code>r</code> dell'orbita: distanza dall'origine degli assi</li>
+<li>Angolo <code>theta</code> attuale rispetto all'asse <em>x</em> (coordinate polari)</li>
+</ul>
+</li>
+<li>Operazioni (metodi pubblici):<ul>
+<li><code>pos</code>: fornisce la posizione attuale come tupla <code>(x, y)</code></li>
+</ul>
+</li>
+<li>Nella parte principale del programma:<ul>
+<li>Creare un oggetto pianeta, con dati forniti all'utente</li>
+<li>Invocare il metodo <code>pos</code> per ottenere le coord. cartesiane</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Distinguere bene campi dell'oggetto, parametri dei metodi, variabili esterne</p>
+<p>Opzionalmente, nel costruttore ricevere come parametri <code>x</code> e <code>y</code> iniziali, da cui inizializzare i campi <code>r</code> e <code>theta</code>: <code>theta = math.atan2(y, x)</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.2 Pianeta in rivoluzione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Aggiungere ai dati di <code>Planet</code> (es. 3.1) una velocità angolare <code>omega</code><ul>
+<li>Gradi di rotazione del pianeta attorno all'origine, ad ogni turno</li>
+</ul>
+</li>
+<li>Aggiungere un metodo <code>move</code><ul>
+<li>Pianeta percorre un piccolo arco attorno all'origine</li>
+<li>Ad ogni chiamata, sommare <code>omega</code> all'attuale <code>theta</code></li>
+</ul>
+</li>
+<li>In <code>main</code> (<em>senza grafica</em>), creare un pianeta<ul>
+<li>Ciclicamente, chiamare il metodo <code>move</code> del pianeta...</li>
+<li>E stampare la posizione restituita dal metodo <code>pos</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.3 Rimbalzi con gravità</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/bouncing-ball.jpg">
+        
+      </figure><ul>
+<li>Partire dall'esempio di animazione visto a lezione (<em>senza oggetti</em>)</li>
+<li>Un rettangolo si muove orizzontalmente, p.es. di <code>10</code> pixel alla volta</li>
+<li>Percorso ciclico del rettangolo<ul>
+<li>Quando esce dallo schermo, rientra dalla parte opposta</li>
+</ul>
+</li>
+<li>Aggiungere al rettangolo un effetto di gravità<ul>
+<li>Definire una variabile <code>dy</code>: componente di velocità verticale (inizialmente <code>0</code>)</li>
+<li>Ad ogni ciclo, aggiungere a <code>dy</code> una piccola quantità costante (es. <code>g = 0.4</code>)</li>
+<li>Quando si tocca il fondo, cambiare il segno di <code>dy</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.4 Animazione di un pianeta</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Partire dall'esempio di animazione visto a lezione</li>
+<li>Aggiungere ai dati del pianeta (es. 3.2) anche la sua dimensione come <code>diameter</code>, con un corrispondente metodo <em>getter</em></li>
+<li>Rappresentare il movimento del pianeta dell'esercizio 3.2<ul>
+<li>Per ogni frame, chiamare il metodo <code>move</code> del pianeta</li>
+<li>Rappresentare un cerchio nella posizione aggiornata del pianeta</li>
+</ul>
+</li>
+<li>Traslare il disegno, <em>senza modificare la classe</em>, in modo che l'origine degli assi sia al centro della finestra</li>
+</ul>
+<blockquote></blockquote>
+<p>L'asse <em>y</em> può rimanere orientato verso il basso</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.5 Lista di pianeti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/solar-system.jpg">
+        
+      </figure><ul>
+<li>Aggiungere ai dati del pianeta (es. 3.4) anche un colore come tupla <code>RGB</code>, con un corrispondente metodo <em>getter</em></li>
+<li>Anzichè un solo pianeta, crearne diversi ed inserirli in una lista</li>
+<li>Rappresentare graficamente il movimento di tutti i pianeti<ul>
+<li>Per ogni frame, in un ciclo <code>for</code>, chiamare il metodo <code>move</code> di ogni pianeta</li>
+<li>Rappresentare un cerchio colorato nella posizione aggiornata di ogni pianeta</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.6 Classe degli esami</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/college-student.jpg">
+        
+      </figure><ul>
+<li>Scrivere una classe <code>Exam</code> per rappresentare gli esami sostenuti in un corso di studio<ul>
+<li>Parametri del costruttore: <em>nome esame</em>; <em>numero crediti</em>; <em>data</em> (es. “<code>2016-10-14</code>”); <em>voto</em> (da 18 a 30)</li>
+</ul>
+</li>
+<li>Fornire metodo <code>estimate_work</code> per stimare le ore di studio, supponendo che...<ul>
+<li>Ad ogni credito corrispondano ~ 25h di studio</li>
+<li>Il voto sia direttamente proporzionale allo studio</li>
+</ul>
+</li>
+<li>Nel <code>main</code>, istanziare un esame con valori forniti all'utente, invocare il metodo e mostrare il valore stimato</li>
+</ul>
+<blockquote></blockquote>
+<p>Es.: Un esame da 9 crediti corrisponde a 225h di studio; per prendere 24, in proporzione dovrei studiare 180h</p>
+<p>Tenere l'uso della console per I/O fuori dalla classe!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.7 Scrittura di risultati casuali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/dice.png">
+        
+      </figure><ul>
+<li>Simulare <code>n</code> lanci di una coppia di dadi<ul>
+<li><code>n</code> scelto dall'utente</li>
+</ul>
+</li>
+<li>Scrivere il risultato dei lanci in un file<ul>
+<li>In ogni riga, inserire i due valori separati da spazio</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.8 Analisi di risultati casuali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/dice.png">
+        
+      </figure><ul>
+<li>Leggere i dati dal file generato nell'esercizio 3.7</li>
+<li>Per ogni coppia di valori letta, mostrare all'utente la loro somma</li>
+<li>Contare quante volte, in tutto, si presenta ciascun risultato<ul>
+<li>Risultati possibili: da 2 a 12</li>
+<li>Somma dei due dadi</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Per conteggiare i vari risultati, usare una lista di (almeno) 11 valori</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>3.9 Battaglia navale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/battleship-2.png">
+        
+      </figure><ul>
+<li>Allocare una matrice <code>rows×cols</code> (dimensioni scelte dall'utente)</li>
+<li>Ripetutamente...<ul>
+<li>Chiedere all'utente un numero <code>size</code></li>
+<li>Riempire con '<code>+</code>' un numero <code>size</code> di celle adiacenti (direzione e posizione di partenza casuali)</li>
+<li>Opzionalmente, evitare inserimenti sovrapposti oppure oltre i bordi</li>
+<li>Mostrare la matrice risultante</li>
+</ul>
+</li>
+<li>All'uscita del programma, salvare la matrice in un file di testo</li>
+</ul>
+<blockquote></blockquote>
+<p>Si può usare una lista come pseudo-matrice, oppure una lista di liste</p></article>
+ 
+</slide>
+
 
 <slide class="thank-you-slide segue nobackground">
   <aside class="gdbar right"><img src="images/logo.png"></aside>
