@@ -43,26 +43,16 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article >
       <figure>
-        <img src="images/fun/shopping-list.jpg"><img src="images/fun/month-list.svg">
+        <img src="images/fun/shopping-list.jpg">
         
       </figure><ul>
-<li>Sequenza di elementi, <em>di solito</em> dello stesso <strong>tipo</strong><ul>
+<li>Sequenza di elementi, <em>di solito</em> dello stesso <strong>tipo</strong></li>
 <li>L'intera lista può essere assegnata ad una variabile, così diamo un <strong>nome</strong> alla lista</li>
-</ul>
-</li>
-<li>I singoli elementi sono <strong>numerati</strong><ul>
-<li>Gli indici partono da 0!</li>
-</ul>
-</li>
+<li><em>Lunghezza</em> attuale di una lista <code>xs</code>: <code>len(xs)</code></li>
 </ul>
 <pre class="prettyprint" data-lang="python"><code>to_buy = ["spam", "eggs", "beans"]
 </code></pre>
 <pre class="prettyprint" data-lang="python"><code>rainfall_data = [13, 24, 18, 15]
-</code></pre>
-<pre class="prettyprint" data-lang="python"><code>months = ["Jan", "Feb", "Mar",
-          "Apr", "May", "Jun", 
-          "Jul", "Aug", "Sep", 
-          "Oct", "Nov", "Dec"]
 </code></pre></article>
  
 </slide>
@@ -75,23 +65,25 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article >
       <figure>
-        <img src="images/fun/wile-coyote.png">
+        <img src="images/fun/month-list.svg"><img src="images/fun/wile-coyote.png">
         
       </figure><ul>
-<li><strong>Attenzione ad usare indici validi!</strong><ul>
-<li><em>Lunghezza</em> attuale di una lista <code>x</code>: <code>len(x)</code></li>
-<li>Elementi <em>numerati</em> da <code>0</code> a <code>len(x)-1</code></li>
+<li>I singoli elementi sono <strong>numerati</strong><ul>
+<li>Gli indici partono da <code>0</code> (<em>!!</em>)</li>
+<li>Arrivano a <code>len(xs) - 1</code> (<em>!!</em>)</li>
 <li>Indici <em>negativi</em> contano dalla fine</li>
 </ul>
 </li>
+<li><strong>Attenzione ad usare indici validi!</strong></li>
 </ul>
+<pre class="prettyprint" data-lang="python"><code>months = ["Jan", "Feb", "Mar",
+          "Apr", "May", "Jun", 
+          "Jul", "Aug", "Sep", 
+          "Oct", "Nov", "Dec"]
+</code></pre>
 <pre class="prettyprint" data-lang="python"><code>n = len(months)            # 12
 months[3]                  # "Apr"
 months[-2]                 # "Nov", same as n - 2
-</code></pre>
-<pre class="prettyprint" data-lang="python"><code>to_buy = ["spam", "eggs", "beans"]
-
-to_buy[1] = "ketchup"      # replace an element
 </code></pre></article>
  
 </slide>
@@ -106,6 +98,8 @@ to_buy[1] = "ketchup"      # replace an element
       <pre class="prettyprint" data-lang="python"><code>to_buy = ["spam", "eggs", "beans"]
 
 "eggs" in to_buy           # True, to_buy contains "eggs"
+
+to_buy[1] = "ketchup"      # replace an element
 </code></pre>
 <pre class="prettyprint" data-lang="python"><code>to_buy.append("bacon")     # add an element to the end
 to_buy.pop()               # remove (and return) last element

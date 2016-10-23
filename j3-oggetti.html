@@ -1,0 +1,1050 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oggetti</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/java.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/java-logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/oop/modules.png"></figure>
+  <hgroup>
+    <h2>Programmazione ad oggetti in Java</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sistema software ad oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Sistema procedurale<ul>
+<li>Insieme di procedure che si chiamano tra loro</li>
+</ul>
+</li>
+<li>Sistema ad oggetti<ul>
+<li>Insieme di <em>oggetti</em> che si scambiano <em>messaggi</em></li>
+<li>Per richiedere ad altri l’esecuzione di servizi</li>
+</ul>
+</li>
+<li>La complessità diminuisce tanto più quanto…<ul>
+<li>Lo stato dei singoli oggetti è nascosto</li>
+<li>L’insieme dei servizi offerti dai singoli oggetti è coeso (ma generale)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sviluppo ad oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Programmazione procedurale: <strong>top-down</strong><ul>
+<li>Analisi problema x trovare algoritmo risolutore</li>
+<li><em>Scomposizione</em> problema in problemi più semplici <em>(loop)</em></li>
+</ul>
+</li>
+<li>OOP: top-down...<ul>
+<li>Analisi problema e descrizione degli oggetti che ne fanno parte (astrazioni generali e coese)</li>
+<li>Scomposizione oggetti in parti più semplici (e messaggi/servizi scambiati) <em>(loop)</em></li>
+</ul>
+</li>
+<li>OOP: ... e <strong>bottom-up</strong> (riuso)<ul>
+<li>Definizione e riuso oggetti relativamente semplici</li>
+<li><em>Composizione</em> in oggetti più complessi <em>(loop)</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Modularità e astrazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Modularità e testabilità<ul>
+<li>Oggetto, completo di dati ed operazioni, inserito facilmente tra gli altri componenti di un sistema</li>
+<li>Codice di un oggetto scritto e mantenuto indipendentemente dal resto</li>
+<li>Più facile isolare e risolvere i problemi</li>
+</ul>
+</li>
+<li>Information-hiding e <strong>astrazione</strong><ul>
+<li>Interazione solo con i metodi di un oggetto (<em>black-box</em>)</li>
+<li>Dettagli interni dei dati e dell'implementazione nascosti al mondo esterno (<strong>incapsulamento</strong>)</li>
+<li>Oggetto: tipo di dato astratto (<em>ADT</em>)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Riuso e sostituibilità</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Riuso del codice<ul>
+<li>Oggetto già esistente → riusato in altri oggetti e programmi (<strong>composizione</strong>)...</li>
+<li>Anche se sviluppato (progetto/implem./test/debug) da altri, specialisti di un certo dominio</li>
+<li>Oggetti di nuovo tipo creati come estensione di tipi esistenti (<strong>ereditarietà</strong>)</li>
+</ul>
+</li>
+<li>Sostituibilità<ul>
+<li>Oggetti di tipo diverso possono fornire gli stessi metodi, ed essere gestiti in maniera astratta (<strong>polimorfismo</strong>)</li>
+<li>Nuovo oggetto (che implementa i metodi richiesti) inserito in un sistema astratto già esistente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Oggetto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/basic-object.svg">
+        
+      </figure><ul>
+<li>Rappresenta un <em>oggetto fisico</em> o un <em>concetto</em> del dominio</li>
+<li>Offre un insieme di <strong>servizi</strong>, come <em>metodi pubblici</em><ul>
+<li>Realizza un <em>tipo di dato astratto (ADT)</em></li>
+</ul>
+</li>
+<li>Memorizza il suo <strong>stato</strong> interno in <em>campi privati</em><ul>
+<li><em>Incapsulamento (black box)</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classi ed oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/cookie-cutter.png">
+        
+      </figure><ul>
+<li>Ogni <em>oggetto</em> ha una <strong>classe</strong> di origine<ul>
+<li>La classe dà la stessa forma iniziale (campi e metodi) a tutti i suoi oggetti</li>
+</ul>
+</li>
+<li>Ma ogni <em>oggetto</em> ha la sua <strong>identità</strong> <ul>
+<li>Stato e locazione in memoria distinti da quelli di altri oggetti</li>
+<li>Sia instanze di classi diverse che della stessa classe</li>
+</ul>
+</li>
+<li>Es. tutti i telefoni cellulari…<ul>
+<li>Hanno un’indicazione del livello della batteria e del segnale ricevuto</li>
+<li>Consentono di rispondere e di chiamare</li>
+</ul>
+</li>
+<li>Ma ciascun oggetto è distinto dagli altri<ul>
+<li>Identità: codice IMEI, posizione fisica, …</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Relazioni tra classi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Un oggetto può appartenere a più classi<ul>
+<li>I telefoni cellulari sono anche oggetti fisici</li>
+<li>Tutti gli oggetti fisici hanno un peso ed una posizione nello spazio</li>
+</ul>
+</li>
+<li>Tra classi è possibile stabilire delle <em>relazioni</em><ul>
+<li>La classe dei telefoni cellulari è contenuta (sotto-insieme) nella classe degli oggetti fisici</li>
+</ul>
+</li>
+<li>Tra oggetti è possibile stabilire delle <em>associazioni</em><ul>
+<li>Tutte le batterie hanno un’indicazione del livello di carica</li>
+<li>Tutti i telefoni cellulari <em>contengono</em> una batteria</li>
+</ul>
+</li>
+<li>Spesso si dice <em>istanza</em> della classe <code>X</code>, anziché <em>oggetto</em> di classe <code>X</code></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sistema ad oggetti in Java</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Nei linguaggi class-based (come Java e C++)…<ul>
+<li>Gli oggetti vengono descritti solo tramite le loro classi</li>
+<li>Gli oggetti vengono creati partendo da una classe</li>
+<li>Un oggetto ha una sola classe di origine</li>
+</ul>
+</li>
+<li>Per realizzare un sistema ad oggetti in Java...</li>
+<li>(1) Descrizione delle classi<ul>
+<li>Stato, mediante un insieme di attributi</li>
+<li>Servizi, mediante un insieme di metodi</li>
+<li>Associazioni con altre classi, mediante un insieme di attributi e metodi</li>
+</ul>
+</li>
+<li>(2) Creazione degli oggetti del sistema e invio di messaggi</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esempio: classe Ball</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Definizione della classe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/ball-object.svg">
+        
+      </figure><ul>
+<li><strong>Incapsulamento</strong> dei dati<ul>
+<li><em>Campi privati</em> e <em>metodi pubblici</em></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Ball {  // ...
+    private int x;
+    private int y;
+    private int dx;
+    private int dy;
+    private final int w;  // arena width
+    private final int h;  // arena height
+
+    public Ball(int x, int y, int w, int h) {
+        this.x = x; this.y = y;
+        this.w = w; this.h = h;
+        dx = dy = 1;
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Class diagram UML</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/ball.svg">
+        
+      </figure><ul>
+<li>Diagramma che contiene classi e relazioni tra classi</li>
+<li>A seconda del dettaglio desiderato, può mostrare campi e metodi</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Costruzione oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong><code>Ball(...)</code></strong>: metodo <em>costruttore</em><ul>
+<li>Eseguito automaticamente alla creazione di un oggetto</li>
+<li><em>Instantiation is initialization</em></li>
+</ul>
+</li>
+<li><strong><code>this</code></strong>: riferimento all'oggetto di cui è eseguito il metodo<ul>
+<li>Permette ai metodi di accedere ai campi</li>
+</ul>
+</li>
+<li>Costanti definite direttamente nella <em>classe</em><ul>
+<li>Per usarle, precedute dal nome della classe e “<code>.</code>”</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>Ball ball = new Ball(4, 8, 16, 12);  # Allocation and initialization
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Metodi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Espongono <em>servizi</em> ad altri oggetti</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Ball {  // ...
+    public void move() {
+        if (x + dx &lt; 0 || w &lt;= x + dx) dx = -dx;
+        if (y + dy &lt; 0 || h &lt;= y + dy) dy = -dy;
+        x += dx;
+        y += dy;
+    }
+
+    String toString() {
+        return "" + x + ", " + y;
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Applicazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class Ball {  // ...
+    public static void main(String[] args) {
+        // Create two objects, instances of the Ball class
+        Ball b1 = new Ball(4, 8, 16, 12);
+        Ball b2 = new Ball(8, 4, 16, 12);
+        System.out.println(b1); System.out.println(b2);
+
+        Scanner in = new Scanner(System.in);
+        while (! in.nextLine().equals("exit")) {
+            b1.move();
+            b2.move();
+            System.out.println(b1); System.out.println(b2);
+        }
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Getter e setter</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Permettono un <em>accesso controllato</em> allo stato</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Ball { // ...
+
+    public int getX() { return x; }
+    public int getY() { return y; }
+
+    // if you also need a setter
+    // public void setX(int x) { this.x = x; }
+    // public void setY(int y) { this.y = y; }
+}
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>Ball ball = new Ball(4, 8, 16, 12);
+System.out.println("x = " + ball.getX() + " y = ", ball.getY());
+// ball.setX(6);  // with the setter, you could change x
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Getter e setter</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>Incapsulamento</em>: minimizzare i metodi getter e setter<ul>
+<li>Solo l’oggetto è responsabile di come il suo stato viene memorizzato</li>
+<li>Tutti i servizi utili che si basano sullo stato dell’oggetto dovrebbero essere offerti dall’oggetto stesso</li>
+</ul>
+</li>
+<li>Utili soprattutto se non si limitano a leggere o scrivere variabili</li>
+<li><em>Instantiation is initialization</em>: non sostituirli al costruttore<ul>
+<li>Il programmatore potrebbe dimenticarsi di invocarli dopo la costruzione dell’oggetto</li>
+<li>Tenere unite la costruzione e l’inizializzazione degli oggetti</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Costruttori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Due effetti dell'istruzione <code>new Ball(4, 5, 16, 12)</code>:<ul>
+<li>Creazione dell’oggetto in memoria</li>
+<li>Esecuzione del costruttore dell’oggetto</li>
+</ul>
+</li>
+<li><em>Overloading</em> dei costruttori<ul>
+<li>Più costruttori, differenziati in base al numero e al tipo dei parametri</li>
+<li><em>Overloading</em> anche per i metodi comuni</li>
+<li>Nella prima riga di un costruttore, si può usare <code>this(…)</code> per chiamare un altro costruttore</li>
+</ul>
+</li>
+<li><em>Costruttore di default</em>, senza parametri<ul>
+<li>Creato da Java se (e solo se) non è definito nessun costruttore</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Metodi e campi di classe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Normalmente, una classe descrive le caratteristiche che avranno le sue istanze</li>
+<li>Clausola <strong><code>static</code></strong>: metodi e campi <em>di classe</em><ul>
+<li>Non associati ad una particolare istanza</li>
+<li>Disponibili anche se non è stato creato nessun oggetto</li>
+<li>Non possono accedere direttamente a parti <em>non-static</em> (metodi e campi <em>di istanza</em>)</li>
+</ul>
+</li>
+<li>Esempi<ul>
+<li><code>Math.PI</code></li>
+<li><code>Math.sqrt(5.2)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Distruzione degli oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>La creazione di un oggetto richiede memoria per memorizzare lo stato dell’oggetto</li>
+<li>Quando un oggetto non serve più è necessario liberare questa memoria</li>
+<li>La JVM offre un <em>garbage collector</em> per gestire in modo automatico la restituzione della memoria</li>
+<li>Quando un oggetto non serve più, il <em>garbage collector</em> lo distrugge</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Garbage collection</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Vantaggi<ul>
+<li>Non è possibile dimenticare di liberare la memoria</li>
+<li>Non è possibile liberare della memoria che dovrà essere utilizzata in seguito</li>
+</ul>
+</li>
+<li>Svantaggi<ul>
+<li>Il garbage collector decide autonomamente quando liberare la memoria</li>
+<li>Liberare e compattare la memoria richiede del calcolo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Composizione</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Associazione tra oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Realizzare un programma che faccia muovere <code>N</code> palline su un campo</li>
+<li>Classi necessarie<ul>
+<li><code>Ball</code></li>
+<li><code>BallArena</code></li>
+</ul>
+</li>
+<li><strong>Associazione</strong> tra un oggetto arena e un insieme di palline</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Associazioni e relazioni in UML</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/dev/uml-relations.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Class diagram UML</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/java/ball-arena.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Implementazione delle associazioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Un’associazione ha un <em>nome</em> che la descrive</li>
+<li>Può avere un <em>verso</em> (in cui è navigabile)</li>
+<li>Ognuno dei lati<ul>
+<li>Ha un <em>nome</em></li>
+<li>Ha una <em>cardinalità</em></li>
+</ul>
+</li>
+<li>Un’associazione equivale a codice Java<ul>
+<li>Solo i lati navigabili implementano l’associazione</li>
+<li>Metodi <code>add</code>, <code>remove</code>, <code>getBalls</code></li>
+<li>Memorizzazione in <em>array</em> o altra <em>collezione</em> (se cardinalità &gt; 1)</li>
+<li>Controllare il vincolo sulla cardinalità</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe BallArena</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class BallArena {  // ...
+    public void add(Ball b) {
+        balls.add(b);
+    }
+    public void remove(Ball b) {
+        balls.remove(b);
+    }
+    public void Collection&lt;Ball&gt; getBalls() {
+        return Collections.unmodifiableList(balls);
+    }
+    public void moveAll() {
+        for (Ball b : balls) b.move();
+    }
+    private ArrayList&lt;Ball&gt; balls = new ArrayList&lt;&gt;();
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Associazione 1 a 1</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Un’associazione particolarmente importante è l’associazione 1 a 1</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Person {  // ...
+    public Passport getPassport() { return passport; }
+    public void setPassport(Passport p) { passport = p; }
+    private Passport passport = null;
+}
+</code></pre>
+<p><img alt="" src="images/java/person-passport.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Contenimento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Associazione che esprime un contenimento fisico, o in generale un legame di tipo <strong>has-a</strong></li>
+<li>Può essere <em>composizione</em> o <em>aggregazione</em><ul>
+<li><strong>Composizione</strong>: ciclo di vita dell'oggetto contenuto determinato dal contenitore (legame <em>whole-part</em>, <em>owns-a</em>)</li>
+<li><strong>Aggregazione</strong>: oggetto contenuto non rigidamente legato al contenitore</li>
+</ul>
+</li>
+<li>In Java non c’è nessuna chiara differenza tra contenimento ed un più generica associazione</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Composizione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Idealmente, un oggetto (creato e testato) rappresenta una unità di codice, che altri oggetti possono usare<ul>
+<li>Il riuso in progetti diversi non è semplice da ottenere…</li>
+</ul>
+</li>
+<li>Inserire un oggetto (<em>member object</em>) dentro un’altro<ul>
+<li>Il nuovo oggetto può contenere un certo numero di oggetti di tipo diverso, per realizzare le funzionalità desiderate</li>
+<li>Relazione <strong>whole-part</strong> o <strong>owns-a</strong></li>
+</ul>
+</li>
+<li>Grado elevato di flessibilità<ul>
+<li>Gli oggetti membri sono di solito nascosti</li>
+<li>Inaccessibili ai programmatori che usano l’oggetto</li>
+<li>Possono essere cambiati senza disturbare il codice esterno</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Associazioni e attributi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Associazioni e attributi del modello generano codice</li>
+<li>Le <strong>associazioni</strong> vengono usate per collegare tra loro le <em>classi</em> del modello</li>
+<li>Gli <strong>attributi</strong> sono di tipo <em>primitivo</em><ul>
+<li>Come <code>int</code> o <code>float</code></li>
+<li>Oppure classi della Java library, come <code>String</code> o <code>Object</code></li>
+</ul>
+</li>
+<li>Spesso si modellano come attributi anche…<ul>
+<li>Classi di altre librerie che non si vogliono includere esplicitamente nel problema (o nella soluzione)</li>
+<li>Classi di base, usate pervasivamente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Dipendenza</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Stampa su stringa</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Problema: visualizzazione dell'arena</li>
+<li>Classi necessarie<ul>
+<li><code>Ball</code></li>
+<li><code>BallArena</code></li>
+</ul>
+</li>
+<li>La stampa su stringa può essere effettuata da un metodo di <code>Arena</code></li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class BallArena {  // ...
+    public String toString() {
+        StringBuffer out;
+        for (Ball b : balls) out.append("" + b + "\n");
+        return out.toString();
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classi o metodi?</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Esistono varie possibilità di visualizzazione dell'arena</li>
+<li>Problema: abbiamo legato l’algoritmo alla struttura dati</li>
+<li>Algoritmo può essere sostituito? Conviene classe anziché metodo</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class ArenaStreamer {  // ...
+    private int pos(Ball b) {
+        return b.getY() * w + b.getX();
+    }
+    public void stream(BallArena arena, PrintStream out) {
+        prepareBuffer();
+        for (Ball b : arena.getBalls())
+            buffer[pos(b)] = BALL;
+        out.println(buffer);
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Metodi privati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Servizi non offerti all’esterno, ma chiamati solo dall’oggetto stesso</li>
+<li>Scomposizione simile all’approccio procedurale</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class ArenaStreamer {  // ...
+    public ArenaStreamer(int width, int height) {
+        w = width + 1;
+        h = height;
+        buffer = new char[w * h];
+    }
+    private void prepareBuffer() {
+        for (int i = 0; i &lt; w * h; i++) {
+            if (i % w == w - 1) buffer[i] = '\n';
+            else buffer[i] = EMPTY;
+        }
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Accesso allo stato</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Per implementare <code>ArenaStreamer</code>, accesso agli elementi della lista<ul>
+<li>Esempio, metodo <code>getBalls</code></li>
+</ul>
+</li>
+<li>Possibili soluzioni diverse, ma senza svelare come gli elementi sono memorizzati e senza permettere modifiche arbitrarie<ul>
+<li>Es. array, lista concatenata, …</li>
+<li>Possibilità di cambiare la memorizzazione interna</li>
+<li><code>ArenaStreamer</code> funziona indipendentemente da come la lista è memorizzata</li>
+</ul>
+</li>
+<li><em>Incapsulamento</em>, principio di <em>information hiding</em><ul>
+<li>Bisogna nascondere tutti i dettagli implementativi di un oggetto</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Incapsulamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>L’interfaccia pubblicata tenuta stabile, senza mostrare dettagli implementativi<ul>
+<li>Utilizzatori insensibili a cambiamenti nell’implementazione</li>
+</ul>
+</li>
+<li>Oggetto come <em>Abstract Data Type</em><ul>
+<li>Attenzione ai servizi che offre</li>
+<li>Non alla maniera in cui li implementa (<em>black box</em>)</li>
+<li>Migliore astrazione, soluzione scalabile per problemi complessi</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Dipendenza</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>ArenaStreamer</code> prevede che esistano nel sistema:<ul>
+<li>Classe <code>Arena</code>, con metodo <code>getBalls()</code></li>
+<li>Classe <code>Ball</code>, con metodi <code>getX()</code>, <code>getY()</code></li>
+</ul>
+</li>
+<li><code>ArenaStreamer</code> <strong>dipende</strong> da <code>Arena</code> e <code>Ball</code><ul>
+<li>Ne usa i servizi, ma non ha campi legati a queste classi</li>
+</ul>
+</li>
+<li><strong>Dipendenza</strong>: un metodo di una classe ha come argomento, valore di ritorno o var locale un’altra classe (con cui non è associata)</li>
+<li>Dipendenze e associazioni limitano la riusabilità perchè accoppiano le classi</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Modelli dinamici</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interaction diagram UML</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Due tipi di diagrammi (equivalenti), detti <strong>interaction diagram</strong><ul>
+<li>Modellazione grafica delle interazioni tra gli oggetti</li>
+</ul>
+</li>
+<li><strong>Sequence diagram</strong><ul>
+<li>Mette in evidenza la successione degli eventi nel tempo</li>
+</ul>
+</li>
+<li><strong>Communication diagram</strong><ul>
+<li>Mette in evidenza le relazioni tra oggetti</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Sequence diagram</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/java/sequence-diagram.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Communication diagram</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/java/communication-diagram.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Uso degli interaction diagram</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Vantaggio<ul>
+<li>Rappresentazione grafica utile per comprendere meglio interazioni complesse</li>
+</ul>
+</li>
+<li>Svantaggi<ul>
+<li>Non sufficientemente espressivi</li>
+<li>Potenzialmente ambigui</li>
+<li>Più ridondanti di uno pseudo-codice</li>
+</ul>
+</li>
+<li>Utili<ul>
+<li>In fase di analisi e di progettazione ad alto livello</li>
+<li>Come documentazione</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercizi</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe dei triangoli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/triangle-notations.svg">
+        
+      </figure><ul>
+<li>Scrivere una classe <code>Triangle</code> per rappresentare dei triangoli</li>
+<li>Parametri del costruttore: lunghezze dei tre lati</li>
+<li>Fornire un metodo pubblico <code>perimeter</code> per calcolare il perimetro</li>
+<li>Fornire un metodo pubblico <code>area</code> per calcolare l'area<ul>
+<li>Usare la formula di Erone</li>
+</ul>
+</li>
+<li>Nella parte principale del programma:<ul>
+<li>Creare un oggetto triangolo, con lati forniti all'utente</li>
+<li>Invocare i metodi <code>area</code> e <code>perimeter</code> sull'oggetto</li>
+<li>Infine mostrare l'area ed il perimetro del triangolo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Gestione triangoli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/triangle-notations.svg">
+        
+      </figure><ul>
+<li>Riusare la classe <code>Triangle</code> dell'esercizio precedente</li>
+<li>Gestire una lista di triangoli</li>
+<li>Ciclicamente, permettere all'utente di effettuare una delle seguenti operazioni:<ul>
+<li>Visualizzare la lista di triangoli aggiornata</li>
+<li>Aggiungere un nuovo triangolo</li>
+<li>Rimuovere un triangolo esistente, dato il suo indice</li>
+<li>Calcolare la somma delle aree di tutti i triangoli</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/java-logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

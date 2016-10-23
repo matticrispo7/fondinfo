@@ -1,0 +1,684 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Funzioni</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/java.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/java-logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/fun/function.png"></figure>
+  <hgroup>
+    <h2>Introduzione alla programmazione</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Funzione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>
+<p>Operatore, applicato a operandi, per ottenere un risultato</p>
+<ul>
+<li>Java è un linguaggio ad oggetti puro, ma si possono definire <strong>metodi <code>static</code></strong></li>
+<li><strong><code>return</code></strong> per terminare e restituire un risultato</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="java"><code>public static float add(float a, float b) {
+    float s = a + b;
+    return s;
+}
+
+public static void appendSquares(ArrayList&lt;Integer&gt; data, int num) {
+    // procedure: process data, no direct result
+    for (int val = 0; val &lt; num; val++) {
+        data.add(val * val);
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Parametri di metodi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Parametri formali</strong>: nomi usati nella <em>definizione</em></li>
+<li><strong>Parametri effettivi</strong>: valori passati al metodo</li>
+<li>Parametri passati &ldquo;<em>per valore</em>&rdquo;<ul>
+<li>Variabili all'esterno: non vengono modificate, ma copiate</li>
+<li>Array e <em>oggetti</em> passati ad un metodo.: modifiche <em>permanenti</em></li>
+<li>In questo caso, il valore copiato è un riferimento all'oggetto</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="java"><code>public static void inc(int a) {
+    a += 1;   // try to print a, now
+}
+public static void main(String[] args) {
+    int x = 10;
+    inc(x);   // try to print x, now
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Documentazione di funzioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Doc comments</strong>: utili per documentare la semantica del metodo, dei parametri e del valore di ritorno</li>
+<li><strong><code>javadoc</code></strong>: strumento per generare file HTML di documentazione</li>
+</ul>
+<pre class="prettyprint" data-lang="java"><code>/**
+ * Return the x intercept of the line y=m*x+b.
+ * The x intercept of a line is the point at which
+ * it crosses the x axis (y=0).
+ * @param m the angular coefficient
+ * @param b the y intercept
+ * @return the x intercept
+ */
+public static float xIntercept(float m, float b) {
+    return -b/m;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Effetti collaterali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Modifica di oggetti passati come parametri o variabili globali, operazioni di lettura/scrittura...</li>
+<li>Annullano la <strong>trasparenza referenziale</strong><ul>
+<li>Impossibile semplificare, sostituendo una chiamata a funzione col suo valore di ritorno (es. presenti operazioni di I/O)</li>
+</ul>
+</li>
+<li>Rendono la funzione <strong>non idempotente</strong><ul>
+<li>Chiamata più volte, con gli stessi parametri, restituisce risultati diversi</li>
+</ul>
+</li>
+<li>→ Difficile fare verifiche matematiche<ul>
+<li><code>z = f(sqrt(2), sqrt(2));</code></li>
+<li><code>s = sqrt(2);</code> <br> <code>z = f(s, s);</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Funzioni non idempotenti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Esempio di semplificazione<ul>
+<li><code>p = rq(x) + rq(y) * (rq(x) – rq(x));</code></li>
+<li><code>p = rq(x) + rq(y) * (0);</code></li>
+<li><code>p = rq(x) + 0;</code></li>
+<li><code>p = rq(x);</code></li>
+</ul>
+</li>
+<li>Ma se <code>rq</code> ha effetti collaterali, non si può!</li>
+</ul>
+<pre class="prettyprint" data-lang="java"><code>public static int baseValue = 0;  // static (global) variable
+
+public static int rq(int x) {
+    baseValue += 1;
+    return x + baseValue;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Programmazione ricorsiva</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Programmazione ricorsiva</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/matryoshka.png">
+        
+      </figure><ul>
+<li>Molti linguaggi consentono ad una funzione (o procedura) di chiamare se stessa</li>
+<li>Chiamata ricorsiva, diretta o indiretta</li>
+</ul>
+<p><img alt="" src="images/fun/recursion-c.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fattoriale, ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/stack.svg">
+        
+      </figure><ul>
+<li>Ad ogni invocazione di una funzione, viene creato nello <strong>stack</strong> un nuovo record</li>
+<li><strong>Contesto locale</strong> alla particolare attivazione della funzione stessa</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>public static int factorial(int n) {
+    int result = 1;
+    if (n &gt; 1) result = n * factorial(n - 1);
+    return result;
+}
+</code></pre>
+<p>Ai primordi (Fortran 66 ecc.) solo allocazione statica <br> Spazio fisso ed unico per dati locali ad una funzione → no ricorsione</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Stack dell'applicazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/books-stack.png">
+        
+      </figure><ul>
+<li>Pila: memoria dinamica <em>LIFO (Last In First Out)</em><ul>
+<li>Dimensione massima prefissata</li>
+</ul>
+</li>
+<li>Il programma ci memorizza automaticamente:<ul>
+<li><strong>Indirizzo di ritorno</strong> per la funzione <br> Inserito alla chiamata, estratto all'uscita</li>
+<li><strong>Parametri</strong> della funzione <br> Inseriti alla chiamata, eliminati all'uscita</li>
+<li><strong>Variabili locali</strong>, definite nella funzione <br> Eliminate fuori dall'ambito di visibilità</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Record di attivazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/fun/records.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Vista semplificata dello stack</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/fun/stack-content-c.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Visibilità di una variabile</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Insieme di istruzioni da cui è accessibile<ul>
+<li><em>Ciclo di vita</em>: esistenza in memoria della var (etichetta)</li>
+<li>Gli oggetti in Java sono tutti gestiti dinamicamente</li>
+<li>Nello stack tipi primitivi e riferimenti ad oggetti</li>
+</ul>
+</li>
+<li>Visibilità <strong>globale</strong><ul>
+<li>Variabili <code>public static</code> fuori da ogni metodo - <em>Meglio evitare!</em></li>
+<li>Allocazione <em>statica</em> in alcuni linguaggi (es. C++)</li>
+</ul>
+</li>
+<li>Visibilità <strong>locale</strong> alla funzione<ul>
+<li>Variabili locali e parametri</li>
+<li>Allocazione <em>automatica</em> di spazio in <em>stack</em> ad ogni attivazione della funzione (possibile la ricorsione)</li>
+</ul>
+</li>
+<li>Visibilità locale al blocco (es. <code>if</code>)</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esempi di ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>I conigli di Fibonacci</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/fun/fib-rabbits.png" /></p>
+<blockquote></blockquote>
+<p>fib(0) = fib(1) = 1;  fib(n) = fib(n-1) + fib(n-2);</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fibonacci, ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="java"><code>int fibonacci(int n) {
+    int result = 1;
+    if (n &gt;= 2) {
+        result = fibonacci(n-1) + fibonacci(n-2);
+    }
+    return result;
+}
+</code></pre>
+<p><img alt="" src="images/fun/fib-calls.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fibonacci, memoization</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="java"><code>public static ArrayList&lt;int&gt; fibonacciLookup =
+        new ArrayList&lt;&gt;(Arrays.asList(1, 1));
+
+public static int fibonacci(int n) {
+    int result = 1;
+    if (n &lt; fibonacciLookup.size()) {
+        result = fibonacciLookup.get(n);
+    } else {
+        result = fibonacci(n - 1) + fibonacci(n - 2);
+        fibonacciLookup.add(result);
+    }
+    return result;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fibonacci, iterazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="java"><code>public static int fibonacci(int n) {
+    result = 1;
+    fib2 = 1;  // result @ 2 steps before
+
+    for (int i  = 2; i &lt;= n; i++) {
+        result += fib2;
+        // store previous result, for next step
+        fib2 = result - fib2;
+    }
+    return result;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>N regine, backtracking</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/fun/queens.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>N regine, verifica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="java"><code>public static boolean underAttack(boolean[][] board, int row, int col) {
+    // for each direction up-left, up, up-right... (no queens in lower cells)
+    int dy = -1;
+    for (int dx = -1; dx &lt;= 1;  dx++) {
+        // walk till finding a queen, or border
+        int x = col + dx, y = row + dy;
+        while (0 &lt;= y &amp;&amp; y &lt; board.length &amp;&amp; 0 &lt;= x &amp;&amp; x &lt; board[y].length) {
+            if (board[y][x]) return true; // found a queen -&gt; square attacked
+            x += dx; y += dy;
+        }
+    }
+    return false;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>N regine, ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="java"><code>public static boolean place_queens(int[][] board, int row) {
+    for (int col = 0; col &lt; board[row].length; col++) {
+        if (!underAttack(board, row, col)) {
+            // square not attacked, place a queen
+            board[row][col] = true;
+            // is this the last row?
+            if (row == board.length - 1) return true;
+            // else, place queens in the following rows
+            if (placeQueens(board, row + 1)) return true;
+            // no luck this way, remove the queen (backtracking)
+            board[row][col] = false;
+        }
+    }
+    return false;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercizi</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ipotenusa</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/pythagorean-theorem.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione per il calcolo dell'ipotenusa di un triangolo rettangolo<ul>
+<li>Parametri: due cateti come float</li>
+<li>Risultato: ipotenusa come float</li>
+</ul>
+</li>
+<li>Nel <code>main</code><ul>
+<li>Chiedere all'utente due valori,</li>
+<li>Invocare la funzione con questi parametri</li>
+<li>Visualizzare il risultato della funzione</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Area di un triangolo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/triangle-notations.svg">
+        
+      </figure><ul>
+<li>Scrivere una <code>funzione</code> per il calcolo dell'area di un triangolo, dati i tre lati<ul>
+<li>Parametri: le lunghezze dei tre lati, come <code>float</code></li>
+<li>Risultato: area, come <code>float</code></li>
+</ul>
+</li>
+<li>Nella parte principale del programma<ul>
+<li>Chiedere all'utente tre valori</li>
+<li>Invocare la funzione con questi parametri</li>
+<li>Visualizzare il risultato della funzione</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Formula di Erone: <code>area = sqrt(s * (s - a) * (s - b) * (s - c))</code> <br>
+Con <code>s = (a + b + c) / 2</code>, semiperimetro</p>
+<p><a href="http://en.wikipedia.org/wiki/Heron%27s_formula">http://en.wikipedia.org/wiki/Heron%27s_formula</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Maiuscole tra asterischi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/troll-key.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione che:<ul>
+<li>Riceve come parametro una stringa di testo</li>
+<li>Produce come risultato lo stesso testo, ma...</li>
+<li>Trasforma in maiuscolo tutto il testo compreso tra asterischi</li>
+</ul>
+</li>
+<li>Es. “<code>I want *this text* to be uppercase</code>” <br>
+  → “<code>I want THIS TEXT to be uppercase</code>”</li>
+</ul>
+<blockquote></blockquote>
+<p>Scorrere la riga, carattere per carattere <br>
+Segnare in un <code>bool</code> se si è incontrato un asterisco iniziale, ma non ancora un asterisco finale</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fattori primi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Funzione che trova tutti i fattori primi di un numero <code>n</code><ul>
+<li>Parametro: <code>n</code></li>
+<li>Risultato: lista, contenente i fattori primi di <code>n</code></li>
+</ul>
+</li>
+<li>Algoritmo: scorrere tutti i valori d'interesse, e cercare i divisori<ul>
+<li><code>x</code> è divisore di <code>n</code> sse <code>n % x == 0</code></li>
+<li>Non considerare i fattori non primi</li>
+</ul>
+</li>
+<li>Provare la funzione con valori inseriti dall'utente</li>
+</ul>
+<blockquote></blockquote>
+<p>Quando si trova un divisore <code>x</code>, dividere ripetutamente <code>n</code> per <code>x</code>, finché resta divisibile <br>
+Valutare l'uso di un ciclo <code>while</code>, anzichè <code>for</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Potenze con ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/matryoshka.png">
+        
+      </figure><ul>
+<li>Calcolare la potenza intera di un numero, sfruttando la ricorsione</li>
+<li>Qualsiasi numero <code>x</code>, elevato a potenza <code>0</code>, dà come risultato <code>1</code></li>
+<li>La potenza <code>n</code>-esima di un numero <code>x</code> si può calcolare come:<ul>
+<li><code>pow(x, n) = x * pow(x, n - 1)</code>, per <code>n &gt; 0</code></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>IEEE definisce <code>pow(0, 0) = 1</code>, anzichè indeterminato</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ricorsione, palindromo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>Palindromo</em>: testo che rimane uguale se letto al contrario</li>
+<li>Scrivere una funzione ricorsiva per riconoscere i palindromi<ul>
+<li>Parametro: testo da controllare</li>
+<li>Risultato: <code>bool</code></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Stringa palindroma: se ha lunghezza 0 o 1, oppure... <br>
+Prima lettera == ultima lettera e... <br>
+Stringa rimanente (senza prima e ultima lettera) palindroma</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Massimo Comun Divisore</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/hist/euclid.jpg">
+        
+      </figure><ul>
+<li>Leggere due numeri</li>
+<li>Calcolare in una funzione il loro Massimo Comun Divisore</li>
+<li>Visualizzare il risultato della funzione</li>
+</ul>
+<blockquote></blockquote>
+<p>Provare ad usare sia l'iterazione che la ricorsione</p>
+<p>Euclide: MCD(a, b) = a, se b = 0; <br>
+MCD(a, b) = MCD(b, a mod b), se b &gt; 0</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Spirale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/spiral.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione per riempire di numeri crescenti una matrice quadrata (o rettangolare)</li>
+<li>Seguire il percorso a spirale suggerito nella figura a fianco</li>
+<li>Dimensioni della matrice indicate dall'utente a runtime</li>
+</ul>
+<blockquote></blockquote>
+<p>Tenere traccia della direzione attuale (∆y, ∆x) <br>
+Avanzare fino al bordo o ad una cella già visitata, <br>
+poi cambiare la direzione in senso orario</p>
+<p>Coordinate raster, rotazione oraria di 90°: <code>(x', y') = (-y, x)</code> <br>
+In generale: <code>(x', y') = (x⋅cos(θ) - y⋅sin(θ), x⋅sin(θ) + y⋅cos(θ))</code> <br></p></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/java-logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

@@ -1,0 +1,1616 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduzione</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/java.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/java-logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/java/java-logo.svg"></figure>
+  <hgroup>
+    <h2>Programmazione ad oggetti in Java</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Introduzione al corso</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>OOP e Java</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Oggetti e classi<ul>
+<li>Incapsulamento e composizione</li>
+<li>Interfacce, ereditarietà e polimorfismo</li>
+</ul>
+</li>
+<li>Introduzione a Java<ul>
+<li>Modello ad oggetti</li>
+<li>Collezioni, tipi generici, I/O</li>
+<li>Eccezioni e asserzioni</li>
+</ul>
+</li>
+<li>Sviluppo del software<ul>
+<li>Sviluppo ad oggetti, modelli UML</li>
+<li>Riuso del software, astrazione e composizione</li>
+<li>Requisiti e collaudo, design-by-contract</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Software</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Java Standard Edition (JDK)<ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+</ul>
+</li>
+<li>Eclipse IDE for Java Developers<ul>
+<li><a href="http://www.eclipse.org/">http://www.eclipse.org/</a></li>
+</ul>
+</li>
+<li>Notepad++ (o Notepad, o qualsiasi editor di testo)<ul>
+<li><a href="http://notepad-plus.sourceforge.net/">http://notepad-plus.sourceforge.net/</a></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Materiale on-line</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Slide del corso<ul>
+<li><a href="http://www.ce.unipr.it/people/tomamic">http://www.ce.unipr.it/people/tomamic</a></li>
+</ul>
+</li>
+<li>Documentazione Java<ul>
+<li><a href="http://docs.oracle.com/javase/">http://docs.oracle.com/javase/</a></li>
+<li>Documentazione API e strumenti</li>
+<li>Tutorial</li>
+<li>Convenzioni sul codice ecc.</li>
+</ul>
+</li>
+<li>Eckel<ul>
+<li><a href="http://www.mindview.net/Books/">http://www.mindview.net/Books/</a></li>
+<li><em>Thinking in Java</em></li>
+<li><em>Thinking in Patterns (with Java)</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Linguaggi e paradigmi</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi di programmazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Notazione formale per definire algoritmi</li>
+<li>Algoritmo: sequenza di istruzioni che, eseguita, risolve un dato problema in un tempo finito</li>
+<li>Ogni linguaggio è caratterizzato da:<ul>
+<li><strong>Sintassi</strong></li>
+<li><strong>Semantica</strong></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Sintassi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/syntax-diagrams.png">
+        
+      </figure><ul>
+<li>Insieme di regole formali per scrivere frasi ben formate (programmi) in un certo linguaggio</li>
+<li>Grammatiche non contestuali (...) espresse con notazioni formali:<ul>
+<li>Backus-Naur Form</li>
+<li>Extended BNF</li>
+<li>Diagrammi sintattici</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Semantica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Attribuisce un <strong>significato</strong> alle frasi (sintatticamente corrette) costruite nel linguaggio</li>
+<li>Una frase può essere sintatticamente corretta e tuttavia non aver alcun significato<ul>
+<li>Soggetto – predicato – complemento</li>
+<li><em>“La mela mangia il bambino”</em></li>
+<li><em>“Il bambino mangia la mela”</em></li>
+</ul>
+</li>
+<li>Oppure avere un significato diverso da quello previsto...<ul>
+<li><em>GREEK_PI = 345</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Semantica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Correttezza sui tipi</strong><ul>
+<li>Quali tipi di dato possono essere elaborati?</li>
+<li>Quali operatori applicabili ad ogni dato?</li>
+<li>Quali regole per definire nuovi tipi e operatori?</li>
+</ul>
+</li>
+<li><strong>Semantica operazionale</strong><ul>
+<li>Qual è l'effetto di ogni azione elementare?</li>
+<li>Qual è l’effetto dell’aggregazione delle azioni?</li>
+<li>Cioè, qual è l’effetto dell’esecuzione di un certo programma?</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Linguaggi di basso livello</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/assembly.png">
+        
+      </figure><ul>
+<li>Più orientati alla macchina che ai problemi da trattare</li>
+<li><strong>Linguaggi macchina</strong>: solo operazioni eseguibili direttamente dall'elaboratore<ul>
+<li>Op. molto elementari, diverse per ogni processore, in formato binario</li>
+</ul>
+</li>
+<li><strong>Linguaggi assembly</strong>: prima evoluzione, codici binari → mnemonici</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi di alto livello</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Introdotti per facilitare la scrittura dei programmi</li>
+<li>Definizione della soluzione in modo intuitivo</li>
+<li>Con una certa <strong>astrazione</strong> rispetto al calcolatore su cui verranno eseguiti</li>
+<li>Devono essere tradotti in linguaggio macchina</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Storia dei linguaggi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/dev/languages-timeline.svg" /></p>
+<blockquote></blockquote>
+<p><a href="http://www.oreilly.com/news/graphics/prog_lang_poster.pdf">http://www.oreilly.com/news/graphics/prog_lang_poster.pdf</a> <br>
+<a href="http://www.levenez.com/lang/history.html">http://www.levenez.com/lang/history.html</a> <br>
+<a href="http://www.cs.brown.edu/~adf/programming_languages.html">http://www.cs.brown.edu/~adf/programming_languages.html</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>The Top 10 (IEEE Spectrum, 2011)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/dev/languages-spectrum.jpg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Paradigmi di sviluppo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Forniscono la filosofia e la metodologia con cui si scrivono i programmi</li>
+<li>Definiscono il concetto (astratto) di computazione</li>
+<li>Ogni linguaggio consente (o spinge verso) l'adozione di un particolare paradigma<ul>
+<li>Imperativo / procedurale</li>
+<li>Orientato agli oggetti</li>
+<li>Scripting (tipizzazione dinamica, principio <em>Don't Repeat Yourself, DRY</em>)</li>
+<li>Funzionale (funzioni come “cittadini di prima classe”)</li>
+<li>Logico (base di conoscenza + regole di inferenza)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggi e paradigmi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Imperativi / procedurali</strong><ul>
+<li>Cobol, Fortran, Algol, C, Pascal </li>
+</ul>
+</li>
+<li><strong>Orientati agli oggetti</strong><ul>
+<li>Simula, Smalltalk, Eiffel, C++, Delphi, Java, C#, VB.NET</li>
+</ul>
+</li>
+<li><strong>Scripting</strong><ul>
+<li>Basic, Perl, PHP, Javascript, Python</li>
+</ul>
+</li>
+<li><strong>Funzionali</strong><ul>
+<li>Lisp, Scheme, ML, Haskell, Erlang</li>
+</ul>
+</li>
+<li><strong>Logici</strong><ul>
+<li>Prolog...</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esecuzione dei programmi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Linguaggio ad alto livello → passi necessari:<ul>
+<li><strong>Compilazione</strong>, traduzione in linguaggio macchina</li>
+<li><strong>Collegamento</strong> con librerie di supporto</li>
+<li><strong>Caricamento</strong> in memoria</li>
+</ul>
+</li>
+<li>Programmi <strong>compilati</strong>: applicati i 3 passi...<ul>
+<li>A tutto il codice; prima dell'esecuzione</li>
+</ul>
+</li>
+<li>Programmi <strong>interpretati</strong>: applicati i 3 passi...<ul>
+<li>In sequenza, su ogni istruzione; a tempo di esecuzione</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="images/dev/build.svg" /></p></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Compilazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/compiler.svg">
+        
+      </figure><ul>
+<li>Traduzione da ling. alto livello a ling. macchina<ul>
+<li>Analisi: lessicale, grammaticale, contestuale</li>
+<li><em>Rappresentazione intermedia</em>: albero sintattico annotato (<strong>AST</strong>) </li>
+<li>Generazione codice oggetto</li>
+</ul>
+</li>
+<li>Codice oggetto: non ancora eseguibile<ul>
+<li>Linker, loader</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collegamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il <strong>linker</strong> collega diversi moduli oggetto<ul>
+<li>Simboli irrisolti → riferimenti esterni</li>
+<li>Il collegamento può essere statico o dinamico</li>
+</ul>
+</li>
+<li><strong>Collegamento statico</strong><ul>
+<li>Libreria inclusa nel file oggetto, eseguibile stand-alone</li>
+<li>Dimensioni maggiori, ma possibile includere solo funzionalità utilizzate</li>
+</ul>
+</li>
+<li><strong>Collegamento dinamico</strong><ul>
+<li>Librerie condivise da diverse applicazioni</li>
+<li>Installazione ed aggiornamento unici</li>
+<li>Caricate in memoria una sola volta</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Caricamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il <strong>loader</strong> carica in memoria un programma rilocabile<ul>
+<li>Risolti tutti gli indirizzi relativi (variabili, salti ecc.)</li>
+<li>Caricati eventuali programmi di supporto</li>
+</ul>
+</li>
+<li><strong>Rilocazione statica</strong>: indirizzi logici trasformati in  indirizzi assoluti</li>
+<li><strong>Rilocazione  dinamica</strong>: indirizzi logici mantenuti nel programma in esecuzione<ul>
+<li>Programma compilato: indirizzamento relativo</li>
+<li>Tramite <em>registro base</em>: locazione del codice e dei dati in memoria (reg. CS e DS su x86)</li>
+<li><em>Memory Management Unit</em> in S.O.</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Codice gestito</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Compilazione in <strong>codice intermedio</strong><ul>
+<li>Bytecode (Java), Common Intermediate Lang. (.NET), …</li>
+<li>Python: compilato per una macchina virtuale (file .pyc), ma in modo trasparente</li>
+</ul>
+</li>
+<li>Esecuzione su una <strong>macchina virtuale</strong>, che gestisce la memoria (garbage collection)<ul>
+<li>Java Virtual Machine, Common Language Runtime, …</li>
+<li>Spesso compilazione “al volo” (<em>Just In Time</em>) in codice nativo</li>
+</ul>
+</li>
+<li><strong>Garbage collection</strong> possibile anche per codice nativo<ul>
+<li>Linguaggio <em>Go</em>, <em>“smart pointers”</em> in C++, estensioni…</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Java</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cos’è Java</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Insieme di tecnologie<ul>
+<li>Linguaggio orientato agli oggetti che semplifica il C++</li>
+<li>Strumenti sia a compile-time che a run-time</li>
+</ul>
+</li>
+<li>Lancio ufficiale nel 1995<ul>
+<li>Piattaforma sviluppata da Sun Microsystems</li>
+<li>Open source dal 2006-07, iniziativa OpenJDK</li>
+</ul>
+</li>
+<li>Svincolare software da hardware e sistema operativo<ul>
+<li>Sistemi web-oriented (Mosaic creato nel 1993)</li>
+<li>Inizialmente lato client, oggi principalmente lato server</li>
+<li>Sistemi embedded (Green group)</li>
+<li>Recentemente, sistemi mobili (smartphone, tablet)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Insieme di tecnologie</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Problema distribuzione su web: programmi strettamente legati ad una piattaforma<ul>
+<li><em>Piattaforma</em>: combinazione di hardware e software di sistema</li>
+</ul>
+</li>
+<li><strong>Compilatore</strong> e <strong>bytecode</strong><ul>
+<li>Il compilatore Java (<code>javac</code>) non produce codice eseguibile da una particolare piattaforma, come farebbe un compilatore C</li>
+<li>A differenza del linguaggio macchina, il bytecode Java resta uguale per tutte le piattaforme</li>
+</ul>
+</li>
+<li><strong>Macchina virtuale (VM)</strong><ul>
+<li>La VM (java) trasforma il <em>bytecode</em> in codice nativo</li>
+</ul>
+</li>
+<li>Tutti questi pezzi sono denominati assieme come Java<ul>
+<li>Compilatore, bytecode, macchina virtuale, librerie, linguaggio ecc.</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ciclo di vita di un’applicazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/java/life-cycle.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggio semplice</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Sintassi simile al C<ul>
+<li>Ma non è una estensione del C, come il C++</li>
+<li>Un compilatore Java non accetta codice C</li>
+<li>Modifiche sostanziali per convertire un programma da C a Java</li>
+</ul>
+</li>
+<li>Facile da leggere e scrivere (senza errori)<ul>
+<li>Codice C medio, al rilascio, ha un bug ogni 55 righe di codice</li>
+<li>Java ha sintassi minima - No “<em>syntactic sugar</em>” (es. operatori)</li>
+<li>Ma più funzionalità del C, grazie all’ampia libreria di classi</li>
+</ul>
+</li>
+<li>Allocazione e deallocazione automatica della memoria<ul>
+<li>Niente <code>malloc</code>, <code>free</code> e distruttori: metà dei bug in C e C++ legati alla gestione della memoria</li>
+<li>Riferimenti controllati: no algebra dei puntatori e accessi arbitrari alla memoria</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linguaggio ad oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Programmazione orientata agli oggetti<ul>
+<li>Origini negli anni 1960 – Simula</li>
+<li>Ma diffusione negli anni 1990 – GUI moderne</li>
+<li>Programma: collezione di oggetti che si scambiano messaggi</li>
+<li>Incapsulamento, composizione, ereditarietà, polimorfismo</li>
+</ul>
+</li>
+<li>Astrazione, programmi più semplici e facili da leggere<ul>
+<li>Migliore riuso del codice</li>
+<li>Sviluppo e rilascio più veloce</li>
+<li>Codice modulare, più affidabile e manutenibile</li>
+</ul>
+</li>
+<li>Java è completamente orientato agli oggetti<ul>
+<li>A differenza di Smalltalk, Java ha tipi primitivi</li>
+<li>C++ è ibrido, eredita dal C la scarsa leggibilità (codice offuscato)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Indipendenza dalla piattaforma</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Cross-platform<ul>
+<li>Non solo codice sorgente (come C) ma anche bytecode</li>
+</ul>
+</li>
+<li>Portare programmi Java su una nuova piattaforma<ul>
+<li>Portare la macchina virtuale (“interprete”)</li>
+<li>Portare parte delle librerie (AWT, I/O, rete…)</li>
+<li>Compilatore e gran parte delle librerie sono scritte in Java</li>
+</ul>
+</li>
+<li>Eliminazione di costrutti non specificati o dipendenti dalla piattaforma<ul>
+<li>Interi sempre a 32 bit</li>
+<li>Virgola mobile secondo lo standard IEEE 754</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sicurezza</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>Verifica</em> del bytecode e <em>sandbox</em><ul>
+<li>Esecuzione sicura di codice scaricato da fonti non fidate</li>
+</ul>
+</li>
+<li>Le applet non possono accedere al disco o alla rete<ul>
+<li>Verifica preventiva sul bytecode dell’applet, controlli a run time</li>
+<li>Al più, una applet può bloccare la VM, ma non l’intero sistema</li>
+</ul>
+</li>
+<li>No puntatori<ul>
+<li>I programmi Java non possono accedere arbitrariamente alla memoria</li>
+</ul>
+</li>
+<li>Java ha controllo dei tipi forte<ul>
+<li>Conversione automatica di un int in long, un byte in short…</li>
+<li>Ma non di un int in boolean</li>
+<li>Controllo su riferimenti e cast tra classi</li>
+</ul>
+</li>
+<li>Gestione delle eccezioni per errori attesi o inattesi</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Buone prestazioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il byte code Java può essere compilato al volo (<em>just-in-time</em>) per ottenere prestazioni simili a codice nativo</li>
+<li>Esistono compilatori Java (es. gcj) che generano codice nativo per una particolare piattaforma (no VM)</li>
+<li>Non si possono limare le prestazioni operando a basso livello come in C, ma si possono ottenere risultati adeguati per molti ambiti</li>
+<li>Grossi programmi scritti in Java<ul>
+<li>Eclipse (IDE), Azureus/Vuze (file sharing), HotJava (browser), jEdit (text editor), JBoss (application server), Tomcat (web server), Xerces (parser XML), the Xalan (processore XSLT), javac (compilatore)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Multi-threaded</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Un programma Java può avere diversi <em>thread</em> di esecuzione paralleli</li>
+<li>Reazioni rapide all’input dell’utente o alle richieste dei client</li>
+<li>Difficile portare Java su architetture (es. Windows 3.1…) che non supportano il <em>preemptive multi-threading</em></li>
+<li>Fonte di bug difficili da trovare (corse, deadlock…)<ul>
+<li>Problema inerente alla programmazione parallela</li>
+<li>Java fornisce una API molto semplice per gestire thread</li>
+<li>Monitor per accesso concorrente alle risorse</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collegamenti dinamici</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Java non ha una fase di link esplicita</li>
+<li>Il compilatore…<ul>
+<li>Genera un file di byte code (.class) per ogni classe del programma</li>
+<li>Risolve le dipendenze e compila tutte le classi necessarie</li>
+</ul>
+</li>
+<li>Il programma può caricare classi a runtime<ul>
+<li>Per esempio, un browser può caricare alcune applet</li>
+<li>Le classi necessarie sono cercate e caricate dinamicamente</li>
+</ul>
+</li>
+<li><code>CLASSPATH</code>, <code>ClassLoader</code></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Liberazione automatica della memoria</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/dev/garbage-truck.jpg">
+        
+      </figure><ul>
+<li><strong>Garbage collection</strong>: la raccolta della spazzatura di Java</li>
+<li>Non c’è bisogno di allocare o deallocare la memoria esplicitamente<ul>
+<li>La memoria è allocata alla creazione di un oggetto, con <code>new</code></li>
+<li>Viene liberata quando non più utilizzata</li>
+<li>Oggetti sempre in <em>heap</em></li>
+<li>Costruttori utili per l’inizializzazione</li>
+</ul>
+</li>
+<li>Algoritmi diversi sulle varie VM<ul>
+<li><em>Reference counting</em>: idea di base, ma cicli…</li>
+<li><em>Mark &amp; sweep</em>: parte da riferimenti locali/globali, marca oggetti raggiungibili</li>
+<li><em>Generational garbage collection</em>: controlla spesso oggetti recenti</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Distruzione degli oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>La creazione di un oggetto richiede memoria per conservare lo stato dell’oggetto</li>
+<li>Quando un oggetto non serve più è necessario liberare questa memoria</li>
+<li>La JVM offre un <strong>garbage collector</strong> per gestire in modo automatico la restituzione della memoria</li>
+<li>Quando un oggetto non serve più, il garbage collector lo distrugge</li>
+<li>Vantaggi<ul>
+<li>Non è possibile dimenticare di liberare la memoria (<em>memory leak</em>)</li>
+<li>Non è possibile liberare dalla memoria oggetti ancora utili (<em>dangling pointer</em>)</li>
+</ul>
+</li>
+<li>Svantaggi<ul>
+<li>Il garbage collector decide autonomamente quando liberare la memoria</li>
+<li>Liberare e compattare la memoria richiede del calcolo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Hello, Java</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Metodo main</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");  // Display the string
+    }
+}
+</code></pre>
+<ul>
+<li>Avvio di un sistema: necessario fornire alla JVM una procedura da eseguire<ul>
+<li>Metodo <code>main</code></li>
+</ul>
+</li>
+<li>Ogni classe può definire un metodo <code>main</code><ul>
+<li>A volte, definita classe con solo scopo di contenere <code>main</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Compilazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="cmd"><code>javac HelloWorldApp.java
+</code></pre>
+<ul>
+<li>Shell dei comandi, nella cartella contenente il file <code>.java</code> (<em>source</em>)</li>
+<li>Il compilatore genera un file <code>.class</code>, contenente il <em>bytecode</em></li>
+<li>Possibile specificare una opzione <code>-classpath</code><ul>
+<li>Percorsi dove cercare altre classi necessarie alla compilazione</li>
+<li>Altrimenti usata la variabile d'ambiente <code>CLASSPATH</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esecuzione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="cmd"><code>java HelloWorldApp
+</code></pre>
+<ul>
+<li>Shell dei comandi, nella cartella contenente il file <code>.class</code> (<em>bytecode</em>)</li>
+<li>Comando <code>java X</code><ul>
+<li>Avvio di una nuova JVM</li>
+<li>Esecuzione del metodo <code>main</code> della classe <code>X</code></li>
+</ul>
+</li>
+<li>Comando <code>java X arg1 arg 2</code><ul>
+<li>Parametri del metodo <code>main</code>: <code>arg1</code>, <code>arg2</code> ecc.</li>
+<li>Spazi usati come separatori tra gli argomenti</li>
+</ul>
+</li>
+<li>Possibile specificare una opzione <code>-classpath</code> ...</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Eclipse</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/eclipse.png">
+        
+      </figure><ul>
+<li>Creazione progetto<ul>
+<li><code>File</code> - <code>New</code> - <code>Java project</code></li>
+<li>Nome progetto (e <em>package</em>): <code>hello</code></li>
+</ul>
+</li>
+<li>Creazione classe<ul>
+<li>Menù contestuale sul progetto</li>
+<li><code>HelloWorldApp</code>, con metodo <code>main</code></li>
+</ul>
+</li>
+<li>Esecuzione<ul>
+<li>Menù contestuale sulla classe</li>
+<li><code>Run as</code> - <code>Java application</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Hello, user</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>import java.util.Scanner;
+
+class HelloUser {
+    public static final main(String[] args) {
+        Scanner input = new Scanner(System.in);  // to parse user input
+        System.out.println("Name, age?");
+        String name = input.next();          // get a word from console
+        int age = input.nextInt();           // get an int ...
+        System.out.println("Hello, " + name + ".");
+        System.out.println("You're " + age + " years old.");
+    }
+}
+</code></pre>
+<ul>
+<li>Metodo <code>nextLine</code> di <code>Scanner</code> per leggere una intera riga di testo</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Tipi primitivi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Interi, con segno: <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code></li>
+<li>Floating point: <code>float</code>, <code>double</code></li>
+<li>Booleani: <code>boolean</code></li>
+<li>Caratteri, a 16 bit: <code>char</code></li>
+<li>Operatori ~ C:<ul>
+<li>Assegnamento: <code>=</code>, <code>+=</code> ecc.</li>
+<li>Confronto: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></li>
+<li>Algebrici: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
+<li>Incremento e decremento: <code>++</code>, <code>--</code> (prefix, postfix)</li>
+<li>Logici: <code>&amp;&amp;</code>, <code>||</code>, <code>!</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Stringhe di testo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Classe e literal<ul>
+<li><code>String greeting = "Hello world!";</code></li>
+</ul>
+</li>
+<li>Stringhe: sequanze <em>immutabili</em> di caratteri<ul>
+<li><code>char c = greeting.charAt(1);  // 'e'</code></li>
+<li><em>Attenzione</em>: la numerazione dei caratteri parte da 0!</li>
+</ul>
+</li>
+<li>Lunghezza: numero di <code>char</code><ul>
+<li><code>int len = greeting.length();</code></li>
+<li>Ogni <code>char</code> occupa 16 bit (codifica <strong>UTF-16</strong>)</li>
+<li>Ma alcuni simboli possono richiedere più <code>char</code></li>
+</ul>
+</li>
+<li>Concatenazione, sia su oggetti che literal<ul>
+<li><code>String txt = string1 + string2;</code></li>
+<li>Dietro le quinte, usato il metodo <code>concat</code> di <code>String</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Caratteri e testo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Necessaria convenzione per codifica numerica (binaria) dei caratteri</li>
+<li>Codifica <strong>ASCII</strong> (American Standard Code for Information Interchange) a 7 bit<ul>
+<li><em>Caratteri alfanumerici</em>: lettere maiuscole, minuscole, numeri, spazio</li>
+<li><em>Simboli e punteggiatura</em>: @, #, …</li>
+<li><em>Caratteri di controllo</em> (non tutti visualizzabili): <code>TAB, LF, CR, BELL</code> ecc.</li>
+<li>Interruzione di riga: varie combinazioni di <code>LF</code> e <code>CR</code> su diversi sistemi</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Tabella ASCII di base</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/repr/ascii.png" /></p></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Tabella ASCII estesa</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/codepage-437.png">
+        
+      </figure><ul>
+<li>Caratteri accentati + caratteri per grafici<ul>
+<li><em>Code Page 437</em> per PC (DOS) in Nord America</li>
+<li>Possibile mischiare testo in inglese e francese (anche se in Francia <em>CP850</em>); ma non assieme greco (<em>CP737</em>), russo ecc.</li>
+</ul>
+</li>
+<li><strong>ISO 8859</strong>, estensioni standard per ASCII ad 8 bit<ul>
+<li>ISO 8859-1 (o Latin1): Lingue dell’Europa Occidentale</li>
+<li>ISO 8859-2: Lingue dell’Europa Orientale</li>
+<li>ISO 8859-5: Alfabeto cirillico</li>
+<li>ISO 8859-15: Latin1 con simbolo euro (€)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Unicode</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/hieroglyphics.jpg"><img src="images/repr/no-klingon.png">
+        
+      </figure><ul>
+<li>Unicode associa un preciso <strong>code-point</strong> (32 bit) a ciascun simbolo<ul>
+<li>Possibile rappresentare miliardi di simboli</li>
+<li>Primi 256 code-point = <em>Latin1</em></li>
+</ul>
+</li>
+<li>Attualmente &gt;30 sistemi di scrittura<ul>
+<li>Rappresentazione di <em>geroglifici</em> e caratteri <em>cuneiformi</em></li>
+<li>Proposta per <em>Klingon</em> (da Star Trek… rifiutata!)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>UTF-8, UTF-16</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/text-len.png">
+        
+      </figure><ul>
+<li><strong>Unicode Transformation Format</strong>: codifica per mappare (un sottinsieme de) i code-points in sequenze di bit, o code-values<ul>
+<li><em>UTF-8</em> – codifica con base (<em>code-unit</em>) ad 8-bit ma lunghezza variabile (1-4 byte), max compatibilità con ASCII</li>
+<li><em>UTF-16</em> – base (<em>code-unit</em>) a 16-bit, lunghezza variabile (<em>Java</em>)</li>
+<li><em>UTF-32</em> – codifica a 32-bit, lunghezza fissa</li>
+</ul>
+</li>
+<li>Java, numero effettivo di simboli (<em>code-point</em>)<ul>
+<li><code>str.codePointCount(0, str.length())</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Selezione: if</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/algo/abs.svg">
+        
+      </figure><pre class="prettyprint" data-lang="Java"><code>int x = input.nextInt();
+int y;
+
+if (x &gt;= 0) {
+    y = x;
+    System.out.println("" + x + "is positive");
+} else {
+    y = -x
+    System.out.println("" + x + "is negative");
+}
+System.out.println("abs = " + y);
+</code></pre>
+<p>Per casi più complessi, esiste anche il costrutto <code>switch-case</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Confronto tra parole</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/algo/words.svg">
+        
+      </figure><ul>
+<li><strong>Attenzione</strong> all'operatore <code>==</code><ul>
+<li>Confronta il valore di tipi primitivi</li>
+<li>Confronta i <em>riferimenti</em>, <em>non i valori</em> degli oggetti</li>
+<li>Ok per confronto tra interi, ma non tra stringhe</li>
+<li>Metodi <code>equals</code> (<code>boolean</code>) e <code>compareTo</code> (<code>-1</code>, <code>0</code>, <code>+1</code>)</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>String a = input.next(), b = input.next();
+if (a.equals(b)) {
+    System.out.println("The words are equal");
+} else if (a.compareTo(b) == -1) {
+    System.out.println("The words are ordered");
+} else {
+    System.out.println("The words are inverted");
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Iterazione: while</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/algo/average.svg">
+        
+      </figure><pre class="prettyprint" data-lang="Java"><code>int total = 0, count = 0;
+System.out.println("Val (0 to end)? ");
+int val = input.nextInt();
+while (val != 0) {
+    total += val; ++count;
+    System.out.println("Val (0 to end)? ");
+    int val = input.nextInt();
+}
+if (count &gt; 0) {
+    float avg = total / float(count);
+    System.out.println("Avg: " + avg);
+}
+</code></pre>
+<p>In alternativa, si può usare un ciclo <code>do-while</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Array</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/month-list.svg">
+        
+      </figure><ul>
+<li>Sequenza di elementi, dello stesso <strong>tipo</strong></li>
+<li>Ha un <em>nome</em> che lo identifica ed una <strong>lunghezza</strong></li>
+<li>Singoli elementi identificati tramite <em>indice</em> numerico<ul>
+<li><strong>Indice da 0, fino a <code>length</code> - 1!</strong></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>String[] toBuy = {"spam", "eggs", "beans"};
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>int[] rainfallData = {13, 24, 18, 15};
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>String[] months = {"Jan", "Feb", "Mar",
+                   "Apr", "May", "Jun", 
+                   "Jul", "Aug", "Sep", 
+                   "Oct", "Nov", "Dec"};
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Uso degli array</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/wile-coyote.png">
+        
+      </figure><pre class="prettyprint" data-lang="Java"><code>// declaration
+int[] k;
+// creation
+k = new int[3];
+
+String[] toBuy = {"spam", "eggs", "beans"};
+System.out.println(toBuy.length);
+System.out.println(toBuy[1]);  // eggs
+toBuy[1] = "bacon";
+</code></pre>
+<ul>
+<li>Lunghezza<ul>
+<li>Segnalato <strong>errore</strong> se indice fuori dai limiti (<strong>da 0 a length - 1</strong>)</li>
+<li><code>ArrayIndexOutOfBoundsException</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>ArrayList</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Simile ad un <em>array</em>, ma con dimensione variabile</li>
+<li>Metodi principali: <code>add, get, set, size</code></li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>ArrayList&lt;String&gt; toBuy = new ArrayList&lt;&gt;();
+toBuy.add("spam");
+System.out.println(toBuy.size());  // 1
+toBuy.add("eggs");
+toBuy.add("beans");
+System.out.println(toBuy.size());  // 3
+System.out.println(toBuy.get(2));  // beans
+toBuy.set(2, "bacon");
+System.out.println(toBuy.get(2));  // bacon
+// see ArrayList documention
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cicli su collezioni, for</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>for (int i = 0; i &lt; toBuy.size(); i++) {
+    String item = toBuy.get(i);
+    System.out.println(item);
+}
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>for (String item : toBuy) { System.out.println(item); }
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>int[] rainfallData = {13, 24, 18, 15};
+for (int val : rainfallData) { System.out.println(val); }
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cicli e annidamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/tables.png">
+        
+      </figure><pre class="prettyprint" data-lang="java"><code>int y = in.nextInt();
+for (int x = 1; x &lt;= 10; x++) {
+    System.out.format("%4d", x * y);
+}
+System.out.println();
+</code></pre>
+<pre class="prettyprint" data-lang="java"><code>for (int y = 1; y &lt;= 10; y++) {
+    for (int x = 1; x &lt;= 10; x++) {
+        System.out.format("%4d", x * y);
+    }
+    System.out.println();
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Matrice, somma colonne</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>int[][] matrix = {{2, 4, 3, 8},
+                  {9, 3, 2, 7},
+                  {5, 6, 9, 1}};
+int rows = matrix.length;
+int cols = matrix[0].length;
+
+for (int x = 0; x &lt; cols; x ++) {
+    int total = 0;
+    for (int y = 0; y &lt; rows; y++) {
+        int val = matrix[y][x];
+        total += val;
+    }
+    System.out.println("Col #" + x + " sums to " + total);
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercizi</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cerchio</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/greek-pi.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente il valore del raggio <code>r</code> di un cerchio</li>
+<li>Mostrare il valore dell'area e della circonferenza</li>
+<li>Se <code>r</code> è negativo, però, mostrare un messaggio d'errore</li>
+</ul>
+<blockquote></blockquote>
+<p>Definire una costante <code>PI = 3.14159</code> <br>
+Altrimenti usare <code>Math.PI</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Minore e maggiore</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/three-brothers.png">
+        
+      </figure><ul>
+<li>Chiedere all'utente tre numeri interi: <code>a</code>, <code>b</code>, <code>c</code></li>
+<li>Determinare qual è il minore dei tre</li>
+<li>Determinare qual è il maggiore dei tre</li>
+</ul>
+<blockquote></blockquote>
+<p>Controllare prima di tutto se <code>a</code> è minore degli altri due <br>
+Altrimenti controllare se <code>b</code> è minore di <code>c</code> <br>
+Altrimenti ...</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cubi in ciclo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/rock-cubes.png">
+        
+      </figure><ul>
+<li>In un ciclo, ripetere le seguenti operazioni<ul>
+<li>Chiedere all'utente un numero</li>
+<li>Mostrare il suo valore al cubo</li>
+<li>Il valore 0 indica il termine della sequenza</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Numero segreto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/bingo-balls.png">
+        
+      </figure><ul>
+<li>Generare un intero “segreto” a caso tra 1 e 90</li>
+<li>Chiedere ripetutamente all'utente di immettere un numero, finché non indovina quello generato</li>
+<li>Ogni volta dire se il numero immesso è maggiore o minore del numero segreto</li>
+</ul>
+<blockquote></blockquote>
+<p>Generatore di numeri pseudo-casuali: <code>Random random = new Random()</code>
+Estrazione numero tra 0 e 89: <code>random.nextInt(90)</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Conteggio a ritroso</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/countdown.png">
+        
+      </figure><ul>
+<li>Leggere un numero positivo <code>n</code></li>
+<li>Per ciascun valore <code>y</code> tra <code>n</code> ed 1...</li>
+<li>Stampare una riga con <code>y</code> ripetizioni di <code>y</code></li>
+</ul>
+<pre class="prettyprint" data-lang="output"><code>4444
+333
+22
+1
+</code></pre>
+<blockquote></blockquote>
+<p>Usare due cicli for annidati</p>
+<p>All'inizio fissare <code>y</code> pari ad un certo valore e scrivere una sola riga; es.: <code>y = 4 → “4444”</code> <br>
+Poi racchiudere tutto in un ciclo for esterno, per variare <code>y</code>: <br>
+<code>y</code> parte da <code>n</code>, arriva ad 1, ad ogni passo decresce di 1</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Conteggio di 0 e 1</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/repr/binary-tunnel.jpg">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare separatamente il numero di cifre <code>0</code> ed <code>1</code> presenti</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare un ciclo <code>for</code> sulla stringa</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Conteggio caratteri</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/characters.png">
+        
+      </figure><ul>
+<li>Chiedere una riga di testo all'utente</li>
+<li>Contare separatamente le occorrenze di ciascuna lettera maiuscola (da <code>'A'</code> a <code>'Z'</code>)</li>
+</ul>
+<blockquote></blockquote>
+<p>Creare un array di 26 elementi, inizialmente tutti posti a <code>0</code></p>
+<p>Ciascun elemento è il contatore per una certa lettera</p>
+<p>L'indice del contatore corrispondente ad una lettera <code>val</code> può essere ottenuto come <code>val - 'A'</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Valore in lista</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente una lista di valori interi<ul>
+<li>La lista termina quando l'utente inserisce il valore <code>0</code></li>
+</ul>
+</li>
+<li>Ripetutamente...<ul>
+<li>Chiedere all'utente un valore da cercare</li>
+<li>Contare le occorrenze di quel valore nella lista</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Matrice di valori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Chiedere all'utente <code>n</code>, il lato di una matrice quadrata<ul>
+<li>Chiedere all'utente di inserire gli <code>n<sup>2</sup></code> valori della matrice</li>
+</ul>
+</li>
+<li>In seguito, chiedere ripetutamente all'utente un valore <code>k</code>, da cercare<ul>
+<li>Comunicare quante volte <code>k</code> è presente nella matrice</li>
+<li>Comunicare inoltre quante volte <code>k</code> è presente sulle diagonali principali</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Memory</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/memory.png">
+        
+      </figure><ul>
+<li>Allocare un array di caratteri, di dimensione <code>rows×cols</code><ul>
+<li>L'utente sceglie <code>rows</code> e <code>cols</code>, però celle in numero pari</li>
+</ul>
+</li>
+<li>Inserire in ordine le prime lettere dell'alfabeto, ciascuna ripetuta due volte</li>
+<li>Per ciascuna cella, scegliere una posizione a caso e scambiare il contenuto delle celle</li>
+<li>Mostrare la matrice risultante</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare un array semplice (anzichè una matrice, array di array)</p>
+<p>Andare a capo quando <code>i % cols == cols - 1</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Scitala spartana</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/hist/scytale.png">
+        
+      </figure><ul>
+<li>Leggere una intero riga di testo</li>
+<li>Inserire in una matrice i primi <code>COLS×ROWS</code> caratteri<ul>
+<li><code>COLS</code> colonne × <code>ROWS</code> righe, valori prefissati</li>
+<li>Riempire una riga della matrice dopo l'altra</li>
+<li>ltr e ttb (→, ↓)</li>
+</ul>
+</li>
+<li>Scrivere il contenuto della matrice su console<ul>
+<li>Scrivere una colonna della matrice dopo l'altra</li>
+<li>Prima riga su console = prima colonna della matrice...</li>
+<li>ttb e ltr (↓, →)</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Usare una matrice (predefinita): <code>char[][] matrix = new char[ROWS][COLS]</code></p></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/java-logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

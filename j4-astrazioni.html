@@ -1,0 +1,1406 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Livelli di astrazione</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/java.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/java-logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/oop/inheritance.png"></figure>
+  <hgroup>
+    <h2>Programmazione ad oggetti in Java</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Livelli di astrazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Tra classi è possibile definire relazioni di generalizzazione/specializzazione</li>
+<li>Classi <code>Animale</code>, <code>Felino</code>, <code>Gatto</code><ul>
+<li><code>Gatto</code> <em>classe derivata</em> di <code>Felino</code> (relazione <em>diretta</em>)</li>
+<li><code>Gatto</code> <em>classe derivata</em> di <code>Animale</code> (relazione <em>indiretta</em>)</li>
+<li><code>Animale</code> <em>classe base</em> di <code>Felino</code> (relazione <em>diretta</em>)</li>
+<li><code>Animale</code> <em>classe base</em> di <code>Gatto</code> (relazione <em>indiretta</em>)</li>
+</ul>
+</li>
+<li>In OOP, classi esistenti usate come base per creare nuove classi<ul>
+<li>Una classe derivata è una <em>sotto-classe</em> (sotto-insieme) della classe base</li>
+<li>Relazione <strong>is-a</strong> tra classe derivata e classe base</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Interfacce</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfaccia</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Interfaccia come <em>astrazione pura</em><ul>
+<li>Dichiara vari metodi</li>
+<li>Non fornisce nessuna implementazione e non ha stato</li>
+<li>Simile ad una classe, ma <em>astratta pura</em></li>
+</ul>
+</li>
+<li>Classe che <em>implementa</em> una interfaccia<ul>
+<li>Deve implementarne tutti i metodi</li>
+<li>In gergo UML, si dice che una classe <em>realizza</em> una interfaccia</li>
+<li>Tra classe e interfaccia c'è una relazione <strong>is-a</strong></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfaccia Character</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>Character</code>: <em>interfaccia</em> comune ai personaggi<ul>
+<li>Dichiara un metodo <code>move</code> ecc.</li>
+<li>Non implementa niente</li>
+</ul>
+</li>
+<li>Vari personaggi: classi che <em>implementano</em> l'interfaccia<ul>
+<li>Devono definire tutti i metodi di <code>Character</code></li>
+<li>Possono definire comportamenti specifici</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public interface Character {
+    void move();
+}
+
+public class Ball implements Character {
+    // unchanged: Ball already has a move() method
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Composizione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Relazione <strong>has-a</strong> tra oggetti<ul>
+<li>Un oggetto <code>Arena</code> contiene diversi oggetti <code>Character</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Arena { // ...
+    private ArrayList&lt;Character&gt; characters = new ArrayList&lt;&gt;();
+    public void add(Character c) {
+        characters.add(c);
+    }
+    public void remove(Character c) {
+        characters.remove(c);
+    }
+    public void moveAll() {
+        for (Character c : characters) c.move();
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sostituzione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/character.svg">
+        
+      </figure><ul>
+<li>Classe <code>Arena</code> immutata, ma ogni uso di <code>Ball</code> sostituito con <code>Character</code></li>
+<li>Se come tipo specificata una interfaccia...<ul>
+<li>Si può usare un qualsiasi oggetto che implementa l'interfaccia</li>
+<li>Secondo il <em>principio di sostituzione di Liskov</em></li>
+</ul>
+</li>
+<li>Massimizzazione di riuso e flessibilità<ul>
+<li>Codice dipendente dalla interfaccia o classe più astratta possibile</li>
+<li>Purchè offra le minime caratteristiche richieste</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>arena.add(new Ball(4, 8, w, h));
+arena.add(new Ghost(12, 4, w, h));  // ...
+arena.moveAll();
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfacce e polimorfismo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Metodo polimorfo</strong><ul>
+<li>Dichiarato in una interfaccia</li>
+<li>Definito in modo diverso nelle varie classi concrete</li>
+</ul>
+</li>
+<li>Attori diversi possono muoversi in modo diverso</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Ghost implements Character {  // ...
+    private Random random = new Random();
+    public void move() {
+        int dx = random.nextInt(3) - 1;
+        int dy = random.nextInt(3) - 1;
+        x = (x + dx + w) % w;
+        y = (y + dy + h) % h;
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfacce multiple</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Una classe può <em>implementare</em> diverse interfacce<ul>
+<li>Deve implementare i metodi dichiarati in ciascuna delle interfacce</li>
+<li>In Java non è invece possibile l'ereditarietà multipla tra classi</li>
+</ul>
+</li>
+<li>Una interfaccia può estenderne altre<ul>
+<li>Non sempre utile, spesso meglio tenere le interfacce separate e ortogonali</li>
+</ul>
+</li>
+<li>Nel linguaggio <em>Go</em> (Google, 2009) si usano solo interfacce e composizione<ul>
+<li>Senza ereditarietà, ma facilitato il meccanismo della <em>delega</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Ereditarietà</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe derivata</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Specializzazione: relazione <em>is-a</em> tra classe derivata e classe base</li>
+<li>Principio di sostituibilità tra classi<ul>
+<li>È sempre possibile usare una classe derivata al posto di una classe base</li>
+</ul>
+</li>
+<li>La classe derivata<ul>
+<li>Eredita tutte le caratteristiche <strong>public</strong> della classe base</li>
+<li>Non può accedere alle caratteristiche <strong>private</strong> della classe base</li>
+<li>Può dichiarare nuove caratteristiche che non sono visibili dalle classi base (Eckel: <em>is-like-a</em>)</li>
+</ul>
+</li>
+<li>La classe base<ul>
+<li>Può definire delle caratteristiche <strong>protected</strong> a cui solo lei e le classi derivate possono accedere</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lista di rettangoli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class Rectangle { // ...
+    private float w, h;
+    public Rectangle(float w, float h) { this.w = w; this.h = h; }
+    public void float area() { return w * h; }
+    public void float perimeter() { return 2 * (w + h); }
+}
+
+public RectangleList { // ...
+    private ArrayList&lt;Rectangle&gt; elements = new ArrayList&lt;&gt;();
+    public void addElement(Rectangle r) { elements.add(r); }
+    public void removeElement(Rectangle r) { elements.remove(r); }
+    public Rectangle getElement(int i) { elements.get(i); }
+    public void setElement(int i, Rectangle r) { elements.set(i, r); }
+    public int getSize() { return elements.size(); }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ordinamento dei rettangoli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class RectangleSorter {  // selection sort
+    public void sort(RectangleList list) {
+        for (int i = 0; i &lt; list.getSize(); i++) {
+            for (int j = i + 1; j &lt; list.getSize(); j++) {
+                Rectangle left  = list.getElement(i);
+                Rectangle right = list.getElement(j);
+                if (left.area() &gt; right.area()) swap(list, i, j);
+            }
+        }
+    }
+    private void swap(RectangleList list, int i, int j) {
+        Rectangle tmp = list.getElement(i);
+        list.setElement(i, list.getElement(j));
+        list.setElement(j, tmp);
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ereditarietà in Java</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Una classe derivata viene costruita partendo dalla classe base</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Square extends Rectangle {
+    // additional features
+}
+</code></pre>
+<ul>
+<li>L’ereditarità tra le classi Java è <strong>singola</strong><ul>
+<li>Solo una classe base (<em>diretta</em>) per ogni classe derivata</li>
+</ul>
+</li>
+<li>Tutte le classi sono derivate (implicitamente) da <code>Object</code></li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>Object obj = new Rectangle(4, 3);
+obj.equals(new Rectangle(5, 5));
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ereditarietà e costruzione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>I costruttori non vengono ereditati<ul>
+<li>Non possono costruire gli attributi aggiunti nella classe derivata</li>
+</ul>
+</li>
+<li><strong><code>super(…)</code></strong> per accedere a un costruttore della classe base<ul>
+<li><code>super(…)</code> chiamato all’inizio del nuovo costruttore</li>
+<li>Prima è necessario costruire completamente le caratteristiche della classe base per poi passare a quelle della classe derivata</li>
+</ul>
+</li>
+<li>Altrimenti viene eseguito il costruttore <em>senza parametri</em> della classe base</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe Square</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Un metodo della classe base può essere ridefinito nelle classi derivate (metodo <em>polimorfo</em>)</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Square extends Rectangle {
+    public Square(int s) { super(s, s); }
+    public int area() { return getWidth() * getWidth(); }
+    public int perimeter() { return 4 * getWidth(); }
+}
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>Rectangle r1 = new Rectangle(3, 4);
+Rectangle r2 = new Square(6);
+
+r1.area(); // Rectangle's method is executed
+r2.area(); // Square's method is executed
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe ColoredSquare</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/square.svg">
+        
+      </figure><pre class="prettyprint" data-lang="Java"><code>public class ColoredSquare extends Square {
+    public double getIntensity() {
+        return (red / 255.0 + green / 255.0 + blue / 255.0) / 3;
+    }
+    public ColoredSquare(int s, int r, int g, int b) {
+        super(s);
+        red = r; green = g; blue = b;
+    }
+    private int red = 0, green = 0, blue = 0;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Riferimenti this, super e null</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong><code>null</code></strong>, punta all’oggetto nullo<ul>
+<li>Un riferimento punta ad un oggetto valido o a <code>null</code></li>
+</ul>
+</li>
+<li><strong><code>this</code></strong>, punta all’oggetto corrente<ul>
+<li>Nella classe <code>Rectangle</code>, è possibile chiamare <code>this.area()</code> o <code>this.perimeter()</code></li>
+</ul>
+</li>
+<li><strong><code>super</code></strong>, punta all’oggetto corrente e consente di accedere alle caratteristiche della classe base<ul>
+<li>Nella classe <code>Square</code> è possibile utilizzare il metodo <code>area()</code> di Rectangle mediante <code>super.area()</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Clausola protected</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Consente di dichiarare metodi e attributi accessibili solo dalla classe e dalle derivate<ul>
+<li>Non sono visibili all’esterno dell’oggetto, come se fossero privati</li>
+<li>Consentono di rendere visibili alcune parti di una classe alle sue sotto-classi</li>
+</ul>
+</li>
+<li>Da utilizzare <strong>con cautela</strong>; solo per metodi…<ul>
+<li>Che non conviene rendere pubblici perchè non offrono servizi significativi, come <code>swap()</code> in <code>RectangleSorter</code></li>
+<li>Potenzialmente utili a chi estende la classe</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Campi final</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>La clausola <code>final</code> ha significati leggermente diversi a seconda del contesto<ul>
+<li>Ma in genere dice: “<em>Questo non può essere modificato</em>”</li>
+<li>Due ragioni: progetto o efficienza</li>
+</ul>
+</li>
+<li>Campi <code>final</code><ul>
+<li>Possono essere costanti definite a tempo di compilazione</li>
+<li>O valori inizializzati a run time, ma che non cambieranno</li>
+<li>Possono essere di classe o di istanza; es. <code>Math.PI</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Metodi e classi final</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Metodi <code>final</code><ul>
+<li>Evitare che vengano modificati nelle sottoclassi</li>
+<li>Per efficienza, per rendere possibili chiamate inline</li>
+</ul>
+</li>
+<li>Classi <code>final</code><ul>
+<li>Non si può ereditare: non ce n’è bisogno, o per sicurezza, o efficienza</li>
+<li>I campi possono essere <code>final</code>, o meno: non è detto che siano costanti</li>
+<li>I metodi sono implicitamente <code>final</code>: no ereditarietà, no polimorfismo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Classi astratte</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe astratta</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Contiene metodi che possono essere implementati solo dalle sue classi derivate<ul>
+<li>Informazioni non sufficienti nella classe base</li>
+<li>Meccanismi specifici per implementare un metodo</li>
+<li>…</li>
+</ul>
+</li>
+<li>Una classe astratta non può essere istanziata</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Figure geometriche</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/dev/abs-shapes.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe Shape</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public abstract class Shape {
+    public abstract float area();
+    public abstract float perimeter();
+    public String getName() { return "Shape"; }
+}
+
+public class Triangle extends Shape { // ...
+    public float area() {
+        float s  = perimeter() / 2;
+        return (float)(Math.sqrt(s * (s - a) * (s - b) * (s - c)));
+    }
+    public float perimeter() { return a + b + c; }
+    public String getName() { return "Triangle"; }
+    private int a = 0, b = 0, c = 0;  // sides
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ereditarità e riusabilità</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Strutture dati ed algoritmi possono essere implementati in funzione della classe <code>Shape</code> anzichè di <code>Rectangle</code><ul>
+<li><code>ShapeList</code></li>
+<li>L'ordinamento sfrutta il fatto che tutte le figure hanno un area</li>
+</ul>
+</li>
+<li>Massimizzazione di riuso e flessibilità<ul>
+<li>Dipendenza dalla classe più alta nella gerarchia...</li>
+<li>Che offre le caratteristiche richieste</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lista di figure</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public ShapeList { // ...
+    private ArrayList&lt;Shape&gt; elements = new ArrayList&lt;&gt;();
+    public void addElement(Shape r) { elements.add(r); }
+    public void removeElement(Shape r) { elements.remove(r); }
+    public Shape getElement(int i) { elements.get(i); }
+    public void setElement(int i, Shape r) { elements.set(i, r); }
+    public int getSize() { return elements.size(); }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ordinamento di figure</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class ShapeSorter {  // selection sort
+    public void sort(ShapeList list) {
+        for (int i = 0; i &lt; list.getSize(); i++) {
+            for (int j = i + 1; j &lt; list.getSize(); j++) {
+                Shape left  = list.getElement(i);
+                Shape right = list.getElement(j);
+                if (left.area() &gt; right.area()) swap(list, i, j);
+            }
+        }
+    }
+    private void swap(ShapeList list, int i, int j) {
+        Shape t = list.getElement(i);
+        list.setElement(i, list.getElement(j));
+        list.setElement(j, t);
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Utilizzo delle figure</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>  // A list of shapes is created
+  ShapeList list = new ShapeList();
+
+  // Shapes are created and added to the list
+  list.addElement(new Rectangle(5, 7));
+  list.addElement(new Square(6));
+  list.addElement(new Triangle(3, 4, 5));
+  list.addElement(new RegularPolygon(5, 7));
+
+  // A sorter object is created, and the list got sorted
+  ShapeSorter sorter = new ShapeSorter();
+  sorter.sort(list);
+
+  // Elements are finally printed
+  ShapePrinter printer = new ShapePrinter();
+  printer.print(list);
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>A cosa serve l’ereditarità?</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Due utilizzi principali<ul>
+<li>Modellare il problema (o la soluzione), molto importante nella fase di analisi</li>
+<li>Massimizzare il riuso, molto importante nella fase di progettazione</li>
+</ul>
+</li>
+<li>I due utilizzi sono legati perchè la prima bozza di un progetto è il modello che analizza il dominio del problema (o della soluzione)</li>
+<li>Eckel: <strong>ereditarietà o composizione?</strong><ul>
+<li>“<em>Do I need to <strong>upcast</strong>?</em>”</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Interfacce delle figure</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ereditarietà multipla</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Un quadrato è contemporaneamente…<ul>
+<li>Un rettangolo</li>
+<li>Un poligono regolare</li>
+</ul>
+</li>
+<li>La classe <code>Square</code> dovrebbe estendere sia <code>RegularPolygon</code> che <code>Rectangle</code><ul>
+<li>Quale stato usare?</li>
+<li>Quale metodi eseguire?</li>
+</ul>
+</li>
+<li>Java non permette l’ereditarietà multipla tra le classi<ul>
+<li>No ambiguità, no "<em>diamond problem</em>"</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfacce</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>L’interfaccia di un oggetto è l’insieme delle signature dei metodi pubblici della sua classe<ul>
+<li>Modo che ha per interagire con il mondo</li>
+<li>Servizi che offre agli altri oggetti</li>
+</ul>
+</li>
+<li>I corpi dei metodi, cioè come i servizi vengono implementati, non sono parte dell’interfaccia<ul>
+<li>L’interfaccia indica cosa un oggetto sa fare e non come lo fa</li>
+</ul>
+</li>
+<li>Interfaccia di un rettangolo<ul>
+<li><code>float area()</code></li>
+<li><code>float perimeter()</code></li>
+</ul>
+</li>
+<li>In Java, le interfacce vengono implementate da classi</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfacce in Java</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Java permette l’ereditarietà multipla tra le interfacce<ul>
+<li>È la classe implementazione che sceglie come memorizzare lo stato ed implementare i metodi</li>
+</ul>
+</li>
+<li>Usando le interfacce<ul>
+<li>Migliore pulizia del modello ed aderenza alla realtà modellata</li>
+<li>Possibilità di migliorare la riusabilità</li>
+</ul>
+</li>
+<li>Introdurre un’interfaccia per ogni classe non è l’approccio migliore</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfaccia Shape</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public interface Shape {
+    public float area();
+    public float perimeter();
+    public String getName();
+}
+
+public interface Rectangle extends Shape { }
+
+public class ConcreteRectangle implements Rectangle {
+    // ...
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Implementazioni di Shape</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/dev/shapes.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Framework e librerie</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Ma introdurre un’interfaccia per ogni classe non è sempre l’approccio migliore!<ul>
+<li>Mantenere basso il numero di livelli d'astrazione</li>
+<li>Può bastare <code>Shape</code>, + classi concrete?</li>
+</ul>
+</li>
+<li><strong>Libreria</strong>: l'utente usa...<ul>
+<li>Poche e semplici interfacce (astrazioni chiave)</li>
+<li>Implementazione dietro le quinte (<em>factory</em>)</li>
+<li>È sempre il codice utente che chiama la libreria</li>
+</ul>
+</li>
+<li><strong>Framework</strong>: l'utente fornisce...<ul>
+<li>Implementazione di metodi di certe classi astratte</li>
+<li>Classi che implementano certe interfacce</li>
+<li>Il framework può chiamare il codice utente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Generalizzazione</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Massimizzare il riuso</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Aggiungendo nuovi servizi a classi già esistenti<ul>
+<li>Si riutilizza il codice della classe esistente</li>
+<li>Si possono sfruttare anche parti protected della classe base</li>
+</ul>
+</li>
+<li>Costruendo sistemi che vengono specializzati mediante oggetti che implementano ben determinate interfacce<ul>
+<li>Si riutilizza un intero sistema, andando a modificarne il comportamento</li>
+<li>Oggi, questo meccanismo di riuso è il più apprezzato</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Limiti dell’ordinamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il servizio attuale ordina solo<ul>
+<li>Figure</li>
+<li>In base all’area</li>
+</ul>
+</li>
+<li>Per massimizzarne la riusabilità bisogna agire su entrambe queste limitazioni<ul>
+<li>Definire una gerarchia di classi con il solo scopo di rendere l’algoritmo personalizzabile</li>
+</ul>
+</li>
+<li>Il riuso non viene dalla possibilità di riutilizzare parti dell’algoritmo di ordinamento, ma dall’aver reso l’algoritmo personalizzabile</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ordinamento di elementi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Introduciamo le classi<ul>
+<li><code>List</code>, interfaccia che modellizza un tipo dato aggregato in cui è possibile accedere agli elementi mediante un indice</li>
+<li><code>Element</code>, interfaccia che implementano gli elementi di una lista</li>
+<li><code>Comparator</code>, interfaccia di oggetti capaci di confrontare due oggetti in base a qualche caratteristica</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lista di elementi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/element.svg">
+        
+      </figure><pre class="prettyprint" data-lang="Java"><code>public interface Element { /* ... */ }
+public interface Shape extends Element { /* ... */ }
+
+public interface List {
+    public void addElement(Element e);
+    public void removeElement(Element e);
+    public Element getElement(int i);
+    public void setElement(int i, Element r);
+    public int getSize();
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ordinamento di elementi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class Sorter {
+    public void sort() {
+        for (int i = 0; i &lt; list.getSize(); i++)
+            for (int j = i + 1; j &lt; list.getSize(); j++) {
+                Element left = list.getElement(i);
+                Element right = list.getElement(j);
+                if (comparator.compare(left, right) &gt; 0) swap(i, j);
+            }
+    }
+    private void swap(int i, int j) {
+        Element t = list.getElement(i);
+        list.setElement(i, list.getElement(j)); list.setElement(j, t);
+    }
+    public Sorter(List l, Comparator c) { list = l; comparator = c; }
+    private Comparator comparator; private List list;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classi dell'ordinamento</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/java/sorter.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Up-cast e down-cast</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>L’interfaccia <code>Comparator</code> è espressa in modo generale<ul>
+<li>Necessario convertire gli <code>Element</code> da confrontare in <code>Shape</code></li>
+<li>Per poter calcolare area e perimetro</li>
+</ul>
+</li>
+<li>Possibile assegnare un riferimento di classe base ad un riferimento a classe derivata<ul>
+<li>Necessario un <em>down-cast</em> esplicito</li>
+<li>La classe origine di <code>b</code> deve essere <code>DerivedClass</code> o una sua sotto-classe</li>
+<li>Altrimenti la JVM genera un’eccezione a run-time</li>
+<li>Gli <em>up-cast</em> invece sono impliciti</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>BaseClass b = new DerivedClass();  // implicit up-cast
+DerivedClass d = (DerivedClass)b;     // explicit down-cast
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Implementazione di Comparator</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/comparator.svg">
+        
+      </figure><pre class="prettyprint" data-lang="Java"><code>public interface Comparator {
+    public int compare(Element e1, Element e2);
+}
+public class AreaComparator implements Comparator {
+    public int compare(Element e1, Element e2) {
+        Shape s1 = (Shape)e1, s2 = (Shape)e2;
+        return Math.signum(s1.area() - s2.area());
+    }
+}
+public class PerimeterComparator implements Comparator {
+    public int compare(Element e1, Element e2) {
+        Shape s1 = (Shape)e1, s2 = (Shape)e2;
+        return Math.signum(s1.perimeter() - s2.perimeter());
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Progetti Java</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Package</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Quando la complessità del progetto aumenta…<ul>
+<li>Aumenta il numero di classi e file (sorgenti e bytecode)</li>
+</ul>
+</li>
+<li>Conviene strutturare il progetto in package<ul>
+<li>Un package è un insieme di classi che sono logicamente viste come un unico gruppo</li>
+<li>Collezione di classi <em>coese</em> (e spesso <em>interdipendenti</em>)</li>
+</ul>
+</li>
+<li>È possibile strutturare i package come alberi<ul>
+<li>Un sotto-package isola un gruppo di funzionalità del suo package padre</li>
+</ul>
+</li>
+<li>Classi di un package<ul>
+<li>Tutte nella stessa cartella, che si deve chiamare come il package</li>
+<li>Indicano esplicitamente di che package fanno parte</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Struttura di un progetto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Solitamente un progetto è strutturato in cartelle</li>
+</ul>
+<pre class="prettyprint" data-lang="folders"><code>src/    sources
+bin/    classes (bytecode)
+lib/    external libraries
+</code></pre>
+<ul>
+<li>All’interno di <code>src</code>, una cartella per ogni package definito</li>
+<li>La cartella <code>bin</code> rispecchierà la struttura di <code>src</code></li>
+</ul>
+<pre class="prettyprint" data-lang="folders"><code>src/editor        sources for classes in the "editor" package
+src/editor/model  sources for classes in the "editor.model" package
+src/editor/view   sources for classes in the "editor.view" package
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Visibilità di classi e metodi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Visibilità classi<ul>
+<li><em>package</em> (<code>-</code>): nessuno specificatore, accesso solo nello stesso package</li>
+<li><em>public</em> (<code>+</code>): accesso pubblico</li>
+</ul>
+</li>
+<li>Visibilità metodi (e campi)<ul>
+<li><em>private</em> (<code>-</code>): accesso solo nella classe stessa</li>
+<li><em>package</em> (<code>~</code>): nessuno specificatore, accesso a livello di package</li>
+<li><em>protected</em> (<code>#</code>): accesso a discendenti (e package)</li>
+<li><em>public</em> (<code>+</code>): accesso pubblico</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>import java.util.ArrayList; // after the "package" line, to
+                            // use a class of another package
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Archivi JAR</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Una libreria è un insieme di <em>package</em> che implementano funzionalità comuni<ul>
+<li>Tutte le classi con funzionalità matematiche avanzate</li>
+<li>Tutte le classi necessarie a gestire l’input/output</li>
+<li>Tutte le classi dell’interfaccia grafica</li>
+</ul>
+</li>
+<li>Solitamente le librerie sono distribuite come file di tipo <em>Java ARchive (JAR)</em><ul>
+<li>È uno <em>zip</em> del contenuto della cartella <code>bin</code> del progetto</li>
+<li>Possono essere gestiti come file <em>zip</em> o mediante il comando <code>jar</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="cmd"><code>jar cf project1.jar bin
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Compilazione di un progetto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Per compilare un progetto, includere nel <em>classpath</em><ul>
+<li>La cartella delle classi</li>
+<li>Tutte le librerie esterne</li>
+</ul>
+</li>
+<li>Indicare tutti i sorgenti necessari (<code>javac</code> compila seguendo le dipendenze)</li>
+</ul>
+<pre class="prettyprint" data-lang="cmd"><code>javac -d bin -classpath bin;lib\lib1.jar;lib\lib2.jar;… \
+    src/package1/*.java src/package2/*.java …
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esecuzione del programma</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Per eseguire il programma è necessario includere<ul>
+<li>Tutte le directory contenenti i bytecode</li>
+<li>Tutti i file <code>jar</code> delle librerie utilizzate</li>
+<li>Tutte le directory di eventuali risorse</li>
+</ul>
+</li>
+<li>Questa lista è nota come <em>classpath</em></li>
+</ul>
+<pre class="prettyprint" data-lang="cmd"><code>java –classpath bin;img;lib\lib1.jar;lib\lib2.jar;… package1.Main
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Generazione della documentazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Per generare la documentazione partendo dai commenti nel codice</li>
+<li>Shell dei comandi nella cartella del progetto</li>
+<li>I commenti contengono HTML e pseudo-tag tipo: <code>@param</code> e  <code>@return</code></li>
+</ul>
+<pre class="prettyprint" data-lang="cmd"><code>javadoc –d docs -sourcepath src
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercizi</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe dei rettangoli</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Definire una classe <code>Rectangle</code><ul>
+<li>Campi privati <code>height</code> e <code>width</code>, per le dimensioni</li>
+<li>Costruttore con parametri corrispondenti</li>
+<li>Metodo <code>area</code> per calcolare l'area</li>
+<li>Metodo <code>toString</code> per ottenere una rappresentazione testuale</li>
+</ul>
+</li>
+<li>Nel <code>main</code> del programma, istanziare un rettangolo e calcolarne l'area</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Cerchi e figure</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Definire una classe base <code>Shape</code><ul>
+<li>Metodo astratto <code>area</code></li>
+</ul>
+</li>
+<li>Ridefinire <code>Rectangle</code> come sottoclasse di <code>Shape</code></li>
+<li>Definire <code>Circle</code> come sottoclasse di <code>Shape</code><ul>
+<li>Campo privato <code>radius</code>, per il raggio</li>
+<li>Costruttore appropriato, metodi <code>area</code> e <code>toString</code></li>
+</ul>
+</li>
+<li>Nel <code>main</code> del programma, gestire una lista di figure, permettendo ciclicamente all'utente di:<ul>
+<li>Inserire una nuova figura (rettangolo o cerchio)</li>
+<li>Rimuovere una figura, dato il suo indice</li>
+</ul>
+</li>
+<li>Ad ogni ciclo, mostrare la lista delle figure e calcolarne l'area totale</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fila di riquadri</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/box-layout.png">
+        
+      </figure><ul>
+<li>Classe che modella una fila verticale di riquadri<ul>
+<li>Riquadri (larghezza ed altezza): uno sotto all'altro, ciascuno allineato orizzontalmente al centro</li>
+<li>Metodo: aggiunta di un riquadro</li>
+<li>Metodo: calcolo area totale (somma delle aree)</li>
+<li>Metodo: calcolo riquadro virtuale contenente l'intera fila: <code>w = max(w<sub>i</sub>)</code>, <code>h = Σ h<sub>i</sub></code></li>
+</ul>
+</li>
+<li>Nel <code>main</code>, in un ciclo<ul>
+<li>Chiedere larghezza ed altezza all'utente</li>
+<li>Creare un riquadro di quelle dimensioni e aggiungerlo alla fila</li>
+<li>Calcolare largezza ed altezza del riquadro virtuale</li>
+<li>Calcolare la percentuale di spazio inutilizzato</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>File verticali e orizzontali</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/flow-layout.png">
+        
+      </figure><ul>
+<li>Classe base <em>astratta</em> per le file di riquadri</li>
+<li>Sottoclasse <em>concreta</em> per fila verticale</li>
+<li>Sottoclasse <em>concreta</em> per fila orizzontale<ul>
+<li>Riquadri uno di fianco all'altro</li>
+<li>Ciascuno allineato verticalmente al centro</li>
+<li>Cambia solo il calcolo del riquadro contenente l'intera fila</li>
+</ul>
+</li>
+<li>Rendere il codice generico rispetto al tipo di fila<ul>
+<li>L'utente sceglie all'inizio quale fila usare (orizzontale o verticale)</li>
+<li>Poi aggiunge i riquadri</li>
+<li>Infine calcola il riquadro contenente l'intera fila</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>File e cartelle</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/sample-file-system.png">
+        
+      </figure><ul>
+<li>Un ipotetico file system è composto di due tipi di <em>nodi</em> (classe base)<ul>
+<li>I <em>file</em>, caratterizzati da un nome e da un contenuto testuale (classe derivata)</li>
+<li>Le <em>cartelle</em>, caratterizzate da un nome e da una lista di nodi contenuti (classe derivata)</li>
+</ul>
+</li>
+<li>Creare una gerarchia delle tre classi: <code>Node</code>, <code>File</code>, <code>Folder</code><ul>
+<li>Le cartelle dovrebbero avere un metodo <code>addNode(Node n)</code></li>
+</ul>
+</li>
+<li>Nel corpo principale del programma, istanziare ed organizzare vari nodi (senza input dell'utente)<ul>
+<li>Riprodurre la struttura raffigurata a fianco</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Dimensione delle cartelle</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Aggiungere a tutti i nodi dell'es. prec. un metodo <code>size</code><ul>
+<li>Astratto nella classe base</li>
+<li>Per un file, restituisce la lunghezza del contenuto testuale</li>
+<li>Per una cartella, restituisce la somma delle dimensioni dei nodi contenuti</li>
+</ul>
+</li>
+<li>Calcolare la dimensione della struttura dell'es. prec., inventando dei contenuti per i file presenti</li>
+<li>Aggiungere inoltre a tutti i nodi un metodo <code>void print(int indent)</code>, per mostrare a terminale la struttura ad albero<ul>
+<li>Astratto nella classe base</li>
+<li>Mostra il nome di file e cartelle</li>
+<li>Indenta opportunamente i nodi, rispetto alla cartella che li contiene</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/java-logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>

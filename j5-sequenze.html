@@ -1,0 +1,1475 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahe <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sequenze di dati</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="all" href="theme/css/java.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/java-logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <figure><img src="images/fun/cd-stack.png"></figure>
+  <hgroup>
+    <h2>Programmazione ad oggetti in Java</h2>
+    <p>Michele Tomaiuolo<br>Ingegneria dell'Informazione, UniPR</p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Outline</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Collezioni di dati</li>
+<li>Flussi di dati per input/output</li>
+<li>Gestione delle eccezioni</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Collezioni di dati</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collection framework</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Modulo di gestione di tipi di dato aggregati<ul>
+<li><em>Liste</em>, <em>insiemi</em>, <em>mappe associative</em></li>
+<li>Contenuto nel package <strong><code>java.util</code></strong></li>
+</ul>
+</li>
+<li>Costituito da<ul>
+<li><em>Interfacce</em>, che rappresentano i vari tipi dato aggregati</li>
+<li><em>Classi</em>, che implementano le interfacce</li>
+<li><em>Algoritmi</em>, di uso generale e definiti sui vari tipi dato</li>
+</ul>
+</li>
+<li>Funzionamento simile ad una <em>libreria</em>, ma definito <em>framework</em><ul>
+<li>Una applicazione può implementare alcune interfacce del framework</li>
+<li>Per realizzare il comportamento desiderato (algoritmi)</li>
+<li>Il framework può chiamare il codice dell'utente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collezione di oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Collezione (o contenitore): oggetto che raggruppa un insieme di altri oggetti<ul>
+<li>Memorizzare e manipolare gruppi di dati</li>
+</ul>
+</li>
+<li>Tipicamente, oggetti raggruppati per contenimento<ul>
+<li>Un elenco telefonico</li>
+<li>Le parole in un vocabolario</li>
+<li>Una lista di studenti</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Tipi di collezioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/util.png">
+        
+      </figure><ul>
+<li><strong><code>Collection</code></strong>, interfaccia implementata dai dati aggregati lineari<ul>
+<li><strong>Set</strong>, non posizionale, senza duplicati</li>
+<li><strong>List</strong>, posizionale, anche con duplicati</li>
+</ul>
+</li>
+<li><strong><code>Map</code></strong>, interfaccia per i dati aggregati associativi</li>
+<li><code>Object</code>, utilizzata per massimizzare la generalità dei dati contenuti nelle collezioni</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfaccia Collection</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Operazioni di base (dimensione dinamica)<ul>
+<li><code>add(Object), remove(Object), contains(Object)</code></li>
+<li><code>size(), clear(), isEmpty()</code></li>
+<li><code>addAll(Collection), removeAll(Collection), retainAll(Collection), containsAll(Collection)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfaccia Set</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Un <code>Set</code> è una collezione <em>non posizionale</em></li>
+<li>Un <code>Set</code> <em>non può contenere dati duplicati</em></li>
+<li><code>Set</code> estende <code>Collection</code> e non aggiunge altri metodi</li>
+<li>Se <code>s1</code> ed <code>s2</code> sono entrambi <code>Set</code><ul>
+<li><code>s1.containsAll(s2)</code>, vero se <code>s2</code> è sotto-insieme di <code>s1</code></li>
+<li><code>s1.addAll(s2)</code>, trasforma <code>s1</code> nell’unione di <code>s1</code> ed <code>s2</code></li>
+<li><code>s1.retainAll(s2)</code>, trasforma <code>s1</code> nell’intersezione di <code>s1</code> ed <code>s2</code></li>
+<li>Operazioni già di <code>Collection</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfaccia List</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Una <code>List</code> è un aggregato posizionale (sequenza)</li>
+<li>Una <code>List</code> può contenere elementi duplicati</li>
+<li>In aggiunta ai metodi di <code>Collection</code>, accesso posizionale<ul>
+<li><code>get(int), set(int, Object)</code></li>
+<li><code>add(int, Object), remove(int), addAll(int, Collection)</code></li>
+<li><code>subList(int, int)</code> -- <code>from</code>, inclusive; <code>to</code>, exclusive</li>
+<li><code>indexOf(Object), lastIndexOf(Object)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Interfacce e classi concrete</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/java/collection.svg" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Generics</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>Queue q1 = new LinkedList();             // without generics, any Object
+q1.add("Something");                     // no type check
+String s1 = (String)q1.remove();         // cast
+q1.add(7);                               // no type check
+int i1 = (Integer)q1.remove();           // cast
+
+Queue&lt;String&gt; q2 =
+        new LinkedList&lt;String&gt;();        // with generics
+q2.add("Something");                     // type check
+String s = q2.remove();                  // no cast!
+
+Queue&lt;Integer&gt; q3 = new LinkedList&lt;&gt;();  // generics &amp; type inference: diamond &lt;&gt;
+q3.add(7);                               // type check
+int val = q3.remove();                   // no cast!
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Un contenitore di oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>class ObjectBox {
+    private Object element = null;
+    public void put(Object element) { this.element = element; }
+    public Object get() { return element; }
+}
+
+ObjectBox b = new ObjectBox();  // without generics, any Object
+b.put("Something");             // no type check
+String s = (String)b.get();     // cast
+b.put(7);                       // no type check
+int i = (Integer)b.get();       // cast
+
+Integer k = 5;                  // auto-boxing: k = new Integer(5)
+int h = k;                      // auto-unboxing: h = k.intValue()
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Un contenitore con generics</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>class Box&lt;E&gt; {
+    private E element = null;
+    public void put(E element) { this.element = element; }
+    public E get() { return element; }
+}
+
+Box&lt;String&gt; b1 = new Box&lt;&gt;();
+b1.put("Something");            // type check
+String s = b1.get();            // no cast
+
+Box&lt;Integer&gt; b2 = new Box&lt;&gt;();
+b2.put(7);                      // type check
+int i = b2.get();               // no cast
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Confronto tra oggetti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Operatore <code>==</code> per confronto tra riferimenti<ul>
+<li>Puntano allo stesso oggetto in memoria?</li>
+<li>Non confronta i dati di oggetti diversi</li>
+</ul>
+</li>
+<li>Collezioni: necessario confrontare il valore di due diversi oggetti<ul>
+<li>Metodo <code>Object.equals(Object)</code>: risultato <code>boolean</code></li>
+<li>Metodo <code>Comparable.compareTo(Object)</code>: risultato <code>-1, 0, 1</code></li>
+</ul>
+</li>
+<li>Implementazione di default di <code>equals</code>: identità dei riferimenti</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public boolean equals(Object obj) {
+    return (this == obj);
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Implementazione del confronto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class Person implements Comparable {  // ...
+    private String name, surname;
+
+    public String toString() { return surname + ' ' + name; }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof Person)) return false;
+        return toString().equals(o.toString());
+    }
+
+    public int compareTo(Object o) {
+        Person p = (Person)o;  // throws ClassCastException
+        return toString().compareTo(o.toString());
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Interfaccia Map</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/dictionary.jpg">
+        
+      </figure><ul>
+<li>I tipi dato associativi sono aggregati indirizzabili per “nome” (un <em>oggetto</em>) anziché per posizione<ul>
+<li>Dizionario, permette di accedere ad un contenuto mediante una parola</li>
+<li>Pagine bianche, permettono di accedere ad un numero di telefono mediante un nome</li>
+</ul>
+</li>
+<li>Da utilizzare con cautela: non possono sostituire le relazioni tra gli oggetti</li>
+<li>Metodi principali<ul>
+<li><code>get(key), put(key, val), remove(key)</code></li>
+<li><code>isEmpty(), size(), clear()</code></li>
+<li><code>containsKey(key), containsValue(val)</code></li>
+<li><code>entrySet(), keySet(), values()</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Uso di Map</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>Person person = new Person("Paolo", "Rossi");
+Passport passport = new Passport(12345);
+person.setPassport(passport);  // this is the preferred way!
+
+Map passports&lt;Person, Passport&gt; = new HashMap&lt;&gt;();
+passports.put(person, passport);
+
+Passport p = passports.get(person);
+if (p != null) System.out.println(p.getNumber());
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Hash code</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>Map</code> efficiente: possibile utilizzare un codice <em>hash</em> (numero intero) associato ad ogni oggetto contenuto<ul>
+<li>L’hash serve come "indirizzo virtuale" (non univoco) del contenuto</li>
+<li>Se si implementa <code>equals</code>, implementare <code>Object.hashCode()</code></li>
+</ul>
+</li>
+<li>Se due oggetti sono <em>uguali</em> (secondo <code>equals</code>)<ul>
+<li>Allora devono avere lo stesso codice hash</li>
+</ul>
+</li>
+<li>Se due oggetti sono <em>diversi</em> (secondo <code>equals</code>)<ul>
+<li>Preferibile che abbiano codice hash diverso (ma non necessario)</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Person implements Comparable {  // ...
+    public int hashCode() {
+        return toString().hashCode();
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Collezioni concrete</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il collection framework mette a disposizione più implementazioni per ogni interfaccia<ul>
+<li><em><code>Map</code></em>: <code>HashMap</code> e <code>TreeMap</code></li>
+<li><em><code>List</code></em>: <code>ArrayList</code> e <code>LinkedList</code></li>
+<li><em><code>Set</code></em>: <code>TreeSet</code> e <code>HashSet</code></li>
+</ul>
+</li>
+<li>Meglio riferirsi alle classi concrete solo alla creazione dell’oggetto<ul>
+<li><code>List list = new ArrayList();</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Iteratore</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Meccanismo per accedere <em>in maniera uniforme</em> agli elementi delle diverse collezioni<ul>
+<li>Sistema usato da tutto il collection framework</li>
+</ul>
+</li>
+<li>Diversi tipi di iteratore, creati dal tipo dato aggregato<ul>
+<li>La politica di attraversamento cambia, cambiando la classe dell’iteratore</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di iteratore</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class ArraySet&lt;E&gt; implements Iterable&lt;E&gt; {  // ...
+    E[] buffer; int size = 0;
+    public Iterator&lt;E&gt; iterator() { return new ArraySetIterator(); }
+
+    private class ArraySetIterator implements Iterator&lt;E&gt; {
+        private int index = 0;
+        public boolean hasNext() { return index &lt; size; }  // access to outer class
+        public E next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            return buffer[index++];  // access to outer class
+        }
+        public void remove() { throw new UnsupportedOperationException(); }
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Scorrere una collezione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Uso esplicito del suo <em>iteratore</em>, oppure <em>for-each</em> (Java 1.5)</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>Collection&lt;Integer&gt; collection = Arrays.asList(1, 2, 3, 4);
+Iterator&lt;Integer&gt; i = collection.iterator();
+while (i.hasNext()) {
+    int item = i.next();
+    System.out.println(item);
+}
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>Collection&lt;Integer&gt; collection = Arrays.asList(1, 2, 3, 4);
+for (int item : collection) { System.out.println(item); }
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>int[] vals = {1, 2, 3, 4};
+for (int x : vals) { System.out.println(x); }
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Copia di un oggetto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>L’operatore di assegnamento copia le reference tra gli oggetti</li>
+<li><code>Object</code> fornisce un metodo <strong><code>clone()</code></strong><ul>
+<li>Copia tutte le proprietà (per valore)</li>
+<li>Copia tutte le associazioni (per riferimento, <em>shallow copy</em>)</li>
+</ul>
+</li>
+<li>Potrebbe non andare bene in caso di associazione di <em>composizione</em><ul>
+<li>Implementazione custom di <code>clone()</code></li>
+<li>Ma l’oggetto deve implementare <code>Cloneable</code></li>
+<li>Altrimenti viene lanciata <code>CloneNotSupportedException</code></li>
+</ul>
+</li>
+<li>A volte preferibile implementare un <em>costruttore di copia</em></li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>A obj2 = obj1;             // two references to the same object in memory
+A obj3 = (A)obj1.clone();  // two distinct copies in memory of the same data
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Shallow vs. deep copy</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Shallow copy</strong><ul>
+<li>Si ottengono due riferimenti allo stesso oggetto</li>
+<li>Anche il metodo <code>clone()</code> di default (di <code>Object</code>) può essere definito <em>shallow</em> (copia i riferimenti delle associazioni)</li>
+</ul>
+</li>
+<li><strong>Deep copy</strong><ul>
+<li>L’oggetto copia è una struttura completamente separata dall’originale</li>
+<li>Implementazione custom di <code>clone()</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classe Person</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Per oggetti complessi può essere necessario implementare <code>clone()</code></li>
+<li><code>Person</code>: implementazione coincide con default (stringhe immutabili)</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public class Person {  //  ...
+    public Object clone() {
+        return new Person(name, surname);
+    }
+}
+</code></pre>
+<ul>
+<li>Esercizio: <em>deep copy</em> in caso di associazione con altri oggetti<ul>
+<li>Associazione <code>travels</code> tra un oggetto <code>Person</code> e più oggetti <code>Travel</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Flussi di dati</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Leggere e scrivere</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/io-read.png"><img src="images/java/io-write.png">
+        
+      </figure><ul>
+<li>Package <strong><code>java.io</code></strong>: classi per gestire le operazioni di input/output</li>
+<li>Basate sul meccanismo degli <strong>stream</strong> (o <em>flussi di dati</em>)<ul>
+<li><em>Input stream</em> per leggere dati</li>
+<li><em>Output stream</em> per scrivere dati</li>
+</ul>
+</li>
+<li><em>Stream</em>: <strong>meccanismo uniforme</strong> per le operazioni di input/output<ul>
+<li>Stesso codice per manipolare dati su diversi tipi di flussi</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Canali di comunicazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Tipi di <em>stream</em> più comuni<ul>
+<li>Collegamento via rete (<em>socket</em>)</li>
+<li>Buffer in memoria</li>
+<li>File su disco</li>
+<li>Tastiera e video di un terminale (<em>console</em>)</li>
+</ul>
+</li>
+<li>Canale di comunicazione mono-direzionale<ul>
+<li>Collega un <em>output stream</em> ad un corrispondente <em>input stream</em></li>
+<li>Tutto quello che viene scritto nell’<em>output stream</em>, viene letto dall’<em>input stream</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Flussi bloccanti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Stream simili a <em>code FIFO (First-In-First-Out) bloccanti</em><ul>
+<li>Operazioni di scrittura e lettura bloccano il thread attivo, fino al completamento dell’operazione</li>
+</ul>
+</li>
+<li>Il package <code>java.io</code> contiene una collezione di classi stream</li>
+<li>Divise in due gerarchie sulla base del tipo di dato manipolato<ul>
+<li><code>InputStream</code> e <code>OutputStream</code> per flussi di byte</li>
+<li><code>Reader</code> e <code>Writer</code> per flussi di caratteri (testo)</li>
+</ul>
+</li>
+<li>Codice utente indipendente dalla piattaforma</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Flussi di byte e caratteri</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/reader-writer.svg">
+        
+      </figure><ul>
+<li><strong>Stream di byte</strong>: classi derivate da <code>InputStream</code> e <code>OutputStream</code><ul>
+<li>Manipolano flussi di byte non codificati</li>
+</ul>
+</li>
+<li><strong>Stream di caratteri</strong>: classi derivate da <code>Reader</code> e <code>Writer</code><ul>
+<li>Lettura o scrittura di caratteri (<em>UTF-16</em>)</li>
+<li>Operazioni effettuate su un sottostante <em>stream di byte</em></li>
+<li>Gestione della codifica (<code>char</code> ↔ <code>byte</code>)</li>
+<li>Operazioni di conversione testo (es. <code>'\n'</code>)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lettura di caratteri e byte</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>Reader</code> e <code>InputStream</code> definiscono metodi simili</li>
+<li><code>Reader</code> gestisce i caratteri<ul>
+<li><code>int read()</code> <br> (-1 al termine dello stream)</li>
+<li><code>int read(char[] buffer)</code> <br> (num. caratteri letti)</li>
+</ul>
+</li>
+<li><code>InputStream</code> gestisce i singoli byte<ul>
+<li><code>int read()</code> <br> (-1 al termine dello stream)</li>
+<li><code>int read(byte[] buffer)</code> <br> (num. byte letti)</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Scrittura di caratteri e byte</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>Writer</code> e <code>OutputStream</code> definiscono metodi simili</li>
+<li><code>Writer</code> gestisce i caratteri<ul>
+<li><code>void write(char c)</code></li>
+<li><code>void write(char[] buffer)</code></li>
+</ul>
+</li>
+<li><code>OutputStream</code> gestisce i singoli byte<ul>
+<li><code>void write(int b)</code></li>
+<li><code>void write(byte[] buffer)</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>PrintStream</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><code>System.out</code> e <code>System.err</code> di classe <strong><code>java.io.PrintStream</code></strong><ul>
+<li>Gestisce anche la scrittura di stringhe, oggetti e tipi primitivi</li>
+<li>Overloading dei metodi <code>print</code> e <code>println</code> (senza o con ritorno a capo)</li>
+<li>Oggetti convertiti in testo, tramite metodo <code>toString()</code></li>
+</ul>
+</li>
+<li><code>System.in</code> di classe <strong><code>java.io.InputStream</code></strong><ul>
+<li>Opera solo su byte</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Scanner</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Classe <strong><code>java.util.Scanner</code></strong> per estrarre dei <em>token</em> da uno stream<ul>
+<li>Scansione per righe o per tipo di dato (o basata su <em>regex</em>)</li>
+<li>Es. <code>Scanner scanner = new Scanner(System.in);</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>while (scanner.hasNextLine()) {
+    String line = scanner.nextLine();  // ...
+}
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>while (scanner.hasNextInt()) {
+    int i = scanner.nextInt();  // ...
+}
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>while (scanner.hasNext()) {
+    String word = scanner.next();  // Scanner implements iterator&lt;String&gt;
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio: copia file di testo</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public static void main(String[] args) throws IOException {
+    // ... if wrong usage, provide help
+    Reader in = new FileReader(args[0]);
+    Writer out = new FileWriter(args[1]);
+    int c;
+    while ((c = in.read()) != -1) out.write(c);
+    out.close(); in.close();  // better to use try-with-resources
+}
+</code></pre>
+<pre class="prettyprint" data-lang="Java"><code>public static void main(String[] args) throws IOException {
+    Scanner in = new Scanner(new File(args[0]));
+    PrintStream out = new PrintStream(args[1]);
+    while (in.hasNextLine()) out.println(in.nextLine());
+    out.close(); in.close();  // better to use try-with-resources
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/java-logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Gestione delle eccezioni</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Eccezione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Evento che accade a run-time e forza l’uscita del processo dal suo flusso nominale</li>
+<li>Le eccezioni sono generalmente causate da errori<ul>
+<li>Divisione per zero</li>
+<li>Tentativo di indirizzare un array al di fuori della sua dimensione massima</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Gestione degli errori in C</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Non è parte del linguaggio e viene effettuata in modo specifico per ogni situazione</li>
+<li>Tipicamente una funzione restituisce un <em>valore speciale</em> al chiamante per indicare che è accaduto qualche errore<ul>
+<li>Si ipotizza che il chiamante controlli il valore di ritorno e agisca di conseguenza</li>
+<li>Non c’è nessun meccanismo che forzi questo controllo</li>
+</ul>
+</li>
+<li>Codice applicativo e codice di gestione dell’errore sono mescolati</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Gestione errori in Java</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong>Oggetto eccezione</strong><ul>
+<li>Creato e consegnato alla JVM quando accade un errore in un metodo Java</li>
+<li>Contiene le informazioni a riguardo dell’errore che si è verificato</li>
+</ul>
+</li>
+<li><strong>Call stack</strong><ul>
+<li>Sequenza delle chiamate a metodo che hanno portato all’errore</li>
+<li>La ricerca di un gestore dell'eccezione comincia nel metodo dove si verifica l’errore</li>
+<li>Prosegue in ordine inverso rispetto alle invocazioni</li>
+</ul>
+</li>
+<li><strong>Exception handler</strong><ul>
+<li>La piattaforma cerca nel <em>call stack</em> un gestore in grado di gestire l’eccezione</li>
+<li>Se trovato, il gestore riceve l'eccezione e viene eseguito</li>
+<li>Altrimenti, il programma termina e viene visualizzato il <em>call stack</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Vantaggi e svantaggi delle eccezioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il codice nominale è più <strong>leggibile</strong><ul>
+<li>Gestione dell’errore separata dal codice nominale del programma</li>
+<li>Gli errori vengono propagati automaticamente finché qualcuno è in grado di gestirli</li>
+</ul>
+</li>
+<li>Gli errori sono reificati in <strong>oggetti</strong><ul>
+<li>Mantengono uno stato che li descrive</li>
+<li>Possono essere strutturati utilizzando l’ereditarietà</li>
+</ul>
+</li>
+<li><strong>Svantaggi</strong><ul>
+<li>Scrittura verbosa, livello di annidamento, import delle eccezioni</li>
+<li>Anche quando il programmatore sa che l'eccezione non può verificarsi (es. <code>MalformedURLException</code>)</li>
+<li>Anche in caso di codice in bozza o prototipo</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Blocco try/catch</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Un blocco <strong><code>try</code></strong> racchiude codice che può sollevare eccezioni</li>
+<li>Un blocco <strong><code>catch</code></strong> cattura tutti gli oggetti eccezione di un certo tipo</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>try {
+    // code which can generate exceptions
+} catch (ExceptionType1 e1) {
+    // handler for ExceptionType1 exceptions
+} catch (ExceptionType2 e2) {
+    // handler for ExceptionType1 exceptions
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Lancio delle eccezioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Se un metodo vuole lanciare un’eccezione...<ul>
+<li>Crea un oggetto (che implementa <code>Throwable</code>)</li>
+<li>Lo passa alla JVM tramite l'istruzione <strong><code>throw</code></strong></li>
+</ul>
+</li>
+<li>L’oggetto viene assegnato al parametro del primo blocco <code>catch</code> compatibile trovato nella sequenza delle chiamate</li>
+<li>Disponibili in Java numerose classi di eccezioni<ul>
+<li>Tutte discendenti di <code>Throwable</code></li>
+<li>Possibile crearne di nuove, per diversi contesti applicativi</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>if (arg &lt; 0) {
+    throw new IllegalArgumentException("The argument can not be negative");
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Eccezioni specifiche</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public class EmptyStackException extends NoSuchElementException {
+    public EmptyStackException(String msg) { super(msg); }
+}
+
+public class Stack {
+    public Object pop() throws EmptyStackException {
+        if (v.size() == 0) throw new EmptyStackException("");
+
+        Object obj = v.get(0);
+        v.remove(0);
+
+        return obj;
+    }   
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide class="large-figure" >
+  
+    <hgroup>
+      <h2>Errori ed eccezioni di esecuzione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/java/exception-types.png">
+        
+      </figure><ul>
+<li><strong><code>Error</code></strong>: lanciato per malfunzionamento nella JVM<ul>
+<li>Non dipende dal programma, non è richiesto che sia gestito</li>
+</ul>
+</li>
+<li><strong><code>Exception</code></strong>: eccezione lanciata dall'applicazione</li>
+<li><strong><code>RuntimeException</code></strong>: eccezione che non è necessario catturare (o specificare)<ul>
+<li>Spesso indica un errore di programmazione, un bug da correggere</li>
+<li>Una situazione da prevenire, non da gestire a runtime</li>
+<li>Es. <code>NullPointerException</code>, <code>DivisionByZero</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Catch or specify</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Ogni metodo deve rispettare la regola: “<em>Gestisci o specifica le eccezioni</em>”<ul>
+<li>Il metodo deve catturare (<strong>catch</strong>) le eccezioni che genera, con un <code>catch</code></li>
+<li>Oppure indicare (<strong>specify</strong>) quali eccezioni non gestice, con <code>throws</code></li>
+<li>Altrimenti il programma non viene compilato</li>
+</ul>
+</li>
+<li>La regola vale per tutte le <strong>eccezioni controllate (checked)</strong><ul>
+<li>Tutte le eccezioni sono controllate</li>
+<li>Eccetto <code>Error</code>, <code>RuntimeException</code>, e sottoclassi</li>
+</ul>
+</li>
+<li>Condizioni eccezionali che una applicazione ben scritta (<em>affidabile</em>) dovrebbe prevedere e risolvere<ul>
+<li>Es. Creato <code>FileReader</code> con nome file non esistente</li>
+<li>Programma cattura l’eccezione <code>FileNotFoundException</code></li>
+<li>Notifica all’utente l’errore e chiede un nuovo file</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide class="large-image" >
+  
+    <hgroup>
+      <h2>Gerarchia di eccezioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <p><img alt="" src="images/java/exception-hierarchy.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Eccezioni di runtime</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong><code>RuntimeException</code></strong> e sottoclassi<ul>
+<li>Condizioni eccezionali interne all’applicazione</li>
+<li>Ma che logicamente non si dovrebbero verificare: spesso <strong>bug</strong></li>
+<li>Non soggette alla regola “<em>cattura o specifica</em>”</li>
+</ul>
+</li>
+<li>Es. Nome file per creare <code>FileReader</code><ul>
+<li>A causa di un errore logico si passa <code>null</code> al costruttore…</li>
+<li>Che lancia <code>NullPointerException</code></li>
+</ul>
+</li>
+<li>L’applicazione può catturare l’eccezione, ma...<ul>
+<li>Probabilmente ha più senso <em>eliminare il bug</em> che provoca l’eccezione!</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Errori</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><strong><code>Error</code></strong> e sottoclassi<ul>
+<li>Condizioni eccezionali esterne all’applicazione</li>
+<li>Nell'applicazione <strong>non si possono prevedere o risolvere</strong></li>
+<li>Non soggetti alla regola “<em>cattura o specifica</em>”</li>
+</ul>
+</li>
+<li>Es. Si apre un file in lettura<ul>
+<li>Ma c’è un guasto hardware o di sistema che impedisce la lettura</li>
+<li>Viene lanciato <code>IOError</code></li>
+</ul>
+</li>
+<li>L’applicazione potrebbe catturare l’eccezione, ma...<ul>
+<li>Accettabile anche <em>terminare l’esecuzione</em> (con messaggio o stack trace)</li>
+</ul>
+</li>
+<li>Errori ed eccezioni di runtime sono noti assieme come <strong>eccezioni non controllate (unchecked)</strong></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Blocco try</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Possibilità:<ul>
+<li>Un blocco <code>try</code> per ogni istruzione che genera eccezione</li>
+<li>Blocco <code>try</code> unico che cattura tipi diversi di eccezioni</li>
+<li>Dipende dalla porzione di programma affetta dall'eccezione</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>try {
+    System.out.println("Entered try statement");
+    out = new PrintWriter(new FileWriter("OutFile.txt"));
+    for (int i = 0; i &lt; SIZE; i++) {
+        out.println("Value at: " + i + " = " 
+                     + vector.get(i));
+    }
+}
+// catch and finally statements ...
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Blocchi catch</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Ogni blocco <code>catch</code> è un gestore per un certo tipo di eccezioni</li>
+<li>Eseguito il primo gestore il cui tipo generalizza il tipo dell’eccezione lanciata</li>
+<li>Le eccezioni sono oggetti, istanze di classi in una gerarchia<ul>
+<li>Es. Eccezioni per I/O discendono tutte da <code>IOException</code></li>
+<li>Discendenti per errori più specifici, come <code>FileNotFoundException</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>try {
+    // …
+} catch (FileNotFoundException e) {
+    System.err.println("FileNotFoundException: " + e.getMessage());    
+} catch (IOException e) {
+    System.err.println("Caught IOException: " + e.getMessage());
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Gestire una eccezione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Il gestore può fare più che scrivere messaggi<ul>
+<li>Error recovery</li>
+<li>Chiedere all’utente di prendere una decisione</li>
+<li>Propagare l’errore all’esterno usando eccezioni concatenate…</li>
+</ul>
+</li>
+<li>Possibile visualizzare lo stack dei metodi<ul>
+<li>Utile in fase di debugging</li>
+<li><code>Throwable.printStackTrace()</code></li>
+</ul>
+</li>
+<li>Blocco <strong><code>finally</code></strong> eseguito sempre (in caso di eccezioni, o senza)<ul>
+<li>Impedisce che le istruzioni di <em>cleanup</em> siano scavalcate</li>
+<li>Es. Assicurarsi della chiusura di un file</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Try, catch, finally</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>public void writeList() {
+    PrintWriter out = null;
+    try {
+        System.out.println("Entering try statement");
+        out = new PrintWriter("out.txt");
+        for (int i = 0; i &lt; SIZE; i++) {
+            out.println("Value at: " + i + " = " + vector.get(i));
+        }
+    } catch (ArrayIndexOutOfBoundsException e1) {
+        System.err.println("Wrong array index: " + e1.getMessage());
+    } catch (IOException e2) {
+        System.err.println("Caught IOException: " + e2.getMessage());
+    } finally {
+        // Close the stream
+    }
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Possibili esecuzioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="Java"><code>// ...
+finally {
+    if (out != null) {
+        System.out.println("Closing PrintWriter");
+        try { out.close(); } catch (IOException e) { }
+    } else {
+        System.out.println("PrintWriter not open");
+    }
+}
+</code></pre>
+<ul>
+<li>Seguire il flusso di istruzione nei diversi casi<ul>
+<li><code>new FileWriter(...)</code> lancia <code>IOException</code></li>
+<li><code>vector.get(...)</code> lancia <code>ArrayIndexOutOfBoundsException</code></li>
+<li><code>out.println(...)</code> lancia <code>IOException</code></li>
+<li>Nessuna eccezione</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Try-with-resources (Java 7)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Una istruzione try può dichiarare una o più <strong>risorse</strong><ul>
+<li>Oggetti che devono essere chiusi al termine del <code>try</code></li>
+<li>Devono implementare <code>AutoCloseable</code> (es. flussi di I/O)</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>try (PrintStream out = new PrintStream("out.txt")) {
+    System.out.println("Entering try statement");
+    for (int i = 0; i &lt; SIZE; i++) {
+        out.println("Value at: " + i + " = " + vector.get(i));
+    }
+} catch (ArrayIndexOutOfBoundsException e1) {
+    System.err.println("Wrong array index: " + e1.getMessage());
+} catch (IOException e2) {
+    System.err.println("Error while writing to the file: " + e2.getMessage());
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Specifica delle eccezioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Se un metodo non cattura le eccezioni controllate che possono verificarsi al suo interno…</li>
+<li>Deve specificare che può lanciarle, con <strong><code>throws</code></strong></li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public void writeList() throws IOException, ArrayIndexOutOfBoundsException {
+    // ...
+}
+</code></pre>
+<ul>
+<li>Per eccezioni non controllate non è obbliatorio</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>public void writeList() throws IOException {
+    // ...
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Eccezioni concatenate</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Una applicazione può rispondere ad una eccezione lanciandone un’altra<ul>
+<li>Si dice che la prima eccezione <strong>causa</strong> la seconda</li>
+</ul>
+</li>
+<li>Metodi e costruttori utili<ul>
+<li><code>Throwable getCause()</code></li>
+<li><code>Throwable initCause(Throwable)</code></li>
+<li><code>Throwable(String, Throwable)</code></li>
+<li><code>Throwable(Throwable)</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="Java"><code>try {
+    // ...
+} catch (IOException e) {
+    throw new SampleException("Other IOException", e);
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Scegliere le eccezioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Lanciare un’eccezione, o restituire un valore?<ul>
+<li>Situazione realmente fuori dell’ordinario?</li>
+<li>Possibile per il chiamate ignorare il problema?</li>
+<li>Oggetto in stato inconsistente?</li>
+</ul>
+</li>
+<li>Creare un nuovo tipo di eccezione, o riutilizzare uno di quelli esistenti?<ul>
+<li>Errore concettualmente simile ad una eccezione esistente?</li>
+<li>Eccezione esistente, controllata o no, di tipo soddisfacente?</li>
+<li>Nuova eccezione riconducibile ad un tipo di base, da estendere?</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Aggirare la gestione delle eccezioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Java non impone ai metodi di catturare o specificare le eccezioni non controllate<ul>
+<li><code>RuntimeException</code>, <code>Error</code> e sottoclassi</li>
+</ul>
+</li>
+<li>I programmatori possono essere tentati di scrivere codice che lancia solo eccezioni non controllate<ul>
+<li>Scrivere tutte le eccezioni come sottoclassi di <code>RuntimeException</code></li>
+<li>Permettono di scrivere codice senza curarsi di errori di compilazione e senza curarsi di specificare o catturare eccezioni</li>
+</ul>
+</li>
+<li>Può sembrare conveniente, ma…<ul>
+<li>Si perdono tutti i vantaggi del controllo delle eccezioni, legati alla divisione delle responsabilità</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Perché specificare le eccezioni?</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Perchè Java impone ai metodi di specificare le eccezioni?<ul>
+<li>Tutte quelle lanciate al suo interno e non catturate</li>
+</ul>
+</li>
+<li>Le eccezioni lanciate da un metodo sono parte della sua interfaccia pubblica<ul>
+<li>Al pari dei parametri e del valore di ritorno</li>
+<li>Chi chiama un metodo deve sapere quali sono le eccezioni lanciate per poter decidere cosa farne</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>E perché alcune non specificate?</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>È bene documentare un metodo, includendo le sue eccezioni<ul>
+<li>Allora perchè non specificare anche le eccezioni di runtime?</li>
+</ul>
+</li>
+<li>Risultato di problemi di programmazione, bug<ul>
+<li>Al codice client non è richiesto di risolverli o gestirli</li>
+<li>Eccezioni aritmetiche, come divisione per zero</li>
+<li>Eccezioni sui riferimenti, come accesso a metodi su riferimenti a <code>null</code></li>
+<li>Eccezioni sugli indici di array e liste</li>
+</ul>
+</li>
+<li>Il compilatore non richiede che esse siano catturate o specificate (anche se si può)<ul>
+<li>Molto numerose e diffuse</li>
+<li>Altrimenti programmi meno chiari</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Linee guida: checked o unchecked?</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Esempio tipico: se uno dei parametri richiesti è <code>null</code>, il metodo lancia <code>NullPointerException</code><ul>
+<li>La chiamata al metodo è errata, bisogna correggere il bug</li>
+</ul>
+</li>
+<li>Non lanciare una eccezione di runtime o creare sottoclassi di <code>RuntimeException</code> solo per evitare di doverle specificare<ul>
+<li>Se un client può ragionevolmente risolvere l’eccezione, allora dovrebbe essere controllata</li>
+<li>Se un client non può far nulla per risolverla, allora dovrebbe essere non controllata</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/java-logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Domande?&gt;</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    Michele Tomaiuolo
+    <br>
+    Palazzina 1, int. 5708
+    <br>
+    Ingegneria dell'Informazione, UniPR
+    <br>
+    <a href="http://www.ce.unipr.it/people/tomamic">www.ce.unipr.it/people/tomamic</a>
+  </p>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+</body>
+</html>
