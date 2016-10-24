@@ -503,7 +503,7 @@ Poi racchiudere tutto in un ciclo for esterno</p></article>
 </ul>
 <blockquote></blockquote>
 <p>Distinguere bene campi dell'oggetto, parametri dei metodi, variabili esterne</p>
-<p>Opzionalmente, nel costruttore ricevere come parametri <code>x</code> e <code>y</code> iniziali, da cui inizializzare i campi <code>r</code> e <code>theta</code>: <code>theta = math.atan2(y, x)</code></p></article>
+<p>Opzionalmente, nel costruttore ricevere come parametri <code>x</code> e <code>y</code> iniziali, da cui inizializzare i campi <code>r</code> e <code>theta</code></p></article>
  
 </slide>
 
@@ -702,6 +702,262 @@ Poi racchiudere tutto in un ciclo for esterno</p></article>
 </ul>
 <blockquote></blockquote>
 <p>Si può usare una lista come pseudo-matrice, oppure una lista di liste</p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 4</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.1 Massimo valore, con ricorsione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/fun/matryoshka.png">
+        
+      </figure><ul>
+<li>Definire una funzione ricorsiva <code>max_char</code><ul>
+<li>Cerca, in una stringa di testo, il carattere con codice Unicode massimo</li>
+</ul>
+</li>
+<li>Se il testo ha lunghezza 1, l'unico carattere è quello massimo</li>
+<li>Altrimenti il carattere con codice massimo è pari al maggiore tra:<ul>
+<li>Il primo carattere</li>
+<li>Il carattere con codice massimo tra tutti gli altri (ricorsione)</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Saranno accettate esclusivamente le soluzioni ricorsive</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.2 Pallina in caduta</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/bouncing-ball.jpg">
+        
+      </figure><ul>
+<li>Creare una classe <code>FallingBall</code><ul>
+<li>Partire dal codice di <code>Ball</code> in <code>p4_ball</code> (esempio a lezione)</li>
+<li>Mantenere stessi campi e metodi</li>
+</ul>
+</li>
+<li>Aggiungere un campo <code>g</code> (<code>float</code>)<ul>
+<li>Accelerazione di gravità, costante, verso il basso</li>
+<li>Ad ogni esecuzione, il metodo <code>move</code> aggiunge <code>g</code> a <code>dy</code></li>
+</ul>
+</li>
+<li>Nel <code>main</code>: istanziare un oggetto <code>FallingBall</code><ul>
+<li>Chiamare ciclicamente <code>move</code></li>
+<li>Visualizzare un rettangolo (o una immagine) nella posizione attuale</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.3 Attori astratti</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Partire dalla classe <code>Actor</code> (astratta) definita qui sotto</li>
+<li>Ridefinire <code>FallingBall</code> (es. 4.2) come sottoclasse di <code>Actor</code></li>
+<li>Definire una classe <code>Plane</code>, come sottoclasse di <code>Actor</code><ul>
+<li>Implementare un semplice movimento orizzontale ciclico</li>
+</ul>
+</li>
+<li>Nel programma principale, creare una lista di personaggi misti (palline e aerei)<ul>
+<li>Chiamare il metodo <code>move</code> di ciascuno ad ogni ciclo</li>
+<li>Visualizzare un rettangolo (o una immagine) nella posizione corrispondente</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>class Actor:
+    def move(self): pass
+    def rect(self) -&gt; (int, int, int, int): pass
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.4 Collisione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Partire dalle classi <code>Arena</code> e <code>Actor</code> del modulo <code>actor</code> fornito</li>
+<li>Ridefinire <code>FallingBall</code> e <code>Plane</code> (es. 4.3) come sottoclassi di <code>Actor</code><ul>
+<li>Implementare i metodi mancanti</li>
+</ul>
+</li>
+<li>Gestire le collisioni nel metodo <code>collide</code><ul>
+<li>Un oggetto <code>Plane</code> inverte la direzione, quando urta un oggetto <code>FallingBall</code></li>
+</ul>
+</li>
+<li>Nel programma principale, creare una <code>arena</code> con personaggi misti (palline e aerei)<ul>
+<li>Chiamare il metodo <code>move_all</code> ad ogni ciclo</li>
+<li>Visualizzare un rettangolo nella posizione corrispondente</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.5 Scroll</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/viewport.png">
+        
+      </figure><ul>
+<li>Associare a ciascun tipo di personaggio dell'es. 4.4 una immagine</li>
+<li>Creare un'arena di gioco (<em>game world</em>) più ampia della finestra</li>
+<li>Usare per lo sfondo una immagine grande quanto l'intera arena di gioco</li>
+<li>Permettere infine all'utente di spostare l'inquadratura assegnata alla finestra (<em>viewport</em>), usando i tasti cursore</li>
+</ul>
+<blockquote></blockquote>
+<p>Non modificare le classi dei personaggi, nè <code>Arena</code></p>
+<p>Aggiugere invece un <em>offset</em>, in fase di visualizzazione, alle coordinate dei personaggi per decidere il punto in cui disegnarli nella finestra</p>
+<p>Usare lo stesso <em>offset</em> anche per ritagliare la parte giusta dall'immagine di sfondo </p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.6 Circular infinity</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/crop-circle.jpg">
+        
+      </figure><ul>
+<li>Disegnare ricorsivamente dei cerchi, con i centri allineati in verticale</li>
+<li>Il riquadro iniziale è l'intera finestra</li>
+<li>Tracciare un cerchio contenuto nel riquadro <code>(x, y, w, h)</code><ul>
+<li><code>r = h / 2, xc = x + w / 2, yc = y + h / 2</code></li>
+</ul>
+</li>
+<li>Dividere il riquadro in due metà</li>
+<li>Applicare a ciascuno dei due riquadri il processo, ricorsivamente</li>
+<li>Ad ogni livello, invertire il colore del cerchio disegnato</li>
+</ul>
+<blockquote></blockquote>
+<p>Saranno accettate esclusivamente le soluzioni ricorsive</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.7 Tris</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/tic-tac-toe.svg">
+        
+      </figure><ul>
+<li>Classe che modella una partita a <em>tris</em> (<em>Tic Tac Toe</em>)</li>
+<li>Campi privati<ul>
+<li>Matrice di gioco</li>
+<li>Giocatore di turno: <code>O</code> oppure <code>X</code></li>
+</ul>
+</li>
+<li>Metodi pubblici<ul>
+<li>Mossa in una certa posizione <code>x, y</code> (simbolo scelto automaticamente nel metodo)</li>
+<li>Rappresentazione stato: <code>__str__(self)</code></li>
+</ul>
+</li>
+<li>Nel <code>main</code>, in un ciclo<ul>
+<li>Chiedere all'utente le coordinate per la prossima mossa</li>
+<li>Visualizzare lo stato risultante</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.8 Conclusione partita</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Aggiungere metodi alla classe del <em>tris</em><ul>
+<li>Controllo di conclusione: <code>bool</code></li>
+<li>Eventuale vincitore: <code>O</code>, <code>X</code>, <code>None</code></li>
+</ul>
+</li>
+<li>Nel <code>main</code>, in un ciclo<ul>
+<li>Chiedere all'utente le coordinate per la prossima mossa</li>
+<li>Visualizzare lo stato risultante</li>
+<li>Comunicare l'eventuale conclusione della partita ed il vincitore</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>4.9 Valori in file CSV</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Leggere una matrice di interi da un file testuale CSV<ul>
+<li><em>Comma Separated Values</em>: valori riportati riga per riga e separati da una virgola</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="File"><code>5,7,2,11
+1,3,12,9
+4,6,10,8
+</code></pre>
+<ul>
+<li>Memorizzare i dati in una lista semplice (pseudo-matrice)<ul>
+<li>Inferire dimensioni della matrice (<code>rows×cols</code>) in base a:</li>
+<li>Num. righe del file; num. valori nella prima riga</li>
+</ul>
+</li>
+<li>Riscrivere in un altro file tutti i valori della matrice<ul>
+<li>Raddoppiare però i valori sulla diagonale che parte dall'angolo in basso a destra (<code>cols - x == rows - y</code>)</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Nell'esempio, i valori da raddoppiare in scrittura sono i seguenti: <code>8, 12, 7</code></p></article>
  
 </slide>
 
