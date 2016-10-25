@@ -628,6 +628,35 @@ doc.onkeyup = keyup
 <slide  >
   
     <hgroup>
+      <h2>Urti delle palline</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="python"><code>class Ball(Actor):
+    # ...
+    def collide(self, other):
+        if not isinstance(other, Ghost):
+            x, y, w, h = other.rect()
+            if x &lt; self._x:
+                self._dx = self.SPEED
+            else:
+                self._dx = -self.SPEED
+            # ... same for y
+</code></pre>
+<ul>
+<li><code>isinstance(obj, cls)</code><ul>
+<li>Controlla se l'oggetto <code>obj</code> è istanza della classe <code>cls</code></li>
+<li>... o di una sua sottoclasse</li>
+<li>Restituisce un <code>bool</code></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
       <h2>Grafica con pyGame (++)</h2>
       <h3></h3>
     </hgroup>
