@@ -804,7 +804,7 @@ Segnare in un <code>bool</code> se si è incontrato un asterisco iniziale, ma no
 <slide  >
   
     <hgroup>
-      <h2>4.4 File e cartelle</h2>
+      <h2>4.4 Documenti e cartelle</h2>
       <h3></h3>
     </hgroup>
     <article >
@@ -812,17 +812,17 @@ Segnare in un <code>bool</code> se si è incontrato un asterisco iniziale, ma no
         <img src="images/misc/sample-file-system.png">
         
       </figure><ul>
-<li>Un ipotetico file system è composto di due tipi di <em>nodi</em> (classe base)<ul>
-<li>I <em>file</em>, caratterizzati da un nome e da un contenuto testuale (classe derivata)</li>
+<li>Un sistema gerarchico di gestione documenti è composto di due tipi di <em>nodi</em> (classe base)<ul>
+<li>I <em>documenti</em>, caratterizzati da un nome e da un contenuto testuale (classe derivata)</li>
 <li>Le <em>cartelle</em>, caratterizzate da un nome e da una lista di nodi contenuti (classe derivata)</li>
 </ul>
 </li>
-<li>Creare una gerarchia delle tre classi: <code>Node</code>, <code>File</code>, <code>Folder</code><ul>
+<li>Creare una gerarchia delle tre classi: <code>Node</code>, <code>Document</code>, <code>Folder</code><ul>
 <li>Le cartelle dovrebbero avere un metodo <code>add_node(n: Node)</code></li>
 </ul>
 </li>
 <li>Nel corpo principale del programma, istanziare ed organizzare vari nodi (senza input dell'utente)<ul>
-<li>Riprodurre la struttura raffigurata a fianco</li>
+<li>Ricreare con gli oggetti la struttura raffigurata a fianco</li>
 </ul>
 </li>
 </ul></article>
@@ -839,14 +839,14 @@ Segnare in un <code>bool</code> se si è incontrato un asterisco iniziale, ma no
       <ul>
 <li>Aggiungere a tutti i nodi (es. 4.4) un metodo <code>size</code><ul>
 <li>Astratto nella classe base</li>
-<li>Per un file, restituisce la lunghezza del contenuto testuale</li>
+<li>Per un documento, restituisce la lunghezza del contenuto testuale</li>
 <li>Per una cartella, restituisce la somma delle dimensioni dei nodi contenuti</li>
 </ul>
 </li>
-<li>Calcolare la dimensione della struttura precedente (es. 4.4), inventando dei contenuti per i file presenti</li>
+<li>Calcolare la dimensione della struttura precedente (es. 4.4), inventando dei contenuti per i documenti presenti</li>
 <li>Aggiungere inoltre a tutti i nodi un metodo <code>print(indent: int)</code>, per mostrare a terminale la struttura ad albero<ul>
 <li>Astratto nella classe base</li>
-<li>Mostra il nome di file e cartelle</li>
+<li>Mostra il nome di documenti e cartelle</li>
 <li>Indenta opportunamente i nodi, rispetto alla cartella che li contiene</li>
 </ul>
 </li>
