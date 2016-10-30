@@ -775,24 +775,24 @@ Poi racchiudere tutto in un ciclo for esterno</p></article>
 <slide  >
   
     <hgroup>
-      <h2>4.3 Attori astratti</h2>
+      <h2>4.3 Lista di personaggi</h2>
       <h3></h3>
     </hgroup>
     <article >
       <ul>
-<li>Partire dalla classe <code>Actor</code> (astratta) definita qui sotto</li>
-<li>Ridefinire <code>FallingBall</code> (es. 4.2) come sottoclasse di <code>Actor</code></li>
-<li>Definire una classe <code>Plane</code>, come sottoclasse di <code>Actor</code><ul>
+<li>Partire da classe <code>SimpleActor</code> (astratta) definita qui sotto</li>
+<li>Ridefinire <code>FallingBall</code> (es. 4.2) come sottoclasse di <code>SimpleActor</code></li>
+<li>Definire una classe <code>Plane</code>, come sottoclasse di <code>SimpleActor</code><ul>
 <li>Implementare un semplice movimento orizzontale ciclico</li>
 </ul>
 </li>
-<li>Nel programma principale, creare una lista di personaggi misti (palline e aerei)<ul>
+<li>Nel programma principale, creare una <em>lista di personaggi misti</em> (palline e aerei)<ul>
 <li>Chiamare il metodo <code>move</code> di ciascuno ad ogni ciclo</li>
-<li>Visualizzare un rettangolo (o una immagine) nella posizione corrispondente</li>
+<li>Visualizzare un rettangolo per ogni personaggio</li>
 </ul>
 </li>
 </ul>
-<pre class="prettyprint" data-lang="python"><code>class Actor:
+<pre class="prettyprint" data-lang="python"><code>class SimpleActor:
     def move(self): pass
     def rect(self) -&gt; (int, int, int, int): pass
 </code></pre></article>
@@ -802,26 +802,30 @@ Poi racchiudere tutto in un ciclo for esterno</p></article>
 <slide  >
   
     <hgroup>
-      <h2>4.4 Collisione</h2>
+      <h2>4.4 Arena e collisioni</h2>
       <h3></h3>
     </hgroup>
     <article >
       <ul>
-<li>Partire dalle classi <code>Arena</code> e <code>Actor</code> del modulo <code>actor</code> fornito</li>
-<li>Ridefinire <code>FallingBall</code> e <code>Plane</code> (es. 4.3) come sottoclassi di <code>Actor</code><ul>
-<li>Implementare i metodi mancanti</li>
+<li>Partire da classi <code>Arena</code> e <code>Actor</code> del modulo <code>actor</code> fornito</li>
+<li>Ridefinire <code>FallingBall</code> e <code>Plane</code> come sottoclassi di <code>Actor</code><ul>
+<li>Implementare i metodi mancanti (partire da es. 4.3)</li>
 </ul>
 </li>
 <li>Gestire le collisioni nel metodo <code>collide</code><ul>
 <li>Un oggetto <code>Plane</code> inverte la direzione, quando urta un oggetto <code>FallingBall</code></li>
 </ul>
 </li>
-<li>Nel programma principale, creare una <code>arena</code> con personaggi misti (palline e aerei)<ul>
+<li>Nel programma principale, creare una <em>arena con personaggi misti</em> (palline e aerei)<ul>
 <li>Chiamare il metodo <code>move_all</code> ad ogni ciclo</li>
-<li>Visualizzare un rettangolo nella posizione corrispondente</li>
+<li>Visualizzare un rettangolo per ogni personaggio</li>
 </ul>
 </li>
-</ul></article>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>from actor import Actor, Arena
+class FallingBall(Actor):
+    # ...
+</code></pre></article>
  
 </slide>
 
@@ -958,6 +962,280 @@ Poi racchiudere tutto in un ciclo for esterno</p></article>
 </ul>
 <blockquote></blockquote>
 <p>Nell'esempio, i valori da raddoppiare in scrittura sono i seguenti: <code>8, 12, 7</code></p></article>
+ 
+</slide>
+
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 5</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.1 Tartaruga saltellante</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/jumper.png">
+        
+      </figure><ul>
+<li>Modificare <code>Turtle</code> nel modulo <code>bounce</code></li>
+<li>L'utente non controlla <code>dy</code>, ma solo <code>dx</code><ul>
+<li>Eliminare metodi <code>go_up</code> e <code>go_down</code></li>
+</ul>
+</li>
+<li><code>Turtle</code> subisce gravità<ul>
+<li>Ma si ferma sul fondo dell'arena</li>
+</ul>
+</li>
+<li>Tasto <code>Space</code>: la tartaruga salta<ul>
+<li><em>Ma solo se si trova già sul fondo dell'arena</em></li>
+<li>Parte con un valore prefissato di <code>dy</code> (negativo), poi subisce la gravità</li>
+<li>Per saltare, aggiungere un metodo <code>jump</code></li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>from actor import Actor, Arena
+class Ball(Actor):
+    # ...
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.2 Muri impenetrabili</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/oop/wall.png">
+        
+      </figure><ul>
+<li>Creare classe <code>Wall</code>, sottoclasse di <code>Actor</code><ul>
+<li>Rettangolo immobile ed impenetrabile</li>
+<li>Campi: <code>x</code>, <code>y</code>, <code>w</code>, <code>h</code></li>
+</ul>
+</li>
+<li>Modificare <code>Ball</code> del modulo <code>bounce</code><ul>
+<li>Scivola sul muro, senza rimbalzare</li>
+<li>In caso di collisione pallina / muro...</li>
+<li>Resta appena fuori da muro (bordo più vicino)</li>
+</ul>
+</li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>class Ball(Actor):  # ...
+    def collide(self, other):
+        if isinstance(other, Wall):
+            x, y, w, h = other.rect()
+            border_left, border_right = x - self.W, x + w
+            border_top, border_bottom = y - self.H, y + h
+            # now set either self._x or self._y, to the nearest border
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.3 Stampa per righe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Visualizzare in forma tabellare i caratteri ASCII<ul>
+<li>8 righe x 12 colonne, codici da 32 a 126</li>
+</ul>
+</li>
+<li>Mostrare in ordine i caratteri, riga per riga</li>
+</ul>
+<pre class="prettyprint" data-lang="Tabella 1"><code> !"#$%&amp;'()*+
+,-./01234567
+89:;&lt;=&gt;?@ABC
+DEFGHIJKLMNO
+PQRSTUVWXYZ[
+\]^_`abcdefg
+hijklmnopqrs
+tuvwxyz{|}~
+</code></pre>
+<p>Usare solo due cicli <code>for</code> annidati: esterno su <code>y</code>, interno su <code>x</code> <br>
+In ogni posizione, calcolare il codice da visualizzare: <code>y * COLS + x + ...</code></p>
+<p>Solo stampa caratteri: non servono liste, nè matrici</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.4 Stampa per colonne</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Visualizzare in forma tabellare i caratteri ASCII<ul>
+<li>8 righe x 12 colonne, codici da 32 a 126</li>
+</ul>
+</li>
+<li>Mostrare in ordine i caratteri, colonna per colonna</li>
+</ul>
+<pre class="prettyprint" data-lang="Tabella 2"><code> (08@HPX`hpx
+!)19AIQYaiqy
+"*2:BJRZbjrz
+#+3;CKS[cks{
+$,4&lt;DLT\dlt|
+%-5=EMU]emu}
+&amp;.6&gt;FNV^fnv~
+'/7?GOW_gow
+</code></pre>
+<p>Usare solo due cicli <code>for</code> annidati: esterno su <code>y</code>, interno su <code>x</code> <br>
+In ogni posizione, calcolare il codice da visualizzare: <code>x * ROWS + y + ...</code></p>
+<p>Solo stampa caratteri: non servono liste, nè matrici</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.5 Spirale</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/spiral.png">
+        
+      </figure><ul>
+<li>Scrivere una funzione per riempire di numeri crescenti una matrice quadrata (o rettangolare)</li>
+<li>Seguire il percorso a spirale suggerito nella figura a fianco</li>
+<li>Dimensioni della matrice indicate dall'utente a runtime</li>
+</ul>
+<blockquote></blockquote>
+<p>Tenere traccia della direzione attuale (<em>∆y</em>, <em>∆x</em>) <br>
+Avanzare fino al bordo o ad una cella già visitata, <br>
+poi cambiare la direzione in senso orario</p>
+<p>Rotazione oraria 90° (coord. raster): <code>(∆x', ∆y') = (-∆y, ∆x)</code> <br>
+Rotazione antior. 90° (coord. raster): <code>(∆x', ∆y') = (∆y, -∆x)</code> <br><br>
+In generale (coord. cartesiane): <code>(x', y') = (x⋅cos(θ) - y⋅sin(θ), x⋅sin(θ) + y⋅cos(θ))</code> <br>
+(Bisogna cambiare il segno di θ)</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.6 Fusione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/merge-sign.png">
+        
+      </figure><ul>
+<li>Due file di testo contengono sequenze di numeri<ul>
+<li>Un valore per ogni riga</li>
+<li>Entrambi i file sono già ordinati, dal valore più piccolo a quello più grande</li>
+</ul>
+</li>
+<li>Scrivere in un terzo file i valori di entrambi i file, <em>senza usare nessuna lista</em><ul>
+<li>Anche il terzo deve contenere i valori in ordine, dal più piccolo al più grande</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p>Ciclicamente, confrontare la coppia dei primi valori (ciascuno proveniente da uno dei due stream) <br>
+Scrivere il minore dei due sul file di uscita <br>
+Non estrarre un nuovo valore da uno stream, se quello precedente non è ancora stato scritto in output </p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.7 Espressioni</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Definire una gerarchia di classi per rappresentare espressioni matematiche</li>
+<li>La <em>classe base</em> <strong><code>Expression</code></strong> ha un metodo astratto <code>eval</code><ul>
+<li>Senza parametri, restituisce il valore <code>float</code> dell'espressione</li>
+</ul>
+</li>
+<li>Le <em>sottoclassi</em> concrete di una espressione sono:<ul>
+<li><strong><code>Literal</code></strong>, contenente un valore costante <code>float</code></li>
+<li><strong><code>Sum</code></strong>, contenente due operandi, entrambi espressioni</li>
+<li><strong><code>Product</code></strong>, contenente due operandi, entrambi espr.</li>
+</ul>
+</li>
+<li>Istanziare (senza fare <em>parsing</em>!) oggetti per rappresentare questa espressione:<ul>
+<li><code>5 * (4 + 3 * 2)</code></li>
+</ul>
+</li>
+<li>Calcolare il valore finale, chiamando <code>eval</code> sul nodo radice</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.8 Espressioni prefisse</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Aggiungere un  metodo <code>prefix</code> a <code>Expression</code> (es. 5.7)<ul>
+<li>Genera una stringa in notazione prefissa (operatore seguito da operandi)</li>
+</ul>
+</li>
+<li>Risultato da espressione es. 5.7: <code>"* 5 + 4 * 3 2"</code></li>
+</ul>
+<pre class="prettyprint" data-lang="python"><code>                                          #   *  (prod2)
+prod1 = Product(Literal(3), Literal(2))   #  / \
+sum1 = Sum(Literal(4), prod1)             # 5   +  (sum1)
+prod2 = Product(Literal(5), sum1)         #    / \
+print(prod2.eval())                       #   4   *  (prod1)
+print(prod2.prefix())                     #      / \
+                                          #     3   2
+</code></pre>
+<blockquote></blockquote>
+<p><a href="https://it.wikipedia.org/wiki/Notazione_polacca">https://it.wikipedia.org/wiki/Notazione_polacca</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>5.9 Dominating knights (++)</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/dom-knights.png">
+        
+      </figure><ul>
+<li>Problemi di dominio (o copertura)<ul>
+<li>Trovare la posizione di un certo numero di pezzi</li>
+<li>Tutti dello stesso tipo... ⇒</li>
+<li>Tutte le celle sono occupate o sotto attacco</li>
+</ul>
+</li>
+<li>In particolare, il programma deve posizionare automaticamente <code>K</code> cavalli su una scacchiera <code>NxN</code><ul>
+<li>L'utente sceglie <code>K</code> ed <code>N</code></li>
+<li>Ogni cella deve essere occupata, oppure sotto attacco</li>
+<li>Usare il <em>backtracking</em></li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Mathematical_chess_problem">https://en.wikipedia.org/wiki/Mathematical_chess_problem</a></p></article>
  
 </slide>
 
