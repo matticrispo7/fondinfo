@@ -144,6 +144,7 @@ URL: https://code.google.com/p/io-2012-slides
 </li>
 <li>Attualmente &gt;30 sistemi di scrittura<ul>
 <li>Rappresentazione di <em>geroglifici</em> e caratteri <em>cuneiformi</em></li>
+<li><em>Emoticon</em> ed <em>emoji</em> <strong>☺️</strong>: ideogrammi per espressioni facciali, oggetti comuni, posti, eventi meteo e animali</li>
 <li>Proposta per <em>Klingon</em> (da Star Trek… rifiutata!)</li>
 </ul>
 </li>
@@ -242,7 +243,7 @@ URL: https://code.google.com/p/io-2012-slides
     <article >
       <figure>
         <img src="images/repr/spectral-sensitivity.svg"><img src="images/repr/additive-color.svg">
-        
+        <figcaption>Rosso, verde, blu + Ciano, magenta, giallo</figcaption>
       </figure><ul>
 <li>Occhio sensibile a variaz. luminosità<ul>
 <li>6 mln di coni, 125 di bastoncelli</li>
@@ -315,7 +316,9 @@ Palette (RGBQUAD)
       <h3></h3>
     </hgroup>
     <article >
-      <p><img alt="" src="images/repr/redbrick-dump.png" /></p></article>
+      <p><img alt="" src="images/repr/redbrick-dump.png" /></p>
+<blockquote></blockquote>
+<p>Little endian: prima byte meno significativi</p></article>
  
 </slide>
 
@@ -345,12 +348,12 @@ Palette (RGBQUAD)
 <li>Linee, poligoni..., colori, sfumature...</li>
 </ul>
 </li>
-<li>▲ Qualità, a varie risoluzioni</li>
-<li>▲ Compressione dati</li>
-<li>▲ Gestione modifiche</li>
-<li>▼ Non intuitiva per alcuni</li>
-<li>▼ Possibilmente onerosa</li>
-<li>▼ Risorse non note a priori</li>
+<li>👍 Qualità, a varie risoluzioni</li>
+<li>👍 Compressione dati</li>
+<li>👍 Gestione modifiche</li>
+<li>👎 Non intuitiva per alcuni</li>
+<li>👎 Possibilmente onerosa</li>
+<li>👎 Risorse non note a priori</li>
 </ul></article>
  
 </slide>
@@ -418,6 +421,7 @@ Palette (RGBQUAD)
         <img src="images/repr/sampled-signal.svg"><img src="images/repr/digital-signal.svg">
         
       </figure><ul>
+<li>Suono: onde longitudinali, di compressione e rarefazione dell'aria</li>
 <li>Grandezza analogica → discretizzazione<ul>
 <li><strong>Campionamento</strong> (<em>sampling</em>) nel tempo</li>
 <li><strong>Quantizzazione</strong> (<em>quantizing</em>) nelle ampiezze</li>
@@ -448,6 +452,32 @@ Palette (RGBQUAD)
     </hgroup>
     <article >
       <p><img alt="" src="images/repr/wav-bytes.png" /></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Contenitore RIFF</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li><em>Resource Interchange File Format</em><ul>
+<li>Container per dati multimediali diversi</li>
+<li>WAV, AVI, CDR, WebP...</li>
+</ul>
+</li>
+<li>Campi <code>size</code>: sempre ridotti di 8 byte<ul>
+<li>Non conteggiati campi <code>id</code> e <code>size</code> stesso</li>
+</ul>
+</li>
+<li>Nei file <em>WAV</em>:<ul>
+<li><code>BlockAlign = NumChannels * BitsPerSample / 8</code></li>
+<li><code>ByteRate = SampleRate * BlockAlign</code></li>
+</ul>
+</li>
+</ul></article>
  
 </slide>
 
@@ -608,13 +638,13 @@ Palette (RGBQUAD)
 <li>Nuovi elementi di struttura di Html 5<ul>
 <li><code>header, main, nav, aside, footer</code></li>
 <li><code>article, section, details, summary</code></li>
-<li><code>figure, figcaption</code></li>
+<li><code>menu, menuitem, figure, figcaption</code></li>
 </ul>
 </li>
 <li>Altri nuovi elementi<ul>
 <li><code>video, audio, canvas, embed</code></li>
-<li><code>mark, menu, command, output, time</code></li>
-<li><code>progress, meter, datalist</code></li>
+<li><code>mark, time</code></li>
+<li><code>output, progress, meter, datalist</code></li>
 </ul>
 </li>
 <li><a href="http://dev.w3.org/html5/html4-differences/">http://dev.w3.org/html5/html4-differences/</a></li>
