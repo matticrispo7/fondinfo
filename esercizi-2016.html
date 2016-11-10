@@ -1239,6 +1239,99 @@ print(prod2.prefix())                     #      / \
  
 </slide>
 
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 6</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 1</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Gioco con diversi personaggi<ul>
+<li>Fornita classe <code>Arena</code> per campo di gioco</li>
+<li>Fornita classe base astratta <code>Actor</code> per personaggi</li>
+</ul>
+</li>
+<li>Creare sottoclassi di <code>Actor</code> per personaggi specifici<ul>
+<li><em>Polimorfismo</em> per movimento</li>
+<li><em>Polimorfismo</em> per interazione reciproca</li>
+</ul>
+</li>
+<li>Ma ciclo principale, interazione con l'utente e grafica <em>fuori da queste classi</em><ul>
+<li>Funzionamento con grafica oppure con console testuale</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Super Mario - Personaggi</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/super-mario.jpg">
+        
+      </figure><ul>
+<li><em>Mario</em>: guidato dal giocatore<ul>
+<li>Si muove e salta sulle piattaforme</li>
+<li>Cade secondo gravità, fuori dalle piattaforme</li>
+<li>Ma non accelera oltre una velocità limite</li>
+<li>Muore se cade in fondo allo schermo</li>
+</ul>
+</li>
+<li><em>Muri e piattaforme</em><ul>
+<li>Mario ci atterra dall'alto</li>
+<li>Non si possono attraversare in nessuna direzione</li>
+</ul>
+</li>
+<li><em>Avversari</em><ul>
+<li>Si muovono sulle piattaforme come Mario, ma scelgono casualmente la direzione</li>
+<li>Uccidono Mario se lo urtano, ma muoiono se Mario ci salta sopra</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Super Mario - Implementazione</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Se un personaggio collide con un <em>muro</em><ul>
+<li>Deve indietreggiare di pochi pixel</li>
+<li>In modo da rimanere appena all'esterno del muro</li>
+</ul>
+</li>
+<li>Implementazione degli <em>avversari</em><ul>
+<li>Il comportamento di base è comune tra Mario e le altre “creature”</li>
+<li>Si può creare una classe base comune per gestire cadute e atterraggi sulle piattaforme</li>
+<li>Mario prende i comandi dall'utente, tramite tastiera</li>
+<li>Le creature possono scegliere casualmente (ogni tanto) di cambiare direzione</li>
+</ul>
+</li>
+<li>Nella prima versione, si può mantenere fissa la vista del gioco</li>
+</ul></article>
+ 
+</slide>
+
 
 <slide class="thank-you-slide segue nobackground">
   <aside class="gdbar right"><img src="images/logo.png"></aside>
