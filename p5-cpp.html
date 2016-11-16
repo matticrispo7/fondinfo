@@ -732,17 +732,17 @@ p = nullptr;  // ptr to nothing
     <article >
       <pre class="prettyprint" data-lang="c++"><code>class Arena {  // ...
 public:
-    void add(Actor* c);
+    void add(Actor* a);
     void move_all();
 private:
     vector&lt;Actor*&gt; actors;
 };
 </code></pre>
 <pre class="prettyprint" data-lang="c++"><code>void Arena::add(Actor* c) {
-    actors.push_back(c);
+    actors.push_back(a);
 }
 void Arena::move_all() {
-    for (auto c : actors) c-&gt;move();
+    for (auto a : actors) a-&gt;move();
 }
 </code></pre></article>
  
@@ -798,6 +798,55 @@ void Widget::paintEvent(QPaintEvent* event) {
 </code></pre>
 <blockquote></blockquote>
 <p>Progetto: <em>Application</em> → <em>Qt Widgets Application</em></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fifteen – Gioco astratto</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/qt/fifteen-puzzle.jpg">
+        
+      </figure><pre class="prettyprint" data-lang="C++"><code>class Game {
+public:
+    virtual void play_at(int x, int y) = 0;
+    virtual int cols() const = 0;
+    virtual int rows() const = 0;
+    virtual std::string get_val(int x, int y) const = 0;
+    virtual bool finished() const = 0;
+    virtual std::string message() const = 0;
+};
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Fifteen – Gui generica</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/qt/puzzle.png">
+        
+      </figure><pre class="prettyprint" data-lang="C++"><code>class GameGui : public QWidget {
+    Q_OBJECT
+public:
+    GameGui(Game* game);
+private:
+    void handle_click(int x, int y);
+    void update_button(int x, int y);
+    void update_all_buttons();
+
+    Game* game_;
+    int cols_, rows_;
+};
+</code></pre></article>
  
 </slide>
 
