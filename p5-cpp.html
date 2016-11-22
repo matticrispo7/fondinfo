@@ -814,11 +814,11 @@ void Widget::paintEvent(QPaintEvent* event) {
       </figure><pre class="prettyprint" data-lang="C++"><code>class Game {
 public:
     virtual void play_at(int x, int y) = 0;
-    virtual int cols() const = 0;
-    virtual int rows() const = 0;
-    virtual std::string get_val(int x, int y) const = 0;
-    virtual bool finished() const = 0;
-    virtual std::string message() const = 0;
+    virtual int cols() = 0;
+    virtual int rows() = 0;
+    virtual std::string get_val(int x, int y) = 0;
+    virtual bool finished() = 0;
+    virtual std::string message() = 0;
 };
 </code></pre></article>
  
@@ -838,11 +838,10 @@ public:
     Q_OBJECT
 public:
     GameGui(Game* game);
-private:
     void handle_click(int x, int y);
     void update_button(int x, int y);
     void update_all_buttons();
-
+private:
     Game* game_;
     int cols_, rows_;
 };
