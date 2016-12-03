@@ -23,8 +23,8 @@ address:before { content: "\2014"; }
 <ul>
 <li><i>white</i>,</li>
 <li>not <i>illuminated</i>,</li>
-<li>without a <i>flag</i>,</li>
-<li>without a <i>bulb</i>.</li>
+<li>without a <i>flag</i> (<code>&times;</code>),</li>
+<li>without a <i>bulb</i> (<code>@</code>).</li>
 </ul>
 
 <p>A <i>white</i> cell is visible from another <i>white</i> cell if:</p>
@@ -88,8 +88,8 @@ address:before { content: "\2014"; }
 <table>
 <tr><td></td><td></td><td class="n"></td><td></td></tr>
 <tr><td></td><td class="s"></td><td class="b">1</td><td class="n"></td></tr>
-<tr><td class="n">&#x1f4a1;</td><td class="b">3</td><td class="s"></td><td></td></tr>
-<tr><td></td><td class="n">&#x1f4a1;</td><td></td><td></td></tr>
+<tr><td class="n">@</td><td class="b">3</td><td class="s"></td><td></td></tr>
+<tr><td></td><td class="n">@</td><td></td><td></td></tr>
 </table>
 
 <p><b>Case 7.</b> <code>m<sub>C</sub> == 1</code>. The shared cells are the only two <i>free</i> cells in the neighborhood of <code>C</code>. The two <i>free</i> cells have to contain a <i>bulb</i> and a <i>flag</i>. Thus you need to apply to <code>D</code> the same counting as in cases 3 and 4, but skipping the shared cells in both the neighborhoods of <code>C</code> and <code>D</code> and subtracting a <i>bulb</i> from the final result. This means you need to put <code>m<sub>D</sub> - 1</code> <i>bulbs</i> (and then <i>flags</i>) in the remaining <code>f<sub>D</sub> - 2</code> <i>free</i> cells in the neighborhood of <code>D</code>.</p>
@@ -97,15 +97,15 @@ address:before { content: "\2014"; }
 <table>
 <tr><td></td><td></td><td class="n"></td><td></td></tr>
 <tr><td></td><td class="s"></td><td class="b">1</td><td class="n"></td></tr>
-<tr><td class="n">&#x1f4a1;</td><td class="b">3</td><td class="s"></td><td></td></tr>
-<tr><td></td><td class="n">&#x1f4a1;</td><td></td><td></td></tr>
+<tr><td class="n">@</td><td class="b">3</td><td class="s"></td><td></td></tr>
+<tr><td></td><td class="n">@</td><td></td><td></td></tr>
 </table>
 
 <table>
 <tr><td></td><td></td><td class="n">&times;</td><td></td></tr>
 <tr><td></td><td class="s"></td><td class="b">1</td><td class="n">&times;</td></tr>
-<tr><td class="n">&#x1f4a1;</td><td class="b">3</td><td class="s"></td><td></td></tr>
-<tr><td></td><td class="n">&#x1f4a1;</td><td></td><td></td></tr>
+<tr><td class="n">@</td><td class="b">3</td><td class="s"></td><td></td></tr>
+<tr><td></td><td class="n">@</td><td></td><td></td></tr>
 </table>
 
 <h2>Cul-de-sac</h2>
