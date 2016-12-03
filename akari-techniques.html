@@ -110,17 +110,17 @@ address:before { content: "\2014"; }
 
 <h2>Cul-de-sac</h2>
 
-<p><b>Case 8.</b> Given a <i>free</i> cell <code>X</code>, you try to put a <i>bulb</i> in it and then apply all obvious moves (cases 1-7). If the resulting configuration contains an error (violated <i>constraints</i> or <i>bulbs</i> illuminating each other), then the cell <code>X</code> must be marked with a <i>flag</i>.</p>
+<p><b>Case 8.</b> Given a <i>free</i> cell <code>A</code>, you try to put a <i>bulb</i> in it and then apply all obvious moves (cases 1-7). If the resulting configuration contains an error (violated <i>constraints</i> or <i>bulbs</i> illuminating each other), then the cell <code>A</code> must be marked with a <i>flag</i>.</p>
 
-<p><b>Case 9.</b> Given a <i>free</i> cell <code>X</code>, you try to mark it with a <i>flag</i> and then apply all obvious moves (cases 1-7). If the resulting configuration contains an error (violated <i>constraints</i> or <i>bulbs</i> illuminating each other), then the cell <code>X</code> must contain a <i>bulb</i>.</p>
+<p><b>Case 9.</b> Given a <i>free</i> cell <code>A</code>, you try to mark it with a <i>flag</i> and then apply all obvious moves (cases 1-7). If the resulting configuration contains an error (violated <i>constraints</i> or <i>bulbs</i> illuminating each other), then the cell <code>A</code> must contain a <i>bulb</i>.</p>
 
 <h2>Invariant</h2>
 
-<p><b>Case 10.</b> Given a <i>free</i> cell <code>X</code>, you try to mark it with a <i>flag</i> and then apply all obvious moves (cases 1-7). In the same <i>free</i> cell <code>X</code>, you try to put a <i>bulb</i> and then apply all obvious moves (cases 1-7). If the two alternative resulting configurations are equals in certain cells, then those cells have an invariant content, which can be definitely applied to the game board.</p>
+<p><b>Case 10.</b> Given a <i>free</i> cell <code>A</code>, you try to mark it with a <i>flag</i> and then apply all obvious moves (cases 1-7). In the same <i>free</i> cell <code>A</code>, you try to put a <i>bulb</i> and then apply all obvious moves (cases 1-7). If the two alternative resulting configurations are equals in certain cells, then those cells have an invariant content, which can be definitely applied to the game board.</p>
 
-<p>If a cell <code>Y</code>, in both possible configurations of <code>X</code>, is marked with a <i>flag</i> or is <i>illuminated</i> (i.e. in both cases it cannot contain a <i>bulb</i>), then on the game board the cell <code>Y</code> must be definitely marked with a <i>flag</i>.</p>
+<p>If a cell <code>B</code>, in both possible configurations of <code>A</code>, is marked with a <i>flag</i> or is <i>illuminated</i> (i.e. in both cases it cannot contain a <i>bulb</i>), then on the game board the cell <code>B</code> must be definitely marked with a <i>flag</i>.</p>
 
-<p>If a cell <code>Y</code>, in both possible configurations of <code>X</code>, contains a <i>bulb</i>, then on the game board the cell <code>Y</code> must definitely contain a <i>bulb</i>.</p>
+<p>If a cell <code>B</code>, in both possible configurations of <code>A</code>, contains a <i>bulb</i>, then on the game board the cell <code>B</code> must definitely contain a <i>bulb</i>.</p>
 
 <address>Michele Tomaiuolo @ <a href="http://www.ce.unipr.it/people/tomamic/">UniPR.it</a></address>
 </body>
