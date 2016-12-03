@@ -1503,6 +1503,177 @@ print(prod2.prefix())                     #      / \
  
 </slide>
 
+<slide class="segue dark" >
+  
+    <aside class="gdbar"><img src="images/logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Esercitazione 9</h2>
+      <h3></h3>
+    </hgroup>
+  
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Progetto 2</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Classe <em>C++</em> per incapsulare dati e regole di un gioco<ul>
+<li>Campi <em>privati</em> + metodi <em>pubblici</em> (e privati)</li>
+</ul>
+</li>
+<li>Interazione con l'utente tramite console oppure gui Qt...<ul>
+<li>Ma ciclo principale, I/O, eventi, grafica <em>fuori dalla classe</em></li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>“Akari” - Light up</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/akari.svg">
+        
+      </figure><ul>
+<li>Scopo: disporre delle lampade, fino ad illuminare tutte le celle</li>
+<li>Una lampada illumina le celle sulla sua riga e la sua colonna, fino ad una cella nera o al bordo esterno</li>
+<li>Ogni cella bianca può ospitare una lampada, ma:<ul>
+<li>Un numero indica quante lampade devono trovarsi nelle celle adiacenti (in orizzontale e verticale)</li>
+<li>Due lampade non possono illuminarsi a vicenda</li>
+</ul>
+</li>
+</ul>
+<blockquote></blockquote>
+<p><a href="http://www.nikoli.com/en/puzzles/bijutsukan/rule.html">http://www.nikoli.com/en/puzzles/bijutsukan/rule.html</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Akari - Funzionalità di base</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Inserire una lampada (<em>bulb</em>, <code>'@'</code>) in una cella<ul>
+<li>L'utente posiziona liberamente le lampade</li>
+<li>In tutte le celle, tranne quelle nere</li>
+</ul>
+</li>
+<li>Controllare se le regole sono violate, oppure se il gioco è stato risolto</li>
+<li>Rappresentare lo stato del gioco in forma testuale<ul>
+<li>Per ciascuna cella, indicare anche se è illuminata (<code>'+'</code>)</li>
+</ul>
+</li>
+<li>Nota: la tabella di gioco può essere rettangolare (<em>rows ≠ cols</em>)</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Bozza della classe</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>class Akari
+{
+public:
+    Akari();  // default board
+    void play_at(int x, int y);
+    string get_val(int x, int y);
+    bool finished();
+    int cols() {return cols_; }
+    int rows() { return rows_; }
+    string message() { return "Puzzle solved"; }
+    // ...
+private:
+    // ...
+}
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Esempio di campi privati</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="C++"><code>private:  // ...
+    int cols_ = 7; int rows_ = 7;
+    vector&lt; vector&lt;char&gt; &gt; board_ = {
+        {' ', ' ', ' ', '5', '5', '1', ' '},
+        {' ', '5', ' ', ' ', ' ', ' ', ' '},
+        {'1', ' ', ' ', '5', ' ', '0', ' '},
+        {' ', '5', ' ', ' ', ' ', '5', ' '},
+        {' ', '1', ' ', '3', ' ', ' ', '2'},
+        {' ', ' ', ' ', ' ', ' ', '2', ' '},
+        {' ', '5', '5', '5', ' ', ' ', ' '} };
+// 5 means: unnumbered black cell
+</code></pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Akari - Funzionalità aggiuntive</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <ul>
+<li>Inserire una croce (<em>flag</em>, <code>'x'</code>) in una cella<ul>
+<li>Segnaposto, per escludere la presenza di una lampada</li>
+<li>L'utente posiziona liberamente le croci</li>
+<li>In tutte le celle, tranne quelle nere</li>
+<li>Nel metodo <code>play_at</code>, cambiare il valore della cella: <br> <em>empty → bulb → flag → empty</em> ecc.</li>
+</ul>
+</li>
+<li>Salvare o caricare una partita<ul>
+<li>Metodo <code>load</code> (e/o costruttore) con parametro <code>filename</code>, per caricare una partita da file</li>
+<li>Metodo <code>save</code> con parametro <code>filename</code>, per salvare una partita su file</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Funzionamento a console e gui</h2>
+      <h3></h3>
+    </hgroup>
+    <article >
+      <figure>
+        <img src="images/misc/recycle.png">
+        
+      </figure><ul>
+<li>Aggiungere una <em>interfaccia grafica</em> al progetto<ul>
+<li>Fornita una gui che sfrutta l'astrazione <code>Game</code></li>
+</ul>
+</li>
+<li>Permettere all'utente di giocare tramite <em>console</em><ul>
+<li>Mantenere le operazioni di I/O fuori dalla classe</li>
+</ul>
+</li>
+</ul></article>
+ 
+</slide>
+
 
 <slide class="thank-you-slide segue nobackground">
   <aside class="gdbar right"><img src="images/logo.png"></aside>

@@ -187,11 +187,12 @@ URL: https://code.google.com/p/io-2012-slides
 <li>Efficienza, aspetto familiare</li>
 <li>Ma possibile stile personalizzato!</li>
 <li><code>QApplication::setStyle(new QWindowsStyle);</code></li>
-<li><code>QApplication::setStyleSheet</code>, <code>QWidget::setStyleSheet</code></li>
+<li><code>QApplication::setStyleSheet</code></li>
+<li><code>QWidget::setStyleSheet</code></li>
 </ul>
 </li>
 </ul>
-<p><img alt="" src="images/qt/styles.svg" /></p></article>
+<p><img alt="" src="images/qt/styles.png" /></p></article>
  
 </slide>
 
@@ -304,7 +305,7 @@ private:
     exit_button = new QPushButton{tr("Quit")};
 
     // widgets in a vertical layout
-    auto layout = new QVBoxLayout
+    auto layout = new QVBoxLayout;
     layout-&gt;addWidget(text_edit);
     layout-&gt;addWidget(exit_button);
 
@@ -391,10 +392,10 @@ public:
     void save();
     void exit();
 private:
-    QTextEdit* text_edit;
-    QPushButton* open_button;
-    QPushButton* save_button;
-    QPushButton* exit_button;
+    QTextEdit* text_edit = new QTextEdit;
+    QPushButton* open_button = new QPushButton{tr("&amp;Open")};
+    QPushButton* save_button = new QPushButton{tr("&amp;Save")};
+    QPushButton* exit_button = new QPushButton{tr("E&amp;xit")};
 };
 </code></pre></article>
  
@@ -619,11 +620,11 @@ centralWidget()-&gt;setLayout(layout);
       </figure><pre class="prettyprint" data-lang="C++"><code>class Game {
 public:
     virtual void play_at(int x, int y) = 0;
-    virtual int cols() const = 0;
-    virtual int rows() const = 0;
-    virtual std::string get_val(int x, int y) const = 0;
-    virtual bool finished() const = 0;
-    virtual std::string message() const = 0;
+    virtual int cols() = 0;
+    virtual int rows() = 0;
+    virtual std::string get_val(int x, int y) = 0;
+    virtual bool finished() = 0;
+    virtual std::string message() = 0;
 };
 </code></pre></article>
  
@@ -663,7 +664,7 @@ private:
     </hgroup>
     <article >
       <pre class="prettyprint" data-lang="C++"><code>GameGui::GameGui(Game* game) {
-    cols_ = game.cols(); rows_ = game.rows();
+    cols_ = game-&gt;cols(); rows_ = game-&gt;rows();
     game_ = game;
     auto grid = new QGridLayout; setLayout(grid);
     for (auto y = 0; y &lt; rows_; ++y) {
